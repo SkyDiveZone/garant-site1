@@ -1,3 +1,5 @@
+import { SITE } from "@/lib/data";
+import { sendLeadToTelegram } from "@/lib/telegram";
 import { NextResponse } from "next/server";
 
 function normalizePhone(phone: string): string {
@@ -7,27 +9,6 @@ function normalizePhone(phone: string): string {
 function isValidPhone(phone: string): boolean {
   const digits = normalizePhone(phone);
   return digits.length >= 10 && digits.length <= 15;
-}
-
-async function notifyTelegram(name: string, phone: string): Promise<void> {
-  const token = process.env.TELEGRAM_BOT_TOKEN;
-  const chatId = process.env.TELEGRAM_CHAT_ID;
-
-  if (!token || !chatId) return;
-
-  const text = [
-    "🔔 Новая заявка с сайта",
-    "",
-    `👤 Имя: ${name}`,
-    `📞 Телефон: ${phone}`,
-    `🕐 ${new Date().toLocaleString("ru-RU", { timeZone: "Asia/Yekaterinburg" })}`,
-  ].join("\n");
-
-  await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ chat_id: chatId, text }),
-  });
 }
 
 export async function POST(request: Request) {
@@ -59,10 +40,22 @@ export async function POST(request: Request) {
       );
     }
 
-    await notifyTelegram(trimmedName, trimmedPhone);
+    const telegram = await sendLeadToTelegram(trimmedName, trimmedPhone);
+
+    if (!telegram.ok) {
+      console.error("[Lead] Telegram delivery failed:", telegram.error);
+      return NextResponse.json(
+        {
+          error:
+            `Заявка не отправлена. Позвоните нам напрямую: ${SITE.phone}`,
+        },
+        { status: 503 }
+      );
+    }
 
     return NextResponse.json({ success: true });
-  } catch {
+  } catch (error) {
+    console.error("[Lead] Server error:", error);
     return NextResponse.json({ error: "Ошибка сервера" }, { status: 500 });
   }
 }
