@@ -1,9 +1,11 @@
 import { NAV_LINKS, SITE } from "@/lib/data";
+import { POPULAR_SERVICES } from "@/lib/services";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import Link from "next/link";
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-950 text-slate-400">
+    <footer id="contacts" className="border-t border-slate-200 bg-slate-950 text-slate-400">
       <div className="container-custom section-padding !py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
@@ -28,12 +30,12 @@ export function Footer() {
             <ul className="space-y-2.5">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm transition-colors hover:text-white"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -44,10 +46,13 @@ export function Footer() {
               Услуги
             </h3>
             <ul className="space-y-2.5 text-sm">
-              <li>Ремонт квартир</li>
-              <li>Сантехнические работы</li>
-              <li>Электромонтаж</li>
-              <li>Мастер на час</li>
+              {POPULAR_SERVICES.slice(0, 4).map((s) => (
+                <li key={s.slug}>
+                  <Link href={`/${s.slug}`} className="transition-colors hover:text-white">
+                    {s.categoryLabel}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
