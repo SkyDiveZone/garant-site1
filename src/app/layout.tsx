@@ -1,3 +1,4 @@
+import { Analytics } from "@/components/seo/Analytics";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
 import { Header } from "@/components/layout/Header";
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${inter.variable} ${manrope.variable}`}>
       <body className="font-sans">
+        <Analytics />
         <JsonLd />
         <Header />
         <main>{children}</main>

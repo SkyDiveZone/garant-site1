@@ -51,15 +51,15 @@ export function Header() {
           </Link>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Основная навигация">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-slate-600 transition-colors hover:text-brand-600"
-              >
-                {link.label}
-              </a>
-            ))}
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-slate-600 transition-colors hover:text-brand-600"
+                >
+                  {link.label}
+                </Link>
+              ))}
           </nav>
 
           <div className="flex items-center gap-3">
@@ -98,14 +98,14 @@ export function Header() {
             >
               <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Мобильная навигация">
                 {NAV_LINKS.map((link) => (
-                  <a
+                  <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
                     className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
                 <a
                   href={`tel:${SITE.phoneRaw}`}

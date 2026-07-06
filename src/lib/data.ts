@@ -9,15 +9,15 @@ export const SITE = {
   address: "г. Екатеринбург, Шефская ул., 1А",
   hours: "Ежедневно 8:00 — 21:00",
   url: "https://garantekb.ru",
+  whatsappUrl: "https://wa.me/79960502587",
 } as const;
 
 export const HERO = {
-  badge: "Выезд мастера за 60 минут",
-  title: "Ремонт без стресса — мастер у вас уже сегодня",
-  subtitle:
-    "Сантехника, электрика, отделка и мелкий ремонт под ключ. Фиксируем цену до начала работ — без сюрпризов и скрытых доплат.",
-  primaryCta: "Вызвать мастера",
-  secondaryCta: "Бесплатная консультация",
+  badge: "Выезд за 30–60 минут · Работаем ежедневно",
+  title: "Сантехник • Электрик • Мастер на час в Екатеринбурге",
+  subtitle: "Выезд за 30–60 минут. Работаем ежедневно. Фиксируем цену до начала работ — без скрытых доплат.",
+  primaryCta: "Позвонить",
+  secondaryCta: "Оставить заявку",
   trustItems: [
     { label: "4.9", sub: "средняя оценка" },
     { label: "1 200+", sub: "довольных клиентов" },
@@ -342,9 +342,11 @@ export const FAQ = [
 ];
 
 export const NAV_LINKS = [
-  { href: "#services", label: "Услуги" },
-  { href: "#pricing", label: "Цены" },
-  { href: "#how-it-works", label: "Как работаем" },
-  { href: "#reviews", label: "Отзывы" },
-  { href: "#faq", label: "FAQ" },
+  { href: "/", label: "Главная" },
+  { href: "/santehnik", label: "Сантехник" },
+  { href: "/elektrik", label: "Электрик" },
+  { href: "/master-na-chas", label: "Мастер на час" },
+  { href: "/#pricing", label: "Цены" },
+  { href: "/#reviews", label: "Отзывы" },
+  { href: "/#contacts", label: "Контакты" },
 ];
