@@ -1,5 +1,6 @@
 import { NAV_LINKS, SITE } from "@/lib/data";
 import { POPULAR_SERVICES } from "@/lib/services";
+import { Logo } from "@/components/ui/Logo";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 
@@ -9,13 +10,8 @@ export function Footer() {
       <div className="container-custom section-padding !py-16">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <div className="mb-4 flex items-center gap-2.5">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-sm font-bold text-white">
-                ГМ
-              </div>
-              <span className="font-display text-lg font-bold text-white">
-                {SITE.name}
-              </span>
+            <div className="mb-4">
+              <Logo variant="footer" />
             </div>
             <p className="text-sm leading-relaxed">
               Профессиональный ремонт, сантехника и электрика в Екатеринбурге.
