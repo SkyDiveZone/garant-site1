@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/Button";
 import { LeadForm } from "@/components/ui/LeadForm";
+import { Logo } from "@/components/ui/Logo";
 import { NAV_LINKS, SITE } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -38,17 +39,7 @@ export function Header() {
         )}
       >
         <div className="container-custom flex h-16 items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-brand-600 text-sm font-bold text-white shadow-lg shadow-brand-600/30">
-              ГМ
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-display text-lg font-bold text-slate-900">
-                {SITE.name}
-              </span>
-              <span className="block text-xs text-slate-500">Екатеринбург</span>
-            </div>
-          </Link>
+          <Logo variant="header" />
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Основная навигация">
               {NAV_LINKS.map((link) => (
