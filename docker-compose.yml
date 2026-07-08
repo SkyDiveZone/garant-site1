@@ -5,8 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: garant-master
     restart: unless-stopped
-    ports:
-      - "127.0.0.1:3000:3000"
+    network_mode: host
     env_file:
       - .env
     environment:

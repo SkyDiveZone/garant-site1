@@ -1,4 +1,7 @@
+import dns from "node:dns";
 import { SITE } from "@/lib/data";
+
+dns.setDefaultResultOrder("ipv4first");
 
 interface TelegramResult {
   ok: boolean;
@@ -40,33 +43,42 @@ export async function sendLeadToTelegram(
     "↩️ Перезвоните клиенту в течение 5 минут",
   ].join("\n");
 
-  const response = await fetch(
-    `https://api.telegram.org/bot${token}/sendMessage`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text,
-        parse_mode: "HTML",
-        disable_web_page_preview: true,
-      }),
+  try {
+    const response = await fetch(
+      `https://api.telegram.org/bot${token}/sendMessage`,
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: chatId,
+          text,
+          parse_mode: "HTML",
+          disable_web_page_preview: true,
+        }),
+        signal: AbortSignal.timeout(15_000),
+      }
+    );
+
+    const data = (await response.json()) as {
+      ok: boolean;
+      description?: string;
+    };
+
+    if (!data.ok) {
+      return {
+        ok: false,
+        error: data.description ?? "Telegram API error",
+      };
     }
-  );
 
-  const data = (await response.json()) as {
-    ok: boolean;
-    description?: string;
-  };
-
-  if (!data.ok) {
+    return { ok: true };
+  } catch (error) {
+    console.error("[Telegram] Network error:", error);
     return {
       ok: false,
-      error: data.description ?? "Telegram API error",
+      error: error instanceof Error ? error.message : "Не удалось связаться с Telegram API",
     };
   }
-
-  return { ok: true };
 }
 
 function escapeHtml(value: string): string {

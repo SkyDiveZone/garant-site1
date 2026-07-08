@@ -47,7 +47,9 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            `Заявка не отправлена. Позвоните нам: ${PHONES.map((p) => p.display).join(", ")}`,
+            telegram.error?.includes("Telegram не настроен")
+              ? "Сервис временно недоступен. Позвоните нам или напишите в Telegram."
+              : `Заявка не отправлена. Позвоните нам: ${PHONES.map((p) => p.display).join(", ")}`,
         },
         { status: 503 }
       );
