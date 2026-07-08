@@ -50,7 +50,7 @@ export function JsonLd() {
     "@id": `${SITE.url}/#organization`,
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/logo.svg`,
+    logo: `${SITE.url}/android-chrome-512x512.png`,
     email: SITE.email,
     telephone: SITE.phoneRaw,
     sameAs: [SITE.telegram.url],
