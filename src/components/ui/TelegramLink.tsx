@@ -1,4 +1,7 @@
+"use client";
+
 import { SITE } from "@/lib/data";
+import { trackTelegramClick } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
 
 interface TelegramLinkProps {
@@ -36,6 +39,7 @@ export function TelegramLink({
       href={SITE.telegram.url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={trackTelegramClick}
       className={cn(
         "inline-flex items-center gap-2 text-sm font-semibold transition-all",
         variant === "button"

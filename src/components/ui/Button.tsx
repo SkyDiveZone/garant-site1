@@ -1,8 +1,9 @@
 "use client";
 
+import { trackContactHref } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { type ButtonHTMLAttributes, type ReactNode } from "react";
+import { type ButtonHTMLAttributes, type MouseEvent, type ReactNode } from "react";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
 type ButtonSize = "sm" | "md" | "lg";
@@ -45,11 +46,17 @@ export function Button({
   target,
   rel,
   type = "button",
+  onClick,
   ...props
 }: ButtonProps) {
   const classes = cn(baseClasses, variants[variant], sizes[size], className);
 
   if (href) {
+    const handleLinkClick = (event: MouseEvent<HTMLAnchorElement>) => {
+      trackContactHref(href);
+      onClick?.(event as unknown as MouseEvent<HTMLButtonElement>);
+    };
+
     return (
       <motion.a
         href={href}
@@ -58,6 +65,7 @@ export function Button({
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
         className={classes}
+        onClick={handleLinkClick}
       >
         {children}
       </motion.a>

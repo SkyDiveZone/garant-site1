@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { LegalConsentCheckbox } from "@/components/ui/LegalConsentCheckbox";
 import { COPY } from "@/lib/copy";
+import { trackFormSubmit } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle2, Loader2, Phone } from "lucide-react";
@@ -52,6 +53,7 @@ export function LeadForm({
         throw new Error(data.error ?? "Не удалось отправить заявку");
       }
 
+      trackFormSubmit();
       setStatus("success");
       setName("");
       setPhone("");

@@ -1,5 +1,6 @@
 import { FOOTER_INFO, FOOTER_SERVICES, PHONES, SITE } from "@/lib/data";
 import { Logo } from "@/components/ui/Logo";
+import { TrackedAnchor } from "@/components/ui/TrackedAnchor";
 import Link from "next/link";
 
 export function Footer() {
@@ -39,25 +40,25 @@ export function Footer() {
             <ul className="space-y-2.5 text-sm">
               {PHONES.map((phone) => (
                 <li key={phone.raw}>
-                  <a
+                  <TrackedAnchor
                     href={`tel:${phone.raw}`}
                     className="inline-flex items-center gap-2 transition-colors hover:text-white"
                   >
                     <span aria-hidden="true">📞</span>
                     {phone.display}
-                  </a>
+                  </TrackedAnchor>
                 </li>
               ))}
               <li>
                 <span className="block text-slate-500">Telegram</span>
-                <a
+                <TrackedAnchor
                   href={SITE.telegram.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors hover:text-white"
                 >
                   {SITE.telegram.username}
-                </a>
+                </TrackedAnchor>
               </li>
             </ul>
           </div>
