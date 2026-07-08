@@ -1,12 +1,20 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
+import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { WorkGallery } from "@/components/landing/WorkGallery";
+import { PriceTable } from "@/components/pricing/PriceCards";
+import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
+import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
-import { LeadForm } from "@/components/ui/LeadForm";
+import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
+import { PhoneList } from "@/components/ui/PhoneList";
 import { Section, SectionHeader } from "@/components/ui/Section";
+import { TelegramLink } from "@/components/ui/TelegramLink";
+import { COPY } from "@/lib/copy";
 import { SITE } from "@/lib/data";
 import type { ServicePage } from "@/lib/services";
-import { Award, CheckCircle2, Clock, Phone, ShieldCheck, Star } from "lucide-react";
+import { reviewServiceForSlug } from "@/lib/reviews/utils";
+import { Award, CheckCircle2, Clock, ShieldCheck, Star } from "lucide-react";
 import Link from "next/link";
 
 interface ServiceLandingProps {
@@ -41,7 +49,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
             <div>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
                 <Clock className="h-4 w-4" />
-                Выезд за 30–60 минут · {SITE.hours}
+                Работаем ежедневно · {SITE.hours}
               </div>
               <h1 className="font-display text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
                 {service.h1}
@@ -64,7 +72,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Award className="h-4 w-4 text-brand-500" />
-                  Фикс. цена
+                  Смета после осмотра
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
@@ -73,14 +81,11 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               </div>
             </div>
 
-            <div id="lead-form">
-              <LeadForm title="Вызвать мастера" subtitle="Перезвоним за 5 минут" />
-              <p className="mt-3 text-center text-sm text-slate-500">
-                <a href={`tel:${SITE.phoneRaw}`} className="font-semibold text-brand-600 hover:underline">
-                  {SITE.phone}
-                </a>
-              </p>
-            </div>
+            <LeadFormWithExtras
+              id="lead-form"
+              title="Вызвать мастера"
+              subtitle={COPY.leadFormSubtitle}
+            />
           </div>
         </div>
       </section>
@@ -106,67 +111,22 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
 
       {/* Prices */}
       <Section id="pricing" className="bg-slate-50/80">
-        <SectionHeader badge="Стоимость" title="Прозрачные цены" subtitle="Точную смету назовём до начала работ" />
-        <div className="mx-auto max-w-xl overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
-          <table className="w-full">
-            <tbody>
-              {service.prices.map((item, i) => (
-                <tr key={item.name} className={i > 0 ? "border-t border-slate-100" : ""}>
-                  <td className="px-6 py-4 text-sm text-slate-700">{item.name}</td>
-                  <td className="px-6 py-4 text-right text-sm font-semibold text-brand-700">
-                    {item.price}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <SectionHeader badge="Стоимость" title="Прозрачные цены" subtitle={COPY.pricingSubtitle} />
+        <PriceTable items={service.prices} orderHref="#lead-form" />
         <div className="mt-6 text-center">
           <ConversionActions />
         </div>
       </Section>
 
-      {/* Steps */}
-      <Section>
-        <SectionHeader badge="Этапы" title="Как мы работаем" subtitle="4 простых шага" />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {service.steps.map((step, i) => (
-            <div key={step.title} className="text-center">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-brand-600 font-display text-lg font-bold text-white">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <h3 className="font-display font-bold text-slate-900">{step.title}</h3>
-              <p className="mt-2 text-sm text-slate-600">{step.description}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      <HowWeWorkSection />
 
-      <WorkGallery label={service.galleryLabel} />
+      <WorkGallery label={service.galleryLabel} images={service.galleryImages} />
 
-      {/* Reviews */}
-      <Section id="reviews">
-        <SectionHeader badge="Отзывы" title="Что говорят клиенты" />
-        <div className="grid gap-5 md:grid-cols-3">
-          {service.reviews.map((review) => (
-            <article
-              key={review.name}
-              className="rounded-2xl border border-slate-200/80 bg-white p-6"
-            >
-              <div className="flex gap-0.5">
-                {[...Array(review.rating)].map((_, j) => (
-                  <Star key={j} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                ))}
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-slate-700">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <p className="mt-4 text-sm font-semibold text-slate-900">{review.name}</p>
-              <p className="text-xs text-slate-500">{review.date}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+      <ReviewsSection
+        service={reviewServiceForSlug(service.slug)}
+        title="Что говорят клиенты"
+        showForm
+      />
 
       {/* SEO text */}
       <Section className="bg-slate-50/80">
@@ -180,7 +140,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
             ))}
           </div>
           <ul className="mt-6 space-y-2">
-            {["Срочный выезд 30–60 мин", "Гарантия до 12 месяцев", "Работаем без выходных"].map(
+            {["Гарантия до 12 месяцев", "Работаем ежедневно", COPY.helpScheduleVisit].map(
               (item) => (
                 <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
                   <CheckCircle2 className="h-4 w-4 text-emerald-500" />
@@ -194,29 +154,36 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
 
       <ServiceFAQSection faq={service.faq} />
 
+      <ServiceArea />
+
       {/* Final CTA */}
       <Section className="relative overflow-hidden">
         <div className="gradient-mesh absolute inset-0" />
-        <div className="relative grid items-center gap-10 lg:grid-cols-2">
+        <div className="relative grid items-start gap-10 lg:grid-cols-2">
           <div>
             <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
               Вызовите мастера сейчас
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              {service.heroSubtitle} Перезвоним за 5 минут.
+              {service.heroSubtitle} {COPY.callbackShort}
             </p>
             <div className="mt-8">
               <ConversionActions size="large" formAnchor="#lead-form" />
             </div>
-            <a
-              href={`tel:${SITE.phoneRaw}`}
-              className="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-brand-600 hover:underline"
-            >
-              <Phone className="h-5 w-5" />
-              {SITE.phone}
-            </a>
+            <div className="mt-6 space-y-2">
+              <PhoneList
+                variant="stack"
+                linkClassName="text-lg font-semibold text-brand-600 hover:underline"
+                iconClassName="text-brand-600"
+              />
+              <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={20} />
+            </div>
           </div>
-          <LeadForm variant="compact" title="Бесплатная консультация" />
+          <LeadFormWithExtras
+            variant="compact"
+            title="Оставить заявку"
+            subtitle={COPY.leadFormSubtitle}
+          />
         </div>
       </Section>
     </>

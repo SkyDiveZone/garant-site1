@@ -1,4 +1,4 @@
-import { SITE } from "@/lib/data";
+import { PHONES, SITE } from "@/lib/data";
 import { sendLeadToTelegram } from "@/lib/telegram";
 import { NextResponse } from "next/server";
 
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            `Заявка не отправлена. Позвоните нам напрямую: ${SITE.phone}`,
+            `Заявка не отправлена. Позвоните нам: ${PHONES.map((p) => p.display).join(", ")}`,
         },
         { status: 503 }
       );

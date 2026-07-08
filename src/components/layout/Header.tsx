@@ -1,12 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { LeadForm } from "@/components/ui/LeadForm";
+import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Logo } from "@/components/ui/Logo";
-import { NAV_LINKS, SITE } from "@/lib/data";
+import { PhoneList } from "@/components/ui/PhoneList";
+import { TelegramLink } from "@/components/ui/TelegramLink";
+import { HEADER_PHONES, NAV_LINKS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -38,29 +40,34 @@ export function Header() {
             : "bg-transparent"
         )}
       >
-        <div className="container-custom flex h-16 items-center justify-between px-4 sm:h-20 sm:px-6 lg:px-8">
-          <Logo variant="header" />
+        <div className="container-custom flex h-16 items-center justify-between gap-4 px-4 sm:h-20 sm:px-6 lg:gap-6 lg:px-8">
+          <Logo variant="header" className="shrink-0" />
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Основная навигация">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-sm font-medium text-slate-600 transition-colors hover:text-brand-600"
-                >
-                  {link.label}
-                </Link>
-              ))}
+          <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Основная навигация">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm font-medium text-slate-600 transition-colors hover:text-brand-600"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
-          <div className="flex items-center gap-3">
-            <a
-              href={`tel:${SITE.phoneRaw}`}
-              className="hidden items-center gap-2 text-sm font-semibold text-slate-900 transition-colors hover:text-brand-600 md:flex"
-            >
-              <Phone className="h-4 w-4 text-brand-600" />
-              {SITE.phone}
-            </a>
+          <div className="flex shrink-0 items-center gap-3">
+            <div className="hidden flex-col items-end gap-1 md:flex">
+              <PhoneList
+                variant="header"
+                phones={HEADER_PHONES}
+                linkClassName="text-slate-900 hover:text-brand-600"
+                iconClassName="text-brand-600"
+              />
+              <TelegramLink
+                className="text-sky-600 hover:text-sky-700"
+                iconSize={16}
+              />
+            </div>
             <Button
               size="sm"
               className="hidden sm:inline-flex"
@@ -98,13 +105,15 @@ export function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <a
-                  href={`tel:${SITE.phoneRaw}`}
-                  className="mt-2 flex items-center gap-2 rounded-lg px-3 py-2.5 text-sm font-semibold text-brand-600"
-                >
-                  <Phone className="h-4 w-4" />
-                  {SITE.phone}
-                </a>
+                <div className="mt-2 space-y-2 border-t border-slate-100 px-3 pt-3">
+                  <PhoneList
+                    variant="stack"
+                    phones={HEADER_PHONES}
+                    linkClassName="text-brand-600 hover:text-brand-700"
+                    iconClassName="text-brand-600"
+                  />
+                  <TelegramLink className="text-sky-600 hover:text-sky-700" />
+                </div>
                 <Button
                   className="mt-2 w-full"
                   onClick={() => {
@@ -133,10 +142,10 @@ export function Header() {
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 40, scale: 0.95 }}
-              className="w-full max-w-md"
+              className="max-h-[90vh] w-full max-w-md overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              <LeadForm />
+              <LeadFormWithExtras />
               <button
                 type="button"
                 onClick={() => setFormOpen(false)}

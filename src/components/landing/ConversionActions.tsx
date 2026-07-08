@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/data";
-import { MessageCircle, Phone } from "lucide-react";
+import { TelegramIcon } from "@/components/ui/TelegramLink";
+import { Phone } from "lucide-react";
 
 interface ConversionActionsProps {
   formAnchor?: string;
@@ -28,13 +29,13 @@ export function ConversionActions({
       <Button
         size={isLarge ? "lg" : "md"}
         variant="secondary"
-        href={SITE.whatsappUrl}
+        href={SITE.telegram.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="border-emerald-200 bg-emerald-50 text-emerald-800 hover:bg-emerald-100"
+        className="border-sky-200 bg-sky-50 text-sky-800 hover:bg-sky-100"
       >
-        <MessageCircle className="h-4 w-4" />
-        WhatsApp
+        <TelegramIcon size={16} />
+        Telegram
       </Button>
       <Button
         size={isLarge ? "lg" : "md"}

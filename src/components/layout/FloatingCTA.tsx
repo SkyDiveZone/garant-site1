@@ -1,46 +1,51 @@
 "use client";
 
-import { SITE } from "@/lib/data";
-import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, Phone } from "lucide-react";
-import { useEffect, useState } from "react";
+import { PHONES, SITE } from "@/lib/data";
+import { TelegramIcon } from "@/components/ui/TelegramLink";
+import { FileText, Phone } from "lucide-react";
 
 export function FloatingCTA() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 600);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const scrollToForm = () => {
+    const form = document.getElementById("lead-form");
+    if (form) {
+      form.scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
+    window.location.hash = "lead-form";
+  };
 
   return (
-    <AnimatePresence>
-      {visible && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-6 left-4 right-4 z-40 flex gap-2 sm:hidden"
+    <div
+      className="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/95 p-2 shadow-[0_-4px_24px_rgba(15,76,129,0.12)] backdrop-blur-md sm:hidden"
+      style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
+    >
+      <div className="flex gap-2">
+        <a
+          href={`tel:${PHONES[0].raw}`}
+          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-brand-600 px-2 py-3 text-xs font-semibold text-white"
         >
-          <a
-            href={`tel:${SITE.phoneRaw}`}
-            className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-brand-600 px-4 py-4 text-sm font-semibold text-white shadow-2xl shadow-brand-600/40"
-          >
-            <Phone className="h-4 w-4" />
-            Позвонить
-          </a>
-          <a
-            href={SITE.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center rounded-2xl bg-emerald-500 px-4 py-4 text-white shadow-2xl shadow-emerald-500/40"
-            aria-label="WhatsApp"
-          >
-            <MessageCircle className="h-5 w-5" />
-          </a>
-        </motion.div>
-      )}
-    </AnimatePresence>
+          <Phone className="h-4 w-4 shrink-0" />
+          Позвонить
+        </a>
+        <a
+          href={SITE.telegram.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-sky-500 px-2 py-3 text-xs font-semibold text-white"
+          aria-label="Telegram"
+        >
+          <TelegramIcon size={16} />
+          Telegram
+        </a>
+        <button
+          type="button"
+          onClick={scrollToForm}
+          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-brand-200 bg-brand-50 px-2 py-3 text-xs font-semibold text-brand-700"
+        >
+          <FileText className="h-4 w-4 shrink-0" />
+          Заявка
+        </button>
+      </div>
+    </div>
   );
 }

@@ -1,12 +1,14 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { LegalConsentCheckbox } from "@/components/ui/LegalConsentCheckbox";
+import { COPY } from "@/lib/copy";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle2, Loader2, Phone } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
-interface LeadFormProps {
+export interface LeadFormProps {
   variant?: "default" | "compact" | "inline";
   className?: string;
   title?: string;
@@ -17,15 +19,23 @@ export function LeadForm({
   variant = "default",
   className,
   title = "Вызвать мастера",
-  subtitle = "Перезвоним за 5 минут и назовём точную цену",
+  subtitle = COPY.leadFormSubtitle,
 }: LeadFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!consent) {
+      setConsentError(true);
+      return;
+    }
+    setConsentError(false);
     setStatus("loading");
     setErrorMessage("");
 
@@ -45,6 +55,7 @@ export function LeadForm({
       setStatus("success");
       setName("");
       setPhone("");
+      setConsent(false);
       setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
       setStatus("error");
@@ -66,7 +77,7 @@ export function LeadForm({
       >
         <CheckCircle2 className="mb-3 h-12 w-12 text-emerald-500" />
         <p className="text-lg font-semibold text-emerald-900">Заявка принята!</p>
-        <p className="mt-1 text-sm text-emerald-700">Перезвоним в течение 5 минут</p>
+        <p className="mt-1 text-sm text-emerald-700">{COPY.leadFormSuccessDetail}</p>
       </motion.div>
     );
   }
@@ -87,9 +98,7 @@ export function LeadForm({
           <h3 className="font-display text-xl font-bold text-slate-900 sm:text-2xl">
             {title}
           </h3>
-          {!isCompact && (
-            <p className="mt-2 text-sm text-slate-600">{subtitle}</p>
-          )}
+          <p className="mt-2 text-sm text-slate-600">{subtitle}</p>
         </div>
       )}
 
@@ -146,6 +155,16 @@ export function LeadForm({
           </Button>
         </div>
 
+        <LegalConsentCheckbox
+          id={`consent-${variant}`}
+          checked={consent}
+          onChange={(value) => {
+            setConsent(value);
+            if (value) setConsentError(false);
+          }}
+          showError={consentError}
+        />
+
         {status === "error" && errorMessage && (
           <div
             role="alert"
@@ -155,10 +174,6 @@ export function LeadForm({
             {errorMessage}
           </div>
         )}
-
-        <p className="text-xs text-slate-500">
-          Нажимая кнопку, вы соглашаетесь на обработку персональных данных
-        </p>
       </form>
     </div>
   );

@@ -1,7 +1,14 @@
 {
-  "name": "Гарант Мастер",
+  "name": "Гарант Мастер — сантехник, электрик, мастер на час",
   "short_name": "Гарант Мастер",
+  "description": "Сантехник, электрик и мастер на час в Екатеринбурге.",
+  "start_url": "/",
   "icons": [
+    {
+      "src": "/logo-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
     {
       "src": "/android-chrome-192x192.png",
       "sizes": "192x192",
@@ -13,7 +20,8 @@
       "type": "image/png"
     }
   ],
-  "theme_color": "#2563eb",
+  "theme_color": "#0F4C81",
   "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "lang": "ru"
 }

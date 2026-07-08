@@ -1,5 +1,5 @@
 import type { ServicePage } from "@/lib/services";
-import { SITE } from "@/lib/data";
+import { PHONES, SITE } from "@/lib/data";
 
 interface ServiceJsonLdProps {
   service: ServicePage;
@@ -52,6 +52,12 @@ export function ServiceJsonLd({ service }: ServiceJsonLdProps) {
     url,
     telephone: SITE.phoneRaw,
     email: SITE.email,
+    sameAs: [SITE.telegram.url],
+    contactPoint: PHONES.map((phone) => ({
+      "@type": "ContactPoint",
+      telephone: phone.raw,
+      contactType: "customer service",
+    })),
     address: {
       "@type": "PostalAddress",
       streetAddress: "Шефская ул., 1А",
