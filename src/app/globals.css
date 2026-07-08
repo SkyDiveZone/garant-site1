@@ -1,16 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #eff6ff;
-  --color-brand-100: #dbeafe;
-  --color-brand-200: #bfdbfe;
-  --color-brand-300: #93c5fd;
-  --color-brand-400: #60a5fa;
-  --color-brand-500: #3b82f6;
-  --color-brand-600: #2563eb;
-  --color-brand-700: #1d4ed8;
-  --color-brand-800: #1e40af;
-  --color-brand-900: #1e3a8a;
+  --color-brand-50: #e8f2fa;
+  --color-brand-100: #c5dff5;
+  --color-brand-200: #9ec9ef;
+  --color-brand-300: #6aafe8;
+  --color-brand-400: #1e88e5;
+  --color-brand-500: #1565c0;
+  --color-brand-600: #0f4c81;
+  --color-brand-700: #0d3d6a;
+  --color-brand-800: #0a3054;
+  --color-brand-900: #07233d;
+
+  --color-accent-400: #f9a826;
+  --color-accent-500: #e8940f;
 
   --color-slate-850: #172033;
   --color-slate-950: #0b1120;
@@ -28,6 +31,12 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
+@media (max-width: 639px) {
+  body {
+    padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 ::selection {
   @apply bg-brand-200 text-brand-900;
 }
@@ -38,9 +47,9 @@ body {
 
 .gradient-mesh {
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(37, 99, 235, 0.15), transparent),
-    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(14, 165, 233, 0.1), transparent),
-    radial-gradient(ellipse 50% 30% at 0% 50%, rgba(37, 99, 235, 0.08), transparent);
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(15, 76, 129, 0.12), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(30, 136, 229, 0.1), transparent),
+    radial-gradient(ellipse 50% 30% at 0% 50%, rgba(249, 168, 38, 0.06), transparent);
 }
 
 .glass {
@@ -72,4 +81,21 @@ body {
   background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand-400);
+  outline-offset: 2px;
 }

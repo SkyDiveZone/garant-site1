@@ -1,10 +1,11 @@
 "use client";
 
-import { LeadForm } from "@/components/ui/LeadForm";
+import { COPY } from "@/lib/copy";
+import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
+import { PhoneList } from "@/components/ui/PhoneList";
 import { Section } from "@/components/ui/Section";
-import { SITE } from "@/lib/data";
-import { Phone } from "lucide-react";
+import { TelegramLink } from "@/components/ui/TelegramLink";
 
 export function MidPageCTA() {
   return (
@@ -21,21 +22,21 @@ export function MidPageCTA() {
                   Не откладывайте — мастер свободен сегодня
                 </h2>
                 <p className="mt-4 text-brand-100">
-                  Оставьте заявку или позвоните — перезвоним за 5 минут и
-                  назовём точную цену до начала работ.
+                  {COPY.callbackWithSchedule}
                 </p>
-                <a
-                  href={`tel:${SITE.phoneRaw}`}
-                  className="mt-6 inline-flex items-center gap-2 text-lg font-semibold text-white hover:underline"
-                >
-                  <Phone className="h-5 w-5" />
-                  {SITE.phone}
-                </a>
+                <div className="mt-6 space-y-2">
+                  <PhoneList
+                    variant="stack"
+                    linkClassName="text-lg font-semibold text-white hover:underline"
+                    iconClassName="text-white"
+                  />
+                  <TelegramLink
+                    className="text-sky-200 hover:text-white"
+                    iconSize={20}
+                  />
+                </div>
               </div>
-              <LeadForm
-                variant="compact"
-                className="border-0 bg-white shadow-2xl"
-              />
+              <LeadFormWithExtras variant="compact" className="border-0 bg-white shadow-2xl" />
             </div>
           </div>
         </MotionItem>

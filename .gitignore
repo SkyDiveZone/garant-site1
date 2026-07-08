@@ -21,6 +21,8 @@
 # misc
 .DS_Store
 *.pem
+/data/reviews-db.json
+/data/review-photos/
 
 # debug
 npm-debug.log*

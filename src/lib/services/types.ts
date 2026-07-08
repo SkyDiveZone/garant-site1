@@ -1,4 +1,4 @@
-export type ServiceCategory = "plumbing" | "electrical" | "handyman";
+export type ServiceCategory = "plumbing" | "electrical" | "handyman" | "repair";
 
 export interface ServiceBenefit {
   title: string;
@@ -46,4 +46,5 @@ export interface ServicePage {
   faq: ServiceFAQ[];
   reviews: ServiceReview[];
   galleryLabel: string;
+  galleryImages?: readonly { src: string; alt: string }[];
 }

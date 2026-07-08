@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { LeadForm } from "@/components/ui/LeadForm";
+import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { HERO, SITE } from "@/lib/data";
 import { motion } from "framer-motion";
 import { CheckCircle2, Phone, Star } from "lucide-react";
@@ -13,7 +13,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_60%,white_100%)]" />
 
       <div className="container-custom relative px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -77,20 +77,8 @@ export function Hero() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            id="lead-form"
           >
-            <LeadForm />
-            <p className="mt-4 text-center text-sm text-slate-500">
-              Или напишите в{" "}
-              <a
-                href={SITE.whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-emerald-600 hover:underline"
-              >
-                WhatsApp
-              </a>
-            </p>
+            <LeadFormWithExtras id="lead-form" />
           </motion.div>
         </div>
       </div>

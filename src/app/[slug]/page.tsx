@@ -1,6 +1,7 @@
+import { RemontKvartirLanding } from "@/components/landing/RemontKvartirLanding";
 import { ServiceLanding } from "@/components/landing/ServiceLanding";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
-import { SITE } from "@/lib/data";
+import { createPageMetadata } from "@/lib/seo";
 import { getAllServiceSlugs, getServiceBySlug } from "@/lib/services";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -18,23 +19,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const service = getServiceBySlug(slug);
   if (!service) return {};
 
-  const url = `${SITE.url}/${slug}`;
-
-  return {
+  return createPageMetadata({
     title: service.title,
     description: service.description,
+    path: `/${slug}`,
     keywords: service.keywords,
-    alternates: { canonical: url },
-    openGraph: {
-      title: service.title,
-      description: service.description,
-      url,
-      locale: "ru_RU",
-      type: "website",
-      siteName: SITE.name,
-    },
-    robots: { index: true, follow: true },
-  };
+  });
 }
 
 export default async function ServicePage({ params }: PageProps) {
@@ -46,7 +36,11 @@ export default async function ServicePage({ params }: PageProps) {
   return (
     <>
       <ServiceJsonLd service={service} />
-      <ServiceLanding service={service} />
+      {slug === "remont-kvartir" ? (
+        <RemontKvartirLanding service={service} />
+      ) : (
+        <ServiceLanding service={service} />
+      )}
     </>
   );
 }

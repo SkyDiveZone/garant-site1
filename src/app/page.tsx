@@ -8,6 +8,7 @@ import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Features } from "@/components/sections/Features";
 import { MidPageCTA } from "@/components/sections/MidPageCTA";
 import { Stats } from "@/components/sections/Stats";
+import { ServiceArea } from "@/components/sections/ServiceArea";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 
 const ProductDemo = dynamic(
@@ -18,8 +19,9 @@ const Cases = dynamic(
   () => import("@/components/sections/Cases").then((m) => m.Cases),
   { loading: () => <SectionPlaceholder /> }
 );
-const Testimonials = dynamic(
-  () => import("@/components/sections/Testimonials").then((m) => m.Testimonials),
+import { ReviewsSection } from "@/components/reviews/ReviewsSection";
+const Certificates = dynamic(
+  () => import("@/components/sections/Certificates").then((m) => m.Certificates),
   { loading: () => <SectionPlaceholder /> }
 );
 const Pricing = dynamic(
@@ -48,9 +50,11 @@ export default function HomePage() {
       <Features />
       <Cases />
       <MidPageCTA />
-      <Testimonials />
+      <ReviewsSection title="Отзывы клиентов" subtitle="Реальные отзывы жителей Екатеринбурга" />
       <Stats />
+      <ServiceArea />
       <Pricing />
+      <Certificates />
       <FAQSection />
       <FinalCTA />
     </>
