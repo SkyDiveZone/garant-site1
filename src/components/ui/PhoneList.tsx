@@ -1,4 +1,7 @@
+"use client";
+
 import { PHONES } from "@/lib/data";
+import { trackPhoneClick } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
 import { Phone } from "lucide-react";
 
@@ -29,6 +32,7 @@ export function PhoneList({
           <li key={phone.raw}>
             <a
               href={`tel:${phone.raw}`}
+              onClick={trackPhoneClick}
               className={cn(
                 "inline-flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-slate-800 transition-colors hover:text-brand-600",
                 linkClassName
@@ -55,6 +59,7 @@ export function PhoneList({
             )}
             <a
               href={`tel:${phone.raw}`}
+              onClick={trackPhoneClick}
               className={cn(
                 "inline-flex items-center gap-1.5 whitespace-nowrap text-xs font-semibold transition-colors hover:text-brand-600 sm:text-sm",
                 linkClassName
@@ -75,6 +80,7 @@ export function PhoneList({
     return (
       <a
         href={`tel:${phones[0].raw}`}
+        onClick={trackPhoneClick}
         className={cn(
           "inline-flex items-center gap-2 text-sm font-semibold transition-colors",
           linkClassName,
@@ -93,6 +99,7 @@ export function PhoneList({
         <li key={phone.raw}>
           <a
             href={`tel:${phone.raw}`}
+            onClick={trackPhoneClick}
             className={cn(
               "inline-flex items-center gap-2 text-sm font-medium transition-colors",
               linkClassName
