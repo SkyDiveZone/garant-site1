@@ -42,7 +42,7 @@ export function ProductDemo() {
                   <div className="h-3 w-3 rounded-full bg-amber-400" />
                   <div className="h-3 w-3 rounded-full bg-emerald-400" />
                   <span className="ml-4 text-xs text-slate-500">
-                    garantekb.ru — панель заявок
+                    garant-master-ekb.ru — панель заявок
                   </span>
                 </div>
 

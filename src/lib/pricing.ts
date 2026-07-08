@@ -21,7 +21,7 @@ export interface PriceCategoryGroup {
   items: PriceItem[];
 }
 
-/** Полный прайс-лист с garantekb.ru/#prices */
+/** Полный прайс-лист с garant-master-ekb.ru/#prices */
 export const PRICE_CATALOG: PriceCategoryGroup[] = [
   {
     id: "repair",

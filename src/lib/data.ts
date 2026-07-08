@@ -30,7 +30,7 @@ export const SITE = {
   email: "STESER-OFFICIAL@yandex.ru",
   address: "г. Екатеринбург, Шефская ул., 1А",
   hours: "Ежедневно 8:00 — 21:00",
-  url: "https://garantekb.ru",
+  url: "https://garant-master-ekb.ru",
   telegram: {
     username: "@garant_master_ekb",
     url: "https://t.me/garant_master_ekb",
