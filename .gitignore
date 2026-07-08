@@ -22,7 +22,8 @@
 .DS_Store
 *.pem
 /data/reviews-db.json
-/data/review-photos/
+/data/review-photos/*
+!/data/.gitkeep
 
 # debug
 npm-debug.log*
@@ -32,10 +33,10 @@ yarn-error.log*
 
 # env files
 .env*
+!.env.example
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 
 .vercel
-.env*

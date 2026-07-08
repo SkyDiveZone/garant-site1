@@ -4,7 +4,6 @@ import { SEED_REVIEWS } from "./seed";
 import type { Review } from "./types";
 
 const DB_FILENAME = "reviews-db.json";
-const BLOB_PATHNAME = "reviews/reviews-db.json";
 
 function dbPath() {
   return path.join(process.cwd(), "data", DB_FILENAME);
@@ -26,58 +25,12 @@ async function writeLocalDb(reviews: Review[]): Promise<void> {
   await fs.writeFile(dbPath(), JSON.stringify(reviews, null, 2), "utf-8");
 }
 
-async function readBlobDb(): Promise<Review[] | null> {
-  const token = process.env.BLOB_READ_WRITE_TOKEN;
-  if (!token) return null;
-
-  try {
-    const { list, head } = await import("@vercel/blob");
-    const { blobs } = await list({ prefix: "reviews/", token });
-    const target = blobs.find((b) => b.pathname === BLOB_PATHNAME);
-    if (!target) return [];
-
-    const meta = await head(target.url, { token });
-    const res = await fetch(meta.downloadUrl);
-    if (!res.ok) return [];
-    const parsed = (await res.json()) as Review[];
-    return Array.isArray(parsed) ? parsed : [];
-  } catch (error) {
-    console.error("[Reviews] Blob read failed:", error);
-    return null;
-  }
-}
-
-async function writeBlobDb(reviews: Review[]): Promise<boolean> {
-  const token = process.env.BLOB_READ_WRITE_TOKEN;
-  if (!token) return false;
-
-  try {
-    const { put } = await import("@vercel/blob");
-    await put(BLOB_PATHNAME, JSON.stringify(reviews), {
-      access: "public",
-      token,
-      addRandomSuffix: false,
-      allowOverwrite: true,
-      contentType: "application/json",
-    });
-    return true;
-  } catch (error) {
-    console.error("[Reviews] Blob write failed:", error);
-    return false;
-  }
-}
-
 export async function getAllStoredReviews(): Promise<Review[]> {
-  const blob = await readBlobDb();
-  if (blob !== null) return blob;
   return readLocalDb();
 }
 
 export async function saveStoredReviews(reviews: Review[]): Promise<void> {
-  const blobOk = await writeBlobDb(reviews);
-  if (!blobOk) {
-    await writeLocalDb(reviews);
-  }
+  await writeLocalDb(reviews);
 }
 
 export async function getPublishedReviews(service?: string): Promise<Review[]> {

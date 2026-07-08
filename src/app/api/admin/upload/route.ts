@@ -1,5 +1,7 @@
 import { isAdminAuthenticated } from "@/lib/admin/auth";
 import { NextResponse } from "next/server";
+import { promises as fs } from "fs";
+import path from "path";
 
 export async function POST(request: Request) {
   if (!(await isAdminAuthenticated())) {
@@ -13,20 +15,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Некорректный файл" }, { status: 400 });
     }
 
-    const token = process.env.BLOB_READ_WRITE_TOKEN;
-    if (token) {
-      const { put } = await import("@vercel/blob");
-      const ext = file.name.split(".").pop() ?? "jpg";
-      const blob = await put(
-        `reviews/photos/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`,
-        file,
-        { access: "public", token }
-      );
-      return NextResponse.json({ url: blob.url });
-    }
-
-    const { promises: fs } = await import("fs");
-    const path = await import("path");
     const dir = path.join(process.cwd(), "data", "review-photos");
     await fs.mkdir(dir, { recursive: true });
     const filename = `${Date.now()}-${Math.random().toString(36).slice(2)}.${file.name.split(".").pop() ?? "jpg"}`;

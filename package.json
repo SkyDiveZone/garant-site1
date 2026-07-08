@@ -6,10 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy:build": "docker compose build",
+    "deploy:up": "docker compose up -d",
+    "deploy:restart": "docker compose up -d --build"
   },
   "dependencies": {
-    "@vercel/blob": "^2.5.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.4.7",
     "lucide-react": "^0.475.0",

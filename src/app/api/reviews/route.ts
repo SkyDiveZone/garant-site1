@@ -104,24 +104,8 @@ export async function POST(request: Request) {
 }
 
 async function uploadReviewPhoto(file: File): Promise<string | null> {
-  const token = process.env.BLOB_READ_WRITE_TOKEN;
   const maxSize = 5 * 1024 * 1024;
   if (!file.type.startsWith("image/") || file.size > maxSize) return null;
-
-  if (token) {
-    try {
-      const { put } = await import("@vercel/blob");
-      const ext = file.name.split(".").pop() ?? "jpg";
-      const blob = await put(`reviews/photos/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`, file, {
-        access: "public",
-        token,
-      });
-      return blob.url;
-    } catch (error) {
-      console.error("[Reviews] Photo upload failed:", error);
-      return null;
-    }
-  }
 
   try {
     const { promises: fs } = await import("fs");
