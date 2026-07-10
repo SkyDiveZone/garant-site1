@@ -1,15 +1,23 @@
 import { SITE } from "@/lib/data";
 import type { Metadata } from "next";
 
+const FAVICON_VERSION = "2";
+
 const SITE_ICONS: Metadata["icons"] = {
   icon: [
-    { url: "/favicon.ico", sizes: "48x48" },
-    { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    { url: "/icon.png", sizes: "192x192", type: "image/png" },
+    { url: `/favicon.ico?v=${FAVICON_VERSION}`, sizes: "48x48" },
+    { url: `/favicon-16x16.png?v=${FAVICON_VERSION}`, sizes: "16x16", type: "image/png" },
+    { url: `/favicon-32x32.png?v=${FAVICON_VERSION}`, sizes: "32x32", type: "image/png" },
+    { url: `/icon.png?v=${FAVICON_VERSION}`, sizes: "192x192", type: "image/png" },
   ],
-  apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
-  shortcut: "/favicon.ico",
+  apple: [
+    {
+      url: `/apple-touch-icon.png?v=${FAVICON_VERSION}`,
+      sizes: "180x180",
+      type: "image/png",
+    },
+  ],
+  shortcut: `/favicon.ico?v=${FAVICON_VERSION}`,
 };
 
 interface PageMetaOptions {
@@ -35,7 +43,7 @@ export function createPageMetadata({
     description,
     keywords,
     alternates: { canonical: url },
-    manifest: "/site.webmanifest",
+    manifest: `/site.webmanifest?v=${FAVICON_VERSION}`,
     icons: SITE_ICONS,
     openGraph: {
       title,
