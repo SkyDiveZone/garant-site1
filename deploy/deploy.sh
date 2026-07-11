@@ -19,6 +19,6 @@ docker image prune -f
 
 echo "==> Health check..."
 sleep 5
-curl -fsS -o /dev/null http://127.0.0.1:3000/ && echo "OK: app responds on port 3000"
+bash deploy/verify.sh http://127.0.0.1:3000
 
 echo "Deploy complete."
