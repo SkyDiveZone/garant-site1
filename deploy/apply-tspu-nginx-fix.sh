@@ -13,15 +13,23 @@ if [[ ! -f "$CERT_DIR/fullchain.pem" ]]; then
   exit 1
 fi
 
-cp "$NGINX_SITE" "${NGINX_SITE}.bak.$(date +%Y%m%d-%H%M%S)"
+BACKUP="${NGINX_SITE}.bak.$(date +%Y%m%d-%H%M%S)"
+cp "$NGINX_SITE" "$BACKUP"
+echo "Backup: $BACKUP"
+
 cp "$APP_DIR/deploy/nginx/garant-master-https.conf" "$NGINX_SITE"
 
-nginx -t
+if ! nginx -t; then
+  echo "ERROR: nginx config invalid — restoring backup"
+  cp "$BACKUP" "$NGINX_SITE"
+  nginx -t
+  exit 1
+fi
+
 systemctl reload nginx
 
 echo ""
-echo "==> Checking HTTP/2 and TLS..."
-curl -sI --http2 -k "https://127.0.0.1/" -H "Host: garant-master-ekb.ru" | head -5 || true
+echo "==> Checking HTTP/2..."
+curl -sI --http2 -k "https://127.0.0.1/" -H "Host: garant-master-ekb.ru" | head -8 || true
 echo ""
 echo "Done. Test from phone WITHOUT VPN in incognito."
-echo "If still broken — connect Cloudflare proxy (orange cloud) in front of VPS."
