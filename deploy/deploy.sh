@@ -11,8 +11,8 @@ echo "==> Pulling latest changes..."
 git pull --ff-only origin main
 
 echo "==> Rebuilding container..."
-docker compose build --no-cache
-docker compose up -d
+docker compose build --pull=false
+docker compose up -d --force-recreate
 
 echo "==> Cleaning old images..."
 docker image prune -f
