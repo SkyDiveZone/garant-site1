@@ -1,6 +1,7 @@
 "use client";
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
+import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadForm } from "@/components/ui/LeadForm";
 import { PhoneList } from "@/components/ui/PhoneList";
 import { TelegramLink } from "@/components/ui/TelegramLink";
@@ -41,7 +42,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
           <div className="order-1">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
               <MapPin className="h-4 w-4" />
-              Екатеринбург · {SITE.hours}
+              {SITE.address} · {SITE.hours}
             </div>
 
             <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
@@ -75,6 +76,10 @@ export function ServiceHero({ service }: ServiceHeroProps) {
                 <span className="ml-2 text-sm font-semibold text-slate-900">4.9</span>
                 <span className="text-sm text-slate-500">· рейтинг клиентов</span>
               </div>
+            </div>
+
+            <div className="mt-8">
+              <HeroFormBenefits />
             </div>
 
             <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">

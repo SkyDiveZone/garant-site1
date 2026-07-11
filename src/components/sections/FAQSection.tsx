@@ -52,9 +52,9 @@ export function FAQSection() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                       >
-                        <p className="border-t border-slate-100 px-6 pb-5 pt-2 text-sm leading-relaxed text-slate-600">
+                        <div className="border-t border-slate-100 px-6 pb-5 pt-2 text-sm leading-relaxed text-slate-600 whitespace-pre-line">
                           {item.answer}
-                        </p>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>

@@ -4,6 +4,7 @@ import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
+import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { PhoneList } from "@/components/ui/PhoneList";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -75,6 +76,12 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                   4.9 рейтинг
                 </span>
+              </div>
+
+              <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
+
+              <div className="mt-8">
+                <HeroFormBenefits />
               </div>
             </div>
 
@@ -181,6 +188,9 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                 iconClassName="text-brand-600"
               />
               <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={20} />
+            </div>
+            <div className="mt-8">
+              <HeroFormBenefits />
             </div>
           </div>
           <LeadFormWithExtras

@@ -3,6 +3,7 @@ import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { COPY } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
+import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { SITE } from "@/lib/data";
@@ -64,6 +65,12 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
                   4.9 рейтинг
                 </span>
+              </div>
+
+              <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
+
+              <div className="mt-8">
+                <HeroFormBenefits />
               </div>
             </div>
 
@@ -131,6 +138,9 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
             </p>
             <div className="mt-8">
               <ConversionActions size="large" formAnchor="#lead-form-bottom" />
+            </div>
+            <div className="mt-8">
+              <HeroFormBenefits />
             </div>
           </div>
           <LeadFormWithExtras

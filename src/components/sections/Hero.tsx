@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { HERO, SITE } from "@/lib/data";
 import { motion } from "framer-motion";
@@ -70,6 +71,10 @@ export function Hero() {
                   <div className="mt-0.5 text-xs text-slate-500">{item.sub}</div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8">
+              <HeroFormBenefits />
             </div>
           </motion.div>
 

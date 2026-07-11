@@ -5,12 +5,13 @@ import type {
   ServiceReview,
 } from "./types";
 import { COPY } from "@/lib/copy";
+import { CORE_FAQ, SITE } from "@/lib/data";
 import { DEFAULT_SERVICE_STEPS } from "@/lib/how-we-work";
 
 const DEFAULT_BENEFITS: ServiceBenefit[] = [
   {
     title: "Удобное время выезда",
-    description: `${COPY.helpScheduleVisit} Работаем ежедневно с 8:00 до 21:00.`,
+    description: `${COPY.helpScheduleVisit} ${SITE.hours}.`,
     icon: "Clock",
   },
   {
@@ -60,12 +61,9 @@ const DEFAULT_FAQ: ServiceFAQ[] = [
   {
     question: "Как быстро приедет мастер?",
     answer:
-      "Согласуем удобное время приезда, часто — в тот же день. Работаем ежедневно с 8:00 до 21:00 по всему Екатеринбургу.",
+      `Согласуем удобное время приезда, часто — в тот же день. ${SITE.hours} по всему Екатеринбургу.`,
   },
-  {
-    question: "Даёте ли гарантию?",
-    answer: "Да, официальная гарантия до 12 месяцев на все виды работ.",
-  },
+  ...CORE_FAQ,
 ];
 
 function page(

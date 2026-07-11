@@ -1,6 +1,7 @@
 "use client";
 
 import { COPY } from "@/lib/copy";
+import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { PhoneList } from "@/components/ui/PhoneList";
@@ -34,6 +35,9 @@ export function MidPageCTA() {
                     className="text-sky-200 hover:text-white"
                     iconSize={20}
                   />
+                </div>
+                <div className="mt-8">
+                  <HeroFormBenefits />
                 </div>
               </div>
               <LeadFormWithExtras variant="compact" className="border-0 bg-white shadow-2xl" />

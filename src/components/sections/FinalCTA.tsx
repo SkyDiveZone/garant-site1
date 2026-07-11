@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { PhoneList } from "@/components/ui/PhoneList";
@@ -68,6 +69,12 @@ export function FinalCTA() {
                 <Clock className="h-5 w-5 text-brand-500" />
                 {SITE.hours}
               </div>
+            </div>
+
+            <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
+
+            <div className="mt-8">
+              <HeroFormBenefits />
             </div>
           </MotionItem>
 

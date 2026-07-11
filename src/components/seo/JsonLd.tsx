@@ -25,7 +25,7 @@ export function JsonLd() {
       addressRegion: "Сверdловская область",
       addressCountry: "RU",
     },
-    openingHours: "Mo-Su 08:00-21:00",
+    openingHours: "Mo-Su 08:00-00:00",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",

@@ -5,6 +5,7 @@ import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
+import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadForm } from "@/components/ui/LeadForm";
 import { PhoneList } from "@/components/ui/PhoneList";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -131,6 +132,9 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
                 iconClassName="text-brand-600"
               />
               <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={20} />
+            </div>
+            <div className="mt-8">
+              <HeroFormBenefits />
             </div>
           </div>
           <LeadForm

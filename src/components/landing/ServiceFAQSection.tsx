@@ -49,9 +49,9 @@ export function ServiceFAQSection({ faq }: ServiceFAQSectionProps) {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <p className="border-t border-slate-100 px-6 pb-5 pt-2 text-sm leading-relaxed text-slate-600">
+                    <div className="border-t border-slate-100 px-6 pb-5 pt-2 text-sm leading-relaxed text-slate-600 whitespace-pre-line">
                       {item.answer}
-                    </p>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
