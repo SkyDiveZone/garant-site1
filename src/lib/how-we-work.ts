@@ -24,7 +24,7 @@ export const HOW_WE_WORK_STEPS: HowWeWorkStep[] = [
   {
     step: "02",
     title: "Выезд",
-    description: "Приедем в согласованное время.",
+    description: "Выезд мастера — 1 000 ₽. Приедем в согласованное время.",
     icon: Car,
   },
   {

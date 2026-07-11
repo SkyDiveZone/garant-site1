@@ -28,6 +28,17 @@ export interface ServiceFAQ {
   answer: string;
 }
 
+export interface ServiceWhenNeeded {
+  title: string;
+  description: string;
+}
+
+export interface ServiceMainItem {
+  name: string;
+  description: string;
+  price: string;
+}
+
 export interface ServicePage {
   slug: string;
   h1: string;
@@ -47,4 +58,6 @@ export interface ServicePage {
   reviews: ServiceReview[];
   galleryLabel: string;
   galleryImages?: readonly { src: string; alt: string }[];
+  whenNeeded?: ServiceWhenNeeded[];
+  mainServices?: ServiceMainItem[];
 }

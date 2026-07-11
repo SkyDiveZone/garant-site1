@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { LegalConsentCheckbox } from "@/components/ui/LegalConsentCheckbox";
 import { COPY, REVIEW_SERVICE_OPTIONS } from "@/lib/copy";
 import { trackReviewSubmit } from "@/lib/yandex-metrika";
 import { EKB_DISTRICTS } from "@/lib/data";
@@ -17,20 +16,12 @@ export function ReviewForm({ className }: { className?: string }) {
   const [service, setService] = useState("");
   const [district, setDistrict] = useState("");
   const [text, setText] = useState("");
-  const [photos, setPhotos] = useState<File[]>([]);
-  const [consent, setConsent] = useState(false);
-  const [consentError, setConsentError] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!consent) {
-      setConsentError(true);
-      return;
-    }
-    setConsentError(false);
     setStatus("loading");
     setErrorMessage("");
 
@@ -42,7 +33,6 @@ export function ReviewForm({ className }: { className?: string }) {
       form.append("service", service);
       form.append("district", district);
       form.append("text", text);
-      photos.forEach((file) => form.append("photos", file));
 
       const res = await fetch("/api/reviews", { method: "POST", body: form });
       const data = (await res.json()) as { error?: string };
@@ -189,20 +179,6 @@ export function ReviewForm({ className }: { className?: string }) {
           />
         </div>
 
-        <div>
-          <label htmlFor="review-photos" className="mb-1.5 block text-sm font-medium text-slate-700">
-            Фото <span className="font-normal text-slate-400">(необязательно, до 3)</span>
-          </label>
-          <input
-            id="review-photos"
-            type="file"
-            accept="image/*"
-            multiple
-            onChange={(e) => setPhotos(Array.from(e.target.files ?? []).slice(0, 3))}
-            className="w-full text-sm text-slate-600 file:mr-3 file:rounded-lg file:border-0 file:bg-brand-50 file:px-4 file:py-2 file:text-sm file:font-medium file:text-brand-700"
-          />
-        </div>
-
         {status === "error" && errorMessage && (
           <div
             role="alert"
@@ -212,16 +188,6 @@ export function ReviewForm({ className }: { className?: string }) {
             {errorMessage}
           </div>
         )}
-
-        <LegalConsentCheckbox
-          id="review-consent"
-          checked={consent}
-          onChange={(value) => {
-            setConsent(value);
-            if (value) setConsentError(false);
-          }}
-          showError={consentError}
-        />
 
         <Button type="submit" size="lg" disabled={status === "loading" || rating === 0} className="w-full">
           {status === "loading" ? <Loader2 className="h-5 w-5 animate-spin" /> : "Отправить отзыв"}

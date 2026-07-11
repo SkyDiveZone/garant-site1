@@ -3,7 +3,6 @@ import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { COPY } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
-import { WorkGallery } from "@/components/landing/WorkGallery";
 import { PriceTable } from "@/components/pricing/PriceCards";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -74,9 +73,6 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
           </div>
         </div>
       </section>
-
-      {/* Фото ремонта */}
-      <WorkGallery label="Фото ремонта" images={service.galleryImages} />
 
       {/* Виды ремонта */}
       <Section>

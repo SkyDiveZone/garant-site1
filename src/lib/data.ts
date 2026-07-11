@@ -44,10 +44,10 @@ export const HERO = {
   primaryCta: "Позвонить",
   secondaryCta: "Оставить заявку",
   trustItems: [
-    { label: "4.9", sub: "средняя оценка" },
-    { label: "1 200+", sub: "довольных клиентов" },
+    { label: "4 000+", sub: "довольных клиентов" },
     { label: "12 лет", sub: "на рынке" },
-    { label: "18", sub: "мастеров в штате" },
+    { label: "50", sub: "мастеров в штате" },
+    { label: "400+", sub: "выполненных работ" },
   ],
 };
 
@@ -73,7 +73,7 @@ export const TRUST_REASONS = [
   {
     title: "Опытные мастера",
     description:
-      "18 специалистов в штате — только проверенные профессионалы с опытом от 5 лет.",
+      "50 специалистов в штате — только проверенные профессионалы с опытом от 5 лет.",
     icon: "Users",
   },
   {
@@ -278,10 +278,10 @@ export const TESTIMONIALS = [
 ];
 
 export const STATS = [
-  { value: 10000, suffix: "+", label: "Довольных клиентов" },
+  { value: 4000, suffix: "+", label: "Довольных клиентов" },
   { value: 12, suffix: " лет", label: "На рынке" },
-  { value: 48, suffix: "", label: "Мастеров в штате" },
-  { value: 10000, suffix: "+", label: "Выполненных работ" },
+  { value: 50, suffix: "", label: "Мастеров в штате" },
+  { value: 400, suffix: "+", label: "Выполненных работ" },
 ];
 
 export const EKB_DISTRICTS = [

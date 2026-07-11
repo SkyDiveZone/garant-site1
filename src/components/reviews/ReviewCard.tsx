@@ -1,6 +1,5 @@
 import type { Review } from "@/lib/reviews/types";
 import { Star } from "lucide-react";
-import Image from "next/image";
 
 interface ReviewCardProps {
   review: Review;
@@ -28,19 +27,6 @@ export function ReviewCard({ review, compact }: ReviewCardProps) {
       <p className={`mt-4 leading-relaxed text-slate-700 ${compact ? "text-sm" : "text-sm"}`}>
         {review.text}
       </p>
-
-      {review.photos.length > 0 && (
-        <div className="mt-4 flex flex-wrap gap-2">
-          {review.photos.map((src) => (
-            <div
-              key={src}
-              className="relative h-20 w-20 overflow-hidden rounded-lg border border-slate-200"
-            >
-              <Image src={src} alt="" fill className="object-cover" unoptimized />
-            </div>
-          ))}
-        </div>
-      )}
 
       <div className={`flex items-center gap-3 border-t border-slate-100 ${compact ? "mt-4 pt-4" : "mt-6 pt-5"}`}>
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 font-semibold text-brand-700">

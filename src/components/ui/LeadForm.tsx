@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { LegalConsentCheckbox } from "@/components/ui/LegalConsentCheckbox";
 import { COPY } from "@/lib/copy";
 import { trackFormSubmit } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
@@ -14,6 +13,7 @@ export interface LeadFormProps {
   className?: string;
   title?: string;
   subtitle?: string;
+  id?: string;
 }
 
 export function LeadForm({
@@ -21,22 +21,16 @@ export function LeadForm({
   className,
   title = "Вызвать мастера",
   subtitle = COPY.leadFormSubtitle,
+  id,
 }: LeadFormProps) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [consent, setConsent] = useState(false);
-  const [consentError, setConsentError] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    if (!consent) {
-      setConsentError(true);
-      return;
-    }
-    setConsentError(false);
     setStatus("loading");
     setErrorMessage("");
 
@@ -57,7 +51,6 @@ export function LeadForm({
       setStatus("success");
       setName("");
       setPhone("");
-      setConsent(false);
       setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
       setStatus("error");
@@ -89,6 +82,7 @@ export function LeadForm({
 
   return (
     <div
+      id={id}
       className={cn(
         "rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xl shadow-slate-200/50 sm:p-8",
         isInline && "border-0 bg-transparent p-0 shadow-none",
@@ -156,16 +150,6 @@ export function LeadForm({
             )}
           </Button>
         </div>
-
-        <LegalConsentCheckbox
-          id={`consent-${variant}`}
-          checked={consent}
-          onChange={(value) => {
-            setConsent(value);
-            if (value) setConsentError(false);
-          }}
-          showError={consentError}
-        />
 
         {status === "error" && errorMessage && (
           <div

@@ -1,7 +1,6 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
-import { WorkGallery } from "@/components/landing/WorkGallery";
 import { PriceTable } from "@/components/pricing/PriceCards";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
@@ -119,8 +118,6 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
       </Section>
 
       <HowWeWorkSection />
-
-      <WorkGallery label={service.galleryLabel} images={service.galleryImages} />
 
       <ReviewsSection
         service={reviewServiceForSlug(service.slug)}

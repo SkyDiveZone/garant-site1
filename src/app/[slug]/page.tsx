@@ -1,8 +1,10 @@
+import { ConversionServiceLanding } from "@/components/landing/ConversionServiceLanding";
 import { RemontKvartirLanding } from "@/components/landing/RemontKvartirLanding";
 import { ServiceLanding } from "@/components/landing/ServiceLanding";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
 import { createPageMetadata } from "@/lib/seo";
 import { getAllServiceSlugs, getServiceBySlug } from "@/lib/services";
+import { isConversionLandingSlug } from "@/lib/services/conversion-slugs";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -38,6 +40,8 @@ export default async function ServicePage({ params }: PageProps) {
       <ServiceJsonLd service={service} />
       {slug === "remont-kvartir" ? (
         <RemontKvartirLanding service={service} />
+      ) : isConversionLandingSlug(slug) ? (
+        <ConversionServiceLanding service={service} />
       ) : (
         <ServiceLanding service={service} />
       )}
