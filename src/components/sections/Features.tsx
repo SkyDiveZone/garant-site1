@@ -15,7 +15,7 @@ export function Features() {
           <SectionHeader
             badge="Услуги"
             title="Всё для вашего дома — в одном месте"
-            subtitle="Профессиональный ремонт и обслуживание с фиксированными ценами"
+            subtitle="Профессиональный ремонт и обслуживание с гарантией до 12 месяцев"
           />
         </MotionItem>
 
@@ -43,9 +43,9 @@ export function Features() {
                 <Button
                   variant="outline"
                   className="mt-8 w-full group-hover:bg-brand-600 group-hover:text-white group-hover:border-brand-600"
-                  href="#pricing"
+                  href={`/${service.id === "repair" ? "remont-kvartir" : service.id === "plumbing" ? "santehnik" : service.id === "electrical" ? "elektrik" : "master-na-chas"}`}
                 >
-                  Смотреть цены
+                  Подробнее об услуге
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>

@@ -26,7 +26,6 @@ export function JsonLd() {
       addressCountry: "RU",
     },
     openingHours: "Mo-Su 08:00-21:00",
-    priceRange: "₽₽",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.9",

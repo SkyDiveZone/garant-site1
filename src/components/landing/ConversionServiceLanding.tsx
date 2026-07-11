@@ -19,11 +19,12 @@ interface ConversionServiceLandingProps {
 }
 
 export function ConversionServiceLanding({ service }: ConversionServiceLandingProps) {
-  const mainServices = service.mainServices ?? service.prices.map((item) => ({
-    name: item.name,
-    description: "",
-    price: item.price,
-  }));
+  const mainServices =
+    service.mainServices ??
+    service.prices.map((item) => ({
+      name: item.name,
+      description: "",
+    }));
 
   const whenNeeded = service.whenNeeded ?? [];
 
@@ -31,12 +32,11 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
     <>
       <ServiceHero service={service} />
 
-      {/* Основные услуги */}
       <Section>
         <SectionHeader
           badge="Услуги"
           title={`Что делает ${service.categoryLabel.toLowerCase()}`}
-          subtitle={COPY.pricingSubtitle}
+          subtitle={COPY.servicesSubtitle}
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {mainServices.map((item) => (
@@ -50,16 +50,15 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
                   {item.description}
                 </p>
               )}
-              <p className="mt-4 font-display text-lg font-bold text-brand-600">{item.price}</p>
             </article>
           ))}
         </div>
+        <p className="mt-6 text-center text-sm text-slate-600">{COPY.costDependsOnScope}</p>
         <div className="mt-8 text-center">
           <ConversionActions formAnchor="#lead-form" />
         </div>
       </Section>
 
-      {/* Когда нужна помощь */}
       {whenNeeded.length > 0 && (
         <Section className="bg-slate-50/80">
           <SectionHeader
@@ -84,7 +83,6 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
         </Section>
       )}
 
-      {/* Почему выбирают нас */}
       <Section>
         <SectionHeader badge="Преимущества" title="Почему выбирают нас" />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -113,7 +111,6 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
 
       <ServiceFAQSection faq={service.faq} />
 
-      {/* Повторный CTA */}
       <Section className="relative overflow-hidden">
         <div className="gradient-mesh absolute inset-0" />
         <div className="relative grid items-start gap-10 lg:grid-cols-2">
@@ -122,7 +119,7 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
               Вызовите {service.categoryLabel.toLowerCase()} сейчас
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              {COPY.visitFee}. {COPY.callbackShort}
+              {COPY.costAfterInspection} {COPY.callbackShort}
             </p>
             <div className="mt-8">
               <ConversionActions size="large" formAnchor="#final-lead-form" />

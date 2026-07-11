@@ -48,14 +48,11 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               {service.h1}
             </h1>
 
-            <div className="mt-5 rounded-2xl border border-brand-200 bg-brand-50 px-5 py-4">
-              <p className="font-display text-2xl font-bold text-brand-700 sm:text-3xl">
-                {COPY.visitFee}
-              </p>
-              <p className="mt-1 text-sm text-slate-600">{COPY.visitFeeNote}</p>
-            </div>
-
             <p className="mt-5 text-lg leading-relaxed text-slate-600">{service.heroSubtitle}</p>
+
+            <p className="mt-4 text-base leading-relaxed text-slate-600">
+              {COPY.costAfterInspection} {COPY.costAfterInspectionLong}
+            </p>
 
             <div className="order-3 mt-8 lg:order-none">
               <ConversionActions size="large" />

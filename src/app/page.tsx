@@ -24,10 +24,6 @@ const Certificates = dynamic(
   () => import("@/components/sections/Certificates").then((m) => m.Certificates),
   { loading: () => <SectionPlaceholder /> }
 );
-const Pricing = dynamic(
-  () => import("@/components/sections/Pricing").then((m) => m.Pricing),
-  { loading: () => <SectionPlaceholder /> }
-);
 const FAQSection = dynamic(
   () => import("@/components/sections/FAQSection").then((m) => m.FAQSection),
   { loading: () => <SectionPlaceholder /> }
@@ -53,7 +49,6 @@ export default function HomePage() {
       <ReviewsSection title="Отзывы клиентов" subtitle="Реальные отзывы жителей Екатеринбурга" />
       <Stats />
       <ServiceArea />
-      <Pricing />
       <Certificates />
       <FAQSection />
       <FinalCTA />

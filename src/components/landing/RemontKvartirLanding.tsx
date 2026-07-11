@@ -3,7 +3,6 @@ import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { COPY } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
-import { PriceTable } from "@/components/pricing/PriceCards";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { SITE } from "@/lib/data";
@@ -20,7 +19,6 @@ interface RemontKvartirLandingProps {
 export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
   return (
     <>
-      {/* Первый экран */}
       <section className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-32">
         <div className="gradient-mesh absolute inset-0" />
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_65%,white_100%)]" />
@@ -45,8 +43,8 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
               <p className="mt-4 text-lg leading-relaxed text-slate-600">
                 {service.heroSubtitle}
               </p>
-              <p className="mt-3 font-display text-2xl font-bold text-brand-600">
-                {service.priceFrom}
+              <p className="mt-4 text-base leading-relaxed text-slate-600">
+                {COPY.costAfterInspection} {COPY.costAfterInspectionLong}
               </p>
 
               <div className="mt-8">
@@ -60,7 +58,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Award className="h-4 w-4 text-brand-500" />
-                  Фикс. цена
+                  Смета после осмотра
                 </span>
                 <span className="flex items-center gap-1.5">
                   <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
@@ -74,12 +72,11 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
         </div>
       </section>
 
-      {/* Виды ремонта */}
       <Section>
         <SectionHeader
           badge="Услуги"
           title="Виды ремонта квартир"
-          subtitle="Косметический, капитальный и отдельные помещения"
+          subtitle={COPY.servicesSubtitle}
         />
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {REPAIR_TYPES.map((item) => (
@@ -90,24 +87,27 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
             >
               <h3 className="font-display text-lg font-bold text-slate-900">{item.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-              <p className="mt-4 font-display text-lg font-bold text-brand-600">{item.price}</p>
             </article>
           ))}
         </div>
+        <p className="mt-6 text-center text-sm text-slate-600">{COPY.costDependsOnScope}</p>
       </Section>
 
-      {/* Цены */}
-      <Section id="pricing" className="bg-slate-50/80">
-        <SectionHeader
-          badge="Стоимость"
-          title="Цены на ремонт"
-          subtitle={COPY.pricingSubtitle}
-        />
-        <PriceTable items={service.prices} orderHref="#lead-form" />
-        <div className="mt-6 text-center">
-          <ConversionActions />
-        </div>
-      </Section>
+      {service.prices.length > 0 && (
+        <Section className="bg-slate-50/80">
+          <SectionHeader badge="Работы" title="Что делаем" subtitle={COPY.servicesSubtitle} />
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {service.prices.map((item) => (
+              <li
+                key={item.name}
+                className="rounded-2xl border border-slate-200/80 bg-white px-5 py-4 text-sm font-medium text-slate-800"
+              >
+                {item.name}
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
 
       <HowWeWorkSection />
 
@@ -117,10 +117,8 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
         showForm
       />
 
-      {/* FAQ */}
       <ServiceFAQSection faq={service.faq} />
 
-      {/* Форма заявки */}
       <Section className="relative overflow-hidden">
         <div className="gradient-mesh absolute inset-0" />
         <div className="relative grid items-start gap-10 lg:grid-cols-2">
@@ -129,7 +127,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
               Оставьте заявку на ремонт
             </h2>
             <p className="mt-4 text-lg text-slate-600">
-              {service.heroSubtitle} {COPY.callbackWithSchedule}
+              {COPY.costAfterInspection} {COPY.callbackWithSchedule}
             </p>
             <div className="mt-8">
               <ConversionActions size="large" formAnchor="#lead-form-bottom" />

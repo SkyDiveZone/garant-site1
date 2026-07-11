@@ -63,7 +63,6 @@ export function ProductDemo() {
                       </div>
                       <div>
                         <div className="font-semibold text-white">{item.label}</div>
-                        <div className="text-sm text-slate-400">от 200 ₽</div>
                       </div>
                       <CheckCircle2 className="ml-auto h-5 w-5 text-emerald-400" />
                     </motion.div>
