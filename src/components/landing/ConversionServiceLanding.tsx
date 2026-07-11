@@ -7,6 +7,7 @@ import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadForm } from "@/components/ui/LeadForm";
+import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { PhoneList } from "@/components/ui/PhoneList";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { TelegramLink } from "@/components/ui/TelegramLink";
@@ -114,36 +115,41 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
 
       <Section className="relative overflow-hidden">
         <div className="gradient-mesh absolute inset-0" />
-        <div className="relative grid items-start gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
-              Вызовите {service.categoryLabel.toLowerCase()} сейчас
-            </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              {COPY.costAfterInspection} {COPY.callbackShort}
-            </p>
-            <div className="mt-8">
-              <ConversionActions size="large" formAnchor="#final-lead-form" />
-            </div>
-            <div className="mt-6 space-y-2">
-              <PhoneList
-                variant="stack"
-                linkClassName="text-lg font-semibold text-brand-600 hover:underline"
-                iconClassName="text-brand-600"
-              />
-              <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={20} />
-            </div>
-            <div className="mt-8">
-              <HeroFormBenefits />
-            </div>
-          </div>
-          <LeadForm
-            id="final-lead-form"
-            variant="compact"
-            title="Оставить заявку"
-            subtitle={COPY.leadFormSubtitle}
-          />
-        </div>
+        <LeadFormSplitLayout
+          className="relative"
+          content={
+            <>
+              <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
+                Вызовите {service.categoryLabel.toLowerCase()} сейчас
+              </h2>
+              <p className="mt-4 text-lg text-slate-600">
+                {COPY.costAfterInspection} {COPY.callbackShort}
+              </p>
+              <div className="mt-8">
+                <ConversionActions size="large" formAnchor="#final-lead-form" />
+              </div>
+              <div className="mt-6 space-y-2">
+                <PhoneList
+                  variant="stack"
+                  linkClassName="text-lg font-semibold text-brand-600 hover:underline"
+                  iconClassName="text-brand-600"
+                />
+                <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={20} />
+              </div>
+              <div className="mt-8">
+                <HeroFormBenefits />
+              </div>
+            </>
+          }
+          form={
+            <LeadForm
+              id="final-lead-form"
+              variant="compact"
+              title="Оставить заявку"
+              subtitle={COPY.leadFormSubtitle}
+            />
+          }
+        />
       </Section>
 
       <ServiceArea />

@@ -4,6 +4,7 @@ import { COPY } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
+import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { SITE } from "@/lib/data";
@@ -32,50 +33,59 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
             <span className="text-slate-700">{service.categoryLabel}</span>
           </nav>
 
-          <div className="grid items-start gap-12 lg:grid-cols-2">
-            <div>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
-                <Clock className="h-4 w-4" />
-                Работаем ежедневно · {SITE.hours}
+          <LeadFormSplitLayout
+            content={
+              <>
+                <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
+                  <Clock className="h-4 w-4" />
+                  Работаем ежедневно · {SITE.hours}
+                </div>
+                <h1 className="font-display text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+                  {service.h1}
+                </h1>
+                <p className="mt-4 text-lg leading-relaxed text-slate-600">
+                  {service.heroSubtitle}
+                </p>
+                <p className="mt-4 text-base leading-relaxed text-slate-600">
+                  {COPY.costAfterInspection} {COPY.costAfterInspectionLong}
+                </p>
+
+                <div className="mt-8">
+                  <ConversionActions size="large" />
+                </div>
+
+                <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-600">
+                  <span className="flex items-center gap-1.5">
+                    <ShieldCheck className="h-4 w-4 text-emerald-500" />
+                    Гарантия 12 мес.
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Award className="h-4 w-4 text-brand-500" />
+                    Смета после осмотра
+                  </span>
+                  <span className="flex items-center gap-1.5">
+                    <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
+                    4.9 рейтинг
+                  </span>
+                </div>
+
+                <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
+
+                <div className="mt-8">
+                  <HeroFormBenefits />
+                </div>
+              </>
+            }
+            form={
+              <div className="md:sticky md:top-24">
+                <LeadFormWithExtras
+                  id="lead-form"
+                  title="Заявка на ремонт"
+                  subtitle={COPY.leadFormSubtitle}
+                />
               </div>
-              <h1 className="font-display text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-                {service.h1}
-              </h1>
-              <p className="mt-4 text-lg leading-relaxed text-slate-600">
-                {service.heroSubtitle}
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-slate-600">
-                {COPY.costAfterInspection} {COPY.costAfterInspectionLong}
-              </p>
-
-              <div className="mt-8">
-                <ConversionActions size="large" />
-              </div>
-
-              <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-600">
-                <span className="flex items-center gap-1.5">
-                  <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                  Гарантия 12 мес.
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Award className="h-4 w-4 text-brand-500" />
-                  Смета после осмотра
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                  4.9 рейтинг
-                </span>
-              </div>
-
-              <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
-
-              <div className="mt-8">
-                <HeroFormBenefits />
-              </div>
-            </div>
-
-            <LeadFormWithExtras id="lead-form" title="Заявка на ремонт" subtitle={COPY.leadFormSubtitle} />
-          </div>
+            }
+          />
         </div>
       </section>
 
@@ -128,28 +138,33 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
 
       <Section className="relative overflow-hidden">
         <div className="gradient-mesh absolute inset-0" />
-        <div className="relative grid items-start gap-10 lg:grid-cols-2">
-          <div>
-            <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
-              Оставьте заявку на ремонт
-            </h2>
-            <p className="mt-4 text-lg text-slate-600">
-              {COPY.costAfterInspection} {COPY.callbackWithSchedule}
-            </p>
-            <div className="mt-8">
-              <ConversionActions size="large" formAnchor="#lead-form-bottom" />
-            </div>
-            <div className="mt-8">
-              <HeroFormBenefits />
-            </div>
-          </div>
-          <LeadFormWithExtras
-            id="lead-form-bottom"
-            variant="compact"
-            title="Оставить заявку"
-            subtitle={COPY.leadFormSubtitle}
-          />
-        </div>
+        <LeadFormSplitLayout
+          className="relative"
+          content={
+            <>
+              <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
+                Оставьте заявку на ремонт
+              </h2>
+              <p className="mt-4 text-lg text-slate-600">
+                {COPY.costAfterInspection} {COPY.callbackWithSchedule}
+              </p>
+              <div className="mt-8">
+                <ConversionActions size="large" formAnchor="#lead-form-bottom" />
+              </div>
+              <div className="mt-8">
+                <HeroFormBenefits />
+              </div>
+            </>
+          }
+          form={
+            <LeadFormWithExtras
+              id="lead-form-bottom"
+              variant="compact"
+              title="Оставить заявку"
+              subtitle={COPY.leadFormSubtitle}
+            />
+          }
+        />
       </Section>
     </>
   );
