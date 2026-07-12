@@ -38,6 +38,7 @@ interface MasterSellingSectionsProps {
   formAnchor?: string;
   className?: string;
   compact?: boolean;
+  embedded?: boolean;
 }
 
 export function MasterSellingSections({
@@ -45,6 +46,7 @@ export function MasterSellingSections({
   formAnchor = "#lead-form",
   className,
   compact = false,
+  embedded = true,
 }: MasterSellingSectionsProps) {
   const pathname = usePathname();
   const resolvedSlug =
@@ -52,8 +54,13 @@ export function MasterSellingSections({
   const service = resolvedSlug ? getServiceBySlug(resolvedSlug) : undefined;
   const content = getSellingContent(resolvedSlug, service);
 
-  const sectionClass = compact ? "!py-10 sm:!py-12" : undefined;
+  const sectionClass = compact
+    ? "!py-8 sm:!py-10"
+    : embedded
+      ? "!py-10 sm:!py-12"
+      : undefined;
   const gridGap = compact ? "gap-2.5" : "gap-3";
+  const headerClass = embedded ? "mb-8 sm:mb-10 [&_h2]:text-2xl [&_h2]:sm:text-3xl" : undefined;
 
   return (
     <div className={cn("w-full", className)}>
@@ -62,6 +69,7 @@ export function MasterSellingSections({
           badge={content.badge}
           title={content.about.title}
           subtitle={content.about.subtitle}
+          className={headerClass}
         />
         <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-slate-600 sm:text-lg">
           {content.about.intro}
@@ -94,10 +102,12 @@ export function MasterSellingSections({
           badge="Услуги"
           title={content.workTypes.title}
           subtitle={content.workTypes.subtitle}
+          className={headerClass}
         />
         <div
           className={cn(
-            "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+            "grid sm:grid-cols-2",
+            !embedded && "lg:grid-cols-3 xl:grid-cols-4",
             gridGap
           )}
         >
@@ -128,8 +138,9 @@ export function MasterSellingSections({
           badge="Проблемы"
           title={content.problems.title}
           subtitle={content.problems.subtitle}
+          className={headerClass}
         />
-        <div className={cn("grid sm:grid-cols-2 lg:grid-cols-3", gridGap)}>
+        <div className={cn("grid sm:grid-cols-2", !embedded && "lg:grid-cols-3", gridGap)}>
           {content.problems.items.map((problem) => (
             <article
               key={problem}
@@ -147,8 +158,9 @@ export function MasterSellingSections({
           badge="Ситуации"
           title={content.whenToCall.title}
           subtitle={content.whenToCall.subtitle}
+          className={headerClass}
         />
-        <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-3", compact && "gap-3")}>
+        <div className={cn("grid gap-4 sm:grid-cols-2", compact && "gap-3")}>
           {content.whenToCall.items.map((item) => {
             const Icon = item.icon ? (WHEN_ICONS[item.icon] ?? CheckCircle2) : CheckCircle2;
             return (

@@ -30,14 +30,14 @@ export function LeadFormSplitLayout({
   belowFormClassName,
 }: LeadFormSplitLayoutProps) {
   return (
-    <>
-      <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
-        <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
-        <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>{form}</div>
+    <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
+      <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
+      <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>
+        {form}
+        {belowForm && (
+          <div className={cn("mt-8 md:mt-10", belowFormClassName)}>{belowForm}</div>
+        )}
       </div>
-      {belowForm && (
-        <div className={cn("mt-10 md:mt-12 lg:mt-14", belowFormClassName)}>{belowForm}</div>
-      )}
-    </>
+    </div>
   );
 }
