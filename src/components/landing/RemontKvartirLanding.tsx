@@ -86,7 +86,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
                 />
               </div>
             }
-            fullWidthBelow={
+            belowGrid={
               <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
             }
           />
@@ -168,7 +168,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
               subtitle={COPY.leadFormSubtitle}
             />
           }
-          fullWidthBelow={
+          belowGrid={
             <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form-bottom" />
           }
         />

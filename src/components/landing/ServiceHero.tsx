@@ -2,9 +2,9 @@
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
-import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
+import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { PhoneList } from "@/components/ui/PhoneList";
 import { TelegramLink } from "@/components/ui/TelegramLink";
 import { COPY } from "@/lib/copy";
@@ -109,7 +109,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               />
             </div>
           }
-          fullWidthBelow={
+          belowGrid={
             <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
           }
         />

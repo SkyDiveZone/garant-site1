@@ -89,7 +89,7 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
               subtitle={COPY.leadFormSubtitle}
             />
           }
-          fullWidthBelow={
+          belowGrid={
             <LeadFormSellingBelow slug={service.slug} formAnchor="#final-lead-form" />
           }
         />
