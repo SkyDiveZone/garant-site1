@@ -6,6 +6,7 @@ import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
+import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { PhoneList } from "@/components/ui/PhoneList";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -95,6 +96,9 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                   subtitle={COPY.leadFormSubtitle}
                 />
               </div>
+            }
+            belowForm={
+              <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
             }
           />
         </div>
@@ -209,6 +213,9 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               title="Оставить заявку"
               subtitle={COPY.leadFormSubtitle}
             />
+          }
+          belowForm={
+            <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form-bottom" />
           }
         />
       </Section>

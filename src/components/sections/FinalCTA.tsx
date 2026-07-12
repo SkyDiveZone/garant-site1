@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
+import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { PhoneList } from "@/components/ui/PhoneList";
@@ -85,6 +86,7 @@ export function FinalCTA() {
               <LeadFormWithExtras title="Оставьте заявку" subtitle={COPY.leadFormSubtitle} />
             </MotionItem>
           }
+          belowForm={<LeadFormSellingBelow formAnchor="#final-cta-form" />}
         />
       </MotionSection>
     </Section>

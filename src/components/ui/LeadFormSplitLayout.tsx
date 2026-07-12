@@ -13,22 +13,31 @@ export const LEAD_FORM_SPLIT_FORM =
 interface LeadFormSplitLayoutProps {
   content: ReactNode;
   form: ReactNode;
+  belowForm?: ReactNode;
   className?: string;
   contentClassName?: string;
   formClassName?: string;
+  belowFormClassName?: string;
 }
 
 export function LeadFormSplitLayout({
   content,
   form,
+  belowForm,
   className,
   contentClassName,
   formClassName,
+  belowFormClassName,
 }: LeadFormSplitLayoutProps) {
   return (
-    <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
-      <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
-      <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>{form}</div>
-    </div>
+    <>
+      <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
+        <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
+        <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>{form}</div>
+      </div>
+      {belowForm && (
+        <div className={cn("mt-10 md:mt-12 lg:mt-14", belowFormClassName)}>{belowForm}</div>
+      )}
+    </>
   );
 }

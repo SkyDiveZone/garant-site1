@@ -5,6 +5,7 @@ import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
+import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { SITE } from "@/lib/data";
@@ -85,6 +86,9 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
                 />
               </div>
             }
+            belowForm={
+              <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
+            }
           />
         </div>
       </section>
@@ -163,6 +167,9 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
               title="Оставить заявку"
               subtitle={COPY.leadFormSubtitle}
             />
+          }
+          belowForm={
+            <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form-bottom" />
           }
         />
       </Section>

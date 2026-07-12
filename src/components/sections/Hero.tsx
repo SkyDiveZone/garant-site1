@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
+import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { HERO, SITE } from "@/lib/data";
 import { motion } from "framer-motion";
@@ -90,6 +91,7 @@ export function Hero() {
               <LeadFormWithExtras id="lead-form" />
             </motion.div>
           }
+          belowForm={<LeadFormSellingBelow formAnchor="#lead-form" />}
         />
       </div>
     </section>
