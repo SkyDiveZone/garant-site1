@@ -8,33 +8,27 @@ const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID;
 export function Analytics() {
   return (
     <>
-      <Script id="yandex-metrika" strategy="afterInteractive">
+      {/* Yandex.Metrika counter — официальный код, init после window.load для корректного Webvisor */}
+      <Script id="yandex-metrika-counter" strategy="afterInteractive">
         {`
           (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
             m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {
-              if (document.scripts[j].src === r) {
-                return;
-              }
-            }
-            k=e.createElement(t),
-            a=e.getElementsByTagName(t)[0],
-            k.async=1,
-            k.src=r,
-            a.parentNode.insertBefore(k,a)
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
           })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=${YANDEX_METRIKA_ID}', 'ym');
 
-          ym(${YANDEX_METRIKA_ID}, 'init', {
-            ssr: true,
-            webvisor: true,
-            clickmap: true,
-            ecommerce: "dataLayer",
-            referrer: document.referrer,
-            url: location.href,
-            accurateTrackBounce: true,
-            trackLinks: true
-          });
+          function initYandexMetrika() {
+            if (window.__garantMetrikaInited) return;
+            window.__garantMetrikaInited = true;
+            ym(${YANDEX_METRIKA_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+          }
+
+          if (document.readyState === 'complete') {
+            initYandexMetrika();
+          } else {
+            window.addEventListener('load', initYandexMetrika, { once: true });
+          }
         `}
       </Script>
       <noscript>
@@ -47,6 +41,7 @@ export function Analytics() {
           />
         </div>
       </noscript>
+      {/* /Yandex.Metrika counter */}
 
       {GA_ID && (
         <>

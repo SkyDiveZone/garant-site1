@@ -49,12 +49,12 @@ export default function RootLayout({
         >
           Перейти к содержимому
         </a>
-        <Analytics />
         <JsonLd />
         <Header />
         <main id="main-content">{children}</main>
         <Footer />
         <FloatingCTA />
+        <Analytics />
       </body>
     </html>
   );
