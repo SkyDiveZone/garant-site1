@@ -91,7 +91,7 @@ export function Hero() {
               <LeadFormWithExtras id="lead-form" />
             </motion.div>
           }
-          belowForm={<LeadFormSellingBelow formAnchor="#lead-form" />}
+          fullWidthBelow={<LeadFormSellingBelow formAnchor="#lead-form" />}
         />
       </div>
     </section>

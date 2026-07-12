@@ -6,7 +6,7 @@ import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
-import { LeadForm } from "@/components/ui/LeadForm";
+import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { PhoneList } from "@/components/ui/PhoneList";
@@ -82,14 +82,14 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
             </>
           }
           form={
-            <LeadForm
+            <LeadFormWithExtras
               id="final-lead-form"
               variant="compact"
               title="Оставить заявку"
               subtitle={COPY.leadFormSubtitle}
             />
           }
-          belowForm={
+          fullWidthBelow={
             <LeadFormSellingBelow slug={service.slug} formAnchor="#final-lead-form" />
           }
         />

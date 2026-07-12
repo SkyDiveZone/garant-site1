@@ -2,7 +2,7 @@
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
-import { LeadForm } from "@/components/ui/LeadForm";
+import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { PhoneList } from "@/components/ui/PhoneList";
@@ -102,14 +102,14 @@ export function ServiceHero({ service }: ServiceHeroProps) {
           }
           form={
             <div className="md:sticky md:top-24">
-              <LeadForm
+              <LeadFormWithExtras
                 id="lead-form"
                 title={`Вызвать ${service.categoryLabel.toLowerCase()}`}
                 subtitle={COPY.leadFormSubtitle}
               />
             </div>
           }
-          belowForm={
+          fullWidthBelow={
             <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
           }
         />

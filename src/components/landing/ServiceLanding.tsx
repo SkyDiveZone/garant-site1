@@ -97,7 +97,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                 />
               </div>
             }
-            belowForm={
+            fullWidthBelow={
               <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
             }
           />
@@ -214,7 +214,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               subtitle={COPY.leadFormSubtitle}
             />
           }
-          belowForm={
+          fullWidthBelow={
             <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form-bottom" />
           }
         />

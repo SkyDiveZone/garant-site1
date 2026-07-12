@@ -12,32 +12,36 @@ export const LEAD_FORM_SPLIT_FORM =
 
 interface LeadFormSplitLayoutProps {
   content: ReactNode;
+  /** Правая колонка: форма + «Есть вопросы?» (LeadFormWithExtras). */
   form: ReactNode;
-  belowForm?: ReactNode;
+  /** Полная ширина под двумя колонками — продающие блоки и т.п. */
+  fullWidthBelow?: ReactNode;
   className?: string;
   contentClassName?: string;
   formClassName?: string;
-  belowFormClassName?: string;
+  fullWidthBelowClassName?: string;
 }
 
 export function LeadFormSplitLayout({
   content,
   form,
-  belowForm,
+  fullWidthBelow,
   className,
   contentClassName,
   formClassName,
-  belowFormClassName,
+  fullWidthBelowClassName,
 }: LeadFormSplitLayoutProps) {
   return (
-    <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
-      <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
-      <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>
-        {form}
-        {belowForm && (
-          <div className={cn("mt-8 md:mt-10", belowFormClassName)}>{belowForm}</div>
-        )}
+    <>
+      <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
+        <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
+        <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>{form}</div>
       </div>
-    </div>
+      {fullWidthBelow && (
+        <div className={cn("mt-10 md:mt-12 lg:mt-14", fullWidthBelowClassName)}>
+          {fullWidthBelow}
+        </div>
+      )}
+    </>
   );
 }

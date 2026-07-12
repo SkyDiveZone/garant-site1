@@ -45,9 +45,9 @@ export function MidPageCTA() {
                   className="border-0 bg-white shadow-2xl"
                 />
               }
-              belowForm={<LeadFormSellingBelow compact />}
             />
           </div>
+          <LeadFormSellingBelow compact className="mt-10" />
         </MotionItem>
       </MotionSection>
     </Section>

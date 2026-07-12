@@ -86,7 +86,7 @@ export function FinalCTA() {
               <LeadFormWithExtras title="Оставьте заявку" subtitle={COPY.leadFormSubtitle} />
             </MotionItem>
           }
-          belowForm={<LeadFormSellingBelow formAnchor="#final-cta-form" />}
+          fullWidthBelow={<LeadFormSellingBelow formAnchor="#final-cta-form" />}
         />
       </MotionSection>
     </Section>

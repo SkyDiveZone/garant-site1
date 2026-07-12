@@ -46,7 +46,7 @@ export function MasterSellingSections({
   formAnchor = "#lead-form",
   className,
   compact = false,
-  embedded = true,
+  embedded = false,
 }: MasterSellingSectionsProps) {
   const pathname = usePathname();
   const resolvedSlug =
@@ -106,8 +106,7 @@ export function MasterSellingSections({
         />
         <div
           className={cn(
-            "grid sm:grid-cols-2",
-            !embedded && "lg:grid-cols-3 xl:grid-cols-4",
+            "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
             gridGap
           )}
         >
@@ -140,7 +139,7 @@ export function MasterSellingSections({
           subtitle={content.problems.subtitle}
           className={headerClass}
         />
-        <div className={cn("grid sm:grid-cols-2", !embedded && "lg:grid-cols-3", gridGap)}>
+        <div className={cn("grid sm:grid-cols-2 lg:grid-cols-3", gridGap)}>
           {content.problems.items.map((problem) => (
             <article
               key={problem}
@@ -160,7 +159,7 @@ export function MasterSellingSections({
           subtitle={content.whenToCall.subtitle}
           className={headerClass}
         />
-        <div className={cn("grid gap-4 sm:grid-cols-2", compact && "gap-3")}>
+        <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-3", compact && "gap-3")}>
           {content.whenToCall.items.map((item) => {
             const Icon = item.icon ? (WHEN_ICONS[item.icon] ?? CheckCircle2) : CheckCircle2;
             return (
