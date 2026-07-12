@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Полный деплой: контейнер + static для nginx + проверка TSPU-конфига.
+# Деплой + обновление nginx (TSPU).
 # Run on VPS: bash deploy/full-deploy.sh
 set -euo pipefail
 
@@ -9,7 +9,7 @@ cd "$APP_DIR"
 bash deploy/deploy.sh
 
 if [[ -f "$APP_DIR/deploy/nginx/garant-master-https.conf" ]]; then
-  echo "==> Applying nginx config (TSPU + static CSS)..."
+  echo "==> Applying nginx config..."
   bash deploy/apply-tspu-nginx-fix.sh
 fi
 

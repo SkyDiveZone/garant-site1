@@ -1,10 +1,8 @@
 import { Analytics } from "@/components/seo/Analytics";
-import { CssLoadGuard } from "@/components/seo/CssLoadGuard";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { getCssAssetHrefs } from "@/lib/css-assets";
 import { CRITICAL_CSS } from "@/lib/critical-css";
 import { HOME_METADATA } from "@/lib/seo";
 import { Inter, Manrope } from "next/font/google";
@@ -31,18 +29,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cssHrefs = getCssAssetHrefs();
-
   return (
     <html lang="ru" className={`${inter.variable} ${manrope.variable}`}>
-      <head>
-        {cssHrefs.map((href) => (
-          <link key={href} rel="preload" href={href} as="style" />
-        ))}
-        <style id="critical-css" dangerouslySetInnerHTML={{ __html: CRITICAL_CSS }} />
-      </head>
       <body className="font-sans">
-        <CssLoadGuard />
+        <style id="critical-css" dangerouslySetInnerHTML={{ __html: CRITICAL_CSS }} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg"

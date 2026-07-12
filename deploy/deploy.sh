@@ -14,9 +14,6 @@ echo "==> Rebuilding container..."
 docker compose build --pull=false
 docker compose up -d --force-recreate
 
-echo "==> Syncing static assets for nginx..."
-bash deploy/sync-static.sh
-
 echo "==> Cleaning old images..."
 docker image prune -f
 

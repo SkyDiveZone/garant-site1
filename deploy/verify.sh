@@ -20,13 +20,6 @@ fi
 echo "CSS: $css_path"
 curl -fsS -o /dev/null -w "  HTTP %{http_code}\n" "$BASE$css_path"
 
-STATIC_ROOT="${STATIC_ROOT:-/var/www/garant-master/.nginx-static}"
-if [[ -f "$STATIC_ROOT$css_path" ]]; then
-  echo "  nginx static: OK ($STATIC_ROOT$css_path)"
-elif [[ -d "$STATIC_ROOT" ]]; then
-  echo "WARN: CSS не найден на диске для nginx — запустите: bash deploy/sync-static.sh"
-fi
-
 if [[ -n "$js_path" ]]; then
   echo "JS:  $js_path"
   curl -fsS -o /dev/null -w "  HTTP %{http_code}\n" "$BASE$js_path"
