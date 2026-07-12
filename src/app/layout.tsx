@@ -3,7 +3,6 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { CRITICAL_CSS } from "@/lib/critical-css";
 import { HOME_METADATA } from "@/lib/seo";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
@@ -32,7 +31,6 @@ export default function RootLayout({
   return (
     <html lang="ru" className={`${inter.variable} ${manrope.variable}`}>
       <body className="font-sans">
-        <style id="critical-css" dangerouslySetInnerHTML={{ __html: CRITICAL_CSS }} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg"
