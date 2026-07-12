@@ -17,6 +17,7 @@
 
 # production
 /build
+/.nginx-static
 
 # misc
 .DS_Store
