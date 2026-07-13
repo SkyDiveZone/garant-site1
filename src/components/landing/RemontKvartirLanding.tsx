@@ -117,24 +117,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
             </article>
           ))}
         </div>
-        <p className="mt-6 text-center text-sm text-slate-600">{COPY.costDependsOnScope}</p>
       </Section>
-
-      {service.prices.length > 0 && (
-        <Section className="bg-slate-50/80">
-          <SectionHeader badge="Работы" title="Что делаем" subtitle={COPY.servicesSubtitle} />
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {service.prices.map((item) => (
-              <li
-                key={item.name}
-                className="rounded-2xl border border-slate-200/80 bg-white px-5 py-4 text-sm font-medium text-slate-800"
-              >
-                {item.name}
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
 
       <HowWeWorkSection />
 

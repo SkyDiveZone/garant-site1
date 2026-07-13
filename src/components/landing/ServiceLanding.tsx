@@ -105,33 +105,11 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               <LeadFormSellingBelow
                 slug={service.slug}
                 formAnchor="#lead-form"
-                hideWorkTypes={service.prices.length > 0 && service.slug !== "santehnik"}
               />
             }
           />
         </div>
       </section>
-
-      {service.prices.length > 0 && service.slug !== "santehnik" && (
-        <Section>
-          <SectionHeader
-            badge="Услуги"
-            title="Основные работы"
-            subtitle={COPY.servicesSubtitle}
-          />
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {service.prices.map((item) => (
-              <li
-                key={item.name}
-                className="rounded-2xl border border-slate-200/80 bg-white px-5 py-4 text-sm font-medium text-slate-800"
-              >
-                {item.name}
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-center text-sm text-slate-600">{COPY.costDependsOnScope}</p>
-        </Section>
-      )}
 
       <Section>
         <SectionHeader badge="Преимущества" title="Почему выбирают нас" />

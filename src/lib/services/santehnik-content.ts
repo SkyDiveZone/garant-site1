@@ -17,7 +17,7 @@ export const SANTEHNIK_ABOUT = {
     },
     {
       title: "Смета после осмотра",
-      description: "Стоимость работ определяется после осмотра на объекте.",
+      description: "Условия работ согласуются после осмотра на объекте.",
       icon: "ShieldCheck",
     },
     {

@@ -30,7 +30,7 @@ export const HOW_WE_WORK_STEPS: HowWeWorkStep[] = [
   {
     step: "03",
     title: "Осмотр",
-    description: "Мастер оценит объём работ и согласует стоимость после осмотра.",
+    description: "Мастер оценит объём работ и согласует условия после осмотра.",
     icon: ClipboardCheck,
   },
   {

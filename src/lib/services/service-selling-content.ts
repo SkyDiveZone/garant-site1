@@ -90,7 +90,7 @@ const HOME_SELLING: ServiceSellingContent = {
       },
       {
         title: "Смета после осмотра",
-        description: "Стоимость работ определяется после осмотра мастера.",
+        description: "Условия работ согласуются после осмотра мастера.",
         icon: "ShieldCheck",
       },
       {

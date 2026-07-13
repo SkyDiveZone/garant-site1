@@ -72,7 +72,8 @@ export function createPageMetadata({
 }
 
 export const HOME_METADATA = createPageMetadata({
-  title: `${SITE.name} — ${SITE.tagline}`,
+  title:
+    "Гарант Мастер — сантехник, электрик, мастер на час и ремонт квартир в Екатеринбурге",
   description: SITE.description,
   keywords: [
     "ремонт квартир екатеринбург",
