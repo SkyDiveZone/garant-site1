@@ -483,7 +483,3 @@ export function getServiceBySlug(slug: string): ServicePage | undefined {
 export function getAllServiceSlugs(): string[] {
   return SERVICE_PAGES.map((p) => p.slug);
 }
-
-export const POPULAR_SERVICES = SERVICE_PAGES.filter((p) =>
-  ["santehnik", "elektrik", "remont-kvartir", "master-na-chas", "ustranenie-zasora", "zamena-smesitelya"].includes(p.slug)
-);
