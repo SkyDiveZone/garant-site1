@@ -1,6 +1,7 @@
 "use client";
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
+import { HomePopularProblems } from "@/components/sections/HomePopularProblems";
 import { WorkTypesConsultationCTA } from "@/components/sections/WorkTypesConsultationCTA";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -126,24 +127,28 @@ export function MasterSellingSections({
         )}
       </Section>
 
-      <Section className={cn("bg-slate-50/80", sectionClass, "!px-0")}>
-        <SectionHeader
-          badge="Проблемы"
-          title={content.problems.title}
-          subtitle={content.problems.subtitle}
-        />
-        <div className={cn("grid sm:grid-cols-2 lg:grid-cols-3", gridGap)}>
-          {content.problems.items.map((problem) => (
-            <article
-              key={problem}
-              className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3.5 shadow-sm"
-            >
-              <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden="true" />
-              <p className="text-sm font-medium text-slate-800">{problem}</p>
-            </article>
-          ))}
-        </div>
-      </Section>
+      {isHomepage ? (
+        <HomePopularProblems formAnchor={formAnchor} sectionClass={sectionClass} />
+      ) : (
+        <Section className={cn("bg-slate-50/80", sectionClass, "!px-0")}>
+          <SectionHeader
+            badge="Проблемы"
+            title={content.problems.title}
+            subtitle={content.problems.subtitle}
+          />
+          <div className={cn("grid sm:grid-cols-2 lg:grid-cols-3", gridGap)}>
+            {content.problems.items.map((problem) => (
+              <article
+                key={problem}
+                className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3.5 shadow-sm"
+              >
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden="true" />
+                <p className="text-sm font-medium text-slate-800">{problem}</p>
+              </article>
+            ))}
+          </div>
+        </Section>
+      )}
 
       <Section className={cn(sectionClass, "!px-0")}>
         <SectionHeader
