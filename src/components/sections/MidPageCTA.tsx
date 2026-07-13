@@ -3,7 +3,6 @@
 import { COPY } from "@/lib/copy";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
-import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { PhoneList } from "@/components/ui/PhoneList";
@@ -47,7 +46,6 @@ export function MidPageCTA() {
               }
             />
           </div>
-          <LeadFormSellingBelow compact className="mt-10" />
         </MotionItem>
       </MotionSection>
     </Section>

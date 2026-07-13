@@ -4,6 +4,7 @@ import { COPY } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
+import { ServiceContactBlock } from "@/components/ui/ServiceContactBlock";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
@@ -54,6 +55,8 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
                 <div className="mt-8">
                   <ConversionActions size="large" />
                 </div>
+
+                <ServiceContactBlock />
 
                 <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-600">
                   <span className="flex items-center gap-1.5">

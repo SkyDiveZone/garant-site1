@@ -15,11 +15,6 @@ const ProductDemo = dynamic(
   () => import("@/components/sections/ProductDemo").then((m) => m.ProductDemo),
   { loading: () => <SectionPlaceholder /> }
 );
-const Cases = dynamic(
-  () => import("@/components/sections/Cases").then((m) => m.Cases),
-  { loading: () => <SectionPlaceholder /> }
-);
-import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 const Certificates = dynamic(
   () => import("@/components/sections/Certificates").then((m) => m.Certificates),
   { loading: () => <SectionPlaceholder /> }
@@ -44,9 +39,7 @@ export default function HomePage() {
       <ProductDemo />
       <HowItWorks />
       <Features />
-      <Cases />
       <MidPageCTA />
-      <ReviewsSection title="Отзывы клиентов" subtitle="Реальные отзывы жителей Екатеринбурга" />
       <Stats />
       <ServiceArea />
       <Certificates />
