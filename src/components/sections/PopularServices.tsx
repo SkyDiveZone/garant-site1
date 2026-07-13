@@ -9,7 +9,7 @@ import { ArrowRight } from "lucide-react";
 
 export function PopularServices() {
   return (
-    <Section className="!pt-0">
+    <Section id="services" className="!pt-0">
       <MotionSection>
         <MotionItem>
           <SectionHeader
