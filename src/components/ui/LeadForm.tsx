@@ -7,6 +7,7 @@ import {
   LEAD_SCHEDULE_OPTIONS,
   type LeadScheduleValue,
 } from "@/lib/lead-form";
+import { getLeadFormLabelsFromPath } from "@/lib/lead-form-labels";
 import { trackFormSubmit } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -19,6 +20,7 @@ export interface LeadFormProps {
   className?: string;
   title?: string;
   subtitle?: string;
+  submitLabel?: string;
   id?: string;
 }
 
@@ -48,9 +50,12 @@ export function LeadForm({
   className,
   title = "Вызвать мастера",
   subtitle = COPY.leadFormSubtitle,
+  submitLabel,
   id,
 }: LeadFormProps) {
   const pathname = usePathname();
+  const resolvedSubmitLabel =
+    submitLabel ?? getLeadFormLabelsFromPath(pathname).submitLabel;
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -261,7 +266,7 @@ export function LeadForm({
           ) : (
             <>
               <Phone className="h-4 w-4" />
-              Вызвать мастера
+              {resolvedSubmitLabel}
             </>
           )}
         </Button>

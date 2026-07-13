@@ -5,6 +5,7 @@ import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
+import { ServiceContactBlock } from "@/components/ui/ServiceContactBlock";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
@@ -13,6 +14,7 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { TelegramLink } from "@/components/ui/TelegramLink";
 import { COPY } from "@/lib/copy";
 import { SITE } from "@/lib/data";
+import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import type { ServicePage } from "@/lib/services";
 import { reviewServiceForSlug } from "@/lib/reviews/utils";
 import { Award, CheckCircle2, Clock, ShieldCheck, Star } from "lucide-react";
@@ -23,6 +25,8 @@ interface ServiceLandingProps {
 }
 
 export function ServiceLanding({ service }: ServiceLandingProps) {
+  const formLabels = getLeadFormLabels(service.slug, service.categoryLabel);
+
   return (
     <>
       <section className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-32">
@@ -66,6 +70,8 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                   <ConversionActions size="large" />
                 </div>
 
+                {service.slug === "santehnik" && <ServiceContactBlock />}
+
                 <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-600">
                   <span className="flex items-center gap-1.5">
                     <ShieldCheck className="h-4 w-4 text-emerald-500" />
@@ -92,7 +98,8 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               <div className="md:sticky md:top-24">
                 <LeadFormWithExtras
                   id="lead-form"
-                  title="Вызвать мастера"
+                  title={formLabels.title}
+                  submitLabel={formLabels.submitLabel}
                   subtitle={COPY.leadFormSubtitle}
                 />
               </div>
@@ -211,6 +218,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               id="lead-form-bottom"
               variant="compact"
               title="Оставить заявку"
+              submitLabel={formLabels.submitLabel}
               subtitle={COPY.leadFormSubtitle}
             />
           }

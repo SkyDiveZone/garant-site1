@@ -5,10 +5,10 @@ import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
-import { PhoneList } from "@/components/ui/PhoneList";
-import { TelegramLink } from "@/components/ui/TelegramLink";
+import { ServiceContactBlock } from "@/components/ui/ServiceContactBlock";
 import { COPY } from "@/lib/copy";
 import { HERO, SITE } from "@/lib/data";
+import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import type { ServicePage } from "@/lib/services";
 import { MapPin, Star } from "lucide-react";
 import Link from "next/link";
@@ -18,6 +18,8 @@ interface ServiceHeroProps {
 }
 
 export function ServiceHero({ service }: ServiceHeroProps) {
+  const formLabels = getLeadFormLabels(service.slug, service.categoryLabel);
+
   return (
     <section className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-32">
       <div className="gradient-mesh absolute inset-0" />
@@ -62,14 +64,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
                 <ConversionActions size="large" />
               </div>
 
-              <div className="mt-6 space-y-2">
-                <PhoneList
-                  variant="stack"
-                  linkClassName="text-base font-semibold text-brand-600 hover:underline sm:text-lg"
-                  iconClassName="text-brand-600"
-                />
-                <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={18} />
-              </div>
+              <ServiceContactBlock />
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-1">
@@ -104,7 +99,8 @@ export function ServiceHero({ service }: ServiceHeroProps) {
             <div className="md:sticky md:top-24">
               <LeadFormWithExtras
                 id="lead-form"
-                title={`Вызвать ${service.categoryLabel.toLowerCase()}`}
+                title={formLabels.title}
+                submitLabel={formLabels.submitLabel}
                 subtitle={COPY.leadFormSubtitle}
               />
             </div>
