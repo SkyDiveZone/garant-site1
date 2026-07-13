@@ -4,12 +4,14 @@ import { ConversionActions } from "@/components/landing/ConversionActions";
 import { HomePopularProblems } from "@/components/sections/HomePopularProblems";
 import { HomeWhenToCall } from "@/components/sections/HomeWhenToCall";
 import { ServicePopularProblems } from "@/components/sections/ServicePopularProblems";
+import { ServiceWhenToCall } from "@/components/sections/ServiceWhenToCall";
 import { WorkTypesConsultationCTA } from "@/components/sections/WorkTypesConsultationCTA";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { getServiceBySlug } from "@/lib/services";
 import { getSellingContent } from "@/lib/services/service-selling-content";
 import { getServicePopularProblemsConfig } from "@/lib/services/service-popular-problems-registry";
+import { getServiceWhenToCallConfig } from "@/lib/services/service-when-to-call-registry";
 import { cn } from "@/lib/utils";
 import {
   AlertCircle,
@@ -61,6 +63,7 @@ export function MasterSellingSections({
   const content = getSellingContent(resolvedSlug, service);
   const isHomepage = !resolvedSlug;
   const popularProblemsConfig = getServicePopularProblemsConfig(resolvedSlug);
+  const whenToCallConfig = getServiceWhenToCallConfig(resolvedSlug);
 
   const sectionClass = compact ? "!py-10 sm:!py-12" : undefined;
   const gridGap = compact ? "gap-2.5" : "gap-3";
@@ -108,7 +111,7 @@ export function MasterSellingSections({
           />
           <div
             className={cn(
-              "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+              "grid auto-rows-fr sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
               gridGap
             )}
           >
@@ -117,7 +120,7 @@ export function MasterSellingSections({
               return (
                 <article
                   key={name}
-                  className="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 transition-colors hover:border-brand-200 hover:bg-brand-50/30"
+                  className="flex h-full items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 transition-colors hover:border-brand-200 hover:bg-brand-50/30"
                 >
                   <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
                     <Icon className="h-4 w-4" aria-hidden="true" />
@@ -167,6 +170,12 @@ export function MasterSellingSections({
 
       {isHomepage ? (
         <HomeWhenToCall formAnchor={formAnchor} sectionClass={sectionClass} />
+      ) : whenToCallConfig ? (
+        <ServiceWhenToCall
+          config={whenToCallConfig}
+          formAnchor={formAnchor}
+          sectionClass={sectionClass}
+        />
       ) : (
         <Section className={cn(sectionClass, "!px-0")}>
           <SectionHeader

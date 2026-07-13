@@ -7,9 +7,41 @@ import {
   ELEKTRIK_WORK_TYPES,
 } from "@/lib/services/elektrik-content";
 import { MASTER_NA_CHAS_SELLING } from "@/lib/services/master-na-chas-content";
+import {
+  SANTEHNIK_ABOUT,
+  SANTEHNIK_WORK_TYPES,
+} from "@/lib/services/santehnik-content";
+import { SANTEHNIK_POPULAR_PROBLEMS } from "@/lib/services/santehnik-popular-problems";
 import { REPAIR_TYPES } from "@/lib/services/remont-data";
 import type { ServiceSellingContent } from "@/lib/services/service-selling-types";
 import type { ServiceCategory, ServicePage } from "@/lib/services/types";
+
+const SANTEHNIK_SELLING: ServiceSellingContent = {
+  badge: "Сантехник",
+  about: {
+    title: SANTEHNIK_ABOUT.title,
+    subtitle: SANTEHNIK_ABOUT.subtitle,
+    intro: SANTEHNIK_ABOUT.intro,
+    highlights: SANTEHNIK_ABOUT.highlights,
+  },
+  workTypes: {
+    title: "Виды сантехнических работ",
+    subtitle:
+      "Выполняем работы любой сложности — от замены смесителя до полной разводки труб",
+    items: SANTEHNIK_WORK_TYPES,
+  },
+  problems: {
+    title: SANTEHNIK_POPULAR_PROBLEMS.title,
+    subtitle: SANTEHNIK_POPULAR_PROBLEMS.subtitle,
+    items: SANTEHNIK_POPULAR_PROBLEMS.problems.map((item) => item.title),
+  },
+  whenToCall: {
+    title: "Когда стоит вызвать сантехника",
+    subtitle:
+      "Не откладывайте решение проблемы — даже небольшая неисправность может привести к дорогостоящему ремонту.",
+    items: [],
+  },
+};
 
 const ELEKTRIK_SELLING: ServiceSellingContent = {
   badge: "Электрик",
@@ -301,6 +333,7 @@ export function getSellingContent(
   service?: ServicePage
 ): ServiceSellingContent {
   if (slug === "elektrik") return ELEKTRIK_SELLING;
+  if (slug === "santehnik") return SANTEHNIK_SELLING;
   if (slug === "master-na-chas") return MASTER_NA_CHAS_SELLING;
   if (slug === "remont-kvartir") return buildRemontContent(service!);
   if (service) return buildFromService(service);

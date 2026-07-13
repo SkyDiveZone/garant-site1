@@ -105,14 +105,14 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               <LeadFormSellingBelow
                 slug={service.slug}
                 formAnchor="#lead-form"
-                hideWorkTypes={service.prices.length > 0}
+                hideWorkTypes={service.prices.length > 0 && service.slug !== "santehnik"}
               />
             }
           />
         </div>
       </section>
 
-      {service.prices.length > 0 && (
+      {service.prices.length > 0 && service.slug !== "santehnik" && (
         <Section>
           <SectionHeader
             badge="Услуги"
