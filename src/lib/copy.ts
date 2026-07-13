@@ -11,15 +11,4 @@ export const COPY = {
   callbackWithSchedule: "Перезвоним и согласуем удобное время приезда мастера.",
   contactSoon: "Свяжемся с вами в ближайшее время.",
   helpScheduleVisit: "Поможем подобрать удобное время для выезда мастера.",
-  reviewSuccessTitle: "Спасибо!",
-  reviewSuccessMessage: "Ваш отзыв успешно отправлен.",
 } as const;
-
-export const REVIEW_SERVICE_OPTIONS = [
-  "Сантехник",
-  "Электрик",
-  "Ремонт квартир",
-  "Мастер на час",
-  "Устранение засора",
-  "Другое",
-] as const;

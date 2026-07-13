@@ -359,7 +359,6 @@ export const NAV_LINKS = [
   { href: "/remont-kvartir", label: "Ремонт квартир" },
   { href: "/master-na-chas", label: "Мастер на час" },
   { href: "/#services", label: "Услуги" },
-  { href: "/#reviews", label: "Отзывы" },
   { href: "/#contacts", label: "Контакты" },
 ];
 
@@ -373,7 +372,6 @@ export const FOOTER_SERVICES = [
 export const FOOTER_INFO = [
   { href: "/", label: "Главная" },
   { href: "/#services", label: "Услуги" },
-  { href: "/#reviews", label: "Отзывы" },
   { href: "/#contacts", label: "Контакты" },
   { href: "/privacy-policy", label: "Политика конфиденциальности" },
   { href: "/user-agreement", label: "Пользовательское соглашение" },

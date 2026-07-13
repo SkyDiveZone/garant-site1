@@ -1,14 +1,12 @@
 import { ServiceHero } from "@/components/landing/ServiceHero";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
-import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { COPY } from "@/lib/copy";
 import type { ServicePage } from "@/lib/services";
-import { reviewServiceForSlug } from "@/lib/reviews/utils";
 
 interface ConversionServiceLandingProps {
   service: ServicePage;
@@ -38,12 +36,6 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
       </Section>
 
       <HowWeWorkSection />
-
-      <ReviewsSection
-        service={reviewServiceForSlug(service.slug)}
-        title="Что говорят клиенты"
-        showForm
-      />
 
       <ServiceFAQSection faq={service.faq} />
 

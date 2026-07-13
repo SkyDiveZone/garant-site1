@@ -2,7 +2,6 @@ import type {
   ServiceBenefit,
   ServiceFAQ,
   ServicePage,
-  ServiceReview,
 } from "./types";
 import { COPY } from "@/lib/copy";
 import { CORE_FAQ, SITE } from "@/lib/data";
@@ -31,27 +30,6 @@ const DEFAULT_BENEFITS: ServiceBenefit[] = [
   },
 ];
 
-const DEFAULT_REVIEWS: ServiceReview[] = [
-  {
-    name: "Дмитрий Волков",
-    text: "Приехали в тот же день, работают профессионально, цены честные. Всем советую.",
-    date: "12 декабря 2024",
-    rating: 5,
-  },
-  {
-    name: "Марина Кузнецова",
-    text: "Мастер аккуратный, всё сделал быстро и чисто. Даже пыль за собой убрал.",
-    date: "28 января 2025",
-    rating: 5,
-  },
-  {
-    name: "Алексей Морозов",
-    text: "Приехал быстро, работу сделал качественно. Условия адекватные, без накруток.",
-    date: "15 марта 2025",
-    rating: 5,
-  },
-];
-
 const DEFAULT_FAQ: ServiceFAQ[] = [
   {
     question: "Как формируется стоимость?",
@@ -67,13 +45,12 @@ const DEFAULT_FAQ: ServiceFAQ[] = [
 ];
 
 function page(
-  data: Omit<ServicePage, "benefits" | "steps" | "reviews" | "faq" | "galleryLabel"> &
-    Partial<Pick<ServicePage, "benefits" | "steps" | "reviews" | "faq" | "galleryLabel">>
+  data: Omit<ServicePage, "benefits" | "steps" | "faq" | "galleryLabel"> &
+    Partial<Pick<ServicePage, "benefits" | "steps" | "faq" | "galleryLabel">>
 ): ServicePage {
   return {
     benefits: DEFAULT_BENEFITS,
     steps: DEFAULT_SERVICE_STEPS,
-    reviews: DEFAULT_REVIEWS,
     faq: DEFAULT_FAQ,
     galleryLabel: `Примеры работ: ${data.h1.toLowerCase()}`,
     ...data,

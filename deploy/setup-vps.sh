@@ -33,7 +33,7 @@ if [ ! -f .env ]; then
   cp .env.example .env
   echo
   echo "!!! Fill in .env before starting: nano $APP_DIR/.env"
-  echo "Required: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, ADMIN_PASSWORD"
+  echo "Required: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID"
   echo
 fi
 

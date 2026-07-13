@@ -21,7 +21,7 @@ mkdir -p "$RUN_DIR"
 cp -r .next/standalone/* "$RUN_DIR/"
 cp -r .next/static "$RUN_DIR/.next/static"
 cp -r public "$RUN_DIR/public"
-mkdir -p "$APP_DIR/data/review-photos"
+mkdir -p "$APP_DIR/data"
 ln -sfn "$APP_DIR/data" "$RUN_DIR/data"
 if [ -f "$APP_DIR/.env" ]; then
   ln -sfn "$APP_DIR/.env" "$RUN_DIR/.env"

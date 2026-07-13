@@ -26,11 +26,6 @@ export function JsonLd() {
       addressCountry: "RU",
     },
     openingHours: "Mo-Su 08:00-00:00",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.9",
-      reviewCount: "1200",
-    },
     areaServed: {
       "@type": "City",
       name: "Екатеринбург",

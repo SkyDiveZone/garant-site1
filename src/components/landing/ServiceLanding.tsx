@@ -1,6 +1,5 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
-import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
@@ -15,7 +14,6 @@ import { COPY } from "@/lib/copy";
 import { SITE } from "@/lib/data";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import type { ServicePage } from "@/lib/services";
-import { reviewServiceForSlug } from "@/lib/reviews/utils";
 import { Award, CheckCircle2, Clock, ShieldCheck, Star } from "lucide-react";
 import Link from "next/link";
 
@@ -154,12 +152,6 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
       </Section>
 
       <HowWeWorkSection />
-
-      <ReviewsSection
-        service={reviewServiceForSlug(service.slug)}
-        title="Что говорят клиенты"
-        showForm
-      />
 
       <Section className="bg-slate-50/80">
         <div className="mx-auto max-w-3xl">

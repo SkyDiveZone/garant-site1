@@ -3,8 +3,7 @@ export const YANDEX_METRIKA_ID = 110512304;
 export type YandexMetrikaGoal =
   | "form_submit"
   | "phone_click"
-  | "telegram_click"
-  | "review_submit";
+  | "telegram_click";
 
 declare global {
   interface Window {
@@ -30,10 +29,6 @@ export function trackTelegramClick() {
 
 export function trackFormSubmit() {
   trackYandexGoal("form_submit");
-}
-
-export function trackReviewSubmit() {
-  trackYandexGoal("review_submit");
 }
 
 export function trackContactHref(href?: string) {

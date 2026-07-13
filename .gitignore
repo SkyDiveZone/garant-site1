@@ -22,8 +22,7 @@
 # misc
 .DS_Store
 *.pem
-/data/reviews-db.json
-/data/review-photos/*
+/data/*
 !/data/.gitkeep
 
 # debug

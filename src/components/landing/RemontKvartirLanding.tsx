@@ -1,6 +1,5 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
-import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { COPY } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
@@ -13,7 +12,6 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { SITE } from "@/lib/data";
 import type { ServicePage } from "@/lib/services";
 import { REPAIR_TYPES } from "@/lib/services/remont-data";
-import { reviewServiceForSlug } from "@/lib/reviews/utils";
 import { Award, Clock, ShieldCheck, Star } from "lucide-react";
 import Link from "next/link";
 
@@ -139,12 +137,6 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
       )}
 
       <HowWeWorkSection />
-
-      <ReviewsSection
-        service={reviewServiceForSlug(service.slug)}
-        title="Отзывы клиентов"
-        showForm
-      />
 
       <ServiceFAQSection faq={service.faq} />
 
