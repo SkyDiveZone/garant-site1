@@ -7,6 +7,7 @@ interface LeadFormSellingBelowProps {
   formAnchor?: string;
   compact?: boolean;
   className?: string;
+  hideWorkTypes?: boolean;
 }
 
 export function LeadFormSellingBelow({
@@ -14,6 +15,7 @@ export function LeadFormSellingBelow({
   formAnchor,
   compact,
   className,
+  hideWorkTypes,
 }: LeadFormSellingBelowProps) {
   return (
     <MasterSellingSections
@@ -21,6 +23,7 @@ export function LeadFormSellingBelow({
       formAnchor={formAnchor}
       compact={compact}
       className={className}
+      hideWorkTypes={hideWorkTypes}
     />
   );
 }

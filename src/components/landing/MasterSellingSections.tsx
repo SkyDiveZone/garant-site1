@@ -41,6 +41,8 @@ interface MasterSellingSectionsProps {
   formAnchor?: string;
   className?: string;
   compact?: boolean;
+  /** Скрыть «Виды работ», если на странице уже есть отдельный блок с услугами */
+  hideWorkTypes?: boolean;
 }
 
 export function MasterSellingSections({
@@ -48,6 +50,7 @@ export function MasterSellingSections({
   formAnchor = "#lead-form",
   className,
   compact = false,
+  hideWorkTypes = false,
 }: MasterSellingSectionsProps) {
   const pathname = usePathname();
   const resolvedSlug =
@@ -93,40 +96,42 @@ export function MasterSellingSections({
         )}
       </Section>
 
-      <Section className={cn(sectionClass, "!px-0")}>
-        <SectionHeader
-          badge="Услуги"
-          title={content.workTypes.title}
-          subtitle={content.workTypes.subtitle}
-        />
-        <div
-          className={cn(
-            "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
-            gridGap
-          )}
-        >
-          {content.workTypes.items.map((name, index) => {
-            const Icon = WORK_ICONS[index % WORK_ICONS.length];
-            return (
-              <article
-                key={name}
-                className="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 transition-colors hover:border-brand-200 hover:bg-brand-50/30"
-              >
-                <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </span>
-                <h3 className="text-sm font-semibold leading-snug text-slate-800">{name}</h3>
-              </article>
-            );
-          })}
-        </div>
-        {isHomepage && <WorkTypesConsultationCTA formAnchor={formAnchor} />}
-        {!compact && !isHomepage && (
-          <div className="mt-8 text-center">
-            <ConversionActions formAnchor={formAnchor} />
+      {!hideWorkTypes && (
+        <Section className={cn(sectionClass, "!px-0")}>
+          <SectionHeader
+            badge="Услуги"
+            title={content.workTypes.title}
+            subtitle={content.workTypes.subtitle}
+          />
+          <div
+            className={cn(
+              "grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+              gridGap
+            )}
+          >
+            {content.workTypes.items.map((name, index) => {
+              const Icon = WORK_ICONS[index % WORK_ICONS.length];
+              return (
+                <article
+                  key={name}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-200/80 bg-white p-4 transition-colors hover:border-brand-200 hover:bg-brand-50/30"
+                >
+                  <span className="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-50 text-brand-600">
+                    <Icon className="h-4 w-4" aria-hidden="true" />
+                  </span>
+                  <h3 className="text-sm font-semibold leading-snug text-slate-800">{name}</h3>
+                </article>
+              );
+            })}
           </div>
-        )}
-      </Section>
+          {isHomepage && <WorkTypesConsultationCTA formAnchor={formAnchor} />}
+          {!compact && !isHomepage && (
+            <div className="mt-8 text-center">
+              <ConversionActions formAnchor={formAnchor} />
+            </div>
+          )}
+        </Section>
+      )}
 
       {isHomepage ? (
         <HomePopularProblems formAnchor={formAnchor} sectionClass={sectionClass} />

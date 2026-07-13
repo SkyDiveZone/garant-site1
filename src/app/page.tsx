@@ -19,10 +19,6 @@ const Certificates = dynamic(
   () => import("@/components/sections/Certificates").then((m) => m.Certificates),
   { loading: () => <SectionPlaceholder /> }
 );
-const FAQSection = dynamic(
-  () => import("@/components/sections/FAQSection").then((m) => m.FAQSection),
-  { loading: () => <SectionPlaceholder /> }
-);
 
 function SectionPlaceholder() {
   return <div className="section-padding animate-pulse bg-slate-50/50" aria-hidden="true" />;
@@ -43,7 +39,6 @@ export default function HomePage() {
       <Stats />
       <ServiceArea />
       <Certificates />
-      <FAQSection />
       <FinalCTA />
     </>
   );

@@ -1,6 +1,5 @@
 "use client";
 
-import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { SERVICES_PAGE } from "@/lib/services-page-content";
@@ -8,6 +7,7 @@ import { ArrowRight, Check, ChevronDown, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/Button";
 
 export function Features() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -46,39 +46,6 @@ export function Features() {
                   Подробнее
                   <ArrowRight className="h-4 w-4" />
                 </Link>
-              </article>
-            ))}
-          </div>
-        </MotionItem>
-
-        <MotionItem>
-          <SectionHeader badge="Преимущества" title="Почему выбирают нас" align="left" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES_PAGE.whyUs.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-2xl border border-slate-200/80 bg-white p-5"
-              >
-                <h3 className="font-display font-bold text-slate-900">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-              </article>
-            ))}
-          </div>
-        </MotionItem>
-
-        <MotionItem>
-          <SectionHeader badge="Этапы" title="Как мы работаем" align="left" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICES_PAGE.steps.map((step, index) => (
-              <article
-                key={step.title}
-                className="rounded-2xl border border-slate-200/80 bg-white p-5"
-              >
-                <span className="font-display text-2xl font-bold text-brand-200">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="mt-2 font-display font-bold text-slate-900">{step.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.description}</p>
               </article>
             ))}
           </div>
@@ -140,12 +107,14 @@ export function Features() {
         </MotionItem>
 
         <MotionItem>
-          <div className="mx-auto max-w-xl">
+          <div className="text-center">
             <SectionHeader
-              title="Оставьте заявку"
-              subtitle="Перезвоним за 5 минут и согласуем выезд мастера"
+              title="Готовы вызвать мастера?"
+              subtitle="Перезвоним за 5 минут и согласуем выезд"
             />
-            <LeadFormWithExtras id="services-lead-form" />
+            <Button size="lg" href="#lead-form">
+              Оставить заявку
+            </Button>
           </div>
         </MotionItem>
       </MotionSection>

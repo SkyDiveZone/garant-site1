@@ -1,4 +1,5 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
+import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ReviewsSection } from "@/components/reviews/ReviewsSection";
 import { COPY } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
@@ -90,7 +91,11 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
               </div>
             }
             belowGrid={
-              <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
+              <LeadFormSellingBelow
+                slug={service.slug}
+                formAnchor="#lead-form"
+                hideWorkTypes
+              />
             }
           />
         </div>
@@ -143,39 +148,11 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
 
       <ServiceFAQSection faq={service.faq} />
 
-      <Section className="relative overflow-hidden">
-        <div className="gradient-mesh absolute inset-0" />
-        <LeadFormSplitLayout
-          className="relative"
-          content={
-            <>
-              <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">
-                Оставьте заявку на ремонт
-              </h2>
-              <p className="mt-4 text-lg text-slate-600">
-                {COPY.costAfterInspection} {COPY.callbackWithSchedule}
-              </p>
-              <div className="mt-8">
-                <ConversionActions size="large" formAnchor="#lead-form-bottom" />
-              </div>
-              <div className="mt-8">
-                <HeroFormBenefits />
-              </div>
-            </>
-          }
-          form={
-            <LeadFormWithExtras
-              id="lead-form-bottom"
-              variant="compact"
-              title="Оставить заявку"
-              subtitle={COPY.leadFormSubtitle}
-            />
-          }
-          belowGrid={
-            <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form-bottom" />
-          }
-        />
-      </Section>
+      <ServiceBottomCTA
+        title="Оставьте заявку на ремонт"
+        subtitle={`${COPY.costAfterInspection} ${COPY.callbackWithSchedule}`}
+        showContacts={false}
+      />
     </>
   );
 }

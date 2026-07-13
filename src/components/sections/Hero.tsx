@@ -62,20 +62,6 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {HERO.trustItems.map((item) => (
-                  <div
-                    key={item.sub}
-                    className="rounded-2xl border border-slate-200/80 bg-white/80 p-4 backdrop-blur-sm"
-                  >
-                    <div className="font-display text-2xl font-bold text-slate-900">
-                      {item.label}
-                    </div>
-                    <div className="mt-0.5 text-xs text-slate-500">{item.sub}</div>
-                  </div>
-                ))}
-              </div>
-
               <div className="mt-8">
                 <HeroFormBenefits />
               </div>
