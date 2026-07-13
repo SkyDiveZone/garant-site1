@@ -3,11 +3,13 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { HomePopularProblems } from "@/components/sections/HomePopularProblems";
 import { HomeWhenToCall } from "@/components/sections/HomeWhenToCall";
+import { ServicePopularProblems } from "@/components/sections/ServicePopularProblems";
 import { WorkTypesConsultationCTA } from "@/components/sections/WorkTypesConsultationCTA";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { getServiceBySlug } from "@/lib/services";
 import { getSellingContent } from "@/lib/services/service-selling-content";
+import { getServicePopularProblemsConfig } from "@/lib/services/service-popular-problems-registry";
 import { cn } from "@/lib/utils";
 import {
   AlertCircle,
@@ -58,6 +60,7 @@ export function MasterSellingSections({
   const service = resolvedSlug ? getServiceBySlug(resolvedSlug) : undefined;
   const content = getSellingContent(resolvedSlug, service);
   const isHomepage = !resolvedSlug;
+  const popularProblemsConfig = getServicePopularProblemsConfig(resolvedSlug);
 
   const sectionClass = compact ? "!py-10 sm:!py-12" : undefined;
   const gridGap = compact ? "gap-2.5" : "gap-3";
@@ -135,6 +138,12 @@ export function MasterSellingSections({
 
       {isHomepage ? (
         <HomePopularProblems formAnchor={formAnchor} sectionClass={sectionClass} />
+      ) : popularProblemsConfig ? (
+        <ServicePopularProblems
+          config={popularProblemsConfig}
+          formAnchor={formAnchor}
+          sectionClass={sectionClass}
+        />
       ) : (
         <Section className={cn("bg-slate-50/80", sectionClass, "!px-0")}>
           <SectionHeader
