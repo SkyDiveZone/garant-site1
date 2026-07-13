@@ -1,13 +1,10 @@
 import { COPY } from "@/lib/copy";
 
 export const PHONES = [
-  { display: "8 (900) 036-72-52", raw: "+79000367252" },
-  { display: "8 (996) 050-25-87", raw: "+79960502587" },
-  { display: "8 (982) 649-17-39", raw: "+79826491739" },
+  { display: "8 (950) 202-32-28", raw: "+79502023228" },
 ] as const;
 
-/** Только для Header — третий номер в Footer и Контактах */
-export const HEADER_PHONES = PHONES.slice(0, 2);
+export const HEADER_PHONES = PHONES;
 
 export const HERO_FORM_BENEFITS = [
   "Принимаем звонки ежедневно с 08:00 до 00:00",
@@ -25,8 +22,8 @@ export const SITE = {
   description:
     "Профессиональный ремонт квартир, сантехнические и электромонтажные работы в Екатеринбурге. Гарантия до 12 месяцев.",
   phones: PHONES,
-  phone: PHONES[1].display,
-  phoneRaw: PHONES[1].raw,
+  phone: PHONES[0].display,
+  phoneRaw: PHONES[0].raw,
   email: "STESER-OFFICIAL@yandex.ru",
   address: "г. Екатеринбург, Шефская ул., 1А",
   hours: "Принимаем звонки ежедневно с 08:00 до 00:00",
@@ -351,7 +348,7 @@ export const FAQ = [
   {
     question: "Как оставить заявку?",
     answer:
-      `Позвоните по телефонам ${PHONES.map((p) => p.display).join(", ")}, напишите в Telegram ${SITE.telegram.username}, на ${SITE.email} или заполните форму на сайте — ${COPY.callbackShort.toLowerCase()}`,
+      `Позвоните по телефону ${SITE.phone}, напишите в Telegram ${SITE.telegram.username}, на ${SITE.email} или заполните форму на сайте — ${COPY.callbackShort.toLowerCase()}`,
   },
 ];
 

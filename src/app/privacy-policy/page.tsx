@@ -1,5 +1,5 @@
 import { LegalLink, LegalPageLayout, LegalSection } from "@/components/legal/LegalPageLayout";
-import { PHONES, SITE } from "@/lib/data";
+import { SITE } from "@/lib/data";
 import { LEGAL_URLS } from "@/lib/legal";
 import type { Metadata } from "next";
 
@@ -101,7 +101,7 @@ export default function PrivacyPolicyPage() {
           <a href={`mailto:${SITE.email}`} className="text-brand-600 hover:underline">
             {SITE.email}
           </a>{" "}
-          или позвонив по телефонам: {PHONES.map((p) => p.display).join(", ")}.
+          или позвонив по телефону: {SITE.phone}.
         </p>
       </LegalSection>
 

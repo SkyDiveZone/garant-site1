@@ -1,4 +1,4 @@
-import { PHONES, SITE } from "@/lib/data";
+import { SITE } from "@/lib/data";
 import {
   LEAD_SCHEDULE_CUSTOM,
   LEAD_SCHEDULE_OPTIONS,
@@ -76,7 +76,7 @@ export async function POST(request: Request) {
           error:
             telegram.error?.includes("Telegram не настроен")
               ? "Сервис временно недоступен. Позвоните нам или напишите в Telegram."
-              : `Заявка не отправлена. Позвоните нам: ${PHONES.map((p) => p.display).join(", ")}`,
+              : `Заявка не отправлена. Позвоните нам: ${SITE.phone}`,
         },
         { status: 503 }
       );
