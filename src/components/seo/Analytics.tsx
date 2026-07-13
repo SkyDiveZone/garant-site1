@@ -1,6 +1,7 @@
 import Script from "next/script";
 
 import { YANDEX_METRIKA_ID } from "@/lib/yandex-metrika";
+import { YANDEX_METRIKA_INIT_JSON } from "@/lib/yandex-metrika-init";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID;
@@ -8,8 +9,8 @@ const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID;
 export function Analytics() {
   return (
     <>
-      {/* Yandex.Metrika counter — официальный код, init после window.load для корректного Webvisor */}
-      <Script id="yandex-metrika-counter" strategy="afterInteractive">
+      {/* Счётчик в head: tag.js грузится рано, init — после CSS (см. yandex-metrika-init). */}
+      <Script id="yandex-metrika-loader" strategy="afterInteractive">
         {`
           (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -17,18 +18,62 @@ export function Analytics() {
             for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
           })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=${YANDEX_METRIKA_ID}', 'ym');
+        `}
+      </Script>
+      <Script id="yandex-metrika-init" strategy="afterInteractive">
+        {`
+          (function () {
+            var COUNTER_ID = ${YANDEX_METRIKA_ID};
+            var INIT = ${YANDEX_METRIKA_INIT_JSON};
 
-          function initYandexMetrika() {
-            if (window.__garantMetrikaInited) return;
-            window.__garantMetrikaInited = true;
-            ym(${YANDEX_METRIKA_ID}, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-          }
+            function stylesReady() {
+              var links = document.querySelectorAll('link[rel="stylesheet"]');
+              if (!links.length) return Promise.resolve();
 
-          if (document.readyState === 'complete') {
-            initYandexMetrika();
-          } else {
-            window.addEventListener('load', initYandexMetrika, { once: true });
-          }
+              return Promise.all(Array.prototype.map.call(links, function (link) {
+                if (link.sheet) return Promise.resolve();
+                return new Promise(function (resolve) {
+                  link.addEventListener('load', resolve, { once: true });
+                  link.addEventListener('error', resolve, { once: true });
+                });
+              }));
+            }
+
+            function afterPaint() {
+              return new Promise(function (resolve) {
+                requestAnimationFrame(function () {
+                  requestAnimationFrame(resolve);
+                });
+              });
+            }
+
+            function bootMetrika() {
+              if (window.__garantMetrikaInited) return;
+              window.__garantMetrikaInited = true;
+
+              if (typeof window.ym !== 'function') return;
+
+              window.ym(COUNTER_ID, 'init', INIT);
+              window.ym(
+                COUNTER_ID,
+                'hit',
+                window.location.pathname + window.location.search + window.location.hash
+              );
+            }
+
+            function start() {
+              stylesReady()
+                .then(afterPaint)
+                .then(bootMetrika)
+                .catch(bootMetrika);
+            }
+
+            if (document.readyState === 'complete') {
+              start();
+            } else {
+              window.addEventListener('load', start, { once: true });
+            }
+          })();
         `}
       </Script>
       <noscript>
@@ -41,7 +86,6 @@ export function Analytics() {
           />
         </div>
       </noscript>
-      {/* /Yandex.Metrika counter */}
 
       {GA_ID && (
         <>
