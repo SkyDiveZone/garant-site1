@@ -2,6 +2,7 @@
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { HomePopularProblems } from "@/components/sections/HomePopularProblems";
+import { HomeWhenToCall } from "@/components/sections/HomeWhenToCall";
 import { WorkTypesConsultationCTA } from "@/components/sections/WorkTypesConsultationCTA";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
@@ -150,41 +151,45 @@ export function MasterSellingSections({
         </Section>
       )}
 
-      <Section className={cn(sectionClass, "!px-0")}>
-        <SectionHeader
-          badge="Ситуации"
-          title={content.whenToCall.title}
-          subtitle={content.whenToCall.subtitle}
-        />
-        <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-3", compact && "gap-3")}>
-          {content.whenToCall.items.map((item) => {
-            const Icon = item.icon ? (WHEN_ICONS[item.icon] ?? CheckCircle2) : CheckCircle2;
-            return (
-              <article
-                key={item.title}
-                className="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm"
-              >
-                <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </span>
-                <div>
-                  <h3 className="font-display font-bold text-slate-900">{item.title}</h3>
-                  {item.description && (
-                    <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                      {item.description}
-                    </p>
-                  )}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-        {!compact && (
-          <div className="mt-8 text-center">
-            <ConversionActions size="large" formAnchor={formAnchor} />
+      {isHomepage ? (
+        <HomeWhenToCall formAnchor={formAnchor} sectionClass={sectionClass} />
+      ) : (
+        <Section className={cn(sectionClass, "!px-0")}>
+          <SectionHeader
+            badge="Ситуации"
+            title={content.whenToCall.title}
+            subtitle={content.whenToCall.subtitle}
+          />
+          <div className={cn("grid gap-4 sm:grid-cols-2 lg:grid-cols-3", compact && "gap-3")}>
+            {content.whenToCall.items.map((item) => {
+              const Icon = item.icon ? (WHEN_ICONS[item.icon] ?? CheckCircle2) : CheckCircle2;
+              return (
+                <article
+                  key={item.title}
+                  className="flex gap-4 rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm"
+                >
+                  <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+                    <Icon className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div>
+                    <h3 className="font-display font-bold text-slate-900">{item.title}</h3>
+                    {item.description && (
+                      <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                        {item.description}
+                      </p>
+                    )}
+                  </div>
+                </article>
+              );
+            })}
           </div>
-        )}
-      </Section>
+          {!compact && (
+            <div className="mt-8 text-center">
+              <ConversionActions size="large" formAnchor={formAnchor} />
+            </div>
+          )}
+        </Section>
+      )}
     </div>
   );
 }

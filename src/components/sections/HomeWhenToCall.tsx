@@ -1,0 +1,92 @@
+"use client";
+
+import { Button } from "@/components/ui/Button";
+import { MotionItem, MotionSection } from "@/components/ui/Motion";
+import { Section, SectionHeader } from "@/components/ui/Section";
+import { HOME_WHEN_TO_CALL_ITEMS } from "@/lib/home-when-to-call";
+import { HelpCircle } from "lucide-react";
+
+interface HomeWhenToCallProps {
+  formAnchor?: string;
+  sectionClass?: string;
+}
+
+export function HomeWhenToCall({
+  formAnchor = "#lead-form",
+  sectionClass,
+}: HomeWhenToCallProps) {
+  return (
+    <Section className={`${sectionClass ?? ""} !px-0`}>
+      <MotionSection>
+        <MotionItem>
+          <SectionHeader
+            badge="Ситуации"
+            title="Когда стоит вызвать мастера"
+            subtitle="Не откладывайте — многие проблемы со временем только усугубляются"
+          />
+        </MotionItem>
+
+        <MotionItem>
+          <div className="grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {HOME_WHEN_TO_CALL_ITEMS.map((item) => {
+              const Icon = item.icon;
+
+              return (
+                <article
+                  key={item.title}
+                  className="group flex h-full flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/10"
+                >
+                  <span
+                    className={`mb-4 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl transition-transform group-hover:scale-105 ${item.iconStyle}`}
+                  >
+                    <Icon className="h-6 w-6" aria-hidden="true" />
+                  </span>
+                  <h3 className="font-display text-lg font-bold leading-snug text-slate-900">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600">
+                    {item.description}
+                  </p>
+                </article>
+              );
+            })}
+          </div>
+        </MotionItem>
+
+        <MotionItem>
+          <div className="relative mt-10 overflow-hidden rounded-2xl border border-brand-200/80 bg-gradient-to-br from-brand-50 via-white to-sky-50 p-6 sm:mt-12 sm:p-8">
+            <div
+              className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-brand-200/30 blur-2xl"
+              aria-hidden="true"
+            />
+            <div
+              className="absolute -bottom-10 -left-10 h-28 w-28 rounded-full bg-sky-200/40 blur-2xl"
+              aria-hidden="true"
+            />
+
+            <div className="relative flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex gap-4 sm:max-w-2xl">
+                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-600 text-white shadow-lg shadow-brand-600/25">
+                  <HelpCircle className="h-6 w-6" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="font-display text-xl font-bold text-slate-900 sm:text-2xl">
+                    Не уверены, нужен ли вам мастер?
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 sm:text-base">
+                    Позвоните нам или оставьте заявку — подскажем лучшее решение именно для вашей
+                    ситуации.
+                  </p>
+                </div>
+              </div>
+
+              <Button size="lg" href={formAnchor} className="w-full shrink-0 sm:w-auto sm:min-w-[240px]">
+                Получить консультацию
+              </Button>
+            </div>
+          </div>
+        </MotionItem>
+      </MotionSection>
+    </Section>
+  );
+}
