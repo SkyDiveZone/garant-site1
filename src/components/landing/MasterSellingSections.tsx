@@ -1,6 +1,7 @@
 "use client";
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
+import { WorkTypesConsultationCTA } from "@/components/sections/WorkTypesConsultationCTA";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { getServiceBySlug } from "@/lib/services";
@@ -51,6 +52,7 @@ export function MasterSellingSections({
     slug ?? (pathname === "/" ? null : pathname.replace(/^\//, "").split("/")[0] || null);
   const service = resolvedSlug ? getServiceBySlug(resolvedSlug) : undefined;
   const content = getSellingContent(resolvedSlug, service);
+  const isHomepage = !resolvedSlug;
 
   const sectionClass = compact ? "!py-10 sm:!py-12" : undefined;
   const gridGap = compact ? "gap-2.5" : "gap-3";
@@ -116,7 +118,8 @@ export function MasterSellingSections({
             );
           })}
         </div>
-        {!compact && (
+        {isHomepage && <WorkTypesConsultationCTA formAnchor={formAnchor} />}
+        {!compact && !isHomepage && (
           <div className="mt-8 text-center">
             <ConversionActions formAnchor={formAnchor} />
           </div>

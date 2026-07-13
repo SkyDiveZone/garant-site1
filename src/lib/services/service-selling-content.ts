@@ -1,4 +1,5 @@
 import { COPY } from "@/lib/copy";
+import { HOME_WORK_TYPES } from "@/lib/home-work-types";
 import {
   ELEKTRIK_ABOUT,
   ELEKTRIK_PROBLEMS,
@@ -70,20 +71,7 @@ const HOME_SELLING: ServiceSellingContent = {
   workTypes: {
     title: "Виды работ",
     subtitle: COPY.servicesSubtitle,
-    items: [
-      "Устранение протечек и засоров",
-      "Установка сантехники",
-      "Замена смесителей и труб",
-      "Замена и ремонт электропроводки",
-      "Установка розеток и выключателей",
-      "Подключение люстр и бытовой техники",
-      "Сборка мебели и монтаж на стену",
-      "Мелкий ремонт по дому",
-      "Косметический и капитальный ремонт",
-      "Отделка ванной и кухни",
-      "Укладка плитки и ламината",
-      "Монтаж потолков и плинтусов",
-    ],
+    items: HOME_WORK_TYPES,
   },
   problems: {
     title: "Популярные проблемы",
