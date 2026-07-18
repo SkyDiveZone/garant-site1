@@ -17,6 +17,7 @@ export interface LeadPayload {
   name: string;
   phone: string;
   address?: string;
+  problem?: string;
   schedule: LeadScheduleValue;
   customDate?: string;
   customTime?: string;

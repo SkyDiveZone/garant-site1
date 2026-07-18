@@ -27,6 +27,7 @@ export async function POST(request: Request) {
     const trimmedName = body.name?.trim();
     const trimmedPhone = body.phone?.trim();
     const trimmedAddress = body.address?.trim() ?? "";
+    const trimmedProblem = body.problem?.trim() ?? "";
     const schedule = body.schedule?.trim() ?? "asap";
     const customDate = body.customDate?.trim() ?? "";
     const customTime = body.customTime?.trim() ?? "";
@@ -42,6 +43,10 @@ export async function POST(request: Request) {
 
     if (!isValidPhone(trimmedPhone)) {
       return NextResponse.json({ error: "Укажите корректный номер телефона" }, { status: 400 });
+    }
+
+    if (trimmedProblem.length > 2000) {
+      return NextResponse.json({ error: "Описание проблемы слишком длинное" }, { status: 400 });
     }
 
     if (!isValidSchedule(schedule)) {
@@ -61,6 +66,7 @@ export async function POST(request: Request) {
       name: trimmedName,
       phone: trimmedPhone,
       address: trimmedAddress || undefined,
+      problem: trimmedProblem || undefined,
       schedule: schedule as LeadScheduleValue,
       customDate: schedule === LEAD_SCHEDULE_CUSTOM ? customDate : undefined,
       customTime: schedule === LEAD_SCHEDULE_CUSTOM ? customTime : undefined,

@@ -27,12 +27,15 @@ export interface LeadFormProps {
 const inputClassName =
   "w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20";
 
+const textareaClassName = `${inputClassName} min-h-[112px] resize-y`;
+
 const labelClassName = "mb-1.5 block text-sm font-medium text-slate-700";
 
 function resetFormState(setters: {
   setName: (v: string) => void;
   setPhone: (v: string) => void;
   setAddress: (v: string) => void;
+  setProblem: (v: string) => void;
   setSchedule: (v: LeadScheduleValue) => void;
   setCustomDate: (v: string) => void;
   setCustomTime: (v: string) => void;
@@ -40,6 +43,7 @@ function resetFormState(setters: {
   setters.setName("");
   setters.setPhone("");
   setters.setAddress("");
+  setters.setProblem("");
   setters.setSchedule("asap");
   setters.setCustomDate("");
   setters.setCustomTime("");
@@ -59,6 +63,7 @@ export function LeadForm({
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
+  const [problem, setProblem] = useState("");
   const [schedule, setSchedule] = useState<LeadScheduleValue>("asap");
   const [customDate, setCustomDate] = useState("");
   const [customTime, setCustomTime] = useState("");
@@ -88,6 +93,7 @@ export function LeadForm({
           name,
           phone,
           address: address.trim() || undefined,
+          problem: problem.trim() || undefined,
           schedule,
           customDate: showCustomDateTime ? customDate.trim() : undefined,
           customTime: showCustomDateTime ? customTime.trim() : undefined,
@@ -107,6 +113,7 @@ export function LeadForm({
         setName,
         setPhone,
         setAddress,
+        setProblem,
         setSchedule,
         setCustomDate,
         setCustomTime,
@@ -206,6 +213,22 @@ export function LeadForm({
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               className={inputClassName}
+            />
+          </div>
+
+          <div>
+            <label htmlFor={`problem-${fieldId}`} className={labelClassName}>
+              Опишите проблему
+              <span className="ml-1 font-normal text-slate-500">(необязательно)</span>
+            </label>
+            <textarea
+              id={`problem-${fieldId}`}
+              rows={4}
+              maxLength={2000}
+              placeholder="Например: течёт смеситель на кухне, нужна замена"
+              value={problem}
+              onChange={(e) => setProblem(e.target.value)}
+              className={textareaClassName}
             />
           </div>
 

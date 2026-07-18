@@ -47,6 +47,7 @@ export async function sendLeadToTelegram(payload: LeadPayload): Promise<Telegram
     `👤 <b>Имя:</b> ${escapeHtml(payload.name)}`,
     `📞 <b>Телефон:</b> <a href="tel:+${phoneDigits}">${escapeHtml(payload.phone)}</a>`,
     `📍 <b>Адрес:</b> ${payload.address ? escapeHtml(payload.address) : "—"}`,
+    `📝 <b>Описание проблемы:</b> ${payload.problem ? escapeHtml(payload.problem) : "—"}`,
     `🕐 <b>Удобное время:</b> ${escapeHtml(scheduleLabel)}`,
     `📅 <b>Дата:</b> ${isCustom && payload.customDate ? escapeHtml(formatDisplayDate(payload.customDate)) : "—"}`,
     `⏰ <b>Время:</b> ${isCustom && payload.customTime ? escapeHtml(formatDisplayTime(payload.customTime)) : "—"}`,
