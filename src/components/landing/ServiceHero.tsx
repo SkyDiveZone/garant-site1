@@ -1,16 +1,13 @@
 "use client";
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
-import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
-import { ServiceContactBlock } from "@/components/ui/ServiceContactBlock";
-import { COPY } from "@/lib/copy";
-import { HERO, SITE } from "@/lib/data";
+import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import type { ServicePage } from "@/lib/services";
-import { MapPin, Star } from "lucide-react";
+import { Clock } from "lucide-react";
 import Link from "next/link";
 
 interface ServiceHeroProps {
@@ -46,8 +43,8 @@ export function ServiceHero({ service }: ServiceHeroProps) {
           content={
             <>
               <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
-                <MapPin className="h-4 w-4" />
-                {SITE.address} · {SITE.hours}
+                <Clock className="h-4 w-4" />
+                {ROUND_THE_CLOCK.badge}
               </div>
 
               <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
@@ -61,37 +58,7 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               </p>
 
               <div className="mt-8">
-                <ConversionActions size="large" />
-              </div>
-
-              <ServiceContactBlock />
-
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
-                  ))}
-                  <span className="ml-2 text-sm font-semibold text-slate-900">4.9</span>
-                  <span className="text-sm text-slate-500">· рейтинг клиентов</span>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <HeroFormBenefits />
-              </div>
-
-              <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
-                {HERO.trustItems.map((item) => (
-                  <div
-                    key={item.sub}
-                    className="rounded-2xl border border-slate-200/80 bg-white/80 p-3 backdrop-blur-sm sm:p-4"
-                  >
-                    <div className="font-display text-xl font-bold text-slate-900 sm:text-2xl">
-                      {item.label}
-                    </div>
-                    <div className="mt-0.5 text-xs text-slate-500">{item.sub}</div>
-                  </div>
-                ))}
+                <ConversionActions size="large" contactAlign="start" showTrustInfo />
               </div>
             </>
           }

@@ -1,18 +1,15 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
-import { COPY } from "@/lib/copy";
+import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
-import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
-import { ServiceContactBlock } from "@/components/ui/ServiceContactBlock";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
-import { SITE } from "@/lib/data";
 import type { ServicePage } from "@/lib/services";
 import { REPAIR_TYPES } from "@/lib/services/remont-data";
-import { Award, Clock, ShieldCheck, Star } from "lucide-react";
+import { Clock } from "lucide-react";
 import Link from "next/link";
 
 interface RemontKvartirLandingProps {
@@ -39,7 +36,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
               <>
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
                   <Clock className="h-4 w-4" />
-                  Работаем ежедневно · {SITE.hours}
+                  {ROUND_THE_CLOCK.badge}
                 </div>
                 <h1 className="font-display text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
                   {service.h1}
@@ -52,30 +49,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
                 </p>
 
                 <div className="mt-8">
-                  <ConversionActions size="large" />
-                </div>
-
-                <ServiceContactBlock />
-
-                <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-600">
-                  <span className="flex items-center gap-1.5">
-                    <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                    Гарантия 12 мес.
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Award className="h-4 w-4 text-brand-500" />
-                    Смета после осмотра
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                    4.9 рейтинг
-                  </span>
-                </div>
-
-                <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
-
-                <div className="mt-8">
-                  <HeroFormBenefits />
+                  <ConversionActions size="large" contactAlign="start" showTrustInfo />
                 </div>
               </>
             }
@@ -125,8 +99,7 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
 
       <ServiceBottomCTA
         title="Оставьте заявку на ремонт"
-        subtitle={`${COPY.costAfterInspection} ${COPY.callbackWithSchedule}`}
-        showContacts={false}
+        subtitle={`${COPY.costAfterInspection} ${COPY.callbackShort}`}
       />
     </>
   );

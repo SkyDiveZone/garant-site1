@@ -1,4 +1,4 @@
-import { COPY } from "@/lib/copy";
+import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { HOME_WORK_TYPES } from "@/lib/home-work-types";
 import {
   ELEKTRIK_ABOUT,
@@ -283,7 +283,7 @@ function buildFromService(service: ServicePage): ServiceSellingContent {
     },
     whenToCall: {
       title: `Когда стоит вызвать ${masterLabel}`,
-      subtitle: "Согласуем удобное время выезда — часто в день обращения",
+      subtitle: `${ROUND_THE_CLOCK.urgent} Часто выезжаем в день обращения`,
       items: whenItems,
     },
   };

@@ -1,14 +1,14 @@
 import { LegalLink, LegalPageLayout, LegalSection } from "@/components/legal/LegalPageLayout";
 import { SITE } from "@/lib/data";
 import { LEGAL_URLS } from "@/lib/legal";
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: `Пользовательское соглашение | ${SITE.name}`,
   description:
     "Пользовательское соглашение сайта Гарант Мастер — сантехника, электрика, ремонт квартир, мастер на час в Екатеринбурге.",
-  robots: { index: true, follow: true },
-};
+  path: "/user-agreement",
+});
 
 export default function UserAgreementPage() {
   return (

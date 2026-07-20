@@ -29,7 +29,7 @@ const variants: Record<ButtonVariant, string> = {
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: "px-4 py-2 text-sm",
+  sm: "px-4 py-2 text-sm min-h-[36px]",
   md: "px-6 py-3 text-base",
   lg: "px-8 py-4 text-base font-semibold",
 };
@@ -73,7 +73,7 @@ export function Button({
   }
 
   return (
-    <button type={type} className={classes} {...props}>
+    <button type={type} className={classes} onClick={onClick} {...props}>
       {children}
     </button>
   );

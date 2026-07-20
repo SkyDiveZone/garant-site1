@@ -1,4 +1,5 @@
 import type { ServicePopularProblemsConfig } from "@/lib/service-popular-problems";
+import { ROUND_THE_CLOCK } from "@/lib/copy";
 import {
   DoorOpen,
   Hammer,
@@ -89,7 +90,7 @@ export const MASTER_NA_CHAS_POPULAR_PROBLEMS: ServicePopularProblemsConfig = {
     },
     {
       title: "Нужно быстро решить бытовую проблему",
-      description: "Согласуем ближайший выезд и поможем в удобное время.",
+      description: `${ROUND_THE_CLOCK.urgent} Согласуем ближайший выезд.`,
       icon: Wrench,
     },
   ],

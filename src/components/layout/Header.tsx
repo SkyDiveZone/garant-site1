@@ -1,10 +1,10 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
+import { HeaderContacts } from "@/components/layout/HeaderContacts";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Logo } from "@/components/ui/Logo";
-import { PhoneList } from "@/components/ui/PhoneList";
-import { TelegramLink } from "@/components/ui/TelegramLink";
+import { ContactBlock } from "@/components/ui/ContactBlock";
+import { Button } from "@/components/ui/Button";
 import { HEADER_PHONES, NAV_LINKS } from "@/lib/data";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -30,6 +30,8 @@ export function Header() {
     };
   }, [mobileOpen, formOpen]);
 
+  const openForm = () => setFormOpen(true);
+
   return (
     <>
       <header
@@ -40,8 +42,8 @@ export function Header() {
             : "bg-transparent"
         )}
       >
-        <div className="container-custom flex h-16 items-center justify-between gap-4 px-4 sm:h-20 sm:px-6 lg:gap-6 lg:px-8">
-          <Logo variant="header" className="shrink-0" />
+        <div className="container-custom flex h-16 min-w-0 items-center justify-between gap-3 px-4 sm:h-[4.75rem] sm:px-6 lg:gap-6 lg:px-8">
+          <Logo variant="header" className="min-w-0 shrink" />
 
           <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Основная навигация">
             {NAV_LINKS.map((link) => (
@@ -55,26 +57,11 @@ export function Header() {
             ))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-3">
-            <div className="hidden flex-col items-end gap-1 md:flex">
-              <PhoneList
-                variant="header"
-                phones={HEADER_PHONES}
-                linkClassName="text-slate-900 hover:text-brand-600"
-                iconClassName="text-brand-600"
-              />
-              <TelegramLink
-                className="text-sky-600 hover:text-sky-700"
-                iconSize={16}
-              />
-            </div>
-            <Button
-              size="sm"
-              className="hidden sm:inline-flex"
-              onClick={() => setFormOpen(true)}
-            >
-              Вызвать мастера
-            </Button>
+          <div className="flex shrink-0 items-center gap-2">
+            <HeaderContacts
+              onOpenForm={openForm}
+              className="hidden lg:flex"
+            />
             <button
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white lg:hidden"
@@ -105,24 +92,18 @@ export function Header() {
                     {link.label}
                   </Link>
                 ))}
-                <div className="mt-2 space-y-2 border-t border-slate-100 px-3 pt-3">
-                  <PhoneList
-                    variant="stack"
-                    phones={HEADER_PHONES}
-                    linkClassName="text-brand-600 hover:text-brand-700"
-                    iconClassName="text-brand-600"
-                  />
-                  <TelegramLink className="text-sky-600 hover:text-sky-700" />
-                </div>
                 <Button
                   className="mt-2 w-full"
                   onClick={() => {
                     setMobileOpen(false);
-                    setFormOpen(true);
+                    openForm();
                   }}
                 >
                   Вызвать мастера
                 </Button>
+                <div className="mt-2 border-t border-slate-100 px-3 pt-3">
+                  <ContactBlock size="xs" align="start" phones={HEADER_PHONES} />
+                </div>
               </nav>
             </motion.div>
           )}

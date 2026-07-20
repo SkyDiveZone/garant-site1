@@ -1,6 +1,6 @@
-import { FOOTER_INFO, FOOTER_SERVICES, PHONES, SITE } from "@/lib/data";
+import { FOOTER_INFO, FOOTER_SERVICES, SITE } from "@/lib/data";
+import { ContactBlock } from "@/components/ui/ContactBlock";
 import { Logo } from "@/components/ui/Logo";
-import { TrackedAnchor } from "@/components/ui/TrackedAnchor";
 import Link from "next/link";
 import { Clock, MapPin } from "lucide-react";
 
@@ -46,29 +46,8 @@ export function Footer() {
             <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-white">
               Контакты
             </h3>
+            <ContactBlock theme="dark" size="sm" align="start" className="mb-4" />
             <ul className="space-y-2.5 text-sm">
-              {PHONES.map((phone) => (
-                <li key={phone.raw}>
-                  <TrackedAnchor
-                    href={`tel:${phone.raw}`}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-white"
-                  >
-                    <span aria-hidden="true">📞</span>
-                    {phone.display}
-                  </TrackedAnchor>
-                </li>
-              ))}
-              <li>
-                <span className="block text-slate-500">Telegram</span>
-                <TrackedAnchor
-                  href={SITE.telegram.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="transition-colors hover:text-white"
-                >
-                  {SITE.telegram.username}
-                </TrackedAnchor>
-              </li>
               <li className="flex items-start gap-2 pt-1">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
                 <span>{SITE.address}</span>

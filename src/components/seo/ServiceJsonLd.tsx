@@ -52,7 +52,7 @@ export function ServiceJsonLd({ service }: ServiceJsonLdProps) {
     url,
     telephone: SITE.phoneRaw,
     email: SITE.email,
-    sameAs: [SITE.telegram.url],
+    sameAs: [SITE.telegram.url, SITE.max.url],
     contactPoint: PHONES.map((phone) => ({
       "@type": "ContactPoint",
       telephone: phone.raw,
@@ -64,7 +64,7 @@ export function ServiceJsonLd({ service }: ServiceJsonLdProps) {
       addressLocality: "Екатеринбург",
       addressCountry: "RU",
     },
-    openingHours: "Mo-Su 08:00-00:00",
+    openingHours: "Mo-Su 00:00-23:59",
   };
 
   const serviceSchema = {

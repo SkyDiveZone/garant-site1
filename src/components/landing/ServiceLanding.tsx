@@ -5,18 +5,15 @@ import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
-import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
-import { ServiceContactBlock } from "@/components/ui/ServiceContactBlock";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
-import { COPY } from "@/lib/copy";
-import { SITE } from "@/lib/data";
+import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
 import type { ServicePage } from "@/lib/services";
-import { Award, CheckCircle2, Clock, ShieldCheck, Star } from "lucide-react";
+import { CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 
 interface ServiceLandingProps {
@@ -53,7 +50,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               <>
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
                   <Clock className="h-4 w-4" />
-                  Работаем ежедневно · {SITE.hours}
+                  {ROUND_THE_CLOCK.badge}
                 </div>
                 <h1 className="font-display text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
                   {service.h1}
@@ -66,30 +63,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                 </p>
 
                 <div className="mt-8">
-                  <ConversionActions size="large" />
-                </div>
-
-                {service.slug === "santehnik" && <ServiceContactBlock />}
-
-                <div className="mt-8 flex flex-wrap gap-4 text-sm text-slate-600">
-                  <span className="flex items-center gap-1.5">
-                    <ShieldCheck className="h-4 w-4 text-emerald-500" />
-                    Гарантия 12 мес.
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Award className="h-4 w-4 text-brand-500" />
-                    Смета после осмотра
-                  </span>
-                  <span className="flex items-center gap-1.5">
-                    <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                    4.9 рейтинг
-                  </span>
-                </div>
-
-                <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
-
-                <div className="mt-8">
-                  <HeroFormBenefits />
+                  <ConversionActions size="large" contactAlign="start" showTrustInfo />
                 </div>
               </>
             }
@@ -121,10 +95,12 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
               key={item.title}
               className="rounded-2xl border border-slate-200/80 bg-white p-6"
             >
-              <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                <DynamicIcon name={item.icon} className="h-5 w-5" />
-              </div>
-              <h3 className="font-display font-bold text-slate-900">{item.title}</h3>
+              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                <DynamicIcon name={item.icon} className="h-6 w-6" aria-hidden="true" />
+              </span>
+              <h3 className="mt-4 font-display text-lg font-bold text-slate-900">
+                {item.title}
+              </h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
             </div>
           ))}
@@ -144,14 +120,16 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
             ))}
           </div>
           <ul className="mt-6 space-y-2">
-            {["Гарантия до 12 месяцев", "Работаем ежедневно", COPY.helpScheduleVisit].map(
-              (item) => (
-                <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
-                  <CheckCircle2 className="h-4 w-4 text-emerald-500" />
-                  {item}
-                </li>
-              )
-            )}
+            {[
+              ROUND_THE_CLOCK.headline,
+              ROUND_THE_CLOCK.requests,
+              "Гарантия до 12 месяцев",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
+                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       </Section>

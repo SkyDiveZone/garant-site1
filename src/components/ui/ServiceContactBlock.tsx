@@ -1,21 +1,28 @@
-import { PhoneList } from "@/components/ui/PhoneList";
-import { TelegramLink } from "@/components/ui/TelegramLink";
+"use client";
+
+import { ContactBlock } from "@/components/ui/ContactBlock";
 import { cn } from "@/lib/utils";
 
 interface ServiceContactBlockProps {
   className?: string;
+  size?: "sm" | "md" | "lg";
+  theme?: "light" | "dark" | "on-dark";
+  align?: "start" | "center" | "end";
 }
 
-/** Блок телефонов и Telegram — как на странице «Мастер на час». */
-export function ServiceContactBlock({ className }: ServiceContactBlockProps) {
+/** Блок контактов: телефон + Telegram и MAX — единая структура по всему сайту. */
+export function ServiceContactBlock({
+  className,
+  size = "md",
+  theme = "light",
+  align = "start",
+}: ServiceContactBlockProps) {
   return (
-    <div className={cn("mt-6 space-y-2", className)}>
-      <PhoneList
-        variant="stack"
-        linkClassName="text-base font-semibold text-brand-600 hover:underline sm:text-lg"
-        iconClassName="text-brand-600"
-      />
-      <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={18} />
-    </div>
+    <ContactBlock
+      className={cn("mt-6", className)}
+      size={size}
+      theme={theme}
+      align={align}
+    />
   );
 }

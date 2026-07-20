@@ -1,49 +1,55 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { SITE } from "@/lib/data";
-import { TelegramIcon } from "@/components/ui/TelegramLink";
-import { Phone } from "lucide-react";
+import { ContactBlock } from "@/components/ui/ContactBlock";
+import { HeroTrustInfo } from "@/components/ui/HeroTrustInfo";
+import { cn } from "@/lib/utils";
 
 interface ConversionActionsProps {
   formAnchor?: string;
   size?: "default" | "large";
+  className?: string;
+  contactAlign?: "start" | "center" | "end";
+  showContacts?: boolean;
+  showTrustInfo?: boolean;
 }
 
 export function ConversionActions({
   formAnchor = "#lead-form",
   size = "default",
+  className,
+  contactAlign = "center",
+  showContacts = true,
+  showTrustInfo = false,
 }: ConversionActionsProps) {
   const isLarge = size === "large";
 
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-      <Button
-        size={isLarge ? "lg" : "md"}
-        href={`tel:${SITE.phoneRaw}`}
-        className={isLarge ? "sm:min-w-[200px]" : ""}
-      >
-        <Phone className="h-4 w-4" />
-        Позвонить
-      </Button>
-      <Button
-        size={isLarge ? "lg" : "md"}
-        variant="secondary"
-        href={SITE.telegram.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="border-sky-200 bg-sky-50 text-sky-800 hover:bg-sky-100"
-      >
-        <TelegramIcon size={16} />
-        Telegram
-      </Button>
+    <div
+      className={cn(
+        "flex w-full max-w-xl flex-col gap-3 sm:max-w-2xl",
+        contactAlign === "center" && "mx-auto items-center",
+        contactAlign === "start" && "items-stretch",
+        contactAlign === "end" && "ml-auto items-end",
+        className
+      )}
+    >
+      {showContacts && (
+        <ContactBlock
+          size={isLarge ? "lg" : "md"}
+          align={contactAlign}
+          className="max-w-none"
+        />
+      )}
       <Button
         size={isLarge ? "lg" : "md"}
         variant="outline"
         href={formAnchor}
+        className="w-full"
       >
         Оставить заявку
       </Button>
+      {showTrustInfo && <HeroTrustInfo align={contactAlign} />}
     </div>
   );
 }

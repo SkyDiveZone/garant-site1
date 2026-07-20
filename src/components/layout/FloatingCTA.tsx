@@ -1,15 +1,15 @@
 "use client";
 
-import { PHONES, SITE } from "@/lib/data";
-import { trackPhoneClick, trackTelegramClick } from "@/lib/yandex-metrika";
-import { TelegramIcon } from "@/components/ui/TelegramLink";
+import { FloatingMessengerButtons } from "@/components/ui/MessengerButtons";
+import { PHONES } from "@/lib/data";
+import { trackPhoneClick } from "@/lib/yandex-metrika";
 import { FileText, Phone } from "lucide-react";
 
 export function FloatingCTA() {
   const scrollToForm = () => {
     const form = document.getElementById("lead-form");
     if (form) {
-      form.scrollIntoView({ behavior: "smooth", block: "center" });
+      form.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
     }
     window.location.hash = "lead-form";
@@ -29,17 +29,7 @@ export function FloatingCTA() {
           <Phone className="h-4 w-4 shrink-0" />
           Позвонить
         </a>
-        <a
-          href={SITE.telegram.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={trackTelegramClick}
-          className="flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-sky-500 px-2 py-3 text-xs font-semibold text-white"
-          aria-label="Telegram"
-        >
-          <TelegramIcon size={16} />
-          Telegram
-        </a>
+        <FloatingMessengerButtons />
         <button
           type="button"
           onClick={scrollToForm}

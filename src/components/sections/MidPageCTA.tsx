@@ -1,12 +1,11 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { COPY } from "@/lib/copy";
-import { HeroFormBenefits } from "@/components/ui/HeroFormBenefits";
+import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
+import { HeroTrustInfo } from "@/components/ui/HeroTrustInfo";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
-import { PhoneList } from "@/components/ui/PhoneList";
+import { ContactBlock } from "@/components/ui/ContactBlock";
 import { Section } from "@/components/ui/Section";
-import { TelegramLink } from "@/components/ui/TelegramLink";
 import { Phone } from "lucide-react";
 
 export function MidPageCTA() {
@@ -22,23 +21,19 @@ export function MidPageCTA() {
               <h2 className="font-display text-2xl font-bold sm:text-3xl lg:text-4xl">
                 Не откладывайте — мастер свободен сегодня
               </h2>
-              <p className="mt-4 text-brand-100">{COPY.callbackWithSchedule}</p>
+              <p className="mt-4 text-brand-100">{ROUND_THE_CLOCK.headline}</p>
+              <p className="mt-2 text-sm text-brand-100/90">{ROUND_THE_CLOCK.urgent}</p>
               <div className="mt-8 flex justify-center">
                 <Button size="lg" variant="secondary" href="#lead-form">
                   <Phone className="h-4 w-4" />
                   Оставить заявку
                 </Button>
               </div>
-              <div className="mt-6 space-y-2">
-                <PhoneList
-                  variant="stack"
-                  linkClassName="text-lg font-semibold text-white hover:underline"
-                  iconClassName="text-white"
-                />
-                <TelegramLink className="text-sky-200 hover:text-white" iconSize={20} />
+              <div className="mt-6 flex justify-center">
+                <ContactBlock size="lg" theme="on-dark" align="center" />
               </div>
-              <div className="mt-8">
-                <HeroFormBenefits />
+              <div className="mt-6">
+                <HeroTrustInfo align="center" theme="on-dark" />
               </div>
             </div>
           </div>

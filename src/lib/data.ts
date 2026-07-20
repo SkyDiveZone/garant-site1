@@ -1,4 +1,5 @@
-import { COPY } from "@/lib/copy";
+import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
+import { MESSENGER } from "@/lib/messenger-config";
 
 export const PHONES = [
   { display: "8 (950) 202-32-28", raw: "+79502023228" },
@@ -6,38 +7,35 @@ export const PHONES = [
 
 export const HEADER_PHONES = PHONES;
 
-export const HERO_FORM_BENEFITS = [
-  "Принимаем звонки ежедневно с 08:00 до 00:00",
-  COPY.helpScheduleVisit,
-  "Гарантия до 12 месяцев",
-  "Без скрытых доплат",
-  "Оплата после выполнения работ",
-] as const;
-
 export const SITE = {
   name: "Гарант Мастер",
   logoTagline: "Сантехника • Электрика • Мастер на час",
   logoTaglineLines: ["Сантехника • Электрика", "Мастер на час"],
   tagline: "Ремонт, сантехника и электрика в Екатеринбурге",
   description:
-    "Сантехник, электрик, мастер на час и ремонт квартир в Екатеринбурге. Оставьте заявку — перезвоним и согласуем удобное время выезда.",
+    "Сантехник, электрик, мастер на час и ремонт квартир в Екатеринбурге. Работаем круглосуточно — оставьте заявку, перезвоним в течение 5 минут.",
   phones: PHONES,
   phone: PHONES[0].display,
   phoneRaw: PHONES[0].raw,
   email: "STESER-OFFICIAL@yandex.ru",
   address: "г. Екатеринбург, Шефская ул., 1А",
-  hours: "Принимаем звонки ежедневно с 08:00 до 00:00",
+  hours: ROUND_THE_CLOCK.hours,
   url: "https://garant-master-ekb.ru",
   telegram: {
-    username: "@garant_master_ekb",
-    url: "https://t.me/garant_master_ekb",
+    username: MESSENGER.telegram.username,
+    url: MESSENGER.telegram.url,
+  },
+  max: {
+    display: MESSENGER.max.display,
+    phoneRaw: MESSENGER.max.phoneRaw,
+    url: MESSENGER.max.url,
   },
 } as const;
 
 export const HERO = {
-  badge: "Работаем ежедневно",
+  badge: ROUND_THE_CLOCK.badge,
   title: "Сантехник • Электрик • Мастер на час в Екатеринбурге",
-  subtitle: `Работаем ежедневно. ${COPY.costAfterInspection}`,
+  subtitle: `${ROUND_THE_CLOCK.headline} ${COPY.costAfterInspection}`,
   primaryCta: "Позвонить",
   secondaryCta: "Оставить заявку",
   trustItems: [
@@ -62,9 +60,8 @@ export const TRUST_REASONS = [
     icon: "Award",
   },
   {
-    title: "Удобное время выезда",
-    description:
-      `Поможем подобрать удобное время для выезда мастера. ${SITE.hours} по всему Екатеринбургу.`,
+    title: "Круглосуточный выезд",
+    description: `${ROUND_THE_CLOCK.requests} ${ROUND_THE_CLOCK.urgent} По всему Екатеринбургу.`,
     icon: "Clock",
   },
   {
@@ -91,7 +88,7 @@ export const BENEFITS = [
   {
     title: "Проблема решена сегодня",
     description:
-      "Не ждите неделями — мастер приедет в удобное время, чаще всего в тот же день.",
+      "Не ждите неделями — срочный выезд возможен в любое время суток, часто в тот же день.",
     before: "Ожидание мастера 3–5 дней",
   },
   {
@@ -256,8 +253,7 @@ export const CORE_FAQ = [
   },
   {
     question: "Работаете ли вы в выходные и праздничные дни?",
-    answer:
-      "Да, наши специалисты принимают заявки ежедневно с 08:00 до 00:00, включая выходные и праздничные дни. Мы стараемся подобрать удобное время для каждого клиента.",
+    answer: ROUND_THE_CLOCK.faqAnswer,
   },
   {
     question: "Нужно ли самостоятельно покупать материалы?",
@@ -303,8 +299,7 @@ export const EKB_DISTRICTS = [
 export const FAQ = [
   {
     question: "Как быстро приедет мастер?",
-    answer:
-      `Согласуем удобное время приезда, часто — в тот же день. Срочный вызов доступен ежедневно. ${SITE.hours} по всему Екатеринбургу и области.`,
+    answer: `${ROUND_THE_CLOCK.urgent} Часто выезжаем в тот же день. ${ROUND_THE_CLOCK.hours} По всему Екатеринбургу и области.`,
   },
   {
     question: "Условия могут измениться в процессе работы?",
@@ -315,7 +310,7 @@ export const FAQ = [
   {
     question: "Как оставить заявку?",
     answer:
-      `Позвоните по телефону ${SITE.phone}, напишите в Telegram ${SITE.telegram.username}, на ${SITE.email} или заполните форму на сайте — ${COPY.callbackShort.toLowerCase()}`,
+      `Позвоните по телефону ${SITE.phone}, напишите в Telegram ${SITE.telegram.username}, в MAX ${SITE.max.display}, на ${SITE.email} или заполните форму на сайте — ${COPY.callbackShort.toLowerCase()}`,
   },
 ];
 

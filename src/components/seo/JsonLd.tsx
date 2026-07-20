@@ -10,7 +10,7 @@ export function JsonLd() {
     url: SITE.url,
     telephone: SITE.phoneRaw,
     email: SITE.email,
-    sameAs: [SITE.telegram.url],
+    sameAs: [SITE.telegram.url, SITE.max.url],
     contactPoint: PHONES.map((phone) => ({
       "@type": "ContactPoint",
       telephone: phone.raw,
@@ -25,7 +25,7 @@ export function JsonLd() {
       addressRegion: "Сверdловская область",
       addressCountry: "RU",
     },
-    openingHours: "Mo-Su 08:00-00:00",
+    openingHours: "Mo-Su 00:00-23:59",
     areaServed: {
       "@type": "City",
       name: "Екатеринбург",
@@ -47,7 +47,7 @@ export function JsonLd() {
     logo: `${SITE.url}/android-chrome-512x512.png`,
     email: SITE.email,
     telephone: SITE.phoneRaw,
-    sameAs: [SITE.telegram.url],
+    sameAs: [SITE.telegram.url, SITE.max.url],
     address: {
       "@type": "PostalAddress",
       streetAddress: "Шефская ул., 1А",

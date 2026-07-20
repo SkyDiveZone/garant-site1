@@ -7,13 +7,14 @@ import {
   LEAD_SCHEDULE_OPTIONS,
   type LeadScheduleValue,
 } from "@/lib/lead-form";
+import { LegalConsentCheckbox } from "@/components/ui/LegalConsentCheckbox";
 import { getLeadFormLabelsFromPath } from "@/lib/lead-form-labels";
 import { trackFormSubmit } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { AlertCircle, CheckCircle2, Loader2, MapPin, Phone } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useState, type FormEvent } from "react";
+import { useState, useId, type FormEvent } from "react";
 
 export interface LeadFormProps {
   variant?: "default" | "compact" | "inline";
@@ -22,6 +23,7 @@ export interface LeadFormProps {
   subtitle?: string;
   submitLabel?: string;
   id?: string;
+  formFieldId?: string;
 }
 
 const inputClassName =
@@ -39,6 +41,8 @@ function resetFormState(setters: {
   setSchedule: (v: LeadScheduleValue) => void;
   setCustomDate: (v: string) => void;
   setCustomTime: (v: string) => void;
+  setConsent: (v: boolean) => void;
+  setConsentError: (v: boolean) => void;
 }) {
   setters.setName("");
   setters.setPhone("");
@@ -47,6 +51,8 @@ function resetFormState(setters: {
   setters.setSchedule("asap");
   setters.setCustomDate("");
   setters.setCustomTime("");
+  setters.setConsent(false);
+  setters.setConsentError(false);
 }
 
 export function LeadForm({
@@ -55,7 +61,7 @@ export function LeadForm({
   title = "Вызвать мастера",
   subtitle = COPY.leadFormSubtitle,
   submitLabel,
-  id,
+  ...props
 }: LeadFormProps) {
   const pathname = usePathname();
   const resolvedSubmitLabel =
@@ -67,11 +73,15 @@ export function LeadForm({
   const [schedule, setSchedule] = useState<LeadScheduleValue>("asap");
   const [customDate, setCustomDate] = useState("");
   const [customTime, setCustomTime] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
   const showCustomDateTime = schedule === LEAD_SCHEDULE_CUSTOM;
-  const fieldId = id ?? variant;
+  const uniqueId = useId();
+  const fieldId = props.formFieldId ?? props.id ?? `${variant}-${uniqueId}`;
+  const todayStr = new Date().toISOString().split("T")[0];
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -79,6 +89,11 @@ export function LeadForm({
     if (showCustomDateTime && (!customDate.trim() || !customTime.trim())) {
       setStatus("error");
       setErrorMessage("Укажите дату и время для визита мастера");
+      return;
+    }
+
+    if (!consent) {
+      setConsentError(true);
       return;
     }
 
@@ -117,6 +132,8 @@ export function LeadForm({
         setSchedule,
         setCustomDate,
         setCustomTime,
+        setConsent,
+        setConsentError,
       });
       setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
@@ -149,7 +166,7 @@ export function LeadForm({
 
   return (
     <div
-      id={id}
+      id={props.id}
       className={cn(
         "rounded-2xl border border-slate-200/80 bg-white p-5 shadow-xl shadow-slate-200/50 sm:p-6",
         isInline && "border-0 bg-transparent p-0 shadow-none",
@@ -260,6 +277,7 @@ export function LeadForm({
                 <input
                   id={`date-${fieldId}`}
                   type="date"
+                  min={todayStr}
                   required
                   value={customDate}
                   onChange={(e) => setCustomDate(e.target.value)}
@@ -281,6 +299,18 @@ export function LeadForm({
               </div>
             </div>
           )}
+        </div>
+
+        <div className="mb-2">
+          <LegalConsentCheckbox
+            id={`consent-${fieldId}`}
+            checked={consent}
+            onChange={(checked) => {
+              setConsent(checked);
+              if (checked) setConsentError(false);
+            }}
+            showError={consentError}
+          />
         </div>
 
         <Button type="submit" size="lg" disabled={status === "loading"} className="w-full">
