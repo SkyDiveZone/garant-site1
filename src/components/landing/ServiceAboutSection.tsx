@@ -22,7 +22,7 @@ export function ServiceAboutSection({
 
   return (
     <div className={cn("w-full", className)}>
-      <Section className={cn("bg-slate-50/80", sectionClass, "!px-0")}>
+      <Section className={cn("bg-slate-50/80", sectionClass)}>
         <SectionHeader
           badge={content.badge}
           title={content.about.title}

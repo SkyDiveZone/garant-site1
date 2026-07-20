@@ -28,7 +28,7 @@ export function ServiceFAQSection({ faq }: ServiceFAQSectionProps) {
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
                 aria-expanded={isOpen}
               >
                 <span className="font-display font-semibold text-slate-900">
@@ -49,7 +49,7 @@ export function ServiceFAQSection({ faq }: ServiceFAQSectionProps) {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="border-t border-slate-100 px-6 pb-5 pt-2 text-sm leading-relaxed text-slate-600 whitespace-pre-line">
+                    <div className="border-t border-slate-100 px-5 pb-4 pt-2 text-sm leading-relaxed text-slate-600 whitespace-pre-line sm:px-6 sm:pb-5">
                       {item.answer}
                     </div>
                   </motion.div>

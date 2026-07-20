@@ -18,7 +18,7 @@ export function ServiceWhenToCall({
   sectionClass,
 }: ServiceWhenToCallProps) {
   return (
-    <Section className={`${sectionClass ?? ""} !px-0`}>
+    <Section className={sectionClass ?? ""}>
       <MotionSection>
         <MotionItem>
           <SectionHeader

@@ -22,7 +22,7 @@ export function HomePopularProblems({
   sectionClass,
 }: HomePopularProblemsProps) {
   return (
-    <Section className={`bg-slate-50/80 ${sectionClass ?? ""} !px-0`}>
+    <Section className={`bg-slate-50/80 ${sectionClass ?? ""}`}>
       <MotionSection>
         <MotionItem>
           <SectionHeader

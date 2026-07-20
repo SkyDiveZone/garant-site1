@@ -6,6 +6,7 @@ import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
+import { SPACING } from "@/lib/spacing";
 import type { ServicePage } from "@/lib/services";
 import { Clock } from "lucide-react";
 import Link from "next/link";
@@ -72,10 +73,10 @@ export function ServiceHero({ service }: ServiceHeroProps) {
               />
             </div>
           }
-          belowGrid={
-            <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
-          }
         />
+      </div>
+      <div className={SPACING.heroBelowGrid}>
+        <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
       </div>
     </section>
   );

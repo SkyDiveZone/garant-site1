@@ -16,7 +16,7 @@ export function HomeWhenToCall({
   sectionClass,
 }: HomeWhenToCallProps) {
   return (
-    <Section className={`${sectionClass ?? ""} !px-0`}>
+    <Section className={sectionClass ?? ""}>
       <MotionSection>
         <MotionItem>
           <SectionHeader

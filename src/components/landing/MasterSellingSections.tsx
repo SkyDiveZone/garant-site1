@@ -79,7 +79,7 @@ export function MasterSellingSections({
       )}
 
       {!hideWorkTypes && (
-        <Section className={cn(sectionClass, "!px-0")}>
+        <Section className={sectionClass}>
           <SectionHeader
             badge="Услуги"
             title={content.workTypes.title}
@@ -124,7 +124,7 @@ export function MasterSellingSections({
           sectionClass={sectionClass}
         />
       ) : (
-        <Section className={cn("bg-slate-50/80", sectionClass, "!px-0")}>
+        <Section className={cn("bg-slate-50/80", sectionClass)}>
           <SectionHeader
             badge="Проблемы"
             title={content.problems.title}
@@ -153,7 +153,7 @@ export function MasterSellingSections({
           sectionClass={sectionClass}
         />
       ) : (
-        <Section className={cn(sectionClass, "!px-0")}>
+        <Section className={sectionClass}>
           <SectionHeader
             badge="Ситуации"
             title={content.whenToCall.title}

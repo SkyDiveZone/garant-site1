@@ -17,7 +17,7 @@ export function FloatingCTA() {
 
   return (
     <div
-      className="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/95 p-2 shadow-[0_-4px_24px_rgba(15,76,129,0.12)] backdrop-blur-md sm:hidden"
+      className="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-2 shadow-[0_-4px_24px_rgba(15,76,129,0.12)] backdrop-blur-md sm:hidden"
       style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
     >
       <div className="flex gap-2">

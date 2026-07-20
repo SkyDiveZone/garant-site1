@@ -11,6 +11,7 @@ import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
+import { SPACING } from "@/lib/spacing";
 import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
 import type { ServicePage } from "@/lib/services";
 import { CheckCircle2, Clock } from "lucide-react";
@@ -77,13 +78,10 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
                 />
               </div>
             }
-            belowGrid={
-              <LeadFormSellingBelow
-                slug={service.slug}
-                formAnchor="#lead-form"
-              />
-            }
           />
+        </div>
+        <div className={SPACING.heroBelowGrid}>
+          <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
         </div>
       </section>
 

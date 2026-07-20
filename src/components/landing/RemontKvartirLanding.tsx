@@ -1,6 +1,7 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
+import { SPACING } from "@/lib/spacing";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
@@ -62,13 +63,13 @@ export function RemontKvartirLanding({ service }: RemontKvartirLandingProps) {
                 />
               </div>
             }
-            belowGrid={
-              <LeadFormSellingBelow
-                slug={service.slug}
-                formAnchor="#lead-form"
-                hideWorkTypes
-              />
-            }
+          />
+        </div>
+        <div className={SPACING.heroBelowGrid}>
+          <LeadFormSellingBelow
+            slug={service.slug}
+            formAnchor="#lead-form"
+            hideWorkTypes
           />
         </div>
       </section>

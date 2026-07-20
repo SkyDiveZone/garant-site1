@@ -61,12 +61,17 @@ body {
   @apply border border-white/10 bg-slate-900/70 backdrop-blur-xl;
 }
 
+/* Единая горизонтальная сетка: px-4 (320+) → sm:px-6 → lg:px-8 */
+.container-custom {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
 .section-padding {
-  @apply px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16;
+  @apply py-12 sm:py-14 lg:py-16;
 }
 
 .section-padding-tight {
-  @apply px-4 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12;
+  @apply py-8 sm:py-10 lg:py-12;
 }
 
 .page-hero {
@@ -74,15 +79,11 @@ body {
 }
 
 .page-hero__inner {
-  @apply relative mx-auto max-w-7xl px-4 pb-10 sm:px-6 sm:pb-12 lg:px-8 lg:pb-14;
+  @apply relative mx-auto w-full max-w-7xl px-4 pb-10 sm:px-6 sm:pb-12 lg:px-8 lg:pb-14;
 }
 
 .section-cta-panel {
   @apply mt-8 overflow-hidden rounded-2xl border border-brand-200/80 bg-gradient-to-br from-brand-50 via-white to-sky-50 p-5 sm:mt-10 sm:p-6;
-}
-
-.container-custom {
-  @apply mx-auto max-w-7xl;
 }
 
 .card-hover {

@@ -7,7 +7,7 @@ import { Clock, MapPin } from "lucide-react";
 export function Footer() {
   return (
     <footer id="contacts" className="border-t border-slate-200 bg-slate-950 text-slate-400">
-      <div className="container-custom section-padding !py-12">
+      <div className="container-custom py-12 sm:py-14">
         <div className="grid min-w-0 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="min-w-0">
             <div className="mb-4">

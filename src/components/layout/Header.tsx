@@ -42,7 +42,7 @@ export function Header() {
             : "bg-transparent"
         )}
       >
-        <div className="container-custom flex h-16 min-w-0 items-center justify-between gap-3 px-4 sm:h-[4.75rem] sm:px-6 lg:gap-6 lg:px-8">
+        <div className="container-custom flex h-16 min-w-0 items-center justify-between gap-3 sm:h-[4.75rem] lg:gap-6">
           <Logo variant="header" className="min-w-0 shrink" />
 
           <nav className="hidden items-center gap-6 lg:flex xl:gap-8" aria-label="Основная навигация">
@@ -81,13 +81,13 @@ export function Header() {
               exit={{ opacity: 0, height: 0 }}
               className="border-t border-slate-200 bg-white lg:hidden"
             >
-              <nav className="flex flex-col gap-1 px-4 py-4" aria-label="Мобильная навигация">
+              <nav className="container-custom flex flex-col gap-1 py-4" aria-label="Мобильная навигация">
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-lg px-3 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
+                    className="rounded-lg py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50"
                   >
                     {link.label}
                   </Link>
@@ -101,7 +101,7 @@ export function Header() {
                 >
                   Вызвать мастера
                 </Button>
-                <div className="mt-2 border-t border-slate-100 px-3 pt-3">
+                <div className="mt-2 border-t border-slate-100 pt-3">
                   <ContactBlock size="xs" align="start" phones={HEADER_PHONES} />
                 </div>
               </nav>

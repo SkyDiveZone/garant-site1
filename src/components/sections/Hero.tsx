@@ -6,6 +6,7 @@ import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { HERO } from "@/lib/data";
+import { SPACING } from "@/lib/spacing";
 import { motion } from "framer-motion";
 
 export function Hero() {
@@ -49,7 +50,7 @@ export function Hero() {
           }
           form={
             <motion.div
-              initial={{ opacity: 0, x: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="md:sticky md:top-24"
@@ -57,8 +58,10 @@ export function Hero() {
               <LeadFormWithExtras id="lead-form" subtitle={COPY.leadFormSubtitle} />
             </motion.div>
           }
-          belowGrid={<LeadFormSellingBelow formAnchor="#lead-form" />}
         />
+      </div>
+      <div className={SPACING.heroBelowGrid}>
+        <LeadFormSellingBelow formAnchor="#lead-form" />
       </div>
     </section>
   );

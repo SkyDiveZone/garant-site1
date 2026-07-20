@@ -9,7 +9,7 @@ interface LegalPageLayoutProps {
 export function LegalPageLayout({ title, children }: LegalPageLayoutProps) {
   return (
     <section className="section-padding pt-24 sm:pt-28">
-      <div className="container-custom mx-auto max-w-3xl px-4">
+      <div className="container-custom mx-auto max-w-3xl">
         <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h1>
         <div className="prose-legal mt-6 space-y-5 text-sm leading-relaxed text-slate-600 sm:text-base">
           {children}

@@ -17,32 +17,22 @@ interface LeadFormSplitLayoutProps {
   content: ReactNode;
   /** Правая колонка: только форма и «Есть вопросы?» (LeadFormWithExtras). */
   form: ReactNode;
-  /** Полная ширина под двухколоночным блоком — продающие секции и т.п. */
-  belowGrid?: ReactNode;
   className?: string;
   contentClassName?: string;
   formClassName?: string;
-  belowGridClassName?: string;
 }
 
 export function LeadFormSplitLayout({
   content,
   form,
-  belowGrid,
   className,
   contentClassName,
   formClassName,
-  belowGridClassName,
 }: LeadFormSplitLayoutProps) {
   return (
-    <>
-      <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
-        <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
-        <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>{form}</div>
-      </div>
-      {belowGrid && (
-        <div className={cn(SPACING.heroBelowGrid, belowGridClassName)}>{belowGrid}</div>
-      )}
-    </>
+    <div className={cn(LEAD_FORM_SPLIT_GRID, className)}>
+      <div className={cn(LEAD_FORM_SPLIT_CONTENT, contentClassName)}>{content}</div>
+      <div className={cn(LEAD_FORM_SPLIT_FORM, formClassName)}>{form}</div>
+    </div>
   );
 }
