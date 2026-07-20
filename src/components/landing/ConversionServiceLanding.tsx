@@ -1,4 +1,5 @@
 import { ServiceHero } from "@/components/landing/ServiceHero";
+import { ServiceAboutSection } from "@/components/landing/ServiceAboutSection";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
@@ -6,6 +7,7 @@ import { ServiceArea } from "@/components/sections/ServiceArea";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { COPY } from "@/lib/copy";
+import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
 import type { ServicePage } from "@/lib/services";
 
 interface ConversionServiceLandingProps {
@@ -36,6 +38,8 @@ export function ConversionServiceLanding({ service }: ConversionServiceLandingPr
       </Section>
 
       <HowWeWorkSection />
+
+      {isAboutBeforeFaqSlug(service.slug) && <ServiceAboutSection slug={service.slug} />}
 
       <ServiceFAQSection faq={service.faq} />
 

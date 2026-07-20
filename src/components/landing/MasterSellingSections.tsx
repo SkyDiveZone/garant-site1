@@ -1,12 +1,12 @@
 "use client";
 
+import { ServiceAboutSection } from "@/components/landing/ServiceAboutSection";
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { HomePopularProblems } from "@/components/sections/HomePopularProblems";
 import { HomeWhenToCall } from "@/components/sections/HomeWhenToCall";
 import { ServicePopularProblems } from "@/components/sections/ServicePopularProblems";
 import { ServiceWhenToCall } from "@/components/sections/ServiceWhenToCall";
 import { WorkTypesConsultationCTA } from "@/components/sections/WorkTypesConsultationCTA";
-import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { getServiceBySlug } from "@/lib/services";
 import { getSellingContent } from "@/lib/services/service-selling-content";
@@ -47,6 +47,8 @@ interface MasterSellingSectionsProps {
   compact?: boolean;
   /** Скрыть «Виды работ», если на странице уже есть отдельный блок с услугами */
   hideWorkTypes?: boolean;
+  /** Скрыть «Чем занимается…» — блок выводится отдельно перед FAQ */
+  hideAbout?: boolean;
 }
 
 export function MasterSellingSections({
@@ -55,6 +57,7 @@ export function MasterSellingSections({
   className,
   compact = false,
   hideWorkTypes = false,
+  hideAbout = false,
 }: MasterSellingSectionsProps) {
   const pathname = usePathname();
   const resolvedSlug =
@@ -70,37 +73,9 @@ export function MasterSellingSections({
 
   return (
     <div className={cn("w-full", className)}>
-      <Section className={cn("bg-slate-50/80", sectionClass, "!px-0")}>
-        <SectionHeader
-          badge={content.badge}
-          title={content.about.title}
-          subtitle={content.about.subtitle}
-        />
-        <p className="mx-auto max-w-3xl text-center text-base leading-relaxed text-slate-600 sm:text-lg">
-          {content.about.intro}
-        </p>
-        {content.about.introSecondary && (
-          <p className="mx-auto mt-4 max-w-3xl text-center text-base leading-relaxed text-slate-600">
-            {content.about.introSecondary}
-          </p>
-        )}
-        {content.about.highlights && content.about.highlights.length > 0 && (
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {content.about.highlights.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm"
-              >
-                <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                  <DynamicIcon name={item.icon} className="h-5 w-5" />
-                </div>
-                <h3 className="font-display font-bold text-slate-900">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-              </article>
-            ))}
-          </div>
-        )}
-      </Section>
+      {!hideAbout && (
+        <ServiceAboutSection slug={resolvedSlug} sectionClass={sectionClass} />
+      )}
 
       {!hideWorkTypes && (
         <Section className={cn(sectionClass, "!px-0")}>

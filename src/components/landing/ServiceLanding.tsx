@@ -1,4 +1,5 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
+import { ServiceAboutSection } from "@/components/landing/ServiceAboutSection";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
@@ -13,6 +14,7 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { COPY } from "@/lib/copy";
 import { SITE } from "@/lib/data";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
+import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
 import type { ServicePage } from "@/lib/services";
 import { Award, CheckCircle2, Clock, ShieldCheck, Star } from "lucide-react";
 import Link from "next/link";
@@ -153,6 +155,8 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
           </ul>
         </div>
       </Section>
+
+      {isAboutBeforeFaqSlug(service.slug) && <ServiceAboutSection slug={service.slug} />}
 
       <ServiceFAQSection faq={service.faq} />
 

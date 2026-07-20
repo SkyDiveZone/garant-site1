@@ -1,6 +1,7 @@
 "use client";
 
 import { MasterSellingSections } from "@/components/landing/MasterSellingSections";
+import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
 
 interface LeadFormSellingBelowProps {
   slug?: string;
@@ -24,6 +25,7 @@ export function LeadFormSellingBelow({
       compact={compact}
       className={className}
       hideWorkTypes={hideWorkTypes}
+      hideAbout={slug ? isAboutBeforeFaqSlug(slug) : false}
     />
   );
 }
