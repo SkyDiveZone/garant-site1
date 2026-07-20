@@ -27,9 +27,9 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
   return (
     <>
       <section className="page-hero">
-        <div className="gradient-mesh absolute inset-0" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_65%,white_100%)]" />
-        <div className="page-hero__inner">
+        <div className="gradient-mesh pointer-events-none absolute inset-0" />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_65%,white_100%)]" />
+        <div className="page-hero__inner relative z-10">
           <nav aria-label="Хлебные крошки" className="mb-6 text-sm text-slate-500">
             <Link href="/" className="hover:text-brand-600">
               Главная
@@ -80,10 +80,11 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
             }
           />
         </div>
-        <div className={SPACING.heroBelowGrid}>
-          <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
-        </div>
       </section>
+
+      <div className={SPACING.heroBelowGrid}>
+        <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
+      </div>
 
       <Section>
         <SectionHeader badge="Преимущества" title="Почему выбирают нас" />

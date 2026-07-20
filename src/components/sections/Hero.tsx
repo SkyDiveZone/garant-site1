@@ -11,11 +11,12 @@ import { motion } from "framer-motion";
 
 export function Hero() {
   return (
+    <>
     <section className="page-hero">
-      <div className="gradient-mesh absolute inset-0" />
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_60%,white_100%)]" />
+      <div className="gradient-mesh pointer-events-none absolute inset-0" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_60%,white_100%)]" />
 
-      <div className="page-hero__inner">
+      <div className="page-hero__inner relative z-10">
         <LeadFormSplitLayout
           content={
             <motion.div
@@ -60,9 +61,10 @@ export function Hero() {
           }
         />
       </div>
-      <div className={SPACING.heroBelowGrid}>
-        <LeadFormSellingBelow formAnchor="#lead-form" />
-      </div>
     </section>
+    <div className={SPACING.heroBelowGrid}>
+      <LeadFormSellingBelow formAnchor="#lead-form" />
+    </div>
+    </>
   );
 }

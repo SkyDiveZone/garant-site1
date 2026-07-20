@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
@@ -35,17 +35,26 @@ interface MotionSectionProps {
 }
 
 export function MotionSection({ children, className, id }: MotionSectionProps) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return (
+      <div id={id} className={cn(className)}>
+        {children}
+      </div>
+    );
+  }
+
   return (
-    <motion.section
+    <motion.div
       id={id}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-80px" }}
+      animate="visible"
       variants={staggerContainer}
       className={cn(className)}
     >
       {children}
-    </motion.section>
+    </motion.div>
   );
 }
 
@@ -56,6 +65,16 @@ interface MotionItemProps {
 }
 
 export function MotionItem({ children, className, id }: MotionItemProps) {
+  const reduceMotion = useReducedMotion();
+
+  if (reduceMotion) {
+    return (
+      <div id={id} className={cn(className)}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <motion.div id={id} variants={fadeInUp} className={cn(className)}>
       {children}
