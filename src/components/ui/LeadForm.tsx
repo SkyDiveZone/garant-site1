@@ -151,7 +151,7 @@ export function LeadForm({
     <div
       id={id}
       className={cn(
-        "rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xl shadow-slate-200/50 sm:p-8",
+        "rounded-2xl border border-slate-200/80 bg-white p-5 shadow-xl shadow-slate-200/50 sm:p-6",
         isInline && "border-0 bg-transparent p-0 shadow-none",
         className
       )}

@@ -21,7 +21,7 @@ export function FinalCTA() {
             Мастер приедет за 60 минут
           </span>
 
-          <h2 className="mt-6 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Любая бытовая проблема?{" "}
             <span className="gradient-text">Решим сегодня</span>
           </h2>
@@ -31,7 +31,7 @@ export function FinalCTA() {
             профессиональный мастер у вашей двери. {COPY.costAfterInspection}
           </p>
 
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
             <Button size="lg" href="#lead-form">
               <Phone className="h-4 w-4" />
               Вызвать мастера
@@ -58,7 +58,7 @@ export function FinalCTA() {
             />
           </div>
 
-          <div className="mt-8 flex flex-wrap justify-center gap-6">
+          <div className="mt-6 flex flex-wrap justify-center gap-5">
             <div className="flex items-center gap-2 text-sm text-slate-600">
               <ShieldCheck className="h-5 w-5 text-emerald-500" />
               Гарантия до 12 месяцев
@@ -71,7 +71,7 @@ export function FinalCTA() {
 
           <p className="mt-6 text-sm text-slate-600">{SITE.address}</p>
 
-          <div className="mt-8">
+          <div className="mt-6">
             <HeroFormBenefits />
           </div>
         </MotionItem>

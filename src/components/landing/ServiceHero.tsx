@@ -21,11 +21,11 @@ export function ServiceHero({ service }: ServiceHeroProps) {
   const formLabels = getLeadFormLabels(service.slug, service.categoryLabel);
 
   return (
-    <section className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-32">
+    <section className="page-hero">
       <div className="gradient-mesh absolute inset-0" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_65%,white_100%)]" />
 
-      <div className="container-custom relative px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
+      <div className="page-hero__inner">
         <nav aria-label="Хлебные крошки" className="mb-6 text-sm text-slate-500">
           <Link href="/" className="hover:text-brand-600">
             Главная

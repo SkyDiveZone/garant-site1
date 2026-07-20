@@ -7,8 +7,8 @@ import { Clock, MapPin } from "lucide-react";
 export function Footer() {
   return (
     <footer id="contacts" className="border-t border-slate-200 bg-slate-950 text-slate-400">
-      <div className="container-custom section-padding !py-16">
-        <div className="grid min-w-0 gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div className="container-custom section-padding !py-12">
+        <div className="grid min-w-0 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="min-w-0">
             <div className="mb-4">
               <Logo variant="footer" />
@@ -96,7 +96,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-slate-800 pt-8 text-center text-sm text-slate-500">
+        <div className="mt-8 border-t border-slate-800 pt-6 text-center text-sm text-slate-500">
           © {new Date().getFullYear()} {SITE.name}. Все права защищены.
         </div>
       </div>

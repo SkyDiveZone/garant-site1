@@ -10,7 +10,7 @@ export function WorkTypesConsultationCTA({
   formAnchor = "#lead-form",
 }: WorkTypesConsultationCTAProps) {
   return (
-    <div className="relative mt-10 overflow-hidden rounded-2xl border border-brand-200/80 bg-gradient-to-br from-brand-50 via-white to-sky-50 p-6 sm:mt-12 sm:p-8">
+    <div className="section-cta-panel relative">
       <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-brand-200/30 blur-2xl" aria-hidden="true" />
       <div className="absolute -bottom-10 -left-10 h-28 w-28 rounded-full bg-sky-200/40 blur-2xl" aria-hidden="true" />
 

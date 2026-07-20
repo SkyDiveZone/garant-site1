@@ -19,21 +19,21 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        "mb-14 max-w-3xl",
+        "mb-8 max-w-3xl sm:mb-10",
         align === "center" && "mx-auto text-center",
         className
       )}
     >
       {badge && (
-        <span className="mb-4 inline-flex items-center rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
+        <span className="mb-3 inline-flex items-center rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
           {badge}
         </span>
       )}
-      <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+      <h2 className="font-display text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-4 text-lg leading-relaxed text-slate-600 sm:text-xl">
+        <p className="mt-3 text-base leading-relaxed text-slate-600 sm:text-lg">
           {subtitle}
         </p>
       )}

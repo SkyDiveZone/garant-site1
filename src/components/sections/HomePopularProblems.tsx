@@ -9,6 +9,7 @@ import {
   HOME_PROBLEM_CATEGORY_STYLES,
 } from "@/lib/home-popular-problems";
 import { SITE } from "@/lib/data";
+import { SPACING } from "@/lib/spacing";
 import { HelpCircle, Phone } from "lucide-react";
 
 interface HomePopularProblemsProps {
@@ -67,7 +68,7 @@ export function HomePopularProblems({
         </MotionItem>
 
         <MotionItem>
-          <div className="mt-10 rounded-2xl border border-brand-100 bg-white px-6 py-8 text-center shadow-sm sm:mt-12 sm:px-10">
+          <div className={SPACING.ctaCard}>
             <p className="font-display text-xl font-bold text-slate-900 sm:text-2xl">
               Узнали свою ситуацию?
             </p>
@@ -92,7 +93,7 @@ export function HomePopularProblems({
         </MotionItem>
 
         <MotionItem>
-          <div className="relative mt-8 overflow-hidden rounded-2xl border border-brand-200/80 bg-gradient-to-br from-brand-50 via-white to-sky-50 p-6 sm:mt-10 sm:p-8">
+          <div className="section-cta-panel relative">
             <div
               className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-brand-200/30 blur-2xl"
               aria-hidden="true"

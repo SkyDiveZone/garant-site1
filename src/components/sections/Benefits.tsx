@@ -20,7 +20,7 @@ export function Benefits() {
         <div className="grid gap-6 lg:grid-cols-2">
           {BENEFITS.map((item) => (
             <MotionItem key={item.title}>
-              <div className="card-hover relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-8">
+              <div className="card-hover relative overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6">
                 <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-brand-50 opacity-60" />
                 <div className="relative">
                   <h3 className="font-display text-xl font-bold text-slate-900">

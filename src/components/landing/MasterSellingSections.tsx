@@ -12,6 +12,7 @@ import { getServiceBySlug } from "@/lib/services";
 import { getSellingContent } from "@/lib/services/service-selling-content";
 import { getServicePopularProblemsConfig } from "@/lib/services/service-popular-problems-registry";
 import { getServiceWhenToCallConfig } from "@/lib/services/service-when-to-call-registry";
+import { SPACING } from "@/lib/spacing";
 import { cn } from "@/lib/utils";
 import {
   AlertCircle,
@@ -68,7 +69,7 @@ export function MasterSellingSections({
   const popularProblemsConfig = getServicePopularProblemsConfig(resolvedSlug);
   const whenToCallConfig = getServiceWhenToCallConfig(resolvedSlug);
 
-  const sectionClass = compact ? "!py-10 sm:!py-12" : undefined;
+  const sectionClass = compact ? SPACING.sectionCompact : undefined;
   const gridGap = compact ? "gap-2.5" : "gap-3";
 
   return (
@@ -107,7 +108,7 @@ export function MasterSellingSections({
           </div>
           {isHomepage && <WorkTypesConsultationCTA formAnchor={formAnchor} />}
           {!compact && !isHomepage && (
-            <div className="mt-8 text-center">
+            <div className="mt-6 text-center">
               <ConversionActions formAnchor={formAnchor} />
             </div>
           )}
@@ -182,7 +183,7 @@ export function MasterSellingSections({
             })}
           </div>
           {!compact && (
-            <div className="mt-8 text-center">
+            <div className="mt-6 text-center">
               <ConversionActions size="large" formAnchor={formAnchor} />
             </div>
           )}

@@ -11,7 +11,7 @@ export function Stats() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.15),transparent_70%)]" />
 
       <MotionSection className="relative">
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((stat) => (
             <MotionItem key={stat.label}>
               <div className="text-center">

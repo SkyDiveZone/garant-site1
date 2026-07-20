@@ -11,7 +11,7 @@ import { Phone } from "lucide-react";
 
 export function MidPageCTA() {
   return (
-    <Section className="!py-16">
+    <Section className="!py-12">
       <MotionSection>
         <MotionItem>
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-600 to-brand-800 px-6 py-12 sm:px-12 sm:py-16">

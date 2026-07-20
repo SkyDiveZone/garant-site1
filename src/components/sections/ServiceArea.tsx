@@ -29,7 +29,7 @@ export function ServiceArea() {
               </div>
             ))}
           </div>
-          <div className="mt-8 text-center">
+          <div className="mt-6 text-center">
             <Button href="#lead-form" size="lg">
               Вызвать мастера в мой район
             </Button>

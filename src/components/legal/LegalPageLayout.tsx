@@ -8,15 +8,15 @@ interface LegalPageLayoutProps {
 
 export function LegalPageLayout({ title, children }: LegalPageLayoutProps) {
   return (
-    <section className="section-padding pt-28">
+    <section className="section-padding pt-24 sm:pt-28">
       <div className="container-custom mx-auto max-w-3xl px-4">
         <h1 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h1>
-        <div className="prose-legal mt-8 space-y-6 text-sm leading-relaxed text-slate-600 sm:text-base">
+        <div className="prose-legal mt-6 space-y-5 text-sm leading-relaxed text-slate-600 sm:text-base">
           {children}
         </div>
         <Link
           href="/"
-          className="mt-10 inline-block text-sm font-medium text-brand-600 hover:underline"
+          className="mt-8 inline-block text-sm font-medium text-brand-600 hover:underline"
         >
           ← На главную
         </Link>

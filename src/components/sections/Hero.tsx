@@ -11,11 +11,11 @@ import { CheckCircle2, Phone, Star } from "lucide-react";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-24 sm:pt-28 lg:pt-32">
+    <section className="page-hero">
       <div className="gradient-mesh absolute inset-0" />
       <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_60%,white_100%)]" />
 
-      <div className="container-custom relative px-4 pb-12 sm:px-6 lg:px-8 lg:pb-16">
+      <div className="page-hero__inner">
         <LeadFormSplitLayout
           content={
             <motion.div
@@ -35,11 +35,11 @@ export function Hero() {
                 {HERO.title}
               </h1>
 
-              <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl">
+              <p className="mt-5 max-w-xl text-lg leading-relaxed text-slate-600 sm:text-xl">
                 {HERO.subtitle}
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button size="lg" href={`tel:${SITE.phoneRaw}`}>
                   <Phone className="h-4 w-4" />
                   {HERO.primaryCta}
@@ -49,7 +49,7 @@ export function Hero() {
                 </Button>
               </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-6">
+              <div className="mt-8 flex flex-wrap items-center gap-5">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400" />
@@ -62,7 +62,7 @@ export function Hero() {
                 </div>
               </div>
 
-              <div className="mt-8">
+              <div className="mt-6">
                 <HeroFormBenefits />
               </div>
             </motion.div>

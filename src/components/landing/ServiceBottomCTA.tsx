@@ -23,7 +23,7 @@ export function ServiceBottomCTA({
       <div className="relative mx-auto max-w-2xl text-center">
         <h2 className="font-display text-3xl font-bold text-slate-900 sm:text-4xl">{title}</h2>
         <p className="mt-4 text-lg text-slate-600">{subtitle}</p>
-        <div className="mt-8 flex justify-center">
+        <div className="mt-6 flex justify-center">
           <ConversionActions size="large" formAnchor={formAnchor} />
         </div>
         {showContacts && (
@@ -36,7 +36,7 @@ export function ServiceBottomCTA({
             <TelegramLink className="text-sky-600 hover:text-sky-700" iconSize={20} />
           </div>
         )}
-        <div className="mt-8">
+        <div className="mt-6">
           <HeroFormBenefits />
         </div>
       </div>

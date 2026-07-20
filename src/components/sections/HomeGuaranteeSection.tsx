@@ -10,7 +10,7 @@ export function HomeGuaranteeSection() {
     <Section id="guarantee" className="bg-slate-50/80">
       <MotionSection>
         <MotionItem>
-          <div className="relative overflow-hidden rounded-3xl border border-brand-200/80 bg-gradient-to-br from-white via-brand-50/40 to-white px-6 py-10 shadow-sm sm:px-10 sm:py-12">
+          <div className="relative overflow-hidden rounded-3xl border border-brand-200/80 bg-gradient-to-br from-white via-brand-50/40 to-white px-6 py-8 shadow-sm sm:px-8 sm:py-10">
             <div
               className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-brand-200/30 blur-3xl"
               aria-hidden="true"
@@ -20,7 +20,7 @@ export function HomeGuaranteeSection() {
               <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-lg shadow-brand-600/25">
                 <ShieldCheck className="h-7 w-7" aria-hidden="true" />
               </span>
-              <h2 className="mt-6 font-display text-2xl font-bold text-slate-900 sm:text-3xl lg:text-4xl">
+              <h2 className="mt-5 font-display text-2xl font-bold text-slate-900 sm:text-3xl lg:text-4xl">
                 {HOME_GUARANTEE.title}
               </h2>
               <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
@@ -28,7 +28,7 @@ export function HomeGuaranteeSection() {
               </p>
             </div>
 
-            <ul className="relative mt-10 grid gap-4 sm:grid-cols-2">
+            <ul className="relative mt-8 grid gap-3 sm:grid-cols-2">
               {HOME_GUARANTEE.items.map((item) => (
                 <li
                   key={item}

@@ -15,7 +15,7 @@ import { HelpCircle, Phone } from "lucide-react";
 export function ForWhom() {
   return (
     <Section className="bg-slate-50/80">
-      <MotionSection className="space-y-12 lg:space-y-16">
+      <MotionSection className="space-y-8 lg:space-y-10">
         <MotionItem>
           <SectionHeader
             title="Для кого"
@@ -55,7 +55,7 @@ export function ForWhom() {
         </MotionItem>
 
         <MotionItem>
-          <div className="relative overflow-hidden rounded-2xl border border-brand-200/80 bg-gradient-to-br from-brand-50 via-white to-sky-50 px-6 py-8 sm:px-10 sm:py-10">
+          <div className="relative overflow-hidden rounded-2xl border border-brand-200/80 bg-gradient-to-br from-brand-50 via-white to-sky-50 px-5 py-6 sm:px-8 sm:py-8">
             <div
               className="absolute -right-12 -top-12 h-40 w-40 rounded-full bg-brand-200/30 blur-3xl"
               aria-hidden="true"
@@ -65,7 +65,7 @@ export function ForWhom() {
               aria-hidden="true"
             />
 
-            <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+            <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="flex gap-4 lg:max-w-2xl">
                 <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-600 text-white shadow-lg shadow-brand-600/25">
                   <HelpCircle className="h-7 w-7" aria-hidden="true" />
