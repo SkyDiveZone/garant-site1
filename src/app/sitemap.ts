@@ -19,6 +19,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...servicePages,
     {
+      url: `${SITE.url}/otzyvy`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    {
       url: `${SITE.url}/privacy-policy`,
       lastModified: new Date(),
       changeFrequency: "monthly",

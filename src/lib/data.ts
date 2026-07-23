@@ -320,6 +320,7 @@ export const NAV_LINKS = [
   { href: "/elektrik", label: "Электрик" },
   { href: "/remont-kvartir", label: "Ремонт квартир" },
   { href: "/master-na-chas", label: "Мастер на час" },
+  { href: "/otzyvy", label: "Отзывы" },
   { href: "/#services", label: "Услуги" },
   { href: "/#contacts", label: "Контакты" },
 ];
@@ -333,6 +334,7 @@ export const FOOTER_SERVICES = [
 
 export const FOOTER_INFO = [
   { href: "/", label: "Главная" },
+  { href: "/otzyvy", label: "Отзывы" },
   { href: "/#services", label: "Услуги" },
   { href: "/#contacts", label: "Контакты" },
   { href: "/privacy-policy", label: "Политика конфиденциальности" },

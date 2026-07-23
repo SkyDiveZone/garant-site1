@@ -36,10 +36,7 @@ const nextConfig: NextConfig = {
     return [
       { source: "/privacy", destination: "/privacy-policy", permanent: true },
       { source: "/terms", destination: "/user-agreement", permanent: true },
-      { source: "/reviews", destination: "/", permanent: true },
-      { source: "/otzyvy", destination: "/", permanent: true },
-      { source: "/admin", destination: "/", permanent: true },
-      { source: "/admin/:path*", destination: "/", permanent: true },
+      { source: "/reviews", destination: "/otzyvy", permanent: true },
     ];
   },
   images: {
