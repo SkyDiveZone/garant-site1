@@ -1,9 +1,12 @@
 import { isAdminAuthenticated, verifyCsrfToken } from "@/lib/admin/auth";
 import {
+  applyPublicationDate,
+  isNewlyApproved,
+} from "@/lib/reviews/publish-date";
+import {
   filterReviewsForAdmin,
   getAllReviews,
   saveAllReviews,
-  saveReviewsWithNaturalDates,
 } from "@/lib/reviews/store";
 import { deleteReviewPhoto } from "@/lib/reviews/upload";
 import type { Review, ReviewAdminFilters, ReviewStatus } from "@/lib/reviews/types";
@@ -114,29 +117,29 @@ export async function PATCH(request: Request) {
     (p) => body.photos && !body.photos.includes(p)
   );
 
-  const updated: Review = {
+  const nextStatus = (body.status as ReviewStatus) ?? current.status;
+
+  let updated: Review = {
     ...current,
     name: body.name !== undefined ? sanitizeText(body.name, 80) : current.name,
     rating: body.rating ?? current.rating,
     category: body.category ?? current.category,
     text: body.text !== undefined ? sanitizeText(body.text, 5000) : current.text,
     photos: body.photos ?? current.photos,
-    status: (body.status as ReviewStatus) ?? current.status,
-    date: body.date?.trim() || current.date,
+    status: nextStatus,
   };
 
-  stored[idx] = updated;
-
-  const saved =
-    updated.status === "approved" || current.status === "approved"
-      ? await saveReviewsWithNaturalDates(stored)
-      : stored;
-
-  if (updated.status !== "approved" && current.status !== "approved") {
-    await saveAllReviews(stored);
+  if (isNewlyApproved(current.status, nextStatus)) {
+    updated = applyPublicationDate(updated);
+  } else if (current.status === "approved") {
+    updated.createdAt = current.createdAt;
+    updated.date = current.date;
   }
 
-  const finalReview = saved.find((r) => r.id === body.id) ?? updated;
+  stored[idx] = updated;
+  await saveAllReviews(stored);
+
+  const finalReview = updated;
 
   for (const photo of removedPhotos) {
     await deleteReviewPhoto(photo);

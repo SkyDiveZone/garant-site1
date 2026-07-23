@@ -1,79 +1,48 @@
 import { promises as fs } from "fs";
 import path from "path";
-import {
-  formatReviewDisplayDate,
-  needsDateRedistribution,
-  redistributeApprovedReviewDates,
-} from "@/lib/reviews/natural-dates";
+import { formatReviewDisplayDate } from "@/lib/reviews/publish-date";
 import type { Review, ReviewAdminFilters, ReviewCategory } from "@/lib/reviews/types";
 
 /** Имя логической таблицы в файловом хранилище */
 export const REVIEWS_TABLE = "reviews";
 
 const DB_FILENAME = "reviews-db.json";
-const DATES_VERSION = 2;
-
-interface ReviewsDbFile {
-  [REVIEWS_TABLE]?: Review[];
-  meta?: { datesVersion?: number };
-}
 
 function dbPath() {
   return path.join(process.cwd(), "data", DB_FILENAME);
 }
 
-async function readDbFile(): Promise<{ reviews: Review[]; datesVersion: number }> {
+async function readDb(): Promise<Review[]> {
   try {
     const raw = await fs.readFile(dbPath(), "utf-8");
-    const parsed = JSON.parse(raw) as ReviewsDbFile;
+    const parsed = JSON.parse(raw) as { [REVIEWS_TABLE]?: Review[] };
     const list = parsed[REVIEWS_TABLE];
-    return {
-      reviews: Array.isArray(list) ? list : [],
-      datesVersion: parsed.meta?.datesVersion ?? 0,
-    };
+    return Array.isArray(list) ? list : [];
   } catch {
-    return { reviews: [], datesVersion: 0 };
+    return [];
   }
 }
 
-async function writeDbFile(reviews: Review[], datesVersion: number): Promise<void> {
+async function writeDb(reviews: Review[]): Promise<void> {
   const dir = path.dirname(dbPath());
   await fs.mkdir(dir, { recursive: true });
-  const payload: ReviewsDbFile = {
-    [REVIEWS_TABLE]: reviews,
-    meta: { datesVersion },
-  };
-  await fs.writeFile(dbPath(), JSON.stringify(payload, null, 2), "utf-8");
-}
-
-async function ensureNaturalDates(): Promise<Review[]> {
-  const { reviews, datesVersion } = await readDbFile();
-  const outdated = datesVersion < DATES_VERSION || needsDateRedistribution(reviews);
-
-  if (!outdated) return reviews;
-
-  const updated = redistributeApprovedReviewDates(reviews);
-  await writeDbFile(updated, DATES_VERSION);
-  return updated;
+  await fs.writeFile(
+    dbPath(),
+    JSON.stringify({ [REVIEWS_TABLE]: reviews }, null, 2),
+    "utf-8"
+  );
 }
 
 export async function getAllReviews(): Promise<Review[]> {
-  return ensureNaturalDates();
+  return readDb();
 }
 
 export async function saveAllReviews(reviews: Review[]): Promise<void> {
-  const { datesVersion } = await readDbFile();
-  await writeDbFile(reviews, Math.max(datesVersion, DATES_VERSION));
-}
-
-export async function saveReviewsWithNaturalDates(reviews: Review[]): Promise<Review[]> {
-  const redistributed = redistributeApprovedReviewDates(reviews);
-  await writeDbFile(redistributed, DATES_VERSION);
-  return redistributed;
+  await writeDb(reviews);
 }
 
 export async function getPublishedReviews(category?: ReviewCategory): Promise<Review[]> {
-  let list = (await ensureNaturalDates()).filter((r) => r.status === "approved");
+  let list = (await readDb()).filter((r) => r.status === "approved");
   if (category) {
     list = list.filter((r) => r.category === category);
   }
@@ -125,7 +94,7 @@ export function filterReviewsForAdmin(
   );
 }
 
-/** Длинный формат для формы / админки */
+/** Длинный формат для даты отправки на модерацию */
 export function formatReviewDate(iso: string): string {
   return new Intl.DateTimeFormat("ru-RU", {
     day: "numeric",
