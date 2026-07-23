@@ -1,10 +1,14 @@
 import { isAdminAuthenticated, verifyCsrfToken } from "@/lib/admin/auth";
 import { getAllReviews, saveAllReviews } from "@/lib/reviews/store";
-import { deleteReviewVideo, MAX_VIDEO_SIZE, saveReviewVideo } from "@/lib/reviews/video-upload";
+import {
+  deleteReviewVideo,
+  MAX_VIDEO_SIZE,
+  saveReviewVideo,
+} from "@/lib/reviews/video-upload";
 import { NextResponse } from "next/server";
 
 export const runtime = "nodejs";
-export const maxDuration = 120;
+export const maxDuration = 300;
 
 async function requireAdmin(request: Request) {
   const ok = await isAdminAuthenticated();
@@ -42,11 +46,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Отзыв не найден" }, { status: 404 });
     }
 
-    const url = await saveReviewVideo(file);
-    if (!url) {
+    const result = await saveReviewVideo(file);
+    if (!result.ok) {
       const maxMb = Math.round(MAX_VIDEO_SIZE / (1024 * 1024));
       return NextResponse.json(
-        { error: `Недопустимый файл (mp4, webm, mov, до ${maxMb} МБ)` },
+        {
+          error: `${result.reason}. Допустимо: mp4, webm, mov до ${maxMb} МБ`,
+        },
         { status: 400 }
       );
     }
@@ -56,14 +62,14 @@ export async function POST(request: Request) {
       await deleteReviewVideo(current.video);
     }
 
-    const updated = { ...current, video: url };
+    const updated = { ...current, video: result.url };
     stored[idx] = updated;
     await saveAllReviews(stored);
 
-    return NextResponse.json({ review: updated, url });
+    return NextResponse.json({ review: updated, url: result.url });
   } catch (error) {
     console.error("[Admin review video] POST error:", error);
-    return NextResponse.json({ error: "Ошибка загрузки видео" }, { status: 500 });
+    return NextResponse.json({ error: "Ошибка загрузки видео на сервер" }, { status: 500 });
   }
 }
 

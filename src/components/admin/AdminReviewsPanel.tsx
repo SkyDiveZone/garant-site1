@@ -48,6 +48,9 @@ export function AdminReviewsPanel() {
   const [filterDateTo, setFilterDateTo] = useState("");
   const [lightboxPhoto, setLightboxPhoto] = useState<string | null>(null);
   const [replyModalOpen, setReplyModalOpen] = useState(false);
+  const [pendingVideoFile, setPendingVideoFile] = useState<File | null>(null);
+  const [pendingVideoPreview, setPendingVideoPreview] = useState<string | null>(null);
+  const [videoMessage, setVideoMessage] = useState<string>("");
 
   const buildQuery = useCallback(() => {
     const params = new URLSearchParams();
@@ -83,6 +86,21 @@ export function AdminReviewsPanel() {
     const timer = setTimeout(() => void load(), 300);
     return () => clearTimeout(timer);
   }, [load]);
+
+  useEffect(() => {
+    setPendingVideoFile(null);
+    setVideoMessage("");
+    setPendingVideoPreview((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return null;
+    });
+  }, [selected?.id]);
+
+  useEffect(() => {
+    return () => {
+      if (pendingVideoPreview) URL.revokeObjectURL(pendingVideoPreview);
+    };
+  }, [pendingVideoPreview]);
 
   const adminFetch = async (url: string, options: RequestInit = {}) => {
     const headers = new Headers(options.headers);
@@ -204,27 +222,65 @@ export function AdminReviewsPanel() {
     await saveReview({ id: selected.id, photos });
   };
 
-  const handleVideoUpload = async (files: FileList | null) => {
-    if (!selected || !files?.[0]) return;
+  const handleVideoSelect = (files: FileList | null) => {
+    if (!files?.[0]) return;
     const file = files[0];
+    setPendingVideoPreview((prev) => {
+      if (prev) URL.revokeObjectURL(prev);
+      return URL.createObjectURL(file);
+    });
+    setPendingVideoFile(file);
+    setVideoMessage("");
+  };
+
+  const uploadPendingVideo = async () => {
+    if (!selected || !pendingVideoFile) return;
     setSaving(true);
     setError("");
+    setVideoMessage("");
     try {
       const form = new FormData();
       form.append("id", selected.id);
-      form.append("file", file);
+      form.append("file", pendingVideoFile);
+
       const res = await adminFetch("/api/admin/reviews/video", {
         method: "POST",
         body: form,
       });
+
+      if (res.status === 413) {
+        throw new Error(
+          "Файл слишком большой для nginx (лимит 100 МБ). Обновите конфиг nginx на сервере."
+        );
+      }
+
+      const raw = await res.text();
+      let data: { review?: Review; error?: string };
+      try {
+        data = JSON.parse(raw) as { review?: Review; error?: string };
+      } catch {
+        throw new Error(`Ошибка сервера (${res.status}). Проверьте nginx и размер файла.`);
+      }
+
       if (!res.ok) {
-        const data = (await res.json()) as { error?: string };
         throw new Error(data.error ?? "Ошибка загрузки видео");
       }
-      const data = (await res.json()) as { review: Review };
+
+      if (!data.review) {
+        throw new Error("Сервер не вернул обновлённый отзыв");
+      }
+
       updateReviewInState(data.review);
+      setPendingVideoFile(null);
+      setPendingVideoPreview((prev) => {
+        if (prev) URL.revokeObjectURL(prev);
+        return null;
+      });
+      setVideoMessage("Видео сохранено и будет показано на странице отзывов.");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Ошибка загрузки видео");
+      const message = err instanceof Error ? err.message : "Ошибка загрузки видео";
+      setError(message);
+      setVideoMessage("");
     } finally {
       setSaving(false);
     }
@@ -246,6 +302,7 @@ export function AdminReviewsPanel() {
       }
       const data = (await res.json()) as { review: Review };
       updateReviewInState(data.review);
+      setVideoMessage("Видео удалено.");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Ошибка удаления видео");
     } finally {
@@ -521,68 +578,75 @@ export function AdminReviewsPanel() {
               <div className="rounded-xl border border-slate-200 bg-slate-50/80 p-4">
                 <div className="flex items-center justify-between gap-3">
                   <label className="text-sm font-medium text-slate-700">Видео</label>
-                  {selected.video && (
+                  {selected.video && !pendingVideoFile && (
                     <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-xs font-medium text-emerald-700">
-                      Загружено
+                      На сайте
                     </span>
                   )}
                 </div>
 
-                {selected.video ? (
-                  <div className="mt-3 space-y-3">
-                    <div className="overflow-hidden rounded-lg border border-slate-200 bg-black">
-                      <video
-                        src={selected.video}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        className="aspect-video w-full object-contain"
-                      />
-                    </div>
-                    <div className="flex flex-wrap gap-2">
-                      <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-200 hover:text-brand-700">
-                        <Video className="h-4 w-4" />
-                        Заменить видео
-                        <input
-                          type="file"
-                          accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov"
-                          className="hidden"
-                          onChange={(e) => {
-                            void handleVideoUpload(e.target.files);
-                            e.target.value = "";
-                          }}
-                        />
-                      </label>
-                      <Button
-                        type="button"
-                        variant="outline"
-                        size="sm"
-                        disabled={saving}
-                        onClick={() => void deleteVideo()}
-                        className="text-red-600 hover:bg-red-50"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                        Удалить видео
-                      </Button>
-                    </div>
+                {(selected.video || pendingVideoPreview) && (
+                  <div className="mt-3 overflow-hidden rounded-lg border border-slate-200 bg-black">
+                    <video
+                      src={pendingVideoPreview ?? selected.video}
+                      controls
+                      playsInline
+                      preload="metadata"
+                      className="aspect-video w-full object-contain"
+                    />
                   </div>
-                ) : (
-                  <div className="mt-3">
-                    <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-slate-300 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-brand-300 hover:bg-brand-50/40 hover:text-brand-700">
-                      <Video className="h-4 w-4" />
-                      Добавить видео
-                      <input
-                        type="file"
-                        accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov"
-                        className="hidden"
-                        onChange={(e) => {
-                          void handleVideoUpload(e.target.files);
-                          e.target.value = "";
-                        }}
-                      />
-                    </label>
-                    <p className="mt-2 text-xs text-slate-500">mp4, webm, mov — до 100 МБ</p>
-                  </div>
+                )}
+
+                {pendingVideoFile && (
+                  <p className="mt-2 text-xs text-slate-600">
+                    Выбрано: {pendingVideoFile.name} ({Math.round(pendingVideoFile.size / (1024 * 1024))} МБ)
+                  </p>
+                )}
+
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <label className="inline-flex cursor-pointer items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 transition hover:border-brand-200 hover:text-brand-700">
+                    <Video className="h-4 w-4" />
+                    {selected.video || pendingVideoFile ? "Выбрать другое" : "Добавить видео"}
+                    <input
+                      type="file"
+                      accept="video/mp4,video/webm,video/quicktime,.mp4,.webm,.mov"
+                      className="hidden"
+                      onChange={(e) => {
+                        handleVideoSelect(e.target.files);
+                        e.target.value = "";
+                      }}
+                    />
+                  </label>
+
+                  {pendingVideoFile && (
+                    <Button
+                      type="button"
+                      size="sm"
+                      disabled={saving}
+                      onClick={() => void uploadPendingVideo()}
+                    >
+                      {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : "Сохранить видео"}
+                    </Button>
+                  )}
+
+                  {selected.video && (
+                    <Button
+                      type="button"
+                      variant="outline"
+                      size="sm"
+                      disabled={saving}
+                      onClick={() => void deleteVideo()}
+                      className="text-red-600 hover:bg-red-50"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                      Удалить видео
+                    </Button>
+                  )}
+                </div>
+
+                <p className="mt-2 text-xs text-slate-500">mp4, webm, mov — до 100 МБ. Только для администратора.</p>
+                {videoMessage && (
+                  <p className="mt-2 text-xs font-medium text-emerald-700">{videoMessage}</p>
                 )}
               </div>
 
