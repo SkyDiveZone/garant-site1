@@ -9,6 +9,7 @@ import {
   saveAllReviews,
 } from "@/lib/reviews/store";
 import { deleteReviewPhoto } from "@/lib/reviews/upload";
+import { deleteReviewVideo } from "@/lib/reviews/video-upload";
 import type { Review, ReviewAdminFilters, ReviewStatus } from "@/lib/reviews/types";
 import { isReviewCategory } from "@/lib/reviews/categories";
 import {
@@ -137,6 +138,7 @@ export async function PATCH(request: Request) {
   }
 
   updated.adminReply = current.adminReply;
+  updated.video = current.video;
 
   stored[idx] = updated;
   await saveAllReviews(stored);
@@ -172,6 +174,8 @@ export async function DELETE(request: Request) {
   for (const photo of review.photos) {
     await deleteReviewPhoto(photo);
   }
+
+  await deleteReviewVideo(review.video);
 
   return NextResponse.json({ success: true });
 }

@@ -22,6 +22,8 @@ export interface Review {
   category: ReviewCategory;
   text: string;
   photos: string[];
+  /** URL видео, загруженного администратором */
+  video?: string;
   status: ReviewStatus;
   createdAt: string;
   /** Отображаемая дата, например «12 января 2025» */

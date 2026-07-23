@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { Calendar, Camera, Star } from "lucide-react";
 import { ReviewGallery } from "@/components/reviews/ReviewGallery";
 import { ReviewAdminReplyBlock } from "@/components/reviews/ReviewAdminReplyBlock";
+import { ReviewVideoPlayer } from "@/components/reviews/ReviewVideoPlayer";
 
 interface ReviewCardProps {
   review: Review;
@@ -27,6 +28,12 @@ export function ReviewCard({ review, className }: ReviewCardProps) {
             <Camera className="h-3.5 w-3.5" />
             {review.photos.length}
           </span>
+        </div>
+      )}
+
+      {review.video && (
+        <div className="border-t border-slate-100 bg-slate-950/5 p-3 sm:p-4">
+          <ReviewVideoPlayer src={review.video} />
         </div>
       )}
 

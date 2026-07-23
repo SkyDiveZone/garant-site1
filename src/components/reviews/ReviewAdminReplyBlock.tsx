@@ -1,6 +1,6 @@
 import type { ReviewAdminReply } from "@/lib/reviews/types";
 import { cn } from "@/lib/utils";
-import { Building2, Calendar, MessageSquare } from "lucide-react";
+import { Building2, MessageSquare } from "lucide-react";
 
 interface ReviewAdminReplyBlockProps {
   reply: ReviewAdminReply;
@@ -25,12 +25,9 @@ export function ReviewAdminReplyBlock({ reply, className }: ReviewAdminReplyBloc
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <MessageSquare className="h-4 w-4 shrink-0 text-brand-600" aria-hidden="true" />
             <p className="font-display text-sm font-bold text-brand-800 sm:text-base">
-              Ответ «Гарант Мастер»
+              💬 Ответ Гарант Мастер
             </p>
           </div>
-          <p className="mt-0.5 text-xs font-medium uppercase tracking-wide text-brand-600/80">
-            Ответ компании
-          </p>
 
           <div className="mt-3 space-y-3 text-sm leading-relaxed text-slate-700 sm:text-[15px]">
             {paragraphs.map((paragraph, index) => (
@@ -38,9 +35,10 @@ export function ReviewAdminReplyBlock({ reply, className }: ReviewAdminReplyBloc
             ))}
           </div>
 
-          <p className="mt-4 flex items-center gap-1.5 text-xs text-slate-500">
-            <Calendar className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
-            {reply.date}
+          <p className="mt-4 text-sm leading-relaxed text-slate-600">
+            С уважением,
+            <br />
+            Команда «Гарант Мастер»
           </p>
         </div>
       </div>
