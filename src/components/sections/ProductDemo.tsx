@@ -74,7 +74,7 @@ export function ProductDemo() {
                     <div>
                       <div className="text-sm text-brand-300">Новая заявка</div>
                       <div className="mt-1 font-semibold">
-                        Замена смесителя — ул. Шефская
+                        Замена смесителя — район ВИЗ
                       </div>
                     </div>
                     <div className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-medium text-emerald-400">

@@ -2,7 +2,7 @@ import { FOOTER_INFO, FOOTER_SERVICES, SITE } from "@/lib/data";
 import { ContactBlock } from "@/components/ui/ContactBlock";
 import { Logo } from "@/components/ui/Logo";
 import Link from "next/link";
-import { Clock, MapPin } from "lucide-react";
+import { Clock } from "lucide-react";
 
 export function Footer() {
   return (
@@ -18,10 +18,6 @@ export function Footer() {
               Работаем с 2012 года. Гарантия до 12 месяцев.
             </p>
             <p className="mt-4 flex items-start gap-2 text-sm">
-              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-              <span>{SITE.address}</span>
-            </p>
-            <p className="mt-2 flex items-start gap-2 text-sm">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
               <span>{SITE.hours}</span>
             </p>
@@ -49,10 +45,6 @@ export function Footer() {
             <ContactBlock theme="dark" size="sm" align="start" className="mb-4" />
             <ul className="space-y-2.5 text-sm">
               <li className="flex items-start gap-2 pt-1">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
-                <span>{SITE.address}</span>
-              </li>
-              <li className="flex items-start gap-2">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-400" aria-hidden="true" />
                 <span>{SITE.hours}</span>
               </li>

@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import { LegalConsentCheckbox } from "@/components/ui/LegalConsentCheckbox";
 import { REVIEW_CATEGORIES } from "@/lib/reviews/categories";
 import type { ReviewCategory } from "@/lib/reviews/types";
 import { cn } from "@/lib/utils";
@@ -20,6 +21,8 @@ export function ReviewForm() {
   const [previews, setPreviews] = useState<string[]>([]);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
+  const [consent, setConsent] = useState(false);
+  const [consentError, setConsentError] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const handlePhotos = (files: FileList | null) => {
@@ -38,6 +41,12 @@ export function ReviewForm() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!consent) {
+      setConsentError(true);
+      return;
+    }
+
     setStatus("loading");
     setError("");
 
@@ -61,6 +70,8 @@ export function ReviewForm() {
       setText("");
       setRating(5);
       setPhotos([]);
+      setConsent(false);
+      setConsentError(false);
       previews.forEach((p) => URL.revokeObjectURL(p));
       setPreviews([]);
       if (fileRef.current) fileRef.current.value = "";
@@ -234,6 +245,16 @@ export function ReviewForm() {
           {error}
         </div>
       )}
+
+      <LegalConsentCheckbox
+        id="review-consent"
+        checked={consent}
+        onChange={(checked) => {
+          setConsent(checked);
+          if (checked) setConsentError(false);
+        }}
+        showError={consentError}
+      />
 
       <Button type="submit" size="lg" disabled={status === "loading"} className="w-full sm:w-auto">
         {status === "loading" ? (

@@ -1,5 +1,13 @@
-import Script from "next/script";
+"use client";
 
+import Script from "next/script";
+import { useEffect, useState } from "react";
+
+import {
+  COOKIE_CONSENT_EVENT,
+  getCookieConsent,
+  type CookieConsentValue,
+} from "@/lib/cookie-consent";
 import { YANDEX_METRIKA_ID } from "@/lib/yandex-metrika";
 import { YANDEX_METRIKA_INIT_JSON } from "@/lib/yandex-metrika-init";
 
@@ -7,9 +15,25 @@ const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 const PIXEL_ID = process.env.NEXT_PUBLIC_PIXEL_ID;
 
 export function Analytics() {
+  const [consent, setConsent] = useState<CookieConsentValue | null>(null);
+
+  useEffect(() => {
+    setConsent(getCookieConsent());
+
+    const onChange = () => {
+      setConsent(getCookieConsent());
+    };
+
+    window.addEventListener(COOKIE_CONSENT_EVENT, onChange);
+    return () => window.removeEventListener(COOKIE_CONSENT_EVENT, onChange);
+  }, []);
+
+  if (consent !== "accepted") {
+    return null;
+  }
+
   return (
     <>
-      {/* Счётчик в head: tag.js грузится рано, init — после CSS (см. yandex-metrika-init). */}
       <Script id="yandex-metrika-loader" strategy="afterInteractive">
         {`
           (function(m,e,t,r,i,k,a){

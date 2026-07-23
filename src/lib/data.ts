@@ -18,7 +18,7 @@ export const SITE = {
   phone: PHONES[0].display,
   phoneRaw: PHONES[0].raw,
   email: "STESER-OFFICIAL@yandex.ru",
-  address: "г. Екатеринбург, Шефская ул., 1А",
+  serviceArea: "Екатеринбург и область",
   hours: ROUND_THE_CLOCK.hours,
   url: "https://garant-master-ekb.ru",
   telegram: {

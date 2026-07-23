@@ -12,11 +12,9 @@ export function ReviewsJsonLd({ reviews }: ReviewsJsonLdProps) {
     "@type": "LocalBusiness",
     name: SITE.name,
     url: `${SITE.url}/otzyvy`,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: SITE.address,
-      addressLocality: "Екатеринбург",
-      addressCountry: "RU",
+    areaServed: {
+      "@type": "City",
+      name: "Екатеринбург",
     },
     aggregateRating:
       reviews.length > 0

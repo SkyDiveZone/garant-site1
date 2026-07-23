@@ -18,13 +18,6 @@ export function JsonLd() {
       areaServed: "RU",
       availableLanguage: "Russian",
     })),
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Шефская ул., 1А",
-      addressLocality: "Екатеринбург",
-      addressRegion: "Сверdловская область",
-      addressCountry: "RU",
-    },
     openingHours: "Mo-Su 00:00-23:59",
     areaServed: {
       "@type": "City",
@@ -48,12 +41,6 @@ export function JsonLd() {
     email: SITE.email,
     telephone: SITE.phoneRaw,
     sameAs: [SITE.telegram.url, SITE.max.url],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Шефская ул., 1А",
-      addressLocality: "Екатеринбург",
-      addressCountry: "RU",
-    },
   };
 
   const website = {

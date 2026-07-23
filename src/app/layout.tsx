@@ -1,5 +1,6 @@
 import { Analytics } from "@/components/seo/Analytics";
 import { YandexMetrikaRouteHit } from "@/components/seo/YandexMetrikaRouteHit";
+import { CookieConsentBanner } from "@/components/legal/CookieConsentBanner";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
 import { Header } from "@/components/layout/Header";
@@ -43,6 +44,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <FloatingCTA />
+        <CookieConsentBanner />
         <Analytics />
         <YandexMetrikaRouteHit />
       </body>

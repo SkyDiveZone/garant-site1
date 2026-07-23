@@ -59,7 +59,7 @@ export function HeroTrustInfo({
           className={cn("h-4 w-4 shrink-0", isOnDark ? "text-white" : "text-brand-600")}
           aria-hidden="true"
         />
-        {SITE.address}
+        {SITE.serviceArea}
       </p>
     </div>
   );

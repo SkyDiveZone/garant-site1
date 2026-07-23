@@ -58,13 +58,11 @@ export function ServiceJsonLd({ service }: ServiceJsonLdProps) {
       telephone: phone.raw,
       contactType: "customer service",
     })),
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Шефская ул., 1А",
-      addressLocality: "Екатеринбург",
-      addressCountry: "RU",
-    },
     openingHours: "Mo-Su 00:00-23:59",
+    areaServed: {
+      "@type": "City",
+      name: "Екатеринбург",
+    },
   };
 
   const serviceSchema = {
