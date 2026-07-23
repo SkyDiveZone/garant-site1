@@ -1,9 +1,9 @@
 import { isAdminAuthenticated, verifyCsrfToken } from "@/lib/admin/auth";
 import {
   filterReviewsForAdmin,
-  formatReviewDate,
   getAllReviews,
   saveAllReviews,
+  saveReviewsWithNaturalDates,
 } from "@/lib/reviews/store";
 import { deleteReviewPhoto } from "@/lib/reviews/upload";
 import type { Review, ReviewAdminFilters, ReviewStatus } from "@/lib/reviews/types";
@@ -126,13 +126,23 @@ export async function PATCH(request: Request) {
   };
 
   stored[idx] = updated;
-  await saveAllReviews(stored);
+
+  const saved =
+    updated.status === "approved" || current.status === "approved"
+      ? await saveReviewsWithNaturalDates(stored)
+      : stored;
+
+  if (updated.status !== "approved" && current.status !== "approved") {
+    await saveAllReviews(stored);
+  }
+
+  const finalReview = saved.find((r) => r.id === body.id) ?? updated;
 
   for (const photo of removedPhotos) {
     await deleteReviewPhoto(photo);
   }
 
-  return NextResponse.json({ review: updated });
+  return NextResponse.json({ review: finalReview });
 }
 
 export async function DELETE(request: Request) {
