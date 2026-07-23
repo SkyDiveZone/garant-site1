@@ -136,6 +136,8 @@ export async function PATCH(request: Request) {
     updated.date = current.date;
   }
 
+  updated.adminReply = current.adminReply;
+
   stored[idx] = updated;
   await saveAllReviews(stored);
 

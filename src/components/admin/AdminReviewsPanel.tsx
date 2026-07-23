@@ -1,5 +1,6 @@
 "use client";
 
+import { AdminReplyModal } from "@/components/admin/AdminReplyModal";
 import { Button } from "@/components/ui/Button";
 import { REVIEW_CATEGORIES } from "@/lib/reviews/categories";
 import type { Review, ReviewCategory, ReviewStatus } from "@/lib/reviews/types";
@@ -8,6 +9,7 @@ import {
   Check,
   Loader2,
   LogOut,
+  MessageSquare,
   Search,
   Star,
   Trash2,
@@ -44,6 +46,7 @@ export function AdminReviewsPanel() {
   const [filterDateFrom, setFilterDateFrom] = useState("");
   const [filterDateTo, setFilterDateTo] = useState("");
   const [lightboxPhoto, setLightboxPhoto] = useState<string | null>(null);
+  const [replyModalOpen, setReplyModalOpen] = useState(false);
 
   const buildQuery = useCallback(() => {
     const params = new URLSearchParams();
@@ -86,6 +89,11 @@ export function AdminReviewsPanel() {
     return fetch(url, { ...options, headers });
   };
 
+  const updateReviewInState = (review: Review) => {
+    setReviews((prev) => prev.map((r) => (r.id === review.id ? review : r)));
+    setSelected(review);
+  };
+
   const saveReview = async (patch: Partial<Review> & { id: string }) => {
     setSaving(true);
     setError("");
@@ -100,10 +108,56 @@ export function AdminReviewsPanel() {
         throw new Error(data.error ?? "Ошибка сохранения");
       }
       const data = (await res.json()) as { review: Review };
-      setReviews((prev) => prev.map((r) => (r.id === data.review.id ? data.review : r)));
-      setSelected(data.review);
+      updateReviewInState(data.review);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Ошибка сохранения");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const saveReply = async (text: string) => {
+    if (!selected) return;
+    setSaving(true);
+    setError("");
+    try {
+      const res = await adminFetch("/api/admin/reviews/reply", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: selected.id, text }),
+      });
+      if (!res.ok) {
+        const data = (await res.json()) as { error?: string };
+        throw new Error(data.error ?? "Ошибка сохранения ответа");
+      }
+      const data = (await res.json()) as { review: Review };
+      updateReviewInState(data.review);
+      setReplyModalOpen(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Ошибка сохранения ответа");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const deleteReply = async () => {
+    if (!selected) return;
+    setSaving(true);
+    setError("");
+    try {
+      const res = await adminFetch(
+        `/api/admin/reviews/reply?id=${encodeURIComponent(selected.id)}`,
+        { method: "DELETE" }
+      );
+      if (!res.ok) {
+        const data = (await res.json()) as { error?: string };
+        throw new Error(data.error ?? "Ошибка удаления ответа");
+      }
+      const data = (await res.json()) as { review: Review };
+      updateReviewInState(data.review);
+      setReplyModalOpen(false);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Ошибка удаления ответа");
     } finally {
       setSaving(false);
     }
@@ -119,6 +173,7 @@ export function AdminReviewsPanel() {
       if (!res.ok) throw new Error("Ошибка удаления");
       setReviews((prev) => prev.filter((r) => r.id !== id));
       setSelected(null);
+      setReplyModalOpen(false);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Ошибка удаления");
     } finally {
@@ -279,6 +334,12 @@ export function AdminReviewsPanel() {
                       <span>{review.photos.length} фото</span>
                     </>
                   )}
+                  {review.adminReply && (
+                    <>
+                      <span>·</span>
+                      <span className="text-brand-600">💬 ответ</span>
+                    </>
+                  )}
                 </div>
               </button>
             ))
@@ -401,6 +462,18 @@ export function AdminReviewsPanel() {
                 </div>
               )}
 
+              {selected.adminReply && (
+                <div className="rounded-xl border border-brand-100 bg-brand-50/60 p-4">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-700">
+                    Текущий ответ компании
+                  </p>
+                  <p className="mt-2 line-clamp-4 whitespace-pre-wrap text-sm text-slate-700">
+                    {selected.adminReply.text}
+                  </p>
+                  <p className="mt-2 text-xs text-slate-500">{selected.adminReply.date}</p>
+                </div>
+              )}
+
               <div className="flex flex-wrap gap-2">
                 <Button disabled={saving} onClick={() => saveReview({ ...selected, id: selected.id })}>
                   {saving ? <Loader2 className="h-4 w-4 animate-spin" /> : "Сохранить"}
@@ -420,6 +493,19 @@ export function AdminReviewsPanel() {
                 >
                   <X className="h-4 w-4" />
                   Отклонить
+                </Button>
+                <Button
+                  variant="outline"
+                  disabled={saving || selected.status !== "approved"}
+                  onClick={() => setReplyModalOpen(true)}
+                  title={
+                    selected.status !== "approved"
+                      ? "Ответ доступен только для опубликованных отзывов"
+                      : undefined
+                  }
+                >
+                  <MessageSquare className="h-4 w-4" />
+                  {selected.adminReply ? "💬 Редактировать ответ" : "💬 Ответить"}
                 </Button>
                 <Button
                   variant="ghost"
@@ -452,6 +538,17 @@ export function AdminReviewsPanel() {
             <Image src={lightboxPhoto} alt="" fill className="object-contain" unoptimized />
           </div>
         </div>
+      )}
+
+      {selected && (
+        <AdminReplyModal
+          review={selected}
+          open={replyModalOpen}
+          saving={saving}
+          onClose={() => setReplyModalOpen(false)}
+          onSave={saveReply}
+          onDelete={deleteReply}
+        />
       )}
     </div>
   );

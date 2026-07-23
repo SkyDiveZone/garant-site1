@@ -6,6 +6,14 @@ export type ReviewCategory =
   | "master-na-chas"
   | "remont-kvartir";
 
+/** Официальный ответ компании на отзыв */
+export interface ReviewAdminReply {
+  text: string;
+  createdAt: string;
+  /** Отображаемая дата, например «24.07.2026» */
+  date: string;
+}
+
 export interface Review {
   id: string;
   name: string;
@@ -18,6 +26,7 @@ export interface Review {
   createdAt: string;
   /** Отображаемая дата, например «12 января 2025» */
   date: string;
+  adminReply?: ReviewAdminReply;
 }
 
 export interface ReviewInput {

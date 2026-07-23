@@ -1,4 +1,4 @@
-import type { Review, ReviewStatus } from "@/lib/reviews/types";
+import type { Review, ReviewAdminReply, ReviewStatus } from "@/lib/reviews/types";
 
 /** Публичный формат даты публикации: 24.07.2026 */
 export function formatReviewDisplayDate(iso: string): string {
@@ -18,6 +18,16 @@ export function applyPublicationDate(review: Review): Review {
   const now = new Date().toISOString();
   return {
     ...review,
+    createdAt: now,
+    date: formatReviewDisplayDate(now),
+  };
+}
+
+/** Создаёт или обновляет ответ администрации с текущей датой */
+export function createAdminReply(text: string): ReviewAdminReply {
+  const now = new Date().toISOString();
+  return {
+    text,
     createdAt: now,
     date: formatReviewDisplayDate(now),
   };

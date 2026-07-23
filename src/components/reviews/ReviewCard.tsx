@@ -5,6 +5,7 @@ import type { Review } from "@/lib/reviews/types";
 import { cn } from "@/lib/utils";
 import { Calendar, Camera, Star } from "lucide-react";
 import { ReviewGallery } from "@/components/reviews/ReviewGallery";
+import { ReviewAdminReplyBlock } from "@/components/reviews/ReviewAdminReplyBlock";
 
 interface ReviewCardProps {
   review: Review;
@@ -58,6 +59,8 @@ export function ReviewCard({ review, className }: ReviewCardProps) {
           <Calendar className="h-3.5 w-3.5" />
           {review.date}
         </p>
+
+        {review.adminReply && <ReviewAdminReplyBlock reply={review.adminReply} />}
       </div>
     </article>
   );

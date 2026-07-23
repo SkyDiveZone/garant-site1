@@ -37,6 +37,12 @@ export function validateReviewText(text: string): string | null {
   return null;
 }
 
+export function validateAdminReplyText(text: string): string | null {
+  const v = sanitizeText(text, 3000);
+  if (v.length < 5) return "Напишите ответ (минимум 5 символов)";
+  return null;
+}
+
 export function escapeHtml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
