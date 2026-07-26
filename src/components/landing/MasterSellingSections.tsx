@@ -6,6 +6,7 @@ import { HomePopularProblems } from "@/components/sections/HomePopularProblems";
 import { HomeWhenToCall } from "@/components/sections/HomeWhenToCall";
 import { ServicePopularProblems } from "@/components/sections/ServicePopularProblems";
 import { ServiceWhenToCall } from "@/components/sections/ServiceWhenToCall";
+import { ServicePriceList } from "@/components/sections/ServicePriceList";
 import { WorkTypesConsultationCTA } from "@/components/sections/WorkTypesConsultationCTA";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { getServiceBySlug } from "@/lib/services";
@@ -113,6 +114,15 @@ export function MasterSellingSections({
             </div>
           )}
         </Section>
+      )}
+
+      {!isHomepage && (
+        <ServicePriceList
+          slug={resolvedSlug}
+          formAnchor={formAnchor}
+          sectionClass={sectionClass}
+          compact={compact}
+        />
       )}
 
       {isHomepage ? (

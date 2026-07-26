@@ -1,5 +1,7 @@
 import { Hero } from "@/components/sections/Hero";
 import { PopularServices } from "@/components/sections/PopularServices";
+import { PricingCatalog } from "@/components/sections/PricingCatalog";
+import { PopularSubServices } from "@/components/sections/PopularSubServices";
 import { WhyTrust } from "@/components/sections/WhyTrust";
 import { ForWhom } from "@/components/sections/ForWhom";
 import { Benefits } from "@/components/sections/Benefits";
@@ -15,6 +17,8 @@ export default function HomePage() {
     <>
       <Hero />
       <PopularServices />
+      <PricingCatalog />
+      <PopularSubServices />
       <WhyTrust />
       <ForWhom />
       <Benefits />
