@@ -8,7 +8,7 @@ import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 interface ServiceFAQSectionProps {
-  faq: ServiceFAQ[];
+  faq: readonly ServiceFAQ[];
 }
 
 export function ServiceFAQSection({ faq }: ServiceFAQSectionProps) {

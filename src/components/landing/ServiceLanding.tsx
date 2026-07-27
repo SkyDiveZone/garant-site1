@@ -3,18 +3,24 @@ import { ServiceAboutSection } from "@/components/landing/ServiceAboutSection";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
+import { SantehnikServiceGroups } from "@/components/sections/SantehnikServiceGroups";
 import { ServiceArea } from "@/components/sections/ServiceArea";
+import { ServiceRichSections } from "@/components/sections/ServiceRichSections";
+import { ServiceTrustStrip } from "@/components/sections/ServiceTrustStrip";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
-import { SantehnikServiceGroups } from "@/components/sections/SantehnikServiceGroups";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import { SPACING } from "@/lib/spacing";
 import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
 import type { ServicePage } from "@/lib/services";
+import {
+  getServiceRichContent,
+  isRichServiceSlug,
+} from "@/lib/services/service-rich-content";
 import { CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
 
@@ -24,6 +30,8 @@ interface ServiceLandingProps {
 
 export function ServiceLanding({ service }: ServiceLandingProps) {
   const formLabels = getLeadFormLabels(service.slug, service.categoryLabel);
+  const isRich = isRichServiceSlug(service.slug);
+  const richContent = getServiceRichContent(service.slug);
 
   return (
     <>
@@ -83,11 +91,23 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
         </div>
       </section>
 
-      <div className={SPACING.heroBelowGrid}>
-        <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
-      </div>
+      {(isRich || service.slug === "santehnik") && <ServiceTrustStrip />}
+
+      {!isRich && (
+        <div className={SPACING.heroBelowGrid}>
+          <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
+        </div>
+      )}
 
       {service.slug === "santehnik" && <SantehnikServiceGroups formAnchor="#lead-form" />}
+
+      {isRich && richContent && (
+        <ServiceRichSections
+          content={richContent}
+          formAnchor="#lead-form"
+          categoryLabel={service.categoryLabel}
+        />
+      )}
 
       <Section>
         <SectionHeader badge="Преимущества" title="Почему выбирают нас" />
@@ -109,7 +129,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
         </div>
       </Section>
 
-      <HowWeWorkSection />
+      {!isRich && <HowWeWorkSection />}
 
       <Section className="bg-slate-50/80">
         <div className="mx-auto max-w-3xl">
@@ -136,9 +156,11 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
         </div>
       </Section>
 
-      {isAboutBeforeFaqSlug(service.slug) && <ServiceAboutSection slug={service.slug} />}
+      {isAboutBeforeFaqSlug(service.slug) && !isRich && (
+        <ServiceAboutSection slug={service.slug} />
+      )}
 
-      <ServiceFAQSection faq={service.faq} />
+      <ServiceFAQSection faq={richContent?.faq ?? service.faq} />
 
       <ServiceArea />
 

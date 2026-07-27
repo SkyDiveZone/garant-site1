@@ -9,6 +9,7 @@ interface LeadFormSellingBelowProps {
   compact?: boolean;
   className?: string;
   hideWorkTypes?: boolean;
+  hidePriceList?: boolean;
 }
 
 export function LeadFormSellingBelow({
@@ -17,6 +18,7 @@ export function LeadFormSellingBelow({
   compact,
   className,
   hideWorkTypes,
+  hidePriceList,
 }: LeadFormSellingBelowProps) {
   return (
     <MasterSellingSections
@@ -25,6 +27,7 @@ export function LeadFormSellingBelow({
       compact={compact}
       className={className}
       hideWorkTypes={hideWorkTypes}
+      hidePriceList={hidePriceList}
       hideAbout={slug ? isAboutBeforeFaqSlug(slug) : false}
     />
   );

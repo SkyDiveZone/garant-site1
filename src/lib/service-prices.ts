@@ -329,3 +329,17 @@ export function getCategoryForPriceSlug(
 ): ServiceCategory | undefined {
   return SLUG_TO_CATEGORY[slug];
 }
+
+/** Находит позиции прайса по точному названию (для фокусного блока на подстраницах). */
+export function getPriceItemsByNames(names: readonly string[]): PriceListItem[] {
+  const catalog = [
+    ...SANTEHNIK_PRICES,
+    ...ELEKTRIK_PRICES,
+    ...MASTER_PRICES,
+    ...REMONT_PRICES,
+  ];
+  const all = catalog.flatMap((group) => group.items);
+  return names
+    .map((name) => all.find((item) => item.name === name))
+    .filter((item): item is PriceListItem => item !== undefined);
+}

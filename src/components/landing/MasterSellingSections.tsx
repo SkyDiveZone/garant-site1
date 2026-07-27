@@ -51,6 +51,8 @@ interface MasterSellingSectionsProps {
   hideWorkTypes?: boolean;
   /** Скрыть «Чем занимается…» — блок выводится отдельно перед FAQ */
   hideAbout?: boolean;
+  /** Скрыть прайс-лист — на rich-страницах цены выводятся отдельным блоком */
+  hidePriceList?: boolean;
 }
 
 export function MasterSellingSections({
@@ -60,6 +62,7 @@ export function MasterSellingSections({
   compact = false,
   hideWorkTypes = false,
   hideAbout = false,
+  hidePriceList = false,
 }: MasterSellingSectionsProps) {
   const pathname = usePathname();
   const resolvedSlug =
@@ -116,7 +119,7 @@ export function MasterSellingSections({
         </Section>
       )}
 
-      {!isHomepage && (
+      {!isHomepage && !hidePriceList && (
         <ServicePriceList
           slug={resolvedSlug}
           formAnchor={formAnchor}
