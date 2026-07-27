@@ -8,6 +8,7 @@ import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
+import { SantehnikServiceGroups } from "@/components/sections/SantehnikServiceGroups";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
@@ -85,6 +86,8 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
       <div className={SPACING.heroBelowGrid}>
         <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
       </div>
+
+      {service.slug === "santehnik" && <SantehnikServiceGroups formAnchor="#lead-form" />}
 
       <Section>
         <SectionHeader badge="Преимущества" title="Почему выбирают нас" />
