@@ -1,16 +1,9 @@
-export interface SantehnikServiceGroupItem {
-  title: string;
-  description: string;
-  href?: string;
-}
+import type { ServiceGroup } from "@/lib/service-group-types";
 
-export interface SantehnikServiceGroup {
-  title: string;
-  items: SantehnikServiceGroupItem[];
-}
+export type { ServiceGroupItem, ServiceGroup } from "@/lib/service-group-types";
 
 /** Группы услуг сантехника — совпадают с разделами прайса. */
-export const SANTEHNIK_SERVICE_GROUPS: SantehnikServiceGroup[] = [
+export const SANTEHNIK_SERVICE_GROUPS: ServiceGroup[] = [
   {
     title: "Смесители",
     items: [

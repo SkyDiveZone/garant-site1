@@ -1,34 +1,17 @@
-import type { ServiceFAQ } from "./types";
+import {
+  ELEKTRIK_RICH_CONTENT,
+  ELEKTRIK_RICH_SLUGS,
+} from "./elektrik-rich-content";
+import type { ServiceRichContent } from "./service-rich-content-types";
 
-export interface ServiceRichWhenItem {
-  title: string;
-  description: string;
-}
+export type {
+  ServiceRichContent,
+  ServiceRichRelated,
+  ServiceRichStep,
+  ServiceRichWhenItem,
+} from "./service-rich-content-types";
 
-export interface ServiceRichStep {
-  title: string;
-  description: string;
-}
-
-export interface ServiceRichRelated {
-  title: string;
-  href: string;
-  description: string;
-}
-
-export interface ServiceRichContent {
-  focusedPriceNames: readonly string[];
-  fullPriceHref: string;
-  whenNeeded: readonly ServiceRichWhenItem[];
-  includedWorks: readonly string[];
-  visitSteps: readonly ServiceRichStep[];
-  duration: string;
-  priceFactors: readonly string[];
-  faq: readonly ServiceFAQ[];
-  relatedServices: readonly ServiceRichRelated[];
-}
-
-export const RICH_SERVICE_SLUGS = [
+const PLUMBING_RICH_SLUGS = [
   "ustranenie-zasora",
   "zamena-smesitelya",
   "ustanovka-unitaza",
@@ -39,9 +22,11 @@ export const RICH_SERVICE_SLUGS = [
   "zamena-trub",
 ] as const;
 
+export const RICH_SERVICE_SLUGS = [...PLUMBING_RICH_SLUGS, ...ELEKTRIK_RICH_SLUGS] as const;
+
 export type RichServiceSlug = (typeof RICH_SERVICE_SLUGS)[number];
 
-const RICH_CONTENT: Record<RichServiceSlug, ServiceRichContent> = {
+const PLUMBING_RICH_CONTENT: Record<(typeof PLUMBING_RICH_SLUGS)[number], ServiceRichContent> = {
   "zamena-smesitelya": {
     focusedPriceNames: [
       "Установка смесителя (отечественный)",
@@ -540,6 +525,11 @@ const RICH_CONTENT: Record<RichServiceSlug, ServiceRichContent> = {
       { title: "Установка унитаза", href: "/ustanovka-unitaza", description: "При замене канализационного вывода." },
     ],
   },
+};
+
+const RICH_CONTENT: Record<RichServiceSlug, ServiceRichContent> = {
+  ...PLUMBING_RICH_CONTENT,
+  ...ELEKTRIK_RICH_CONTENT,
 };
 
 export function isRichServiceSlug(slug: string): slug is RichServiceSlug {

@@ -3,6 +3,7 @@ import { ServiceAboutSection } from "@/components/landing/ServiceAboutSection";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
+import { ElektrikServiceGroups } from "@/components/sections/ElektrikServiceGroups";
 import { SantehnikServiceGroups } from "@/components/sections/SantehnikServiceGroups";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { ServiceRichSections } from "@/components/sections/ServiceRichSections";
@@ -16,6 +17,7 @@ import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import { SPACING } from "@/lib/spacing";
 import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
+import { isEnhancedLandingSlug } from "@/lib/services/enhanced-landing-slugs";
 import type { ServicePage } from "@/lib/services";
 import {
   getServiceRichContent,
@@ -32,6 +34,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
   const formLabels = getLeadFormLabels(service.slug, service.categoryLabel);
   const isRich = isRichServiceSlug(service.slug);
   const richContent = getServiceRichContent(service.slug);
+  const isEnhanced = isEnhancedLandingSlug(service.slug);
 
   return (
     <>
@@ -91,15 +94,20 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
         </div>
       </section>
 
-      {(isRich || service.slug === "santehnik") && <ServiceTrustStrip />}
+      {(isRich || isEnhanced) && <ServiceTrustStrip />}
 
       {!isRich && (
         <div className={SPACING.heroBelowGrid}>
-          <LeadFormSellingBelow slug={service.slug} formAnchor="#lead-form" />
+          <LeadFormSellingBelow
+            slug={service.slug}
+            formAnchor="#lead-form"
+            hideWorkTypes={isEnhanced}
+          />
         </div>
       )}
 
       {service.slug === "santehnik" && <SantehnikServiceGroups formAnchor="#lead-form" />}
+      {service.slug === "elektrik" && <ElektrikServiceGroups formAnchor="#lead-form" />}
 
       {isRich && richContent && (
         <ServiceRichSections
@@ -131,32 +139,34 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
 
       {!isRich && <HowWeWorkSection />}
 
-      <Section className="bg-slate-50/80">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="font-display text-2xl font-bold text-slate-900 sm:text-3xl">
-            {service.categoryLabel} в Екатеринбурге — подробнее
-          </h2>
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
-            {service.seoText.map((paragraph) => (
-              <p key={paragraph.slice(0, 40)}>{paragraph}</p>
-            ))}
+      {!isEnhanced && (
+        <Section className="bg-slate-50/80">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-display text-2xl font-bold text-slate-900 sm:text-3xl">
+              {service.categoryLabel} в Екатеринбурге — подробнее
+            </h2>
+            <div className="mt-6 space-y-4 text-base leading-relaxed text-slate-600">
+              {service.seoText.map((paragraph) => (
+                <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+              ))}
+            </div>
+            <ul className="mt-6 space-y-2">
+              {[
+                ROUND_THE_CLOCK.headline,
+                ROUND_THE_CLOCK.requests,
+                "Гарантия до 12 месяцев",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="mt-6 space-y-2">
-            {[
-              ROUND_THE_CLOCK.headline,
-              ROUND_THE_CLOCK.requests,
-              "Гарантия до 12 месяцев",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-2 text-sm text-slate-700">
-                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
+        </Section>
+      )}
 
-      {isAboutBeforeFaqSlug(service.slug) && !isRich && (
+      {isAboutBeforeFaqSlug(service.slug) && !isRich && !isEnhanced && (
         <ServiceAboutSection slug={service.slug} />
       )}
 

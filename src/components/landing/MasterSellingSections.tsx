@@ -13,6 +13,7 @@ import { getServiceBySlug } from "@/lib/services";
 import { getSellingContent } from "@/lib/services/service-selling-content";
 import { getServicePopularProblemsConfig } from "@/lib/services/service-popular-problems-registry";
 import { getServiceWhenToCallConfig } from "@/lib/services/service-when-to-call-registry";
+import { isEnhancedLandingSlug } from "@/lib/services/enhanced-landing-slugs";
 import { SPACING } from "@/lib/spacing";
 import { cn } from "@/lib/utils";
 import {
@@ -75,6 +76,8 @@ export function MasterSellingSections({
 
   const sectionClass = compact ? SPACING.sectionCompact : undefined;
   const gridGap = compact ? "gap-2.5" : "gap-3";
+  const shouldHideWorkTypes =
+    hideWorkTypes || (resolvedSlug != null && isEnhancedLandingSlug(resolvedSlug));
 
   return (
     <div className={cn("w-full", className)}>
@@ -82,7 +85,7 @@ export function MasterSellingSections({
         <ServiceAboutSection slug={resolvedSlug} sectionClass={sectionClass} />
       )}
 
-      {!hideWorkTypes && (
+      {!shouldHideWorkTypes && (
         <Section className={sectionClass}>
           <SectionHeader
             badge="Услуги"

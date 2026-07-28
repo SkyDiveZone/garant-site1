@@ -1,4 +1,4 @@
-export const CONVERSION_LANDING_SLUGS = ["elektrik", "master-na-chas"] as const;
+export const CONVERSION_LANDING_SLUGS = ["master-na-chas"] as const;
 
 export type ConversionLandingSlug = (typeof CONVERSION_LANDING_SLUGS)[number];
 

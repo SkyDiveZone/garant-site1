@@ -2,6 +2,7 @@
 
 import { MasterSellingSections } from "@/components/landing/MasterSellingSections";
 import { isAboutBeforeFaqSlug } from "@/lib/services/about-before-faq-slugs";
+import { isEnhancedLandingSlug } from "@/lib/services/enhanced-landing-slugs";
 
 interface LeadFormSellingBelowProps {
   slug?: string;
@@ -20,6 +21,9 @@ export function LeadFormSellingBelow({
   hideWorkTypes,
   hidePriceList,
 }: LeadFormSellingBelowProps) {
+  const hideAbout =
+    slug != null && (isEnhancedLandingSlug(slug) || isAboutBeforeFaqSlug(slug));
+
   return (
     <MasterSellingSections
       slug={slug}
@@ -28,7 +32,7 @@ export function LeadFormSellingBelow({
       className={className}
       hideWorkTypes={hideWorkTypes}
       hidePriceList={hidePriceList}
-      hideAbout={slug ? isAboutBeforeFaqSlug(slug) : false}
+      hideAbout={hideAbout}
     />
   );
 }

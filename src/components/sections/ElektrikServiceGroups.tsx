@@ -1,17 +1,17 @@
 import { ServiceGroupsSection } from "@/components/sections/ServiceGroupsSection";
-import { SANTEHNIK_SERVICE_GROUPS } from "@/lib/santehnik-service-groups";
+import { ELEKTRIK_SERVICE_GROUPS } from "@/lib/elektrik-service-groups";
 
-interface SantehnikServiceGroupsProps {
+interface ElektrikServiceGroupsProps {
   formAnchor?: string;
 }
 
-export function SantehnikServiceGroups({ formAnchor = "#lead-form" }: SantehnikServiceGroupsProps) {
+export function ElektrikServiceGroups({ formAnchor = "#lead-form" }: ElektrikServiceGroupsProps) {
   return (
     <ServiceGroupsSection
       badge="Услуги"
-      title="Группы сантехнических работ"
+      title="Группы электромонтажных работ"
       subtitle="Выберите нужную услугу — у каждой популярной задачи есть отдельная страница с ценами"
-      groups={SANTEHNIK_SERVICE_GROUPS}
+      groups={ELEKTRIK_SERVICE_GROUPS}
       formAnchor={formAnchor}
     />
   );
