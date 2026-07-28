@@ -1,3 +1,4 @@
+import { ELEKTRIK_LEGACY_REDIRECTS } from "./src/lib/service-catalog/slug-map";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -38,10 +39,19 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
+    const legacyElektrikRedirects = Object.entries(ELEKTRIK_LEGACY_REDIRECTS).map(
+      ([source, slug]) => ({
+        source: `/${source}`,
+        destination: `/elektrik/${slug}`,
+        permanent: true,
+      })
+    );
+
     return [
       { source: "/privacy", destination: "/privacy-policy", permanent: true },
       { source: "/terms", destination: "/user-agreement", permanent: true },
       { source: "/reviews", destination: "/otzyvy", permanent: true },
+      ...legacyElektrikRedirects,
     ];
   },
   images: {

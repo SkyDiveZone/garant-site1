@@ -1,5 +1,6 @@
 export interface PopularSubService {
   slug: string;
+  href?: string;
   title: string;
   description: string;
   icon: "Droplets" | "Zap" | "Wrench";
@@ -32,13 +33,15 @@ export const POPULAR_SUB_SERVICES: PopularSubService[] = [
     icon: "Droplets",
   },
   {
-    slug: "ustanovka-rozetok",
+    slug: "ustanovka-rozetki-skrytaya-provodka",
+    href: "/elektrik/ustanovka-rozetki-skrytaya-provodka",
     title: "Установка розеток",
     description: "Замена или монтаж розеток с проверкой заземления.",
     icon: "Zap",
   },
   {
     slug: "ustanovka-lyustry",
+    href: "/elektrik/ustanovka-lyustry",
     title: "Установка люстры",
     description: "Крепление и подключение люстры или светильника.",
     icon: "Zap",

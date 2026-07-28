@@ -1,7 +1,3 @@
-import {
-  ELEKTRIK_RICH_CONTENT,
-  ELEKTRIK_RICH_SLUGS,
-} from "./elektrik-rich-content";
 import type { ServiceRichContent } from "./service-rich-content-types";
 
 export type {
@@ -22,7 +18,7 @@ const PLUMBING_RICH_SLUGS = [
   "zamena-trub",
 ] as const;
 
-export const RICH_SERVICE_SLUGS = [...PLUMBING_RICH_SLUGS, ...ELEKTRIK_RICH_SLUGS] as const;
+export const RICH_SERVICE_SLUGS = [...PLUMBING_RICH_SLUGS] as const;
 
 export type RichServiceSlug = (typeof RICH_SERVICE_SLUGS)[number];
 
@@ -529,7 +525,6 @@ const PLUMBING_RICH_CONTENT: Record<(typeof PLUMBING_RICH_SLUGS)[number], Servic
 
 const RICH_CONTENT: Record<RichServiceSlug, ServiceRichContent> = {
   ...PLUMBING_RICH_CONTENT,
-  ...ELEKTRIK_RICH_CONTENT,
 };
 
 export function isRichServiceSlug(slug: string): slug is RichServiceSlug {

@@ -1,5 +1,6 @@
 import { SITE } from "@/lib/data";
 import { getAllServiceSlugs } from "@/lib/services";
+import { getAllServiceOfferPaths, getServiceOfferPath } from "@/lib/service-catalog";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +11,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const offerPages = getAllServiceOfferPaths().map(({ category, slug }) => ({
+    url: `${SITE.url}${getServiceOfferPath(category, slug)}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.85,
+  }));
+
   return [
     {
       url: SITE.url,
@@ -18,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...servicePages,
+    ...offerPages,
     {
       url: `${SITE.url}/otzyvy`,
       lastModified: new Date(),
