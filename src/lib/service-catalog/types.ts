@@ -1,8 +1,7 @@
-import type { ReviewCategory } from "@/lib/reviews/types";
 import type { ServiceBenefit, ServiceFAQ, ServiceStep } from "@/lib/services/types";
 import type { LucideIcon } from "lucide-react";
 
-export type ServiceCatalogCategory = "elektrik";
+export type ServiceCatalogCategory = "elektrik" | "santehnik";
 
 export interface ServiceOfferGalleryImage {
   src: string;
@@ -47,14 +46,10 @@ export interface ServiceOfferPage {
   steps: readonly ServiceStep[];
   galleryImages: readonly ServiceOfferGalleryImage[];
   faq: readonly ServiceFAQ[];
-  reviewCategory: ReviewCategory;
-  /** Optional keyword hints for future per-service review filtering */
-  reviewKeywords?: readonly string[];
 }
 
 export interface ServiceCatalogCategoryConfig {
   slug: ServiceCatalogCategory;
   label: string;
   href: string;
-  reviewCategory: ReviewCategory;
 }

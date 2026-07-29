@@ -38,6 +38,62 @@ export const ELEKTRIK_OFFER_SLUGS = [
   "ustanovka-teplogo-pola",
 ] as const;
 
+/** Stable URL slugs for santehnik offers — order matches SANTEHNIK_PRICES groups/items */
+export const SANTEHNIK_OFFER_SLUGS = [
+  "ustanovka-smesitelya-otechestvennyy",
+  "ustanovka-smesitelya-importnyy",
+  "ustanovka-smesitelya-s-termoregulyatorom",
+  "ustanovka-gigienicheskogo-dusha",
+  "zamena-kartridzha-ili-prokladki",
+  "ustanovka-ekscentrikov",
+  "ustanovka-unitaza",
+  "ustanovka-podvesnogo-unitaza",
+  "ustanovka-bide-ili-pissuara",
+  "ustanovka-installyatsii",
+  "remont-armatury-bachka",
+  "ustanovka-gibkoy-podvodki",
+  "ustanovka-akrilovoy-vanny",
+  "ustanovka-vanny-s-gidromassazhem",
+  "ustanovka-dushevoy-kabiny",
+  "ustanovka-dushevogo-poddona",
+  "germetizatsiya-vanny-ili-dushevoy",
+  "ustanovka-ekrana-pod-vannu",
+  "ustanovka-rakoviny",
+  "ustanovka-rakoviny-tyulpan",
+  "sborka-tumby-pod-rakovinu",
+  "ustanovka-sifona",
+  "ustanovka-metallicheskogo-sifona",
+  "ustranenie-zasora",
+  "ustranenie-zasora-khimicheskiy-sposob",
+  "ustranenie-protechki",
+  "remont-trub-i-stoyakov",
+  "ustanovka-polotentsesushitelya",
+  "montazh-baypasa",
+  "ustanovka-radiatora-otopleniya",
+  "ustanovka-sharovogo-krana",
+  "ustanovka-schetchika-vody",
+  "razvodka-trub",
+  "ustanovka-vodonagrevatelya-do-50-l",
+  "ustanovka-vodonagrevatelya-svyshe-50-l",
+  "podklyuchenie-stiralnoy-mashiny",
+  "podklyuchenie-posudomoechnoy-mashiny",
+  "ustanovka-vytyazhki",
+  "ustanovka-filtra-dlya-vody",
+  "prochistka-kanalizatsii",
+] as const;
+
+/** Legacy flat URLs → new nested paths under /santehnik/ */
+export const SANTEHNIK_LEGACY_REDIRECTS: Record<string, string> = {
+  "zamena-smesitelya": "ustanovka-smesitelya-otechestvennyy",
+  "ustanovka-vanny": "ustanovka-akrilovoy-vanny",
+  "ustanovka-bojlera": "ustanovka-vodonagrevatelya-do-50-l",
+  "zamena-trub": "razvodka-trub",
+  "ustranenie-zasora": "ustranenie-zasora",
+  "ustanovka-unitaza": "ustanovka-unitaza",
+  "ustanovka-rakoviny": "ustanovka-rakoviny",
+  "ustanovka-dushevoy-kabiny": "ustanovka-dushevoy-kabiny",
+};
+
 /** Legacy flat URLs → new nested paths under /elektrik/ */
 export const ELEKTRIK_LEGACY_REDIRECTS: Record<string, string> = {
   "ustanovka-rozetok": "ustanovka-rozetki-skrytaya-provodka",

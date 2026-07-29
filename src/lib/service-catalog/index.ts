@@ -6,4 +6,4 @@ export {
   getCategoryOffers,
   getServiceOfferPath,
 } from "./registry";
-export { ELEKTRIK_LEGACY_REDIRECTS } from "./slug-map";
+export { ELEKTRIK_LEGACY_REDIRECTS, SANTEHNIK_LEGACY_REDIRECTS } from "./slug-map";

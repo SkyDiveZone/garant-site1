@@ -1,4 +1,4 @@
-import { ELEKTRIK_LEGACY_REDIRECTS } from "./src/lib/service-catalog/slug-map";
+import { ELEKTRIK_LEGACY_REDIRECTS, SANTEHNIK_LEGACY_REDIRECTS } from "./src/lib/service-catalog/slug-map";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -47,11 +47,20 @@ const nextConfig: NextConfig = {
       })
     );
 
+    const legacySantehnikRedirects = Object.entries(SANTEHNIK_LEGACY_REDIRECTS).map(
+      ([source, slug]) => ({
+        source: `/${source}`,
+        destination: `/santehnik/${slug}`,
+        permanent: true,
+      })
+    );
+
     return [
       { source: "/privacy", destination: "/privacy-policy", permanent: true },
       { source: "/terms", destination: "/user-agreement", permanent: true },
       { source: "/reviews", destination: "/otzyvy", permanent: true },
       ...legacyElektrikRedirects,
+      ...legacySantehnikRedirects,
     ];
   },
   images: {

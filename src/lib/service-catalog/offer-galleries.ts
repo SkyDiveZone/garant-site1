@@ -509,3 +509,8 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
     },
   ],
 };
+
+/** Уникальные галереи для сантехника — переопределяют шаблон по умолчанию */
+export const SANTEHNIK_OFFER_GALLERIES: Partial<
+  Record<string, readonly ServiceOfferGalleryImage[]>
+> = {};

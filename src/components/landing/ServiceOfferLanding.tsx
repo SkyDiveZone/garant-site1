@@ -1,14 +1,12 @@
 import { ConversionActions } from "@/components/landing/ConversionActions";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { WorkGallery } from "@/components/landing/WorkGallery";
-import { ServiceOfferReviews } from "@/components/sections/ServiceOfferReviews";
 import { DynamicIcon } from "@/components/ui/DynamicIcon";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { formatPriceFrom } from "@/lib/format-price";
-import { getLeadFormLabels } from "@/lib/lead-form-labels";
 import type { ServiceOfferPage } from "@/lib/service-catalog/types";
 import { CheckCircle2, Clock } from "lucide-react";
 import Link from "next/link";
@@ -19,8 +17,11 @@ interface ServiceOfferLandingProps {
 }
 
 export function ServiceOfferLanding({ offer, formAnchor = "#lead-form" }: ServiceOfferLandingProps) {
-  const formLabels = getLeadFormLabels(offer.slug, offer.serviceName);
   const galleryLabel = `Фото работ: ${offer.serviceName.replace(/\s*\([^)]*\)/g, "").trim()}`;
+  const formLabels = {
+    title: "Вызвать мастера",
+    submitLabel: "Вызвать мастера",
+  };
 
   return (
     <>
@@ -200,8 +201,6 @@ export function ServiceOfferLanding({ offer, formAnchor = "#lead-form" }: Servic
       </Section>
 
       <WorkGallery label={galleryLabel} images={offer.galleryImages} />
-
-      <ServiceOfferReviews category={offer.reviewCategory} serviceName={offer.serviceName} />
 
       <ServiceFAQSection faq={offer.faq} />
 
