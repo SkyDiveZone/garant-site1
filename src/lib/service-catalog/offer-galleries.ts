@@ -714,4 +714,312 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Установка экрана под ванну — каркас под облицовку гипсокартоном",
     },
   ],
+  "ustanovka-rakoviny": [
+    {
+      src: "/works/santehnik/ustanovka-rakoviny/01-wall-mount.png",
+      alt: "Установка раковины — настенная раковина с подводкой",
+    },
+    {
+      src: "/works/santehnik/ustanovka-rakoviny/02-drain-connect.png",
+      alt: "Установка раковины — подключение сифона и слива",
+    },
+    {
+      src: "/works/santehnik/ustanovka-rakoviny/03-sink-mount.png",
+      alt: "Установка раковины — монтаж раковины на стену",
+    },
+  ],
+  "ustanovka-rakoviny-tyulpan": [
+    {
+      src: "/works/santehnik/ustanovka-rakoviny/01-wall-mount.png",
+      alt: "Установка раковины «Тюльпан» — настенная раковина с подводкой",
+    },
+    {
+      src: "/works/santehnik/ustanovka-rakoviny/02-drain-connect.png",
+      alt: "Установка раковины «Тюльпан» — подключение сифона и слива",
+    },
+    {
+      src: "/works/santehnik/ustanovka-rakoviny/03-sink-mount.png",
+      alt: "Установка раковины «Тюльпан» — монтаж раковины на стену",
+    },
+  ],
+  "sborka-tumby-pod-rakovinu": [
+    {
+      src: "/works/santehnik/sborka-tumby-pod-rakovinu/01-frame-mount.png",
+      alt: "Сборка тумбы под раковину — крепление каркаса к стене",
+    },
+    {
+      src: "/works/santehnik/sborka-tumby-pod-rakovinu/02-cabinet-assembly.png",
+      alt: "Сборка тумбы под раковину — сборка тумбы с ящиками и дверцей",
+    },
+    {
+      src: "/works/santehnik/sborka-tumby-pod-rakovinu/03-corner-plumbing.png",
+      alt: "Сборка тумбы под раковину — угловая тумба с выводом коммуникаций",
+    },
+  ],
+  "ustanovka-sifona": [
+    {
+      src: "/works/santehnik/ustanovka-sifona/01-drain-connect.png",
+      alt: "Установка сифона — подключение слива к раковине",
+    },
+    {
+      src: "/works/santehnik/ustanovka-sifona/02-bottle-trap.png",
+      alt: "Установка сифона — монтаж бутылочного сифона под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-sifona/03-trap-assembly.png",
+      alt: "Установка сифона — сборка сифона и подключение к канализации",
+    },
+  ],
+  "ustanovka-metallicheskogo-sifona": [
+    {
+      src: "/works/santehnik/ustanovka-metallicheskogo-sifona/01-chrome-p-trap.png",
+      alt: "Установка металлического сифона — хромированный P-образный сифон",
+    },
+    {
+      src: "/works/santehnik/ustanovka-metallicheskogo-sifona/02-bottle-trap-chrome.png",
+      alt: "Установка металлического сифона — бутылочный сифон из хрома",
+    },
+    {
+      src: "/works/santehnik/ustanovka-metallicheskogo-sifona/03-mosaic-wall.png",
+      alt: "Установка металлического сифона — подключение к канализации в стене",
+    },
+  ],
+  "ustranenie-zasora": [
+    {
+      src: "/works/santehnik/ustranenie-zasora/01-hair-clog.png",
+      alt: "Устранение засора — извлечение волос из слива ванны",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora/02-plunger-kitchen.png",
+      alt: "Устранение засора — прочистка раковины вантузом",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora/03-plunger-bathroom.png",
+      alt: "Устранение засора — прочистка раковины в ванной",
+    },
+  ],
+  "ustranenie-zasora-khimicheskiy-sposob": [
+    {
+      src: "/works/santehnik/ustranenie-zasora/01-hair-clog.png",
+      alt: "Устранение засора (химический способ) — извлечение волос из слива ванны",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora/02-plunger-kitchen.png",
+      alt: "Устранение засора (химический способ) — прочистка раковины вантузом",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora/03-plunger-bathroom.png",
+      alt: "Устранение засора (химический способ) — прочистка раковины в ванной",
+    },
+  ],
+  "ustranenie-protechki": [
+    {
+      src: "/works/santehnik/ustranenie-protechki/01-sink-drain-leak.png",
+      alt: "Устранение протечки — протечка в сифоне под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustranenie-protechki/02-p-trap-leak.png",
+      alt: "Устранение протечки — ремонт протекающего P-образного сифона",
+    },
+    {
+      src: "/works/santehnik/ustranenie-protechki/03-pipe-fitting-leak.png",
+      alt: "Устранение протечки — протечка в соединении труб",
+    },
+  ],
+  "remont-trub-i-stoyakov": [
+    {
+      src: "/works/santehnik/remont-trub-i-stoyakov/01-riser-pipes.png",
+      alt: "Ремонт труб и стояков — стояки водоснабжения и канализации",
+    },
+    {
+      src: "/works/santehnik/remont-trub-i-stoyakov/02-pipe-layout.png",
+      alt: "Ремонт труб и стояков — разводка труб в ванной",
+    },
+    {
+      src: "/works/santehnik/remont-trub-i-stoyakov/03-riser-repair.png",
+      alt: "Ремонт труб и стояков — замена канализационного стояка",
+    },
+  ],
+  "ustanovka-polotentsesushitelya": [
+    {
+      src: "/works/santehnik/ustanovka-polotentsesushitelya/01-wrench-install.png",
+      alt: "Установка полотенцесушителя — подключение к стояку ключом",
+    },
+    {
+      src: "/works/santehnik/ustanovka-polotentsesushitelya/02-ladder-valves.png",
+      alt: "Установка полотенцесушителя — лестничный полотенцесушитель с кранами",
+    },
+    {
+      src: "/works/santehnik/ustanovka-polotentsesushitelya/03-serpentine-riser.png",
+      alt: "Установка полотенцесушителя — М-образный полотенцесушитель на стояке",
+    },
+  ],
+  "montazh-baypasa": [
+    {
+      src: "/works/santehnik/montazh-baypasa/01-radiator-bypass.png",
+      alt: "Монтаж байпаса — байпас на радиаторе и насосный байпас",
+    },
+    {
+      src: "/works/santehnik/montazh-baypasa/02-pump-bypass.png",
+      alt: "Монтаж байпаса — байпас с циркуляционным насосом",
+    },
+    {
+      src: "/works/santehnik/montazh-baypasa/03-grundfos-bypass.png",
+      alt: "Монтаж байпаса — насос Grundfos в обвязке отопления",
+    },
+  ],
+  "ustanovka-radiatora-otopleniya": [
+    {
+      src: "/works/santehnik/ustanovka-radiatora-otopleniya/01-diagonal-connect.png",
+      alt: "Установка радиатора отопления — диагональное подключение к трубам",
+    },
+    {
+      src: "/works/santehnik/ustanovka-radiatora-otopleniya/02-thermostatic-valve.png",
+      alt: "Установка радиатора отопления — термостатический клапан на радиаторе",
+    },
+    {
+      src: "/works/santehnik/ustanovka-radiatora-otopleniya/03-under-window.png",
+      alt: "Установка радиатора отопления — радиатор под окном с байпасом",
+    },
+  ],
+  "ustanovka-sharovogo-krana": [
+    {
+      src: "/works/santehnik/ustanovka-sharovogo-krana/01-valve-parts.png",
+      alt: "Установка шарового крана — комплектующие шарового крана",
+    },
+    {
+      src: "/works/santehnik/ustanovka-sharovogo-krana/02-wrench-tighten.png",
+      alt: "Установка шарового крана — затяжка соединения ключом",
+    },
+    {
+      src: "/works/santehnik/ustanovka-sharovogo-krana/03-under-sink-valve.png",
+      alt: "Установка шарового крана — монтаж крана под раковиной",
+    },
+  ],
+  "ustanovka-schetchika-vody": [
+    {
+      src: "/works/santehnik/ustanovka-schetchika-vody/01-under-sink-meters.png",
+      alt: "Установка счётчика воды — счётчики под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-schetchika-vody/02-hot-cold-meters.png",
+      alt: "Установка счётчика воды — счётчики горячей и холодной воды",
+    },
+    {
+      src: "/works/santehnik/ustanovka-schetchika-vody/03-wrench-install.png",
+      alt: "Установка счётчика воды — монтаж счётчика ключом",
+    },
+  ],
+  "razvodka-trub": [
+    {
+      src: "/works/santehnik/razvodka-trub/01-wall-pipes.png",
+      alt: "Разводка труб — водопровод и канализация на стене",
+    },
+    {
+      src: "/works/santehnik/razvodka-trub/02-bathroom-rough-in.png",
+      alt: "Разводка труб — разводка в ванной на этапе черновых работ",
+    },
+    {
+      src: "/works/santehnik/razvodka-trub/03-collector-manifold.png",
+      alt: "Разводка труб — коллекторная разводка горячей и холодной воды",
+    },
+  ],
+  "ustanovka-vodonagrevatelya-do-50-l": [
+    {
+      src: "/works/santehnik/ustanovka-vodonagrevatelya/03-fora-wall-mount.png",
+      alt: "Установка водонагревателя до 50 л — настенный бойлер в ванной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vodonagrevatelya/02-installation-collage.png",
+      alt: "Установка водонагревателя до 50 л — компактный бойлер под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vodonagrevatelya/01-electrolux-horizontal.png",
+      alt: "Установка водонагревателя до 50 л — подключение бойлера к водопроводу",
+    },
+  ],
+  "ustanovka-vodonagrevatelya-svyshe-50-l": [
+    {
+      src: "/works/santehnik/ustanovka-vodonagrevatelya/01-electrolux-horizontal.png",
+      alt: "Установка водонагревателя свыше 50 л — горизонтальный бойлер Electrolux",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vodonagrevatelya/02-installation-collage.png",
+      alt: "Установка водонагревателя свыше 50 л — настенные бойлеры большого объёма",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vodonagrevatelya/03-fora-wall-mount.png",
+      alt: "Установка водонагревателя свыше 50 л — монтаж и подключение бойлера",
+    },
+  ],
+  "podklyuchenie-stiralnoy-mashiny": [
+    {
+      src: "/works/santehnik/podklyuchenie-stiralnoy-mashiny/01-back-panel.png",
+      alt: "Подключение стиральной машины — точки подключения на задней панели",
+    },
+    {
+      src: "/works/santehnik/podklyuchenie-stiralnoy-mashiny/02-master-install.png",
+      alt: "Подключение стиральной машины — монтаж мастером",
+    },
+    {
+      src: "/works/santehnik/podklyuchenie-stiralnoy-mashiny/03-connected-lg.png",
+      alt: "Подключение стиральной машины — готовое подключение в ванной",
+    },
+  ],
+  "podklyuchenie-posudomoechnoy-mashiny": [
+    {
+      src: "/works/santehnik/podklyuchenie-posudomoechnoy-mashiny/01-built-in-dishwasher.png",
+      alt: "Подключение посудомоечной машины — встраиваемая посудомойка на кухне",
+    },
+    {
+      src: "/works/santehnik/podklyuchenie-posudomoechnoy-mashiny/02-water-hose.png",
+      alt: "Подключение посудомоечной машины — подключение подводки воды",
+    },
+    {
+      src: "/works/santehnik/podklyuchenie-posudomoechnoy-mashiny/03-drain-hose.png",
+      alt: "Подключение посудомоечной машины — подключение сливного шланга",
+    },
+  ],
+  "ustanovka-vytyazhki": [
+    {
+      src: "/works/santehnik/ustanovka-vytyazhki/01-bosch-built-in.png",
+      alt: "Установка вытяжки — встраиваемая вытяжка Bosch в шкафу",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vytyazhki/02-hansa-chimney.png",
+      alt: "Установка вытяжки — купольная вытяжка Hansa с воздуховодом",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vytyazhki/03-duct-options.png",
+      alt: "Установка вытяжки — гибкий и плоский воздуховод",
+    },
+  ],
+  "ustanovka-filtra-dlya-vody": [
+    {
+      src: "/works/santehnik/ustanovka-filtra-dlya-vody/01-reverse-osmosis.png",
+      alt: "Установка фильтра для воды — система обратного осмоса под мойкой",
+    },
+    {
+      src: "/works/santehnik/ustanovka-filtra-dlya-vody/02-aquaphor-under-sink.png",
+      alt: "Установка фильтра для воды — фильтр Аквафор под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-filtra-dlya-vody/03-cartridge-replace.png",
+      alt: "Установка фильтра для воды — замена картриджа фильтра",
+    },
+  ],
+  "prochistka-kanalizatsii": [
+    {
+      src: "/works/santehnik/prochistka-kanalizatsii/01-rothenberger-drain.png",
+      alt: "Прочистка канализации — прочистка трапа машиной Rothenberger",
+    },
+    {
+      src: "/works/santehnik/prochistka-kanalizatsii/02-electric-machine.png",
+      alt: "Прочистка канализации — электрическая машина для прочистки труб",
+    },
+    {
+      src: "/works/santehnik/prochistka-kanalizatsii/03-drain-snake.png",
+      alt: "Прочистка канализации — трос для прочистки канализации",
+    },
+  ],
 };
