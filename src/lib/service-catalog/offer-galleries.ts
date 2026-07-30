@@ -516,62 +516,44 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
 > = {
   "ustanovka-smesitelya-otechestvennyy": [
     {
-      src: "/works/santehnik/ustanovka-smesitelya-otechestvennyy/01-install.png",
-      alt: "Установка смесителя (отечественный) — монтаж смесителя на раковину",
+      src: "/works/santehnik/ustanovka-smesitelya-otechestvennyy/01-faucet-wrench.png",
+      alt: "Установка смесителя (отечественный) — монтаж смесителя на раковине",
+    },
+    {
+      src: "/works/santehnik/ustanovka-smesitelya-otechestvennyy/02-thermostatic-mount.png",
+      alt: "Установка смесителя (отечественный) — крепление смесителя к стене",
+    },
+    {
+      src: "/works/santehnik/ustanovka-smesitelya-otechestvennyy/03-kitchen-faucet.png",
+      alt: "Установка смесителя (отечественный) — установка смесителя на кухне",
     },
   ],
   "ustanovka-smesitelya-importnyy": [
     {
-      src: "/works/santehnik/ustanovka-smesitelya-importnyy/01-install.png",
-      alt: "Установка смесителя (импортный) — установка кухонного смесителя",
+      src: "/works/santehnik/ustanovka-smesitelya-importnyy/01-faucet-wrench.png",
+      alt: "Установка смесителя (импортный) — монтаж смесителя на раковине",
+    },
+    {
+      src: "/works/santehnik/ustanovka-smesitelya-importnyy/02-thermostatic-mount.png",
+      alt: "Установка смесителя (импортный) — крепление смесителя к стене",
+    },
+    {
+      src: "/works/santehnik/ustanovka-smesitelya-importnyy/03-kitchen-faucet.png",
+      alt: "Установка смесителя (импортный) — установка смесителя на кухне",
     },
   ],
   "ustanovka-smesitelya-s-termoregulyatorom": [
     {
-      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/01-install.png",
-      alt: "Установка смесителя с терморегулятором — монтаж термостатического смесителя",
-    },
-  ],
-  "ustanovka-gigienicheskogo-dusha": [
-    {
-      src: "/works/santehnik/ustanovka-gigienicheskogo-dusha/01-toilet-install.png",
-      alt: "Установка гигиенического душа — монтаж у унитаза с подводкой",
+      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/01-faucet-wrench.png",
+      alt: "Установка смесителя с терморегулятором — монтаж смесителя на раковине",
     },
     {
-      src: "/works/santehnik/ustanovka-gigienicheskogo-dusha/02-chrome-shower.png",
-      alt: "Установка гигиенического душа — хромированный гигиенический душ",
+      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/02-thermostatic-mount.png",
+      alt: "Установка смесителя с терморегулятором — крепление термостатического смесителя",
     },
     {
-      src: "/works/santehnik/ustanovka-gigienicheskogo-dusha/03-concealed-plumbing.png",
-      alt: "Установка гигиенического душа — скрытая подводка в стене",
-    },
-  ],
-  "zamena-kartridzha-ili-prokladki": [
-    {
-      src: "/works/santehnik/zamena-kartridzha-ili-prokladki/01-wrench-repair.png",
-      alt: "Замена картриджа или прокладки — ремонт смесителя ключом",
-    },
-    {
-      src: "/works/santehnik/zamena-kartridzha-ili-prokladki/02-cartridge-seals.png",
-      alt: "Замена картриджа или прокладки — изношенный картридж с прокладками",
-    },
-    {
-      src: "/works/santehnik/zamena-kartridzha-ili-prokladki/03-new-cartridge.png",
-      alt: "Замена картриджа или прокладки — установка нового картриджа",
-    },
-  ],
-  "ustanovka-ekscentrikov": [
-    {
-      src: "/works/santehnik/ustanovka-ekscentrikov/01-chrome-escutcheon.png",
-      alt: "Установка эксцентриков — монтаж эксцентрика с декоративной накладкой",
-    },
-    {
-      src: "/works/santehnik/ustanovka-ekscentrikov/02-brass-eccentrics.png",
-      alt: "Установка эксцентриков — латунные эксцентрики в плитке",
-    },
-    {
-      src: "/works/santehnik/ustanovka-ekscentrikov/03-eccentric-fitting.png",
-      alt: "Установка эксцентриков — эксцентрик для смесителя",
+      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/03-kitchen-faucet.png",
+      alt: "Установка смесителя с терморегулятором — установка смесителя на кухне",
     },
   ],
 };
