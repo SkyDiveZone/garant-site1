@@ -544,16 +544,174 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
   ],
   "ustanovka-smesitelya-s-termoregulyatorom": [
     {
-      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/01-faucet-wrench.png",
-      alt: "Установка смесителя с терморегулятором — монтаж смесителя на раковине",
+      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/01-under-sink-thermostat.png",
+      alt: "Установка смесителя с терморегулятором — термостат под раковиной",
     },
     {
-      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/02-thermostatic-mount.png",
-      alt: "Установка смесителя с терморегулятором — крепление термостатического смесителя",
+      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/02-wall-thermostatic.png",
+      alt: "Установка смесителя с терморегулятором — монтаж термостатического смесителя",
     },
     {
-      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/03-kitchen-faucet.png",
-      alt: "Установка смесителя с терморегулятором — установка смесителя на кухне",
+      src: "/works/santehnik/ustanovka-smesitelya-s-termoregulyatorom/03-thermostat-adjust.png",
+      alt: "Установка смесителя с терморегулятором — настройка терморегулятора",
+    },
+  ],
+  "ustanovka-unitaza": [
+    {
+      src: "/works/santehnik/ustanovka-unitaza/01-plumber-install.png",
+      alt: "Установка унитаза — монтаж унитаза мастером",
+    },
+    {
+      src: "/works/santehnik/ustanovka-unitaza/02-bolt-tighten.png",
+      alt: "Установка унитаза — крепление унитаза к полу",
+    },
+    {
+      src: "/works/santehnik/ustanovka-unitaza/03-mark-position.png",
+      alt: "Установка унитаза — разметка и подготовка места установки",
+    },
+    {
+      src: "/works/santehnik/ustanovka-podvesnogo-unitaza/01-installation-frame.png",
+      alt: "Установка подвесного унитаза — монтаж инсталляции",
+    },
+    {
+      src: "/works/santehnik/ustanovka-podvesnogo-unitaza/02-frame-drain.png",
+      alt: "Установка подвесного унитаза — крепление рамы и подключение канализации",
+    },
+    {
+      src: "/works/santehnik/ustanovka-podvesnogo-unitaza/03-wall-hung-toilet.png",
+      alt: "Установка подвесного унитаза — готовый результат, подвесной унитаз",
+    },
+    {
+      src: "/works/santehnik/ustanovka-bide-ili-pissuara/01-wall-urinal.png",
+      alt: "Установка биде или писсуара — настенный писсуар",
+    },
+    {
+      src: "/works/santehnik/ustanovka-bide-ili-pissuara/02-bidet-measure.png",
+      alt: "Установка биде или писсуара — монтаж напольного биде",
+    },
+    {
+      src: "/works/santehnik/ustanovka-bide-ili-pissuara/03-wall-bidet-toilet.png",
+      alt: "Установка биде или писсуара — подвесной унитаз и биде",
+    },
+    {
+      src: "/works/santehnik/ustanovka-installyatsii/01-geberit-frame.png",
+      alt: "Установка инсталляции — монтаж рамы Geberit в перегородке",
+    },
+    {
+      src: "/works/santehnik/ustanovka-installyatsii/02-blue-frame.png",
+      alt: "Установка инсталляции — крепление инсталляции к полу и стене",
+    },
+    {
+      src: "/works/santehnik/ustanovka-installyatsii/03-mounting-studs.png",
+      alt: "Установка инсталляции — крепление стоек и подключение",
+    },
+    {
+      src: "/works/santehnik/remont-armatury-bachka/01-geberit-cistern.png",
+      alt: "Ремонт арматуры бачка — ремонт скрытой инсталляции Geberit",
+    },
+    {
+      src: "/works/santehnik/remont-armatury-bachka/02-tank-armature.png",
+      alt: "Ремонт арматуры бачка — арматура сливного бачка",
+    },
+    {
+      src: "/works/santehnik/remont-armatury-bachka/03-flush-valve-repair.png",
+      alt: "Ремонт арматуры бачка — замена сливной арматуры",
+    },
+    {
+      src: "/works/santehnik/ustanovka-gibkoy-podvodki/01-flexible-hoses.png",
+      alt: "Установка гибкой подводки — гибкие шланги для водоснабжения",
+    },
+    {
+      src: "/works/santehnik/ustanovka-gibkoy-podvodki/02-sink-install.png",
+      alt: "Установка гибкой подводки — подключение под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-gibkoy-podvodki/03-water-heater.png",
+      alt: "Установка гибкой подводки — подводка к водонагревателю",
+    },
+  ],
+  "ustanovka-akrilovoy-vanny": [
+    {
+      src: "/works/santehnik/ustanovka-akrilovoy-vanny/01-frame-assembly.png",
+      alt: "Установка акриловой ванны — сборка каркаса и ножек",
+    },
+    {
+      src: "/works/santehnik/ustanovka-akrilovoy-vanny/02-tiled-install.png",
+      alt: "Установка акриловой ванны — монтаж в облицованный плиткой подиум",
+    },
+    {
+      src: "/works/santehnik/ustanovka-akrilovoy-vanny/03-freestanding-bath.png",
+      alt: "Установка акриловой ванны — готовый результат, отдельностоящая ванна",
+    },
+  ],
+  "ustanovka-vanny-s-gidromassazhem": [
+    {
+      src: "/works/santehnik/ustanovka-vanny-s-gidromassazhem/01-corner-plumbing.png",
+      alt: "Установка ванны с гидромассажем — подключение коммуникаций под ванной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vanny-s-gidromassazhem/02-corner-installed.png",
+      alt: "Установка ванны с гидромассажем — готовый результат, угловая ванна",
+    },
+    {
+      src: "/works/santehnik/ustanovka-vanny-s-gidromassazhem/03-pump-system.png",
+      alt: "Установка ванны с гидромассажем — монтаж насоса и системы форсунок",
+    },
+  ],
+  "ustanovka-dushevoy-kabiny": [
+    {
+      src: "/works/santehnik/ustanovka-dushevoy-kabiny/01-corner-cabin.png",
+      alt: "Установка душевой кабины — угловая кабина в современной ванной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-dushevoy-kabiny/02-level-install.png",
+      alt: "Установка душевой кабины — выравнивание поддона по уровню",
+    },
+    {
+      src: "/works/santehnik/ustanovka-dushevoy-kabiny/03-walk-in-cabin.png",
+      alt: "Установка душевой кабины — прямоугольная кабина с дождевым душем",
+    },
+  ],
+  "ustanovka-dushevogo-poddona": [
+    {
+      src: "/works/santehnik/ustanovka-dushevogo-poddona/01-tray-frame.png",
+      alt: "Установка душевого поддона — каркас и ножки под поддон",
+    },
+    {
+      src: "/works/santehnik/ustanovka-dushevogo-poddona/02-drain-connection.png",
+      alt: "Установка душевого поддона — подключение слива и сифона",
+    },
+    {
+      src: "/works/santehnik/ustanovka-dushevogo-poddona/03-custom-base.png",
+      alt: "Установка душевого поддона — подготовка основания и каркаса",
+    },
+  ],
+  "germetizatsiya-vanny-ili-dushevoy": [
+    {
+      src: "/works/santehnik/germetizatsiya-vanny-ili-dushevoy/01-sealing-tape.png",
+      alt: "Герметизация ванны или душевой — монтаж гидроизоляционной ленты",
+    },
+    {
+      src: "/works/santehnik/germetizatsiya-vanny-ili-dushevoy/02-caulk-gun.png",
+      alt: "Герметизация ванны или душевой — нанесение силиконового герметика",
+    },
+    {
+      src: "/works/santehnik/germetizatsiya-vanny-ili-dushevoy/03-silicone-seal.png",
+      alt: "Герметизация ванны или душевой — обработка стыка ванны со стеной",
+    },
+  ],
+  "ustanovka-ekrana-pod-vannu": [
+    {
+      src: "/works/santehnik/ustanovka-ekrana-pod-vannu/01-metal-frame.png",
+      alt: "Установка экрана под ванну — каркас из металлопрофиля",
+    },
+    {
+      src: "/works/santehnik/ustanovka-ekrana-pod-vannu/02-aluminum-frame.png",
+      alt: "Установка экрана под ванну — монтаж алюминиевого каркаса",
+    },
+    {
+      src: "/works/santehnik/ustanovka-ekrana-pod-vannu/03-drywall-frame.png",
+      alt: "Установка экрана под ванну — каркас под облицовку гипсокартоном",
     },
   ],
 };
