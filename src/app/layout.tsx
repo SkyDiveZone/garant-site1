@@ -20,7 +20,8 @@ const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   variable: "--font-manrope",
   display: "swap",
-  preload: true,
+  // Body font (Inter) stays preloaded; avoid competing early font downloads
+  preload: false,
 });
 
 export const metadata = HOME_METADATA;
