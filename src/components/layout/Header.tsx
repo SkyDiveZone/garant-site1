@@ -6,6 +6,7 @@ import { Logo } from "@/components/ui/Logo";
 import { ContactBlock } from "@/components/ui/ContactBlock";
 import { Button } from "@/components/ui/Button";
 import { HEADER_PHONES, NAV_LINKS } from "@/lib/data";
+import { OPEN_LEAD_FORM_EVENT } from "@/lib/lead-form-events";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -29,6 +30,15 @@ export function Header() {
       document.body.style.overflow = "";
     };
   }, [mobileOpen, formOpen]);
+
+  useEffect(() => {
+    const onOpenLeadForm = () => {
+      setMobileOpen(false);
+      setFormOpen(true);
+    };
+    window.addEventListener(OPEN_LEAD_FORM_EVENT, onOpenLeadForm);
+    return () => window.removeEventListener(OPEN_LEAD_FORM_EVENT, onOpenLeadForm);
+  }, []);
 
   const openForm = () => setFormOpen(true);
 

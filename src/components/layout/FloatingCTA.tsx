@@ -2,19 +2,11 @@
 
 import { FloatingMessengerButtons } from "@/components/ui/MessengerButtons";
 import { PHONES } from "@/lib/data";
+import { requestLeadForm } from "@/lib/lead-form-events";
 import { trackPhoneClick } from "@/lib/yandex-metrika";
 import { FileText, Phone } from "lucide-react";
 
 export function FloatingCTA() {
-  const scrollToForm = () => {
-    const form = document.getElementById("lead-form");
-    if (form) {
-      form.scrollIntoView({ behavior: "smooth", block: "start" });
-      return;
-    }
-    window.location.hash = "lead-form";
-  };
-
   return (
     <div
       className="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-2 shadow-[0_-4px_24px_rgba(15,76,129,0.12)] backdrop-blur-md sm:hidden"
@@ -32,7 +24,7 @@ export function FloatingCTA() {
         <FloatingMessengerButtons />
         <button
           type="button"
-          onClick={scrollToForm}
+          onClick={requestLeadForm}
           className="flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-brand-200 bg-brand-50 px-2 py-3 text-xs font-semibold text-brand-700"
         >
           <FileText className="h-4 w-4 shrink-0" />

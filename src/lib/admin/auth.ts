@@ -5,12 +5,21 @@ const SESSION_COOKIE = "admin_session";
 const CSRF_COOKIE = "admin_csrf";
 const MAX_AGE = 60 * 60 * 24 * 7;
 
-function getSecret(): string {
+function getAdminPassword(): string {
   return process.env.ADMIN_PASSWORD ?? "";
 }
 
+/** Prefer dedicated session secret; fall back to admin password for compatibility. */
+function getSessionSecret(): string {
+  return (
+    process.env.ADMIN_SESSION_SECRET?.trim() ||
+    process.env.ADMIN_PASSWORD ||
+    ""
+  );
+}
+
 function sign(value: string): string {
-  return createHmac("sha256", getSecret()).update(value).digest("hex");
+  return createHmac("sha256", getSessionSecret()).update(value).digest("hex");
 }
 
 export function createAdminSessionToken(): string {
@@ -19,11 +28,17 @@ export function createAdminSessionToken(): string {
 }
 
 export function verifyAdminSessionToken(token: string): boolean {
-  const secret = getSecret();
+  const secret = getSessionSecret();
   if (!secret || !token) return false;
 
   const [payload, signature] = token.split(".");
   if (!payload || !signature) return false;
+
+  const [, issuedAtRaw] = payload.split(":");
+  const issuedAt = Number(issuedAtRaw);
+  if (!Number.isFinite(issuedAt) || Date.now() - issuedAt > MAX_AGE * 1000) {
+    return false;
+  }
 
   const expected = sign(payload);
   try {
@@ -34,10 +49,14 @@ export function verifyAdminSessionToken(token: string): boolean {
 }
 
 export function verifyAdminPassword(password: string): boolean {
-  const expected = getSecret();
+  const expected = getAdminPassword();
   if (!expected) return false;
+
+  // Hash both sides so timingSafeEqual always compares equal-length digests
+  const a = createHmac("sha256", "garant-admin-pw").update(password).digest();
+  const b = createHmac("sha256", "garant-admin-pw").update(expected).digest();
   try {
-    return timingSafeEqual(Buffer.from(password), Buffer.from(expected));
+    return timingSafeEqual(a, b);
   } catch {
     return false;
   }

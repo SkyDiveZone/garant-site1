@@ -51,7 +51,10 @@ export async function GET(request: Request) {
   const reviews = await getPublishedReviews(
     category && validateReviewCategory(category) ? category : undefined
   );
-  return NextResponse.json({ reviews });
+
+  // Never expose reviewer phone numbers on the public API
+  const publicReviews = reviews.map(({ phone: _phone, ...rest }) => rest);
+  return NextResponse.json({ reviews: publicReviews });
 }
 
 export async function POST(request: Request) {

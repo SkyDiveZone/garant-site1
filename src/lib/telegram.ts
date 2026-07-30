@@ -37,8 +37,7 @@ export async function sendLeadToTelegram(payload: LeadPayload): Promise<Telegram
   const phoneDigits = payload.phone.replace(/\D/g, "");
   const scheduleLabel = getLeadScheduleLabel(payload.schedule);
   const isCustom = payload.schedule === LEAD_SCHEDULE_CUSTOM;
-  const pagePath = payload.pageUrl?.startsWith("/") ? payload.pageUrl : `/${payload.pageUrl ?? ""}`;
-  const pageFull = `${SITE.url}${pagePath === "/" ? "" : pagePath}`;
+  const pageFull = sanitizeSitePageUrl(payload.pageUrl);
 
   const text = [
     "🔔 <b>Новая заявка с сайта</b>",
@@ -51,7 +50,7 @@ export async function sendLeadToTelegram(payload: LeadPayload): Promise<Telegram
     `🕐 <b>Удобное время:</b> ${escapeHtml(scheduleLabel)}`,
     `📅 <b>Дата:</b> ${isCustom && payload.customDate ? escapeHtml(formatDisplayDate(payload.customDate)) : "—"}`,
     `⏰ <b>Время:</b> ${isCustom && payload.customTime ? escapeHtml(formatDisplayTime(payload.customTime)) : "—"}`,
-    `🌐 <b>Страница сайта:</b> <a href="${escapeHtml(pageFull)}">${escapeHtml(pageFull)}</a>`,
+    `🌐 <b>Страница сайта:</b> <a href="${escapeAttr(pageFull)}">${escapeHtml(pageFull)}</a>`,
     "",
     "↩️ Перезвоните клиенту в течение 5 минут",
   ].join("\n");
@@ -92,5 +91,32 @@ export async function sendLeadToTelegram(payload: LeadPayload): Promise<Telegram
 }
 
 function escapeHtml(value: string): string {
-  return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function escapeAttr(value: string): string {
+  return escapeHtml(value).replace(/'/g, "&#39;");
+}
+
+/** Only allow same-origin relative paths from the lead form. */
+function sanitizeSitePageUrl(pageUrl: string | undefined): string {
+  const raw = (pageUrl ?? "/").trim() || "/";
+  const path = raw.startsWith("/") ? raw : `/${raw}`;
+  if (
+    path.includes("://") ||
+    path.includes("\\") ||
+    path.includes("<") ||
+    path.includes(">") ||
+    path.includes('"') ||
+    path.includes("'") ||
+    path.includes("`")
+  ) {
+    return SITE.url;
+  }
+  const safePath = path.slice(0, 200);
+  return `${SITE.url}${safePath === "/" ? "" : safePath}`;
 }

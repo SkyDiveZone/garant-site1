@@ -1,5 +1,6 @@
 import type { ServicePage } from "@/lib/services";
 import { PHONES, SITE } from "@/lib/data";
+import { serializeJsonLd } from "@/lib/json-ld";
 
 interface ServiceJsonLdProps {
   service: ServicePage;
@@ -102,7 +103,7 @@ export function ServiceJsonLd({ service }: ServiceJsonLdProps) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
         />
       ))}
     </>

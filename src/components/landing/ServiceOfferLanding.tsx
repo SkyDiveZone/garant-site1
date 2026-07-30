@@ -22,6 +22,10 @@ export function ServiceOfferLanding({ offer, formAnchor = "#lead-form" }: Servic
     title: "Вызвать мастера",
     submitLabel: "Вызвать мастера",
   };
+  const whenToCallSubtitle =
+    offer.category === "santehnik"
+      ? "Типичные случаи, когда нужна помощь сантехника"
+      : "Типичные случаи, когда нужна помощь электрика";
 
   return (
     <>
@@ -131,7 +135,7 @@ export function ServiceOfferLanding({ offer, formAnchor = "#lead-form" }: Servic
         <SectionHeader
           badge="Ситуации"
           title="Когда стоит вызвать мастера"
-          subtitle="Типичные случаи, когда нужна помощь электрика"
+          subtitle={whenToCallSubtitle}
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {offer.whenToCall.map((item) => (

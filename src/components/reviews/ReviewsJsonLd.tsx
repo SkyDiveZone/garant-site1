@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/data";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { getCategoryLabel } from "@/lib/reviews/categories";
 import type { Review } from "@/lib/reviews/types";
 
@@ -49,7 +50,7 @@ export function ReviewsJsonLd({ reviews }: ReviewsJsonLdProps) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
     />
   );
 }

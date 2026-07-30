@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/data";
+import { serializeJsonLd } from "@/lib/json-ld";
 import type { ServiceOfferPage } from "@/lib/service-catalog/types";
 
 interface ServiceOfferJsonLdProps {
@@ -60,7 +61,7 @@ export function ServiceOfferJsonLd({ offer, path }: ServiceOfferJsonLdProps) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
         />
       ))}
     </>

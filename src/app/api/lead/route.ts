@@ -21,6 +21,19 @@ function isValidSchedule(value: string): boolean {
   return LEAD_SCHEDULE_OPTIONS.some((option) => option.value === value);
 }
 
+function sanitizeLeadPageUrl(value: string): string {
+  const path = value.startsWith("/") ? value : `/${value}`;
+  if (
+    path.length > 200 ||
+    path.includes("://") ||
+    path.includes("\\") ||
+    /[<>"'`]/.test(path)
+  ) {
+    return "/";
+  }
+  return path;
+}
+
 const rateLimit = new Map<string, { count: number; timestamp: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000;
 const MAX_REQUESTS = 3;
@@ -78,7 +91,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Имя и телефон обязательны" }, { status: 400 });
     }
 
-    if (trimmedName.length < 2) {
+    if (trimmedName.length < 2 || trimmedName.length > 100) {
       return NextResponse.json({ error: "Укажите корректное имя" }, { status: 400 });
     }
 
@@ -86,9 +99,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Укажите корректный номер телефона" }, { status: 400 });
     }
 
+    if (trimmedAddress.length > 300) {
+      return NextResponse.json({ error: "Адрес слишком длинный" }, { status: 400 });
+    }
+
     if (trimmedProblem.length > 2000) {
       return NextResponse.json({ error: "Описание проблемы слишком длинное" }, { status: 400 });
     }
+
+    const safePageUrl = sanitizeLeadPageUrl(pageUrl);
 
     if (!isValidSchedule(schedule)) {
       return NextResponse.json({ error: "Выберите удобное время из списка" }, { status: 400 });
@@ -123,7 +142,7 @@ export async function POST(request: Request) {
       schedule: schedule as LeadScheduleValue,
       customDate: schedule === LEAD_SCHEDULE_CUSTOM ? customDate : undefined,
       customTime: schedule === LEAD_SCHEDULE_CUSTOM ? customTime : undefined,
-      pageUrl,
+      pageUrl: safePageUrl,
     };
 
     const telegram = await sendLeadToTelegram(payload);

@@ -1,4 +1,5 @@
 import { PHONES, SITE } from "@/lib/data";
+import { serializeJsonLd } from "@/lib/json-ld";
 
 export function JsonLd() {
   const localBusiness = {
@@ -57,7 +58,7 @@ export function JsonLd() {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(schema) }}
         />
       ))}
     </>
