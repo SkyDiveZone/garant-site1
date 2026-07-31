@@ -88,9 +88,6 @@ const SANTEHNIK_PRICES: readonly PriceListGroup[] = [
     items: [
       { name: "Установка водонагревателя до 50 л", priceFrom: 990 },
       { name: "Установка водонагревателя свыше 50 л", priceFrom: 1490 },
-      { name: "Подключение стиральной машины", priceFrom: 590 },
-      { name: "Подключение посудомоечной машины", priceFrom: 690 },
-      { name: "Установка вытяжки", priceFrom: 690 },
       { name: "Установка фильтра для воды", priceFrom: 890 },
       { name: "Прочистка канализации", priceFrom: 990 },
     ],
@@ -192,9 +189,9 @@ const MASTER_PRICES: readonly PriceListGroup[] = [
     items: [
       { name: "Крепление телевизора на стену", priceFrom: 990 },
       { name: "Подключение телевизора", priceFrom: 690 },
-      { name: "Установка стиральной машины", priceFrom: 690 },
-      { name: "Установка посудомоечной машины", priceFrom: 790 },
-      { name: "Установка вытяжки", priceFrom: 790 },
+      { name: "Подключение стиральной машины", priceFrom: 590 },
+      { name: "Подключение посудомоечной машины", priceFrom: 690 },
+      { name: "Установка вытяжки", priceFrom: 690 },
       { name: "Установка водонагревателя", priceFrom: 990 },
     ],
   },

@@ -413,3 +413,180 @@ export function buildElektrikOfferFromPrice(
     faq: defaultFaq(serviceName, item.priceFrom, item.unit),
   };
 }
+
+const MASTER_GALLERY = [
+  { src: "/works/master-na-chas/01-light-install.png", alt: "Пример работ мастера на час" },
+  { src: "/works/master-na-chas/02-wardrobe-assembly.png", alt: "Сборка мебели мастером" },
+  { src: "/works/master-na-chas/03-door-install.png", alt: "Монтажные работы в квартире" },
+] as const;
+
+const MASTER_BENEFITS = [
+  {
+    title: "Круглосуточный выезд",
+    description: `${ROUND_THE_CLOCK.urgent} Работаем по Екатеринбургу без выходных.`,
+    icon: "Clock",
+  },
+  {
+    title: "Смета после осмотра",
+    description: "Назовём точную стоимость на месте — без скрытых доплат.",
+    icon: "ShieldCheck",
+  },
+  {
+    title: "Гарантия до 12 месяцев",
+    description: "Официальная гарантия на выполненные монтажные работы.",
+    icon: "Award",
+  },
+  {
+    title: "Универсальный мастер",
+    description: "Один специалист с инструментом — несколько бытовых задач за выезд.",
+    icon: "Users",
+  },
+] as const;
+
+function buildMasterKeywords(serviceName: string): string[] {
+  const base = shortServiceName(serviceName).toLowerCase();
+  return [
+    `${base} екатеринбург`,
+    `${base} на дом`,
+    `мастер на час ${base}`,
+    "мастер на час екатеринбург",
+    "подключение техники",
+  ];
+}
+
+function defaultMasterWhenNeeded(serviceName: string): ServiceOfferSituation[] {
+  const short = shortServiceName(serviceName);
+  return [
+    {
+      title: `Нужен мастер для: ${short}`,
+      description: "Вызовите мастера на час — приедем с инструментом и выполним работу под ключ.",
+    },
+    {
+      title: "После покупки техники",
+      description: "Подключим и проверим работоспособность — без сюрпризов.",
+    },
+    {
+      title: "Нужно аккуратно вписать в интерьер",
+      description: "Учтём размеры, коммуникации и требования производителя.",
+    },
+    {
+      title: "Во время ремонта или переезда",
+      description: "Выполним монтаж в удобное время и согласуем с другими работами.",
+    },
+  ];
+}
+
+function defaultMasterWhenToCall(serviceName: string): ServiceOfferSituation[] {
+  const short = shortServiceName(serviceName);
+  return [
+    {
+      title: "Не откладывайте установку",
+      description: `По услуге «${short}» лучше вызвать мастера сразу — так техника работает безопасно и без протечек.`,
+    },
+    {
+      title: "Нет времени разбираться самим",
+      description: "Мастер приедет с инструментом и выполнит подключение за один визит.",
+    },
+    {
+      title: "Нужна проверка после монтажа",
+      description: "Проверим герметичность, крепления и запуск — сдадим работу готовой к использованию.",
+    },
+    {
+      title: "Нужна работа сегодня",
+      description: "Согласуем ближайшее время выезда — часто в день обращения.",
+    },
+  ];
+}
+
+function defaultMasterProblems(serviceName: string): ServiceOfferProblem[] {
+  const short = shortServiceName(serviceName);
+  const templates = [
+    {
+      title: "Неправильный самостоятельный монтаж",
+      description: `При «${short}» часто исправляем ошибки предыдущей установки.`,
+    },
+    {
+      title: "Нехватка комплектующих",
+      description: "Подскажем, что нужно докупить, или согласуем закупку после осмотра.",
+    },
+    {
+      title: "Неудобный доступ к коммуникациям",
+      description: "Аккуратно подключим в ограниченном пространстве кухни или ванной.",
+    },
+    {
+      title: "Нужен надёжный результат",
+      description: "Закрепим, подключим и проверим работу без повторных выездов.",
+    },
+  ];
+  return templates.map((item, i) => ({
+    ...item,
+    icon: SANTEHNIK_PROBLEM_ICONS[i % SANTEHNIK_PROBLEM_ICONS.length],
+  }));
+}
+
+function defaultMasterFaq(
+  serviceName: string,
+  priceFrom: number,
+  unit?: string
+): ServiceOfferPage["faq"] {
+  const unitText = unit ? ` ${unit}` : "";
+  const short = shortServiceName(serviceName);
+  return [
+    {
+      question: `Сколько стоит ${short.toLowerCase()}?`,
+      answer: `Ориентировочно от ${priceFrom} ₽${unitText}. Точную сумму мастер назовёт после осмотра на объекте.`,
+    },
+    {
+      question: "Как быстро приедет мастер?",
+      answer: `${ROUND_THE_CLOCK.urgent} Часто выезжаем в тот же день по Екатеринбургу.`,
+    },
+    {
+      question: "Даёте гарантию?",
+      answer: "Да, официальная гарантия до 12 месяцев на выполненные работы.",
+    },
+    {
+      question: "Нужно покупать материалы заранее?",
+      answer: "Можете подготовить сами или согласовать закупку с мастером после осмотра.",
+    },
+  ];
+}
+
+export function buildMasterNaChasOfferFromPrice(
+  group: PriceListGroup,
+  item: PriceListItem,
+  slug: string,
+  galleryOffset = 0
+): ServiceOfferPage {
+  const serviceName = item.name;
+  const short = shortServiceName(serviceName);
+
+  return {
+    slug,
+    category: "master-na-chas",
+    categoryLabel: "Мастер на час",
+    categoryHref: "/master-na-chas",
+    serviceName,
+    h1: `${short} в Екатеринбурге`,
+    title: `${short} в Екатеринбурге — цены, выезд | Гарант Мастер`,
+    description: `${short} в Екатеринбурге. Выезд мастера на час, аккуратный монтаж, гарантия до 12 месяцев. Оставьте заявку — перезвоним за 5 минут.`,
+    keywords: buildMasterKeywords(serviceName),
+    heroSubtitle: `Выполним «${short}» аккуратно и в срок. Согласуем стоимость после осмотра.`,
+    priceFrom: item.priceFrom,
+    priceUnit: item.unit,
+    priceGroup: group.title,
+    aboutIntro: `«Гарант Мастер» выполняет ${serviceName.toLowerCase()} в квартирах, частных домах и коммерческих помещениях Екатеринбурга. Мастер на час приедет с инструментом, оценит объём работ на месте и согласует стоимость до начала.`,
+    includedWorks: defaultSantehnikIncluded(serviceName),
+    howItWorks: defaultSantehnikHowItWorks(serviceName),
+    whenNeeded: defaultMasterWhenNeeded(serviceName),
+    whenToCall: defaultMasterWhenToCall(serviceName),
+    popularProblems: defaultMasterProblems(serviceName),
+    benefits: [...MASTER_BENEFITS],
+    steps: DEFAULT_SERVICE_STEPS,
+    galleryImages: [
+      MASTER_GALLERY[galleryOffset % MASTER_GALLERY.length],
+      MASTER_GALLERY[(galleryOffset + 1) % MASTER_GALLERY.length],
+      MASTER_GALLERY[(galleryOffset + 2) % MASTER_GALLERY.length],
+    ],
+    faq: defaultMasterFaq(serviceName, item.priceFrom, item.unit),
+  };
+}

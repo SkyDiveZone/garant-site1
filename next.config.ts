@@ -1,4 +1,8 @@
-import { ELEKTRIK_LEGACY_REDIRECTS, SANTEHNIK_LEGACY_REDIRECTS } from "./src/lib/service-catalog/slug-map";
+import {
+  ELEKTRIK_LEGACY_REDIRECTS,
+  SANTEHNIK_LEGACY_REDIRECTS,
+  SANTEHNIK_TO_MASTER_OFFER_REDIRECTS,
+} from "./src/lib/service-catalog/slug-map";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
@@ -55,12 +59,19 @@ const nextConfig: NextConfig = {
       })
     );
 
+    const santehnikToMasterRedirects = SANTEHNIK_TO_MASTER_OFFER_REDIRECTS.map((slug) => ({
+      source: `/santehnik/${slug}`,
+      destination: `/master-na-chas/${slug}`,
+      permanent: true,
+    }));
+
     return [
       { source: "/privacy", destination: "/privacy-policy", permanent: true },
       { source: "/terms", destination: "/user-agreement", permanent: true },
       { source: "/reviews", destination: "/otzyvy", permanent: true },
       ...legacyElektrikRedirects,
       ...legacySantehnikRedirects,
+      ...santehnikToMasterRedirects,
     ];
   },
   images: {

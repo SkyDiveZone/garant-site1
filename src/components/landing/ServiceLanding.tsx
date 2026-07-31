@@ -4,6 +4,7 @@ import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ElektrikOffersCatalog } from "@/components/sections/ElektrikOffersCatalog";
+import { MasterNaChasOffersCatalog } from "@/components/sections/MasterNaChasOffersCatalog";
 import { SantehnikOffersCatalog } from "@/components/sections/SantehnikOffersCatalog";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { ServiceRichSections } from "@/components/sections/ServiceRichSections";
@@ -108,7 +109,16 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
         </div>
       )}
 
-      {!isRich && service.slug !== "elektrik" && service.slug !== "santehnik" && (
+      {service.slug === "master-na-chas" && (
+        <div className={SPACING.heroBelowGrid}>
+          <MasterNaChasOffersCatalog formAnchor="#lead-form" />
+        </div>
+      )}
+
+      {!isRich &&
+        service.slug !== "elektrik" &&
+        service.slug !== "santehnik" &&
+        service.slug !== "master-na-chas" && (
         <div className={SPACING.heroBelowGrid}>
           <LeadFormSellingBelow
             slug={service.slug}
@@ -128,6 +138,15 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
       )}
 
       {!isRich && service.slug === "santehnik" && (
+        <LeadFormSellingBelow
+          slug={service.slug}
+          formAnchor="#lead-form"
+          hideWorkTypes
+          hidePriceList
+        />
+      )}
+
+      {!isRich && service.slug === "master-na-chas" && (
         <LeadFormSellingBelow
           slug={service.slug}
           formAnchor="#lead-form"

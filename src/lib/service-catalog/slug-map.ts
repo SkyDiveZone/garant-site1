@@ -75,11 +75,43 @@ export const SANTEHNIK_OFFER_SLUGS = [
   "razvodka-trub",
   "ustanovka-vodonagrevatelya-do-50-l",
   "ustanovka-vodonagrevatelya-svyshe-50-l",
+  "ustanovka-filtra-dlya-vody",
+  "prochistka-kanalizatsii",
+] as const;
+
+/** Stable URL slugs for master-na-chas offers — order matches MASTER_PRICES groups/items */
+export const MASTER_NA_CHAS_OFFER_SLUGS = [
+  "sborka-mebeli",
+  "sborka-kuhonnogo-garnitura",
+  "sborka-shkafa-kupe",
+  "ustanovka-karniza-ili-gardin",
+  "ustanovka-polok-i-zerkal",
+  "kreplenie-predmetov-interera",
+  "ustanovka-zamka",
+  "zamena-dvernoy-ruchki",
+  "regulirovka-dveri",
+  "ustanovka-dovodchika",
+  "kreplenie-televizora-na-stenu",
+  "podklyuchenie-televizora",
   "podklyuchenie-stiralnoy-mashiny",
   "podklyuchenie-posudomoechnoy-mashiny",
   "ustanovka-vytyazhki",
-  "ustanovka-filtra-dlya-vody",
-  "prochistka-kanalizatsii",
+  "ustanovka-vodonagrevatelya",
+  "sverlenie-otverstiy",
+  "germetizatsiya-shvov",
+  "zamena-smesitelya",
+  "zamena-rozetki-ili-vyklyuchatelya",
+  "ustanovka-lyustry-ili-svetilnika",
+  "pomoshch-posle-pereezda",
+  "pochasovaya-oplata-mastera",
+  "minimalnyy-vyzov-mastera",
+] as const;
+
+/** Old nested santehnik URLs → /master-na-chas/[slug] */
+export const SANTEHNIK_TO_MASTER_OFFER_REDIRECTS = [
+  "podklyuchenie-stiralnoy-mashiny",
+  "podklyuchenie-posudomoechnoy-mashiny",
+  "ustanovka-vytyazhki",
 ] as const;
 
 /** Legacy flat URLs → new nested paths under /santehnik/ */

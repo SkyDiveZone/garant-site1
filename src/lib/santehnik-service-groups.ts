@@ -110,10 +110,6 @@ export const SANTEHNIK_SERVICE_GROUPS: ServiceGroup[] = [
         href: "/ustanovka-bojlera",
       },
       {
-        title: "Подключение стиральной машины",
-        description: "Подключение к воде и канализации.",
-      },
-      {
         title: "Установка фильтра для воды",
         description: "Монтаж фильтра и замена картриджей.",
       },

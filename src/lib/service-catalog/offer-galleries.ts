@@ -952,6 +952,40 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Установка водонагревателя свыше 50 л — монтаж и подключение бойлера",
     },
   ],
+  "ustanovka-filtra-dlya-vody": [
+    {
+      src: "/works/santehnik/ustanovka-filtra-dlya-vody/01-reverse-osmosis.png",
+      alt: "Установка фильтра для воды — система обратного осмоса под мойкой",
+    },
+    {
+      src: "/works/santehnik/ustanovka-filtra-dlya-vody/02-aquaphor-under-sink.png",
+      alt: "Установка фильтра для воды — фильтр Аквафор под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-filtra-dlya-vody/03-cartridge-replace.png",
+      alt: "Установка фильтра для воды — замена картриджа фильтра",
+    },
+  ],
+  "prochistka-kanalizatsii": [
+    {
+      src: "/works/santehnik/prochistka-kanalizatsii/01-rothenberger-drain.png",
+      alt: "Прочистка канализации — прочистка трапа машиной Rothenberger",
+    },
+    {
+      src: "/works/santehnik/prochistka-kanalizatsii/02-electric-machine.png",
+      alt: "Прочистка канализации — электрическая машина для прочистки труб",
+    },
+    {
+      src: "/works/santehnik/prochistka-kanalizatsii/03-drain-snake.png",
+      alt: "Прочистка канализации — трос для прочистки канализации",
+    },
+  ],
+};
+
+/** Галереи услуг мастера на час (изображения пока в /works/santehnik/...) */
+export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
+  Record<string, readonly ServiceOfferGalleryImage[]>
+> = {
   "podklyuchenie-stiralnoy-mashiny": [
     {
       src: "/works/santehnik/podklyuchenie-stiralnoy-mashiny/01-back-panel.png",
@@ -992,34 +1026,6 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/santehnik/ustanovka-vytyazhki/03-duct-options.png",
       alt: "Установка вытяжки — гибкий и плоский воздуховод",
-    },
-  ],
-  "ustanovka-filtra-dlya-vody": [
-    {
-      src: "/works/santehnik/ustanovka-filtra-dlya-vody/01-reverse-osmosis.png",
-      alt: "Установка фильтра для воды — система обратного осмоса под мойкой",
-    },
-    {
-      src: "/works/santehnik/ustanovka-filtra-dlya-vody/02-aquaphor-under-sink.png",
-      alt: "Установка фильтра для воды — фильтр Аквафор под раковиной",
-    },
-    {
-      src: "/works/santehnik/ustanovka-filtra-dlya-vody/03-cartridge-replace.png",
-      alt: "Установка фильтра для воды — замена картриджа фильтра",
-    },
-  ],
-  "prochistka-kanalizatsii": [
-    {
-      src: "/works/santehnik/prochistka-kanalizatsii/01-rothenberger-drain.png",
-      alt: "Прочистка канализации — прочистка трапа машиной Rothenberger",
-    },
-    {
-      src: "/works/santehnik/prochistka-kanalizatsii/02-electric-machine.png",
-      alt: "Прочистка канализации — электрическая машина для прочистки труб",
-    },
-    {
-      src: "/works/santehnik/prochistka-kanalizatsii/03-drain-snake.png",
-      alt: "Прочистка канализации — трос для прочистки канализации",
     },
   ],
 };
