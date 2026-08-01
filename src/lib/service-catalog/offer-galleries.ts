@@ -982,50 +982,298 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
   ],
 };
 
-/** Галереи услуг мастера на час (изображения пока в /works/santehnik/...) */
+/** Галереи услуг мастера на час */
 export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
   Record<string, readonly ServiceOfferGalleryImage[]>
 > = {
+  "sborka-mebeli": [
+    {
+      src: "/works/master-na-chas/sborka-mebeli/01-tools-layout.png",
+      alt: "Сборка мебели — инструмент, фурнитура и детали для сборки",
+    },
+    {
+      src: "/works/master-na-chas/sborka-mebeli/02-hardware-parts.png",
+      alt: "Сборка мебели — крепёж, направляющие и панели",
+    },
+    {
+      src: "/works/master-na-chas/sborka-mebeli/03-assembly-process.png",
+      alt: "Сборка мебели — мастер собирает корпус шуруповёртом",
+    },
+  ],
+  "sborka-kuhonnogo-garnitura": [
+    {
+      src: "/works/master-na-chas/sborka-kuhonnogo-garnitura/01-dark-kitchen.png",
+      alt: "Сборка кухонного гарнитура — тёмная кухня с техникой и столешницей",
+    },
+    {
+      src: "/works/master-na-chas/sborka-kuhonnogo-garnitura/02-gray-kitchen-dishwasher.png",
+      alt: "Сборка кухонного гарнитура — серая кухня со встроенной посудомойкой",
+    },
+    {
+      src: "/works/master-na-chas/sborka-kuhonnogo-garnitura/03-modern-two-tone.png",
+      alt: "Сборка кухонного гарнитура — современная двухцветная кухня",
+    },
+  ],
+  "sborka-shkafa-kupe": [
+    {
+      src: "/works/master-na-chas/sborka-shkafa-kupe/01-wood-mirror-wardrobe.png",
+      alt: "Сборка шкафа-купе — шкаф с зеркальной дверью и деревянными панелями",
+    },
+    {
+      src: "/works/master-na-chas/sborka-shkafa-kupe/02-three-door-stone.png",
+      alt: "Сборка шкафа-купе — трёхдверный шкаф с декоративными вставками",
+    },
+    {
+      src: "/works/master-na-chas/sborka-shkafa-kupe/03-white-mirror-wardrobe.png",
+      alt: "Сборка шкафа-купе — белый шкаф с зеркалом в центре",
+    },
+  ],
+  "ustanovka-karniza-ili-gardin": [
+    {
+      src: "/works/master-na-chas/ustanovka-karniza-ili-gardin/01-double-rod.png",
+      alt: "Установка карниза или гардин — двойной карниз с декоративными наконечниками",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-karniza-ili-gardin/02-swing-arm.png",
+      alt: "Установка карниза или гардин — поворотные карнизы над окном",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-karniza-ili-gardin/03-ceiling-track.png",
+      alt: "Установка карниза или гардин — потолочный карниз с многослойными шторами",
+    },
+  ],
+  "ustanovka-polok-i-zerkal": [
+    {
+      src: "/works/master-na-chas/ustanovka-polok-i-zerkal/01-round-mirror-shelf.png",
+      alt: "Установка полок и зеркал — круглое зеркало с подсветкой и полкой",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-polok-i-zerkal/02-tall-mirror-console.png",
+      alt: "Установка полок и зеркал — высокое зеркало с консолью и ящиками",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-polok-i-zerkal/03-wood-shelf-mirror.png",
+      alt: "Установка полок и зеркал — зеркало с деревянной парящей полкой",
+    },
+  ],
+  "kreplenie-predmetov-interera": [
+    {
+      src: "/works/master-na-chas/kreplenie-predmetov-interera/01-pipe-shelves.png",
+      alt: "Крепление предметов интерьера — полки на металлических трубах",
+    },
+    {
+      src: "/works/master-na-chas/kreplenie-predmetov-interera/02-metal-bracket-shelf.png",
+      alt: "Крепление предметов интерьера — полка на металлическом кронштейне",
+    },
+    {
+      src: "/works/master-na-chas/kreplenie-predmetov-interera/03-kitchen-rail.png",
+      alt: "Крепление предметов интерьера — кухонный рейлинг с аксессуарами",
+    },
+  ],
+  "ustanovka-zamka": [
+    {
+      src: "/works/master-na-chas/ustanovka-zamka/01-multi-lock-install.png",
+      alt: "Установка замка — монтаж замков и защёлок на двери",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-zamka/02-lever-handle-lock.png",
+      alt: "Установка замка — установка ручки и защёлки на дверь",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-zamka/03-mortise-faceplate.png",
+      alt: "Установка замка — крепление лицевой планки врезного замка",
+    },
+  ],
+  "zamena-dvernoy-ruchki": [
+    {
+      src: "/works/master-na-chas/zamena-dvernoy-ruchki/01-lever-install.png",
+      alt: "Замена дверной ручки — установка рычажной ручки на дверь",
+    },
+    {
+      src: "/works/master-na-chas/zamena-dvernoy-ruchki/02-knob-latch.png",
+      alt: "Замена дверной ручки — монтаж круглой ручки и защёлки",
+    },
+    {
+      src: "/works/master-na-chas/zamena-dvernoy-ruchki/03-set-screw.png",
+      alt: "Замена дверной ручки — фиксация ручки установочным винтом",
+    },
+  ],
+  "regulirovka-dveri": [
+    {
+      src: "/works/master-na-chas/regulirovka-dveri/01-hinge-horizontal.png",
+      alt: "Регулировка двери — горизонтальная регулировка петли ключом",
+    },
+    {
+      src: "/works/master-na-chas/regulirovka-dveri/02-hinge-vertical.png",
+      alt: "Регулировка двери — вертикальная регулировка петли",
+    },
+    {
+      src: "/works/master-na-chas/regulirovka-dveri/03-wood-hinge-adjust.png",
+      alt: "Регулировка двери — настройка петли деревянной двери отвёрткой",
+    },
+  ],
+  "ustanovka-dovodchika": [
+    {
+      src: "/works/master-na-chas/ustanovka-dovodchika/01-gate-closer.png",
+      alt: "Установка доводчика — доводчик на металлической калитке",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-dovodchika/02-overhead-arm.png",
+      alt: "Установка доводчика — накладной доводчик с рычажной тягой",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-dovodchika/03-slide-rail.png",
+      alt: "Установка доводчика — доводчик со скользящей шиной",
+    },
+  ],
+  "kreplenie-televizora-na-stenu": [
+    {
+      src: "/works/master-na-chas/kreplenie-televizora-na-stenu/01-mounted-tv.png",
+      alt: "Крепление телевизора на стену — ТВ на стене с подсветкой",
+    },
+    {
+      src: "/works/master-na-chas/kreplenie-televizora-na-stenu/02-articulated-mount.png",
+      alt: "Крепление телевизора на стену — монтаж кронштейна с выносом",
+    },
+    {
+      src: "/works/master-na-chas/kreplenie-televizora-na-stenu/03-level-bracket.png",
+      alt: "Крепление телевизора на стену — выравнивание кронштейна по уровню",
+    },
+  ],
+  "podklyuchenie-televizora": [
+    {
+      src: "/works/master-na-chas/podklyuchenie-televizora/01-wall-tv.png",
+      alt: "Подключение телевизора — ТВ на стене без видимых проводов",
+    },
+    {
+      src: "/works/master-na-chas/podklyuchenie-televizora/02-ports-access.png",
+      alt: "Подключение телевизора — доступ к разъёмам на задней панели",
+    },
+    {
+      src: "/works/master-na-chas/podklyuchenie-televizora/03-mount-cables.png",
+      alt: "Подключение телевизора — монтаж и прокладка кабелей",
+    },
+  ],
   "podklyuchenie-stiralnoy-mashiny": [
     {
-      src: "/works/santehnik/podklyuchenie-stiralnoy-mashiny/01-back-panel.png",
-      alt: "Подключение стиральной машины — точки подключения на задней панели",
+      src: "/works/master-na-chas/podklyuchenie-stiralnoy-mashiny/01-master-back-panel.png",
+      alt: "Подключение стиральной машины — мастер работает с задней панелью",
     },
     {
-      src: "/works/santehnik/podklyuchenie-stiralnoy-mashiny/02-master-install.png",
-      alt: "Подключение стиральной машины — монтаж мастером",
+      src: "/works/master-na-chas/podklyuchenie-stiralnoy-mashiny/02-connections-rear.png",
+      alt: "Подключение стиральной машины — шланги и разъёмы на задней панели",
     },
     {
-      src: "/works/santehnik/podklyuchenie-stiralnoy-mashiny/03-connected-lg.png",
-      alt: "Подключение стиральной машины — готовое подключение в ванной",
+      src: "/works/master-na-chas/podklyuchenie-stiralnoy-mashiny/03-connected-lg.png",
+      alt: "Подключение стиральной машины — установленная стиральная машина LG",
     },
   ],
   "podklyuchenie-posudomoechnoy-mashiny": [
     {
-      src: "/works/santehnik/podklyuchenie-posudomoechnoy-mashiny/01-built-in-dishwasher.png",
-      alt: "Подключение посудомоечной машины — встраиваемая посудомойка на кухне",
+      src: "/works/master-na-chas/podklyuchenie-posudomoechnoy-mashiny/01-built-in-open.png",
+      alt: "Подключение посудомоечной машины — встраиваемая посудомойка с открытой дверью",
     },
     {
-      src: "/works/santehnik/podklyuchenie-posudomoechnoy-mashiny/02-water-hose.png",
-      alt: "Подключение посудомоечной машины — подключение подводки воды",
+      src: "/works/master-na-chas/podklyuchenie-posudomoechnoy-mashiny/02-drain-hose.png",
+      alt: "Подключение посудомоечной машины — подключение сливного шланга под мойкой",
     },
     {
-      src: "/works/santehnik/podklyuchenie-posudomoechnoy-mashiny/03-drain-hose.png",
-      alt: "Подключение посудомоечной машины — подключение сливного шланга",
+      src: "/works/master-na-chas/podklyuchenie-posudomoechnoy-mashiny/03-water-hose.png",
+      alt: "Подключение посудомоечной машины — подключение шланга подачи воды",
     },
   ],
   "ustanovka-vytyazhki": [
     {
-      src: "/works/santehnik/ustanovka-vytyazhki/01-bosch-built-in.png",
-      alt: "Установка вытяжки — встраиваемая вытяжка Bosch в шкафу",
-    },
-    {
-      src: "/works/santehnik/ustanovka-vytyazhki/02-hansa-chimney.png",
+      src: "/works/master-na-chas/ustanovka-vytyazhki/01-hansa-chimney.png",
       alt: "Установка вытяжки — купольная вытяжка Hansa с воздуховодом",
     },
     {
-      src: "/works/santehnik/ustanovka-vytyazhki/03-duct-options.png",
+      src: "/works/master-na-chas/ustanovka-vytyazhki/02-duct-options.png",
       alt: "Установка вытяжки — гибкий и плоский воздуховод",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vytyazhki/03-bosch-built-in.png",
+      alt: "Установка вытяжки — встраиваемая вытяжка Bosch в шкафу",
+    },
+  ],
+  "ustanovka-vodonagrevatelya": [
+    {
+      src: "/works/master-na-chas/ustanovka-vodonagrevatelya/01-slim-wall-heater.png",
+      alt: "Установка водонагревателя — настенный бойлер с подключением",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vodonagrevatelya/02-installation-options.png",
+      alt: "Установка водонагревателя — варианты монтажа бойлера",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vodonagrevatelya/03-horizontal-electrolux.png",
+      alt: "Установка водонагревателя — горизонтальный бойлер Electrolux",
+    },
+  ],
+  "sverlenie-otverstiy": [
+    {
+      src: "/works/master-na-chas/sverlenie-otverstiy/01-diamond-foundation.png",
+      alt: "Сверление отверстий — алмазная резка проёма в фундаменте",
+    },
+    {
+      src: "/works/master-na-chas/sverlenie-otverstiy/02-core-drill-rig.png",
+      alt: "Сверление отверстий — алмазное бурение стены установкой",
+    },
+    {
+      src: "/works/master-na-chas/sverlenie-otverstiy/03-brick-wall-drill.png",
+      alt: "Сверление отверстий — сверление в кирпичной стене",
+    },
+  ],
+  "germetizatsiya-shvov": [
+    {
+      src: "/works/master-na-chas/germetizatsiya-shvov/01-floor-joint-seal.png",
+      alt: "Герметизация швов — герметизация шва бетонного пола лентой",
+    },
+    {
+      src: "/works/master-na-chas/germetizatsiya-shvov/02-log-seam-caulk.png",
+      alt: "Герметизация швов — нанесение герметика на швы сруба",
+    },
+  ],
+  "zamena-smesitelya": [
+    {
+      src: "/works/master-na-chas/zamena-smesitelya/01-bath-mixer-wrench.png",
+      alt: "Замена смесителя — монтаж смесителя на ванне ключом",
+    },
+    {
+      src: "/works/master-na-chas/zamena-smesitelya/02-wall-mixer-install.png",
+      alt: "Замена смесителя — установка настенного смесителя",
+    },
+    {
+      src: "/works/master-na-chas/zamena-smesitelya/03-kitchen-faucet.png",
+      alt: "Замена смесителя — установка кухонного смесителя",
+    },
+  ],
+  "zamena-rozetki-ili-vyklyuchatelya": [
+    {
+      src: "/works/master-na-chas/zamena-rozetki-ili-vyklyuchatelya/01-outlet-replace.png",
+      alt: "Замена розетки или выключателя — замена розетки с прозвонкой",
+    },
+    {
+      src: "/works/master-na-chas/zamena-rozetki-ili-vyklyuchatelya/02-socket-wiring.png",
+      alt: "Замена розетки или выключателя — подключение проводов розетки",
+    },
+    {
+      src: "/works/master-na-chas/zamena-rozetki-ili-vyklyuchatelya/03-switch-install.png",
+      alt: "Замена розетки или выключателя — установка механизма выключателя",
+    },
+  ],
+  "ustanovka-lyustry-ili-svetilnika": [
+    {
+      src: "/works/master-na-chas/ustanovka-lyustry-ili-svetilnika/01-chandelier-mount.png",
+      alt: "Установка люстры или светильника — монтаж люстры к потолку",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-lyustry-ili-svetilnika/02-recessed-light.png",
+      alt: "Установка люстры или светильника — встраиваемый светильник в потолок",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-lyustry-ili-svetilnika/03-ceiling-spotlights.png",
+      alt: "Установка люстры или светильника — потолочные споты",
     },
   ],
 };
