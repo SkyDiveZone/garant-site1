@@ -2,22 +2,30 @@ import { Button } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { formatPriceFrom } from "@/lib/format-price";
 import { getCategoryOffersGrouped, getServiceOfferPath } from "@/lib/service-catalog";
+import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 interface ElektrikOffersCatalogProps {
   formAnchor?: string;
+  className?: string;
+  headerAlign?: "left" | "center";
 }
 
-export function ElektrikOffersCatalog({ formAnchor = "#lead-form" }: ElektrikOffersCatalogProps) {
+export function ElektrikOffersCatalog({
+  formAnchor = "#lead-form",
+  className,
+  headerAlign = "center",
+}: ElektrikOffersCatalogProps) {
   const groups = getCategoryOffersGrouped("elektrik");
 
   return (
-    <Section id="service-catalog" className="bg-white">
+    <Section id="service-catalog" className={cn("bg-white", className)}>
       <SectionHeader
         badge="Услуги"
         title="Все услуги электрика"
         subtitle="Выберите услугу — у каждой есть отдельная страница с ценами и описанием"
+        align={headerAlign}
       />
 
       <div className="space-y-8">

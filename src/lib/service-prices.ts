@@ -58,7 +58,6 @@ const SANTEHNIK_PRICES: readonly PriceListGroup[] = [
     items: [
       { name: "Установка раковины", priceFrom: 690 },
       { name: "Установка раковины «Тюльпан»", priceFrom: 890 },
-      { name: "Сборка тумбы под раковину", priceFrom: 990 },
       { name: "Установка сифона", priceFrom: 390 },
       { name: "Установка металлического сифона", priceFrom: 690 },
     ],
@@ -75,9 +74,7 @@ const SANTEHNIK_PRICES: readonly PriceListGroup[] = [
   {
     title: "Отопление и инженерия",
     items: [
-      { name: "Установка полотенцесушителя", priceFrom: 890 },
       { name: "Монтаж байпаса", priceFrom: 1190 },
-      { name: "Установка радиатора отопления", priceFrom: 990 },
       { name: "Установка шарового крана", priceFrom: 390 },
       { name: "Установка счётчика воды", priceFrom: 590 },
       { name: "Разводка труб", priceFrom: 290, unit: "за п.м." },
@@ -173,6 +170,7 @@ const MASTER_PRICES: readonly PriceListGroup[] = [
       { name: "Установка карниза или гардин", priceFrom: 390 },
       { name: "Установка полок и зеркал", priceFrom: 290 },
       { name: "Крепление предметов интерьера", priceFrom: 290 },
+      { name: "Сборка тумбы под раковину", priceFrom: 990 },
     ],
   },
   {
@@ -193,6 +191,8 @@ const MASTER_PRICES: readonly PriceListGroup[] = [
       { name: "Подключение посудомоечной машины", priceFrom: 690 },
       { name: "Установка вытяжки", priceFrom: 690 },
       { name: "Установка водонагревателя", priceFrom: 990 },
+      { name: "Установка полотенцесушителя", priceFrom: 890 },
+      { name: "Установка радиатора отопления", priceFrom: 990 },
     ],
   },
   {

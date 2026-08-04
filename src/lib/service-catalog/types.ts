@@ -1,7 +1,11 @@
 import type { ServiceBenefit, ServiceFAQ, ServiceStep } from "@/lib/services/types";
 import type { LucideIcon } from "lucide-react";
 
-export type ServiceCatalogCategory = "elektrik" | "santehnik" | "master-na-chas";
+export type ServiceCatalogCategory =
+  | "elektrik"
+  | "santehnik"
+  | "master-na-chas"
+  | "remont-kvartir";
 
 export interface ServiceOfferGalleryImage {
   src: string;

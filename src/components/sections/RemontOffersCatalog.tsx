@@ -6,24 +6,24 @@ import { cn } from "@/lib/utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-interface SantehnikOffersCatalogProps {
+interface RemontOffersCatalogProps {
   formAnchor?: string;
   className?: string;
   headerAlign?: "left" | "center";
 }
 
-export function SantehnikOffersCatalog({
+export function RemontOffersCatalog({
   formAnchor = "#lead-form",
   className,
   headerAlign = "center",
-}: SantehnikOffersCatalogProps) {
-  const groups = getCategoryOffersGrouped("santehnik");
+}: RemontOffersCatalogProps) {
+  const groups = getCategoryOffersGrouped("remont-kvartir");
 
   return (
     <Section id="service-catalog" className={cn("bg-white", className)}>
       <SectionHeader
         badge="Услуги"
-        title="Все услуги сантехника"
+        title="Все услуги ремонта квартир"
         subtitle="Выберите услугу — у каждой есть отдельная страница с ценами и описанием"
         align={headerAlign}
       />
@@ -34,7 +34,7 @@ export function SantehnikOffersCatalog({
             <h3 className="mb-4 font-display text-xl font-bold text-slate-900">{group.title}</h3>
             <ul className="divide-y divide-slate-100 overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm">
               {group.offers.map((offer) => {
-                const href = getServiceOfferPath("santehnik", offer.slug);
+                const href = getServiceOfferPath("remont-kvartir", offer.slug);
 
                 return (
                   <li
@@ -48,7 +48,9 @@ export function SantehnikOffersCatalog({
                       <p className="mt-1 text-sm font-bold text-brand-700">
                         {formatPriceFrom(offer.priceFrom)}
                         {offer.priceUnit && (
-                          <span className="ml-1 text-xs font-normal text-slate-400">{offer.priceUnit}</span>
+                          <span className="ml-1 text-xs font-normal text-slate-400">
+                            {offer.priceUnit}
+                          </span>
                         )}
                       </p>
                     </div>

@@ -60,16 +60,13 @@ export const SANTEHNIK_OFFER_SLUGS = [
   "ustanovka-ekrana-pod-vannu",
   "ustanovka-rakoviny",
   "ustanovka-rakoviny-tyulpan",
-  "sborka-tumby-pod-rakovinu",
   "ustanovka-sifona",
   "ustanovka-metallicheskogo-sifona",
   "ustranenie-zasora",
   "ustranenie-zasora-khimicheskiy-sposob",
   "ustranenie-protechki",
   "remont-trub-i-stoyakov",
-  "ustanovka-polotentsesushitelya",
   "montazh-baypasa",
-  "ustanovka-radiatora-otopleniya",
   "ustanovka-sharovogo-krana",
   "ustanovka-schetchika-vody",
   "razvodka-trub",
@@ -87,6 +84,7 @@ export const MASTER_NA_CHAS_OFFER_SLUGS = [
   "ustanovka-karniza-ili-gardin",
   "ustanovka-polok-i-zerkal",
   "kreplenie-predmetov-interera",
+  "sborka-tumby-pod-rakovinu",
   "ustanovka-zamka",
   "zamena-dvernoy-ruchki",
   "regulirovka-dveri",
@@ -97,6 +95,8 @@ export const MASTER_NA_CHAS_OFFER_SLUGS = [
   "podklyuchenie-posudomoechnoy-mashiny",
   "ustanovka-vytyazhki",
   "ustanovka-vodonagrevatelya",
+  "ustanovka-polotentsesushitelya",
+  "ustanovka-radiatora-otopleniya",
   "sverlenie-otverstiy",
   "germetizatsiya-shvov",
   "zamena-smesitelya",
@@ -107,11 +107,30 @@ export const MASTER_NA_CHAS_OFFER_SLUGS = [
   "minimalnyy-vyzov-mastera",
 ] as const;
 
+/** Stable URL slugs for remont-kvartir offers — order matches REMONT_PRICES groups/items */
+export const REMONT_KVARTIR_OFFER_SLUGS = [
+  "kosmeticheskiy-remont",
+  "kapitalnyy-remont",
+  "remont-vannoy-komnaty",
+  "remont-kuhni",
+  "remont-pod-klyuch",
+  "shtroblenie-pod-provodku-kirpich",
+  "shtroblenie-pod-provodku-beton",
+  "shtroblenie-pod-truby",
+  "sverlenie-otverstiy-v-betone",
+  "pokleyka-oboev",
+  "ukladka-plitki",
+  "montazh-natyazhnogo-potolka",
+] as const;
+
 /** Old nested santehnik URLs → /master-na-chas/[slug] */
 export const SANTEHNIK_TO_MASTER_OFFER_REDIRECTS = [
   "podklyuchenie-stiralnoy-mashiny",
   "podklyuchenie-posudomoechnoy-mashiny",
   "ustanovka-vytyazhki",
+  "sborka-tumby-pod-rakovinu",
+  "ustanovka-polotentsesushitelya",
+  "ustanovka-radiatora-otopleniya",
 ] as const;
 
 /** Legacy flat URLs → new nested paths under /santehnik/ */

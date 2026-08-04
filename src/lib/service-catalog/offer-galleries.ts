@@ -742,20 +742,6 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Установка раковины «Тюльпан» — монтаж раковины на стену",
     },
   ],
-  "sborka-tumby-pod-rakovinu": [
-    {
-      src: "/works/santehnik/sborka-tumby-pod-rakovinu/01-frame-mount.png",
-      alt: "Сборка тумбы под раковину — крепление каркаса к стене",
-    },
-    {
-      src: "/works/santehnik/sborka-tumby-pod-rakovinu/02-cabinet-assembly.png",
-      alt: "Сборка тумбы под раковину — сборка тумбы с ящиками и дверцей",
-    },
-    {
-      src: "/works/santehnik/sborka-tumby-pod-rakovinu/03-corner-plumbing.png",
-      alt: "Сборка тумбы под раковину — угловая тумба с выводом коммуникаций",
-    },
-  ],
   "ustanovka-sifona": [
     {
       src: "/works/santehnik/ustanovka-sifona/01-drain-connect.png",
@@ -840,20 +826,6 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Ремонт труб и стояков — замена канализационного стояка",
     },
   ],
-  "ustanovka-polotentsesushitelya": [
-    {
-      src: "/works/santehnik/ustanovka-polotentsesushitelya/01-wrench-install.png",
-      alt: "Установка полотенцесушителя — подключение к стояку ключом",
-    },
-    {
-      src: "/works/santehnik/ustanovka-polotentsesushitelya/02-ladder-valves.png",
-      alt: "Установка полотенцесушителя — лестничный полотенцесушитель с кранами",
-    },
-    {
-      src: "/works/santehnik/ustanovka-polotentsesushitelya/03-serpentine-riser.png",
-      alt: "Установка полотенцесушителя — М-образный полотенцесушитель на стояке",
-    },
-  ],
   "montazh-baypasa": [
     {
       src: "/works/santehnik/montazh-baypasa/01-radiator-bypass.png",
@@ -866,20 +838,6 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/santehnik/montazh-baypasa/03-grundfos-bypass.png",
       alt: "Монтаж байпаса — насос Grundfos в обвязке отопления",
-    },
-  ],
-  "ustanovka-radiatora-otopleniya": [
-    {
-      src: "/works/santehnik/ustanovka-radiatora-otopleniya/01-diagonal-connect.png",
-      alt: "Установка радиатора отопления — диагональное подключение к трубам",
-    },
-    {
-      src: "/works/santehnik/ustanovka-radiatora-otopleniya/02-thermostatic-valve.png",
-      alt: "Установка радиатора отопления — термостатический клапан на радиаторе",
-    },
-    {
-      src: "/works/santehnik/ustanovka-radiatora-otopleniya/03-under-window.png",
-      alt: "Установка радиатора отопления — радиатор под окном с байпасом",
     },
   ],
   "ustanovka-sharovogo-krana": [
@@ -1210,6 +1168,48 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
       alt: "Установка водонагревателя — горизонтальный бойлер Electrolux",
     },
   ],
+  "sborka-tumby-pod-rakovinu": [
+    {
+      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/01-frame-mount.png",
+      alt: "Сборка тумбы под раковину — крепление каркаса к стене",
+    },
+    {
+      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/02-cabinet-assembly.png",
+      alt: "Сборка тумбы под раковину — сборка тумбы с ящиками и дверцей",
+    },
+    {
+      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/03-corner-plumbing.png",
+      alt: "Сборка тумбы под раковину — угловая тумба с выводом коммуникаций",
+    },
+  ],
+  "ustanovka-polotentsesushitelya": [
+    {
+      src: "/works/master-na-chas/ustanovka-polotentsesushitelya/01-wrench-install.png",
+      alt: "Установка полотенцесушителя — подключение к стояку ключом",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-polotentsesushitelya/02-ladder-valves.png",
+      alt: "Установка полотенцесушителя — лестничный полотенцесушитель с кранами",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-polotentsesushitelya/03-serpentine-riser.png",
+      alt: "Установка полотенцесушителя — М-образный полотенцесушитель на стояке",
+    },
+  ],
+  "ustanovka-radiatora-otopleniya": [
+    {
+      src: "/works/master-na-chas/ustanovka-radiatora-otopleniya/01-diagonal-connect.png",
+      alt: "Установка радиатора отопления — диагональное подключение к трубам",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-radiatora-otopleniya/02-thermostatic-valve.png",
+      alt: "Установка радиатора отопления — термостатический клапан на радиаторе",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-radiatora-otopleniya/03-under-window.png",
+      alt: "Установка радиатора отопления — радиатор под окном с байпасом",
+    },
+  ],
   "sverlenie-otverstiy": [
     {
       src: "/works/master-na-chas/sverlenie-otverstiy/01-diamond-foundation.png",
@@ -1277,3 +1277,8 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
     },
   ],
 };
+
+/** Галереи услуг ремонта квартир (опционально — иначе шаблонные фото категории) */
+export const REMONT_KVARTIR_OFFER_GALLERIES: Partial<
+  Record<string, readonly ServiceOfferGalleryImage[]>
+> = {};

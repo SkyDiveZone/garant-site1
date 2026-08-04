@@ -12,6 +12,12 @@ import {
   getMasterNaChasOffersByGroup,
 } from "@/lib/service-catalog/categories/master-na-chas";
 import {
+  getAllRemontKvartirOfferSlugs,
+  getRemontKvartirOffer,
+  getRemontKvartirOffers,
+  getRemontKvartirOffersByGroup,
+} from "@/lib/service-catalog/categories/remont-kvartir";
+import {
   getAllSantehnikOfferSlugs,
   getSantehnikOffer,
   getSantehnikOffers,
@@ -25,6 +31,7 @@ export function getServiceOffer(
   if (category === "elektrik") return getElektrikOffer(slug);
   if (category === "santehnik") return getSantehnikOffer(slug);
   if (category === "master-na-chas") return getMasterNaChasOffer(slug);
+  if (category === "remont-kvartir") return getRemontKvartirOffer(slug);
   return undefined;
 }
 
@@ -36,6 +43,10 @@ export function getAllServiceOfferPaths(): { category: ServiceCatalogCategory; s
       category: "master-na-chas" as const,
       slug,
     })),
+    ...getAllRemontKvartirOfferSlugs().map((slug) => ({
+      category: "remont-kvartir" as const,
+      slug,
+    })),
   ];
 }
 
@@ -43,6 +54,7 @@ export function getCategoryOffersGrouped(category: ServiceCatalogCategory) {
   if (category === "elektrik") return getElektrikOffersByGroup();
   if (category === "santehnik") return getSantehnikOffersByGroup();
   if (category === "master-na-chas") return getMasterNaChasOffersByGroup();
+  if (category === "remont-kvartir") return getRemontKvartirOffersByGroup();
   return [];
 }
 
@@ -50,6 +62,7 @@ export function getCategoryOffers(category: ServiceCatalogCategory): ServiceOffe
   if (category === "elektrik") return getElektrikOffers();
   if (category === "santehnik") return getSantehnikOffers();
   if (category === "master-na-chas") return getMasterNaChasOffers();
+  if (category === "remont-kvartir") return getRemontKvartirOffers();
   return [];
 }
 

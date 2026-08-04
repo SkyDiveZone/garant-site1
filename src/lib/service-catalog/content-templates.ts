@@ -10,7 +10,9 @@ import {
   AlertTriangle,
   Cable,
   Droplets,
+  Hammer,
   Lightbulb,
+  Paintbrush,
   Plug,
   ShieldCheck,
   Wrench,
@@ -588,5 +590,184 @@ export function buildMasterNaChasOfferFromPrice(
       MASTER_GALLERY[(galleryOffset + 2) % MASTER_GALLERY.length],
     ],
     faq: defaultMasterFaq(serviceName, item.priceFrom, item.unit),
+  };
+}
+
+const REMONT_GALLERY = [
+  { src: "/works/remont-kvartir/01-bedroom.png", alt: "Пример ремонта квартиры — спальня" },
+  { src: "/works/remont-kvartir/02-accent-wall.png", alt: "Пример ремонта квартиры — акцентная стена" },
+  { src: "/works/remont-kvartir/03-living-room.png", alt: "Пример ремонта квартиры — гостиная" },
+] as const;
+
+const REMONT_BENEFITS = [
+  {
+    title: "Круглосуточный выезд",
+    description: `${ROUND_THE_CLOCK.urgent} Работаем по Екатеринбургу без выходных.`,
+    icon: "Clock",
+  },
+  {
+    title: "Смета после осмотра",
+    description: "Назовём точную стоимость на месте — без скрытых доплат.",
+    icon: "ShieldCheck",
+  },
+  {
+    title: "Гарантия до 12 месяцев",
+    description: "Официальная гарантия на выполненные отделочные работы.",
+    icon: "Award",
+  },
+  {
+    title: "Опытные отделочники",
+    description: "Мастера с практикой от 5 лет — аккуратно и в срок.",
+    icon: "Users",
+  },
+] as const;
+
+const REMONT_PROBLEM_ICONS: LucideIcon[] = [Paintbrush, Hammer, Wrench, AlertTriangle];
+
+function buildRemontKeywords(serviceName: string): string[] {
+  const base = shortServiceName(serviceName).toLowerCase();
+  return [
+    `${base} екатеринбург`,
+    `ремонт квартир ${base}`,
+    "ремонт квартир екатеринбург",
+    "отделочные работы екатеринбург",
+    base,
+  ];
+}
+
+function defaultRemontWhenNeeded(serviceName: string): ServiceOfferSituation[] {
+  const short = shortServiceName(serviceName);
+  return [
+    {
+      title: `Планируете: ${short}`,
+      description: "Составим смету после осмотра и согласуем этапы работ до старта.",
+    },
+    {
+      title: "Обновление отделки",
+      description: "Поклеим, покрасим, выровняем — без лишней пыли и с уборкой после работ.",
+    },
+    {
+      title: "Ремонт одной комнаты или всей квартиры",
+      description: "Работаем точечно или комплексно — под ваш бюджет и сроки.",
+    },
+    {
+      title: "Нужен понятный результат",
+      description: "Фиксируем объём, материалы и сроки — сдаём работу готовой к проживанию.",
+    },
+  ];
+}
+
+function defaultRemontWhenToCall(serviceName: string): ServiceOfferSituation[] {
+  const short = shortServiceName(serviceName);
+  return [
+    {
+      title: "Хотите начать без сюрпризов",
+      description: `По услуге «${short}» мастер приедет на замер и согласует условия до начала.`,
+    },
+    {
+      title: "Нет времени искать бригаду",
+      description: "Один подрядчик: отделка, подготовка и сдача объекта.",
+    },
+    {
+      title: "Нужен ремонт к сроку",
+      description: "Согласуем график работ и приедем в удобное время.",
+    },
+    {
+      title: "Важно качество отделки",
+      description: "Работаем аккуратно, с контролем геометрии и чистотой на объекте.",
+    },
+  ];
+}
+
+function defaultRemontProblems(serviceName: string): ServiceOfferProblem[] {
+  const short = shortServiceName(serviceName);
+  const templates = [
+    {
+      title: "Неровные стены или потолок",
+      description: `Перед «${short}» подготовим основание — иначе отделка ляжет плохо.`,
+    },
+    {
+      title: "Старая отделка мешает",
+      description: "Аккуратно демонтируем и подготовим поверхности под новый слой.",
+    },
+    {
+      title: "Сроки поджимают",
+      description: "Спланируем этапы так, чтобы уложиться в оговорённые сроки.",
+    },
+    {
+      title: "Нужен предсказуемый бюджет",
+      description: "Согласуем объём и материалы после осмотра — без скрытых доплат.",
+    },
+  ];
+  return templates.map((item, i) => ({
+    ...item,
+    icon: REMONT_PROBLEM_ICONS[i % REMONT_PROBLEM_ICONS.length],
+  }));
+}
+
+function defaultRemontFaq(
+  serviceName: string,
+  priceFrom: number,
+  unit?: string
+): ServiceOfferPage["faq"] {
+  const unitText = unit ? ` ${unit}` : "";
+  const short = shortServiceName(serviceName);
+  return [
+    {
+      question: `Сколько стоит ${short.toLowerCase()}?`,
+      answer: `Ориентировочно от ${priceFrom} ₽${unitText}. Точную сумму мастер назовёт после осмотра и замера.`,
+    },
+    {
+      question: "Сколько длится ремонт?",
+      answer: "Срок зависит от площади и объёма работ. Ориентир по срокам дадим после осмотра.",
+    },
+    {
+      question: "Даёте гарантию?",
+      answer: "Да, официальная гарантия до 12 месяцев на выполненные работы.",
+    },
+    {
+      question: "Материалы ваши или мои?",
+      answer: "Можете закупить сами или согласовать закупку с мастером после осмотра.",
+    },
+  ];
+}
+
+export function buildRemontKvartirOfferFromPrice(
+  group: PriceListGroup,
+  item: PriceListItem,
+  slug: string,
+  galleryOffset = 0
+): ServiceOfferPage {
+  const serviceName = item.name;
+  const short = shortServiceName(serviceName);
+
+  return {
+    slug,
+    category: "remont-kvartir",
+    categoryLabel: "Ремонт квартир",
+    categoryHref: "/remont-kvartir",
+    serviceName,
+    h1: `${short} в Екатеринбурге`,
+    title: `${short} в Екатеринбурге — цены, выезд | Гарант Мастер`,
+    description: `${short} в Екатеринбурге. Отделочные работы, смета после осмотра, гарантия до 12 месяцев. Оставьте заявку — перезвоним за 5 минут.`,
+    keywords: buildRemontKeywords(serviceName),
+    heroSubtitle: `Выполним «${short}» аккуратно и в срок. Согласуем стоимость после осмотра.`,
+    priceFrom: item.priceFrom,
+    priceUnit: item.unit,
+    priceGroup: group.title,
+    aboutIntro: `«Гарант Мастер» выполняет ${serviceName.toLowerCase()} в квартирах Екатеринбурга. Мастер приедет на осмотр, оценит объём работ и согласует стоимость до начала.`,
+    includedWorks: defaultSantehnikIncluded(serviceName),
+    howItWorks: defaultSantehnikHowItWorks(serviceName),
+    whenNeeded: defaultRemontWhenNeeded(serviceName),
+    whenToCall: defaultRemontWhenToCall(serviceName),
+    popularProblems: defaultRemontProblems(serviceName),
+    benefits: [...REMONT_BENEFITS],
+    steps: DEFAULT_SERVICE_STEPS,
+    galleryImages: [
+      REMONT_GALLERY[galleryOffset % REMONT_GALLERY.length],
+      REMONT_GALLERY[(galleryOffset + 1) % REMONT_GALLERY.length],
+      REMONT_GALLERY[(galleryOffset + 2) % REMONT_GALLERY.length],
+    ],
+    faq: defaultRemontFaq(serviceName, item.priceFrom, item.unit),
   };
 }

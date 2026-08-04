@@ -3,6 +3,10 @@ const LEAD_FORM_LABELS: Record<string, { title: string; submitLabel: string }> =
     title: "Вызвать сантехника",
     submitLabel: "Вызвать сантехника",
   },
+  "remont-kvartir": {
+    title: "Заявка на ремонт",
+    submitLabel: "Оставить заявку",
+  },
 };
 
 export function getLeadFormLabels(

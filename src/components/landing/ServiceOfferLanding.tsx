@@ -27,7 +27,9 @@ export function ServiceOfferLanding({ offer, formAnchor = "#lead-form" }: Servic
       ? "Типичные случаи, когда нужна помощь сантехника"
       : offer.category === "master-na-chas"
         ? "Типичные случаи, когда нужен мастер на час"
-        : "Типичные случаи, когда нужна помощь электрика";
+        : offer.category === "remont-kvartir"
+          ? "Типичные случаи, когда нужен ремонт квартиры"
+          : "Типичные случаи, когда нужна помощь электрика";
 
   return (
     <>
