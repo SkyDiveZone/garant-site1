@@ -11,6 +11,7 @@ interface LeadFormSellingBelowProps {
   className?: string;
   hideWorkTypes?: boolean;
   hidePriceList?: boolean;
+  hideAbout?: boolean;
 }
 
 export function LeadFormSellingBelow({
@@ -20,9 +21,11 @@ export function LeadFormSellingBelow({
   className,
   hideWorkTypes,
   hidePriceList,
+  hideAbout,
 }: LeadFormSellingBelowProps) {
-  const hideAbout =
-    slug != null && (isEnhancedLandingSlug(slug) || isAboutBeforeFaqSlug(slug));
+  const shouldHideAbout =
+    hideAbout === true ||
+    (slug != null && (isEnhancedLandingSlug(slug) || isAboutBeforeFaqSlug(slug)));
 
   return (
     <MasterSellingSections
@@ -32,7 +35,7 @@ export function LeadFormSellingBelow({
       className={className}
       hideWorkTypes={hideWorkTypes}
       hidePriceList={hidePriceList}
-      hideAbout={hideAbout}
+      hideAbout={shouldHideAbout}
     />
   );
 }

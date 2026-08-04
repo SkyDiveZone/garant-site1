@@ -293,10 +293,10 @@ function buildRemontContent(service: ServicePage): ServiceSellingContent {
   return {
     badge: service.categoryLabel,
     about: {
-      title: "Чем занимается мастер по ремонту",
-      subtitle: service.heroSubtitle,
-      intro: service.seoText[0] ?? service.heroSubtitle,
-      introSecondary: service.seoText[1],
+      title: "Ремонт квартир в Екатеринбурге",
+      subtitle: "Косметический и капитальный ремонт под ключ",
+      intro:
+        "Выполняем отделочные работы любой сложности: от обновления одной комнаты до ремонта квартиры под ключ.",
     },
     workTypes: {
       title: "Виды ремонта квартир",
@@ -308,7 +308,7 @@ function buildRemontContent(service: ServicePage): ServiceSellingContent {
     },
     problems: {
       title: "Популярные задачи по ремонту",
-      subtitle: "Оставьте заявку — выедем на замер и составим смету",
+      subtitle: "Оставьте заявку — выедем на замер и согласуем смету",
       items: [
         "Нужен косметический ремонт",
         "Требуется капитальный ремонт",

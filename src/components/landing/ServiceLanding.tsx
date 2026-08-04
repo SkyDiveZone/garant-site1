@@ -2,6 +2,7 @@ import { ConversionActions } from "@/components/landing/ConversionActions";
 import { ServiceAboutSection } from "@/components/landing/ServiceAboutSection";
 import { ServiceBottomCTA } from "@/components/landing/ServiceBottomCTA";
 import { ServiceFAQSection } from "@/components/landing/ServiceFAQSection";
+import { WorkGallery } from "@/components/landing/WorkGallery";
 import { HowWeWorkSection } from "@/components/sections/HowWeWorkSection";
 import { ElektrikOffersCatalog } from "@/components/sections/ElektrikOffersCatalog";
 import { MasterNaChasOffersCatalog } from "@/components/sections/MasterNaChasOffersCatalog";
@@ -52,6 +53,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
   const richContent = getServiceRichContent(service.slug);
   const isEnhanced = isEnhancedLandingSlug(service.slug);
   const isCompactHero = COMPACT_HERO_SLUGS.has(service.slug);
+  const isRemont = service.slug === "remont-kvartir";
 
   const heroBadge = (
     <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
@@ -155,7 +157,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
         />
       )}
 
-      {service.slug === "remont-kvartir" && (
+      {isRemont && (
         <RemontOffersCatalog
           formAnchor="#lead-form"
           headerAlign="left"
@@ -165,11 +167,15 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
 
       {(isRich || isEnhanced) && <ServiceTrustStrip />}
 
+      {isRemont && service.galleryImages && service.galleryImages.length > 0 && (
+        <WorkGallery label={service.galleryLabel} images={service.galleryImages} />
+      )}
+
       {!isRich &&
         service.slug !== "elektrik" &&
         service.slug !== "santehnik" &&
         service.slug !== "master-na-chas" &&
-        service.slug !== "remont-kvartir" && (
+        !isRemont && (
           <div className={SPACING.heroBelowGrid}>
             <LeadFormSellingBelow
               slug={service.slug}
@@ -185,6 +191,7 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
           formAnchor="#lead-form"
           hideWorkTypes
           hidePriceList
+          hideAbout
         />
       )}
 

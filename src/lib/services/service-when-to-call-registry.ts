@@ -1,8 +1,10 @@
 import type { ServiceWhenToCallConfig } from "@/lib/service-when-to-call";
+import { REMONT_WHEN_TO_CALL } from "@/lib/services/remont-when-to-call";
 import { SANTEHNIK_WHEN_TO_CALL } from "@/lib/services/santehnik-when-to-call";
 
 const SERVICE_WHEN_TO_CALL: Record<string, ServiceWhenToCallConfig> = {
   santehnik: SANTEHNIK_WHEN_TO_CALL,
+  "remont-kvartir": REMONT_WHEN_TO_CALL,
 };
 
 export function getServiceWhenToCallConfig(

@@ -7,6 +7,7 @@ import {
   Building2,
   Clock,
   Droplets,
+  FileText,
   Home,
   KeyRound,
   Package,
@@ -37,6 +38,7 @@ const iconMap: Record<string, LucideIcon> = {
   Droplets,
   Zap,
   Wrench,
+  FileText,
 };
 
 export function DynamicIcon({
