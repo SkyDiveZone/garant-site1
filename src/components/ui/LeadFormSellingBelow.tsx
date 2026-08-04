@@ -12,6 +12,7 @@ interface LeadFormSellingBelowProps {
   hideWorkTypes?: boolean;
   hidePriceList?: boolean;
   hideAbout?: boolean;
+  hidePopularProblems?: boolean;
 }
 
 export function LeadFormSellingBelow({
@@ -22,6 +23,7 @@ export function LeadFormSellingBelow({
   hideWorkTypes,
   hidePriceList,
   hideAbout,
+  hidePopularProblems,
 }: LeadFormSellingBelowProps) {
   const shouldHideAbout =
     hideAbout === true ||
@@ -36,6 +38,7 @@ export function LeadFormSellingBelow({
       hideWorkTypes={hideWorkTypes}
       hidePriceList={hidePriceList}
       hideAbout={shouldHideAbout}
+      hidePopularProblems={hidePopularProblems}
     />
   );
 }

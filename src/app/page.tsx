@@ -1,10 +1,6 @@
 import { Hero } from "@/components/sections/Hero";
 import { PopularServices } from "@/components/sections/PopularServices";
-import { PricingCatalog } from "@/components/sections/PricingCatalog";
-import { PopularSubServices } from "@/components/sections/PopularSubServices";
 import { WhyTrust } from "@/components/sections/WhyTrust";
-import { ForWhom } from "@/components/sections/ForWhom";
-import { Benefits } from "@/components/sections/Benefits";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { HomeGuaranteeSection } from "@/components/sections/HomeGuaranteeSection";
 import { HomeFAQSection } from "@/components/sections/HomeFAQSection";
@@ -17,11 +13,7 @@ export default function HomePage() {
     <>
       <Hero />
       <PopularServices />
-      <PricingCatalog />
-      <PopularSubServices />
       <WhyTrust />
-      <ForWhom />
-      <Benefits />
       <HowItWorks />
       <HomeGuaranteeSection />
       <HomeFAQSection />

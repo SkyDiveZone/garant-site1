@@ -396,62 +396,6 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
       alt: "Демонтаж электрощита — разборка модулей и проверка щита",
     },
   ],
-  "podklyuchenie-varochnoy-paneli": [
-    {
-      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/01-built-in-cooktop.png",
-      alt: "Подключение варочной панели — встраиваемая панель в столешнице",
-    },
-    {
-      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/02-install-cooktop.png",
-      alt: "Подключение варочной панели — установка панели в вырез столешницы",
-    },
-    {
-      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/03-induction-panel.png",
-      alt: "Подключение варочной панели — индукционная варочная панель",
-    },
-  ],
-  "podklyuchenie-duhovogo-shkafa": [
-    {
-      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/01-install-wiring.png",
-      alt: "Подключение духового шкафа — подвод электропитания в нишу",
-    },
-    {
-      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/02-double-oven.png",
-      alt: "Подключение духового шкафа — встраиваемый двойной духовой шкаф",
-    },
-    {
-      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/03-electrolux-oven.png",
-      alt: "Подключение духового шкафа — установленный духовой шкаф Electrolux",
-    },
-  ],
-  "podklyuchenie-stiralnoy-mashiny-elektrik": [
-    {
-      src: "/works/elektrik/podklyuchenie-stiralnoy-mashiny-elektrik/01-back-panel.png",
-      alt: "Подключение стиральной машины — задняя панель с местами подключения",
-    },
-    {
-      src: "/works/elektrik/podklyuchenie-stiralnoy-mashiny-elektrik/02-master-install.png",
-      alt: "Подключение стиральной машины — мастер подключает шланги сзади",
-    },
-    {
-      src: "/works/elektrik/podklyuchenie-stiralnoy-mashiny-elektrik/03-connected-lg.png",
-      alt: "Подключение стиральной машины — установленная стиральная машина LG",
-    },
-  ],
-  "kreplenie-televizora-na-stenu": [
-    {
-      src: "/works/elektrik/kreplenie-televizora-na-stenu/01-bracket-level.png",
-      alt: "Крепление телевизора на стену — разметка и выравнивание кронштейна",
-    },
-    {
-      src: "/works/elektrik/kreplenie-televizora-na-stenu/02-drill-mount.png",
-      alt: "Крепление телевизора на стену — монтаж кронштейна и телевизора",
-    },
-    {
-      src: "/works/elektrik/kreplenie-televizora-na-stenu/03-mounted-tv.png",
-      alt: "Крепление телевизора на стену — телевизор на стене с подсветкой",
-    },
-  ],
   "diagnostika-elektroseti": [
     {
       src: "/works/elektrik/diagnostika-elektroseti/01-multimeter-panel.png",
@@ -1082,6 +1026,34 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
     {
       src: "/works/master-na-chas/ustanovka-dovodchika/03-slide-rail.png",
       alt: "Установка доводчика — доводчик со скользящей шиной",
+    },
+  ],
+  "podklyuchenie-varochnoy-paneli": [
+    {
+      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/01-built-in-cooktop.png",
+      alt: "Подключение варочной панели — встраиваемая панель в столешнице",
+    },
+    {
+      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/02-install-cooktop.png",
+      alt: "Подключение варочной панели — установка панели в вырез столешницы",
+    },
+    {
+      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/03-induction-panel.png",
+      alt: "Подключение варочной панели — индукционная варочная панель",
+    },
+  ],
+  "podklyuchenie-duhovogo-shkafa": [
+    {
+      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/01-install-wiring.png",
+      alt: "Подключение духового шкафа — подвод электропитания в нишу",
+    },
+    {
+      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/02-double-oven.png",
+      alt: "Подключение духового шкафа — встраиваемый двойной духовой шкаф",
+    },
+    {
+      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/03-electrolux-oven.png",
+      alt: "Подключение духового шкафа — установленный духовой шкаф Electrolux",
     },
   ],
   "kreplenie-televizora-na-stenu": [

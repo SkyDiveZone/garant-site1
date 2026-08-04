@@ -1,6 +1,7 @@
 "use client";
 
 import { ConversionActions } from "@/components/landing/ConversionActions";
+import { PricingCatalog } from "@/components/sections/PricingCatalog";
 import { LeadFormSplitLayout } from "@/components/ui/LeadFormSplitLayout";
 import { LeadFormSellingBelow } from "@/components/ui/LeadFormSellingBelow";
 import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
@@ -62,8 +63,14 @@ export function Hero() {
         />
       </div>
     </section>
+    <PricingCatalog />
     <div className={SPACING.heroBelowGrid}>
-      <LeadFormSellingBelow formAnchor="#lead-form" />
+      <LeadFormSellingBelow
+        formAnchor="#lead-form"
+        hideAbout
+        hideWorkTypes
+        hidePopularProblems
+      />
     </div>
     </>
   );

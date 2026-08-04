@@ -54,6 +54,8 @@ interface MasterSellingSectionsProps {
   hideAbout?: boolean;
   /** Скрыть прайс-лист — на rich-страницах цены выводятся отдельным блоком */
   hidePriceList?: boolean;
+  /** Скрыть блок «Популярные проблемы» */
+  hidePopularProblems?: boolean;
 }
 
 export function MasterSellingSections({
@@ -64,6 +66,7 @@ export function MasterSellingSections({
   hideWorkTypes = false,
   hideAbout = false,
   hidePriceList = false,
+  hidePopularProblems = false,
 }: MasterSellingSectionsProps) {
   const pathname = usePathname();
   const resolvedSlug =
@@ -131,34 +134,35 @@ export function MasterSellingSections({
         />
       )}
 
-      {isHomepage ? (
-        <HomePopularProblems formAnchor={formAnchor} sectionClass={sectionClass} />
-      ) : popularProblemsConfig ? (
-        <ServicePopularProblems
-          config={popularProblemsConfig}
-          formAnchor={formAnchor}
-          sectionClass={sectionClass}
-        />
-      ) : (
-        <Section className={cn("bg-slate-50/80", sectionClass)}>
-          <SectionHeader
-            badge="Проблемы"
-            title={content.problems.title}
-            subtitle={content.problems.subtitle}
+      {!hidePopularProblems &&
+        (isHomepage ? (
+          <HomePopularProblems formAnchor={formAnchor} sectionClass={sectionClass} />
+        ) : popularProblemsConfig ? (
+          <ServicePopularProblems
+            config={popularProblemsConfig}
+            formAnchor={formAnchor}
+            sectionClass={sectionClass}
           />
-          <div className={cn("grid sm:grid-cols-2 lg:grid-cols-3", gridGap)}>
-            {content.problems.items.map((problem) => (
-              <article
-                key={problem}
-                className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3.5 shadow-sm"
-              >
-                <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden="true" />
-                <p className="text-sm font-medium text-slate-800">{problem}</p>
-              </article>
-            ))}
-          </div>
-        </Section>
-      )}
+        ) : (
+          <Section className={cn("bg-slate-50/80", sectionClass)}>
+            <SectionHeader
+              badge="Проблемы"
+              title={content.problems.title}
+              subtitle={content.problems.subtitle}
+            />
+            <div className={cn("grid sm:grid-cols-2 lg:grid-cols-3", gridGap)}>
+              {content.problems.items.map((problem) => (
+                <article
+                  key={problem}
+                  className="flex items-center gap-3 rounded-2xl border border-slate-200/80 bg-white px-4 py-3.5 shadow-sm"
+                >
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" aria-hidden="true" />
+                  <p className="text-sm font-medium text-slate-800">{problem}</p>
+                </article>
+              ))}
+            </div>
+          </Section>
+        ))}
 
       {isHomepage ? (
         <HomeWhenToCall formAnchor={formAnchor} sectionClass={sectionClass} />

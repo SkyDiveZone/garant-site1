@@ -1,5 +1,10 @@
 /** Основные страницы направлений с расширенным шаблоном (trust-strip, прайс вместо видов работ, группы услуг). */
-export const ENHANCED_LANDING_SLUGS = ["santehnik", "elektrik", "remont-kvartir"] as const;
+export const ENHANCED_LANDING_SLUGS = [
+  "santehnik",
+  "elektrik",
+  "master-na-chas",
+  "remont-kvartir",
+] as const;
 
 export type EnhancedLandingSlug = (typeof ENHANCED_LANDING_SLUGS)[number];
 

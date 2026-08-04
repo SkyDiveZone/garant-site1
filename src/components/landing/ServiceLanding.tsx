@@ -185,16 +185,6 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
           </div>
         )}
 
-      {!isRich && isCompactHero && (
-        <LeadFormSellingBelow
-          slug={service.slug}
-          formAnchor="#lead-form"
-          hideWorkTypes
-          hidePriceList
-          hideAbout
-        />
-      )}
-
       {isRich && richContent && (
         <ServiceRichSections
           content={richContent}
@@ -203,27 +193,29 @@ export function ServiceLanding({ service }: ServiceLandingProps) {
         />
       )}
 
-      <Section>
-        <SectionHeader badge="Преимущества" title="Почему выбирают нас" />
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {service.benefits.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-slate-200/80 bg-white p-6"
-            >
-              <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
-                <DynamicIcon name={item.icon} className="h-6 w-6" aria-hidden="true" />
-              </span>
-              <h3 className="mt-4 font-display text-lg font-bold text-slate-900">
-                {item.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
+      {!isCompactHero && (
+        <Section>
+          <SectionHeader badge="Преимущества" title="Почему выбирают нас" />
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {service.benefits.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-slate-200/80 bg-white p-6"
+              >
+                <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+                  <DynamicIcon name={item.icon} className="h-6 w-6" aria-hidden="true" />
+                </span>
+                <h3 className="mt-4 font-display text-lg font-bold text-slate-900">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      )}
 
-      {!isRich && <HowWeWorkSection />}
+      {!isRich && !isCompactHero && <HowWeWorkSection />}
 
       {!isEnhanced && (
         <Section className="bg-slate-50/80">
