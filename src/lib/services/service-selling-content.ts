@@ -301,24 +301,12 @@ function buildRemontContent(service: ServicePage): ServiceSellingContent {
     workTypes: {
       title: "Виды ремонта квартир",
       subtitle: COPY.servicesSubtitle,
-      items: [
-        ...REPAIR_TYPES.map((item) => item.title),
-        ...service.prices.map((item) => item.name),
-      ],
+      items: REPAIR_TYPES.map((item) => item.title),
     },
     problems: {
       title: "Популярные задачи по ремонту",
       subtitle: "Оставьте заявку — выедем на замер и согласуем смету",
-      items: [
-        "Нужен косметический ремонт",
-        "Требуется капитальный ремонт",
-        "Ремонт ванной комнаты",
-        "Ремонт кухни",
-        "Ремонт одной или нескольких комнат",
-        "Ремонт под ключ",
-        "Нужна отделка перед заселением",
-        "Хочется обновить интерьер",
-      ],
+      items: REPAIR_TYPES.map((item) => item.title),
     },
     whenToCall: {
       title: "Когда стоит вызвать мастера",

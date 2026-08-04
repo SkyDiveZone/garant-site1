@@ -208,24 +208,24 @@ export const HOME_POPULAR_PROBLEMS: HomePopularProblem[] = [
     category: "master-na-chas",
     icon: Wrench,
   },
-  // Ремонт квартир
+  // Ремонт квартир — только услуги из каталога /remont-kvartir
   {
-    title: "Нужно обновить квартиру",
-    description: "Обновим интерьер — от одной комнаты до всей квартиры.",
-    category: "remont",
-    icon: Home,
-  },
-  {
-    title: "Требуется косметический ремонт",
-    description: "Покраска, обои, потолки — быстро и аккуратно.",
+    title: "Косметический ремонт",
+    description: "Обновим стены, потолки и полы без перепланировки.",
     category: "remont",
     icon: Paintbrush,
   },
   {
-    title: "Нужно заменить полы",
-    description: "Уложим ламинат, плитку или другое напольное покрытие.",
+    title: "Капитальный ремонт",
+    description: "Черновые и чистовые работы, отделка квартиры с нуля.",
     category: "remont",
-    icon: Hammer,
+    icon: Building2,
+  },
+  {
+    title: "Ремонт под ключ",
+    description: "Полный цикл работ — от демонтажа до сдачи объекта.",
+    category: "remont",
+    icon: Home,
   },
   {
     title: "Ремонт ванной комнаты",
@@ -235,26 +235,26 @@ export const HOME_POPULAR_PROBLEMS: HomePopularProblem[] = [
   },
   {
     title: "Ремонт кухни",
-    description: "Фартук, электрика, сантехника и финишная отделка.",
+    description: "Стены, пол, потолок и зоны под технику.",
     category: "remont",
     icon: Wrench,
   },
   {
-    title: "Подготовка квартиры к сдаче",
-    description: "Приведём жильё в порядок для арендаторов или продажи.",
-    category: "remont",
-    icon: Building2,
-  },
-  {
-    title: "Ремонт после покупки жилья",
-    description: "Сделаем квартиру готовой к заселению под ваши задачи.",
+    title: "Ремонт комнаты",
+    description: "Комплексный ремонт одной комнаты: стены, полы, потолки.",
     category: "remont",
     icon: Home,
   },
   {
-    title: "Требуется комплексный ремонт",
-    description: "Возьмём объект под ключ — от демонтажа до финиша.",
+    title: "Ремонт новостройки",
+    description: "Отделка новой квартиры: черновые и чистовые работы.",
     category: "remont",
     icon: Building2,
+  },
+  {
+    title: "Ремонт однокомнатной квартиры",
+    description: "Комплексный ремонт однушки под ваши задачи и бюджет.",
+    category: "remont",
+    icon: Home,
   },
 ];

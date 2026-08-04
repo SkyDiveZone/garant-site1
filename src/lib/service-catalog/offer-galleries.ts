@@ -46,6 +46,76 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
       alt: "Установка выключателя — монтаж механизма на стену",
     },
   ],
+  "ustanovka-prohodnogo-vyklyuchatelya": [
+    {
+      src: "/works/elektrik/ustanovka-prohodnogo-vyklyuchatelya/01-switch-install.png",
+      alt: "Установка проходного выключателя — монтаж механизма на стену",
+    },
+    {
+      src: "/works/elektrik/ustanovka-prohodnogo-vyklyuchatelya/02-wiring-screw.png",
+      alt: "Установка проходного выключателя — подключение проводов отвёрткой",
+    },
+    {
+      src: "/works/elektrik/ustanovka-prohodnogo-vyklyuchatelya/03-frame-mount.png",
+      alt: "Установка проходного выключателя — крепление рамки и механизма",
+    },
+  ],
+  "ustanovka-rozetki-elektroplity-220v": [
+    {
+      src: "/works/elektrik/ustanovka-rozetki-elektroplity-220v/01-wire-connection.png",
+      alt: "Установка розетки для электроплиты 220В — подключение проводов к механизму",
+    },
+    {
+      src: "/works/elektrik/ustanovka-rozetki-elektroplity-220v/02-frame-finish.png",
+      alt: "Установка розетки для электроплиты 220В — монтаж декоративной рамки",
+    },
+    {
+      src: "/works/elektrik/ustanovka-rozetki-elektroplity-220v/03-boxes-wiring.png",
+      alt: "Установка розетки для электроплиты 220В — подготовка проводов в подрозетниках",
+    },
+  ],
+  "ustanovka-rozetki-elektroplity-380v": [
+    {
+      src: "/works/elektrik/ustanovka-rozetki-elektroplity-380v/01-wire-connection.png",
+      alt: "Установка розетки для электроплиты 380В — подключение проводов к механизму",
+    },
+    {
+      src: "/works/elektrik/ustanovka-rozetki-elektroplity-380v/02-frame-finish.png",
+      alt: "Установка розетки для электроплиты 380В — монтаж декоративной рамки",
+    },
+    {
+      src: "/works/elektrik/ustanovka-rozetki-elektroplity-380v/03-boxes-wiring.png",
+      alt: "Установка розетки для электроплиты 380В — подготовка проводов в подрозетниках",
+    },
+  ],
+  "ustanovka-podrozetnika": [
+    {
+      src: "/works/elektrik/ustanovka-podrozetnika/01-wire-connection.png",
+      alt: "Установка подрозетника в готовое отверстие — работа с проводами у коробки",
+    },
+    {
+      src: "/works/elektrik/ustanovka-podrozetnika/02-frame-finish.png",
+      alt: "Установка подрозетника в готовое отверстие — финишный монтаж рамки",
+    },
+    {
+      src: "/works/elektrik/ustanovka-podrozetnika/03-boxes-wiring.png",
+      alt: "Установка подрозетника в готовое отверстие — подрозетники с выведенными проводами",
+    },
+  ],
+  "kommunikatsiya-soedinitelnoy-korobki": [
+    {
+      src: "/works/elektrik/kommunikatsiya-soedinitelnoy-korobki/01-intercom-box.png",
+      alt: "Коммутация соединительной коробки — аккуратная разводка кабелей на плате",
+    },
+    {
+      src: "/works/elektrik/kommunikatsiya-soedinitelnoy-korobki/02-terminal-strips.png",
+      alt: "Коммутация соединительной коробки — подключение проводов на клеммных колодках",
+    },
+    {
+      src: "/works/elektrik/kommunikatsiya-soedinitelnoy-korobki/03-terminal-block.png",
+      alt: "Коммутация соединительной коробки — соединение проводов клеммной колодкой",
+    },
+  ],
   "blok-rozetok-kuhnya-vannaya": [
     {
       src: "/works/elektrik/blok-rozetok-kuhnya-vannaya/01-popup-countertop.png",
@@ -116,6 +186,34 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
       alt: "Установка люстры — крепление и монтаж на потолок",
     },
   ],
+  "ustanovka-lyustry-4-rozhka": [
+    {
+      src: "/works/elektrik/ustanovka-lyustry-4-rozhka/01-ceiling-wiring.png",
+      alt: "Установка люстры (4 и более рожков) — подключение проводов на потолке",
+    },
+    {
+      src: "/works/elektrik/ustanovka-lyustry-4-rozhka/02-led-assembly.png",
+      alt: "Установка люстры (4 и более рожков) — сборка и подготовка LED-люстры",
+    },
+    {
+      src: "/works/elektrik/ustanovka-lyustry-4-rozhka/03-base-wiring.png",
+      alt: "Установка люстры (4 и более рожков) — коммутация проводов в основании",
+    },
+  ],
+  "ustanovka-nestandartnoy-lyustry": [
+    {
+      src: "/works/elektrik/ustanovka-nestandartnoy-lyustry/01-sculptural.png",
+      alt: "Установка нестандартной люстры — дизайнерский светильник сложной формы",
+    },
+    {
+      src: "/works/elektrik/ustanovka-nestandartnoy-lyustry/02-wire-mesh.png",
+      alt: "Установка нестандартной люстры — объёмный светильник из металлической сетки",
+    },
+    {
+      src: "/works/elektrik/ustanovka-nestandartnoy-lyustry/03-wave-pendant.png",
+      alt: "Установка нестандартной люстры — волнообразный LED-светильник на двух тросах",
+    },
+  ],
   "ustanovka-svetilnika": [
     {
       src: "/works/elektrik/ustanovka-svetilnika/01-ceiling-install.png",
@@ -128,6 +226,20 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/elektrik/ustanovka-svetilnika/03-led-fixture.png",
       alt: "Установка светильника — подключение LED-потолочного светильника",
+    },
+  ],
+  "ustanovka-svetilnika-armstrong": [
+    {
+      src: "/works/elektrik/ustanovka-svetilnika-armstrong/01-office-panels.png",
+      alt: "Установка светильника Армстронг — LED-панели в подвесном потолке офиса",
+    },
+    {
+      src: "/works/elektrik/ustanovka-svetilnika-armstrong/02-panel-install.png",
+      alt: "Установка светильника Армстронг — монтаж панели в металлическую решётку",
+    },
+    {
+      src: "/works/elektrik/ustanovka-svetilnika-armstrong/03-grid-wiring.png",
+      alt: "Установка светильника Армстронг — разводка и светильники в потолочной сетке",
     },
   ],
   "ustanovka-tochechnogo-svetilnika": [
@@ -170,6 +282,20 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/elektrik/montazh-profilya-led-lenty/03-niche-install.png",
       alt: "Монтаж профиля для LED-ленты — установка в нишу потолка",
+    },
+  ],
+  "montazh-shinoprovoda": [
+    {
+      src: "/works/elektrik/montazh-shinoprovoda/01-track-wiring.png",
+      alt: "Монтаж шинопровода или трековой системы — подключение трека на потолке",
+    },
+    {
+      src: "/works/elektrik/montazh-shinoprovoda/02-industrial-busbar.png",
+      alt: "Монтаж шинопровода или трековой системы — промышленный шинопровод на лотках",
+    },
+    {
+      src: "/works/elektrik/montazh-shinoprovoda/03-magnetic-track.png",
+      alt: "Монтаж шинопровода или трековой системы — магнитный трек со спотами",
     },
   ],
   "ustanovka-avtomata-1-polyus": [
@@ -228,6 +354,20 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
       alt: "Монтаж электрощита до 12 модулей — подключение автоматов и УЗО",
     },
   ],
+  "montazh-elektroshchita-18-moduley": [
+    {
+      src: "/works/elektrik/montazh-elektroshchita-18-moduley/01-breakers-closeup.png",
+      alt: "Монтаж электрощита 13–18 модулей — автоматы на DIN-рейке",
+    },
+    {
+      src: "/works/elektrik/montazh-elektroshchita-18-moduley/02-electrician-wiring.png",
+      alt: "Монтаж электрощита 13–18 модулей — подключение проводов электриком",
+    },
+    {
+      src: "/works/elektrik/montazh-elektroshchita-18-moduley/03-panel-modules.png",
+      alt: "Монтаж электрощита 13–18 модулей — сборка щита с автоматами и УЗО",
+    },
+  ],
   "montazh-elektroshchita-24-moduley": [
     {
       src: "/works/elektrik/montazh-elektroshchita-24-moduley/01.png",
@@ -242,6 +382,34 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
       alt: "Монтаж электрощита до 24 модулей — подключение автоматов и УЗО",
     },
   ],
+  "montazh-elektroshchita-36-moduley": [
+    {
+      src: "/works/elektrik/montazh-elektroshchita-36-moduley/01-breakers-closeup.png",
+      alt: "Монтаж электрощита 25–36 модулей — автоматы на DIN-рейке",
+    },
+    {
+      src: "/works/elektrik/montazh-elektroshchita-36-moduley/02-electrician-wiring.png",
+      alt: "Монтаж электрощита 25–36 модулей — подключение проводов электриком",
+    },
+    {
+      src: "/works/elektrik/montazh-elektroshchita-36-moduley/03-panel-modules.png",
+      alt: "Монтаж электрощита 25–36 модулей — сборка щита с автоматами и УЗО",
+    },
+  ],
+  "ustroystvo-nishi-pod-elektroshchit": [
+    {
+      src: "/works/elektrik/ustroystvo-nishi-pod-elektroshchit/01-cabinet-niche.png",
+      alt: "Устройство ниши под электрощит — щит в нише внутри шкафа",
+    },
+    {
+      src: "/works/elektrik/ustroystvo-nishi-pod-elektroshchit/02-flush-box.png",
+      alt: "Устройство ниши под электрощит — встроенный корпус с разводкой кабелей",
+    },
+    {
+      src: "/works/elektrik/ustroystvo-nishi-pod-elektroshchit/03-wall-cutout.png",
+      alt: "Устройство ниши под электрощит — подготовка проёма в стене",
+    },
+  ],
   "ustanovka-elektroschetchika": [
     {
       src: "/works/elektrik/ustanovka-elektroschetchika/01-panel-install.png",
@@ -254,6 +422,20 @@ export const ELEKTRIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/elektrik/ustanovka-elektroschetchika/03-digital-meter.png",
       alt: "Установка электросчётчика — монтаж цифрового счётчика Меркурий",
+    },
+  ],
+  "demontazh-elektroschetchika": [
+    {
+      src: "/works/elektrik/demontazh-elektroschetchika/01-kaskad-meter.png",
+      alt: "Демонтаж электросчётчика — снятие счётчика Каскад в щите",
+    },
+    {
+      src: "/works/elektrik/demontazh-elektroschetchika/02-mercury-panel.png",
+      alt: "Демонтаж электросчётчика — отключение Меркурий и автоматов",
+    },
+    {
+      src: "/works/elektrik/demontazh-elektroschetchika/03-seal-remove.png",
+      alt: "Демонтаж электросчётчика — снятие пломбы и клеммной крышки",
     },
   ],
   "prokladka-kabelya": [
@@ -500,6 +682,20 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Установка смесителя с терморегулятором — настройка терморегулятора",
     },
   ],
+  "demontazh-smesitelya": [
+    {
+      src: "/works/santehnik/demontazh-smesitelya/01-wall-faucet.png",
+      alt: "Демонтаж смесителя — снятие настенного смесителя ключом",
+    },
+    {
+      src: "/works/santehnik/demontazh-smesitelya/02-wrench-remove.png",
+      alt: "Демонтаж смесителя — откручивание гаек смесителя на стене",
+    },
+    {
+      src: "/works/santehnik/demontazh-smesitelya/03-kitchen-faucet.png",
+      alt: "Демонтаж смесителя — снятие кухонного смесителя с мойки",
+    },
+  ],
   "ustanovka-unitaza": [
     {
       src: "/works/santehnik/ustanovka-unitaza/01-plumber-install.png",
@@ -574,6 +770,48 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Установка гибкой подводки — подводка к водонагревателю",
     },
   ],
+  "ustanovka-gofry-na-unitaz": [
+    {
+      src: "/works/santehnik/ustanovka-gofry-na-unitaz/01-cuff-fit.png",
+      alt: "Установка гофры на унитаз — насадка гофры на выпуск унитаза",
+    },
+    {
+      src: "/works/santehnik/ustanovka-gofry-na-unitaz/02-gofra-drain.png",
+      alt: "Установка гофры на унитаз — подключение гофры к канализации",
+    },
+    {
+      src: "/works/santehnik/ustanovka-gofry-na-unitaz/03-measure-outlet.png",
+      alt: "Установка гофры на унитаз — замер расстояния до слива",
+    },
+  ],
+  "ustanovka-sololifta": [
+    {
+      src: "/works/santehnik/ustanovka-sololifta/01-bathroom-unit.png",
+      alt: "Установка сололифта — подключение к раковине и унитазу",
+    },
+    {
+      src: "/works/santehnik/ustanovka-sololifta/02-under-sink.png",
+      alt: "Установка сололифта — монтаж насоса под мойкой",
+    },
+    {
+      src: "/works/santehnik/ustanovka-sololifta/03-scheme-install.png",
+      alt: "Установка сололифта — схема подключения за стеной",
+    },
+  ],
+  "demontazh-unitaza": [
+    {
+      src: "/works/santehnik/demontazh-unitaza/01-bolt-unscrew.png",
+      alt: "Демонтаж унитаза — откручивание крепёжного болта у основания",
+    },
+    {
+      src: "/works/santehnik/demontazh-unitaza/02-base-remove.png",
+      alt: "Демонтаж унитаза — снятие унитаза с пола ключом",
+    },
+    {
+      src: "/works/santehnik/demontazh-unitaza/03-mark-base.png",
+      alt: "Демонтаж унитаза — разметка контура основания на плитке",
+    },
+  ],
   "ustanovka-akrilovoy-vanny": [
     {
       src: "/works/santehnik/ustanovka-akrilovoy-vanny/01-frame-assembly.png",
@@ -628,6 +866,48 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/santehnik/ustanovka-dushevogo-poddona/03-custom-base.png",
       alt: "Установка душевого поддона — подготовка основания и каркаса",
+    },
+  ],
+  "ustanovka-obvyazki-dlya-vanny": [
+    {
+      src: "/works/santehnik/ustanovka-obvyazki-dlya-vanny/01-overflow-install.png",
+      alt: "Установка обвязки для ванны — монтаж перелива и слива",
+    },
+    {
+      src: "/works/santehnik/ustanovka-obvyazki-dlya-vanny/02-kit-diagram.png",
+      alt: "Установка обвязки для ванны — схема комплекта слива-перелива",
+    },
+    {
+      src: "/works/santehnik/ustanovka-obvyazki-dlya-vanny/03-parts-layout.png",
+      alt: "Установка обвязки для ванны — детали сифона и обвязки",
+    },
+  ],
+  "ustanovka-donnogo-klapana": [
+    {
+      src: "/works/santehnik/ustanovka-donnogo-klapana/01-under-sink.png",
+      alt: "Установка донного клапана — регулировка тяги под раковиной",
+    },
+    {
+      src: "/works/santehnik/ustanovka-donnogo-klapana/02-click-clack.png",
+      alt: "Установка донного клапана — click-clack клапан в разрезе",
+    },
+    {
+      src: "/works/santehnik/ustanovka-donnogo-klapana/03-popup-assembly.png",
+      alt: "Установка донного клапана — комплект pop-up слива с тягой",
+    },
+  ],
+  "demontazh-vanny": [
+    {
+      src: "/works/santehnik/demontazh-vanny/01-lift-out.png",
+      alt: "Демонтаж ванны — снятие ванны с облицованного основания",
+    },
+    {
+      src: "/works/santehnik/demontazh-vanny/02-frame-legs.png",
+      alt: "Демонтаж ванны — разборка каркаса и ножек акриловой ванны",
+    },
+    {
+      src: "/works/santehnik/demontazh-vanny/03-freestanding.png",
+      alt: "Демонтаж ванны — отдельностоящая ванна перед снятием",
     },
   ],
   "germetizatsiya-vanny-ili-dushevoy": [
@@ -686,6 +966,34 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Установка раковины «Тюльпан» — монтаж раковины на стену",
     },
   ],
+  "ustanovka-rakoviny-moydodyr": [
+    {
+      src: "/works/santehnik/ustanovka-rakoviny-moydodyr/01-vintage-vanity.png",
+      alt: "Установка раковины «Мойдодыр» — тумба с раковиной и зеркалом",
+    },
+    {
+      src: "/works/santehnik/ustanovka-rakoviny-moydodyr/02-compact-cabinet.png",
+      alt: "Установка раковины «Мойдодыр» — компактный шкаф с мойкой",
+    },
+    {
+      src: "/works/santehnik/ustanovka-rakoviny-moydodyr/03-sink-mount.png",
+      alt: "Установка раковины «Мойдодыр» — монтаж раковины на тумбу",
+    },
+  ],
+  "demontazh-rakoviny": [
+    {
+      src: "/works/santehnik/demontazh-rakoviny/01-wall-remove.png",
+      alt: "Демонтаж раковины — снятие раковины со стеновых шпилек",
+    },
+    {
+      src: "/works/santehnik/demontazh-rakoviny/02-hardware-disconnect.png",
+      alt: "Демонтаж раковины — отключение смесителя и слива",
+    },
+    {
+      src: "/works/santehnik/demontazh-rakoviny/03-vessel-vanity.png",
+      alt: "Демонтаж раковины — накладная раковина на тумбе",
+    },
+  ],
   "ustanovka-sifona": [
     {
       src: "/works/santehnik/ustanovka-sifona/01-drain-connect.png",
@@ -740,6 +1048,34 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/santehnik/ustranenie-zasora/03-plunger-bathroom.png",
       alt: "Устранение засора (химический способ) — прочистка раковины в ванной",
+    },
+  ],
+  "ustranenie-zasora-s-razborom-trub": [
+    {
+      src: "/works/santehnik/ustranenie-zasora-s-razborom-trub/01-snake-auger.png",
+      alt: "Устранение засора с разбором труб — сантехнический трос и трубы",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora-s-razborom-trub/02-pipe-disassemble.png",
+      alt: "Устранение засора с разбором труб — разборка канализационного узла",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora-s-razborom-trub/03-drain-stack.png",
+      alt: "Устранение засора с разбором труб — доступ к стояку канализации",
+    },
+  ],
+  "ustranenie-zasora-gidrodinamicheskiy": [
+    {
+      src: "/works/santehnik/ustranenie-zasora-gidrodinamicheskiy/01-cast-iron-jet.png",
+      alt: "Устранение засора гидродинамическим способом — промывка чугунной трубы",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora-gidrodinamicheskiy/02-nozzle-jets.png",
+      alt: "Устранение засора гидродинамическим способом — насадка высокого давления",
+    },
+    {
+      src: "/works/santehnik/ustranenie-zasora-gidrodinamicheskiy/03-pvc-pipe-jet.png",
+      alt: "Устранение засора гидродинамическим способом — промывка канализационной трубы",
     },
   ],
   "ustranenie-protechki": [
@@ -826,6 +1162,76 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
       alt: "Разводка труб — коллекторная разводка горячей и холодной воды",
     },
   ],
+  "montazh-vodorozetki": [
+    {
+      src: "/works/santehnik/montazh-vodorozetki/01-chase-rough-in.png",
+      alt: "Монтаж водорозетки — черновая установка в штробе со сливом",
+    },
+    {
+      src: "/works/santehnik/montazh-vodorozetki/02-bracket-caps.png",
+      alt: "Монтаж водорозетки — крепление на планке с защитными заглушками",
+    },
+    {
+      src: "/works/santehnik/montazh-vodorozetki/03-stud-frame.png",
+      alt: "Монтаж водорозетки — установка в каркасе под обшивку",
+    },
+  ],
+  "ustanovka-obratnogo-klapana": [
+    {
+      src: "/works/santehnik/ustanovka-obratnogo-klapana/01-heater-valve.png",
+      alt: "Установка обратного клапана — клапан на холодном вводе бойлера",
+    },
+    {
+      src: "/works/santehnik/ustanovka-obratnogo-klapana/02-threaded-fit.png",
+      alt: "Установка обратного клапана — сборка резьбового соединения",
+    },
+    {
+      src: "/works/santehnik/ustanovka-obratnogo-klapana/03-foot-valve.png",
+      alt: "Установка обратного клапана — обратный клапан с сетчатым фильтром",
+    },
+  ],
+  "ustanovka-reduktora-davleniya": [
+    {
+      src: "/works/santehnik/ustanovka-reduktora-davleniya/01-regulator-gauge.png",
+      alt: "Установка редуктора давления — редуктор с манометром DN15",
+    },
+    {
+      src: "/works/santehnik/ustanovka-reduktora-davleniya/02-cutaway.png",
+      alt: "Установка редуктора давления — устройство редуктора в разрезе",
+    },
+    {
+      src: "/works/santehnik/ustanovka-reduktora-davleniya/03-manifold-install.png",
+      alt: "Установка редуктора давления — редукторы в узле водоснабжения",
+    },
+  ],
+  "ustanovka-kollektora": [
+    {
+      src: "/works/santehnik/ustanovka-kollektora/01-cabinet-manifold.png",
+      alt: "Установка коллектора — коллекторный узел в шкафу",
+    },
+    {
+      src: "/works/santehnik/ustanovka-kollektora/02-mount-install.png",
+      alt: "Установка коллектора — монтаж гребёнки на кронштейны",
+    },
+    {
+      src: "/works/santehnik/ustanovka-kollektora/03-wall-loops.png",
+      alt: "Установка коллектора — коллектор тёплого пола с контурами",
+    },
+  ],
+  "opressovka-sistemy-otopleniya": [
+    {
+      src: "/works/santehnik/opressovka-sistemy-otopleniya/01-radiator-test.png",
+      alt: "Опрессовка системы отопления — ручной насос у радиатора",
+    },
+    {
+      src: "/works/santehnik/opressovka-sistemy-otopleniya/02-manual-pump.png",
+      alt: "Опрессовка системы отопления — опрессовщик с манометром",
+    },
+    {
+      src: "/works/santehnik/opressovka-sistemy-otopleniya/03-rothenberger.png",
+      alt: "Опрессовка системы отопления — проверка медных труб насосом",
+    },
+  ],
   "ustanovka-vodonagrevatelya-do-50-l": [
     {
       src: "/works/santehnik/ustanovka-vodonagrevatelya/03-fora-wall-mount.png",
@@ -852,6 +1258,20 @@ export const SANTEHNIK_OFFER_GALLERIES: Partial<
     {
       src: "/works/santehnik/ustanovka-vodonagrevatelya/03-fora-wall-mount.png",
       alt: "Установка водонагревателя свыше 50 л — монтаж и подключение бойлера",
+    },
+  ],
+  "podklyuchenie-protochnogo-vodonagrevatelya": [
+    {
+      src: "/works/santehnik/podklyuchenie-protochnogo-vodonagrevatelya/01-manifold-heater.png",
+      alt: "Подключение проточного водонагревателя — проточник в узле водоснабжения",
+    },
+    {
+      src: "/works/santehnik/podklyuchenie-protochnogo-vodonagrevatelya/02-wall-piping.png",
+      alt: "Подключение проточного водонагревателя — подводка труб к нагревателю",
+    },
+    {
+      src: "/works/santehnik/podklyuchenie-protochnogo-vodonagrevatelya/03-internal-wiring.png",
+      alt: "Подключение проточного водонагревателя — электрическое подключение внутри",
     },
   ],
   "ustanovka-filtra-dlya-vody": [
@@ -1030,30 +1450,58 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
   ],
   "podklyuchenie-varochnoy-paneli": [
     {
-      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/01-built-in-cooktop.png",
-      alt: "Подключение варочной панели — встраиваемая панель в столешнице",
+      src: "/works/master-na-chas/podklyuchenie-varochnoy-paneli/01-induction-controls.png",
+      alt: "Подключение варочной панели — проверка индукционной панели",
     },
     {
-      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/02-install-cooktop.png",
-      alt: "Подключение варочной панели — установка панели в вырез столешницы",
+      src: "/works/master-na-chas/podklyuchenie-varochnoy-paneli/02-aeg-install.png",
+      alt: "Подключение варочной панели — встраиваемая панель AEG в столешнице",
     },
     {
-      src: "/works/elektrik/podklyuchenie-varochnoy-paneli/03-induction-panel.png",
-      alt: "Подключение варочной панели — индукционная варочная панель",
+      src: "/works/master-na-chas/podklyuchenie-varochnoy-paneli/03-gas-drop-in.png",
+      alt: "Подключение варочной панели — установка газовой панели в вырез",
+    },
+  ],
+  "ustanovka-varochnoy-poverhnosti": [
+    {
+      src: "/works/master-na-chas/ustanovka-varochnoy-poverhnosti/01-induction-controls.png",
+      alt: "Установка варочной поверхности — проверка индукционной панели",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-varochnoy-poverhnosti/02-aeg-install.png",
+      alt: "Установка варочной поверхности — встраиваемая панель AEG в столешнице",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-varochnoy-poverhnosti/03-gas-drop-in.png",
+      alt: "Установка варочной поверхности — установка газовой панели в вырез",
     },
   ],
   "podklyuchenie-duhovogo-shkafa": [
     {
-      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/01-install-wiring.png",
-      alt: "Подключение духового шкафа — подвод электропитания в нишу",
-    },
-    {
-      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/02-double-oven.png",
+      src: "/works/master-na-chas/podklyuchenie-duhovogo-shkafa/01-double-oven.png",
       alt: "Подключение духового шкафа — встраиваемый двойной духовой шкаф",
     },
     {
-      src: "/works/elektrik/podklyuchenie-duhovogo-shkafa/03-electrolux-oven.png",
+      src: "/works/master-na-chas/podklyuchenie-duhovogo-shkafa/02-electrolux-oven.png",
       alt: "Подключение духового шкафа — установленный духовой шкаф Electrolux",
+    },
+    {
+      src: "/works/master-na-chas/podklyuchenie-duhovogo-shkafa/03-bosch-niche.png",
+      alt: "Подключение духового шкафа — монтаж духового шкафа в нишу",
+    },
+  ],
+  "ustanovka-duhovogo-shkafa": [
+    {
+      src: "/works/master-na-chas/ustanovka-duhovogo-shkafa/01-double-oven.png",
+      alt: "Установка духового шкафа — встраиваемый двойной духовой шкаф",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-duhovogo-shkafa/02-electrolux-oven.png",
+      alt: "Установка духового шкафа — установленный духовой шкаф Electrolux",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-duhovogo-shkafa/03-bosch-niche.png",
+      alt: "Установка духового шкафа — монтаж духового шкафа в нишу",
     },
   ],
   "kreplenie-televizora-na-stenu": [
@@ -1098,6 +1546,20 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
       alt: "Подключение стиральной машины — установленная стиральная машина LG",
     },
   ],
+  "ustanovka-stiralnoy-mashiny": [
+    {
+      src: "/works/master-na-chas/ustanovka-stiralnoy-mashiny/01-back-panel.png",
+      alt: "Установка стиральной машины на готовые коммуникации — задняя панель и шланги",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-stiralnoy-mashiny/02-connected-lg.png",
+      alt: "Установка стиральной машины на готовые коммуникации — подключенная машина LG",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-stiralnoy-mashiny/03-master-work.png",
+      alt: "Установка стиральной машины на готовые коммуникации — мастер подключает коммуникации",
+    },
+  ],
   "podklyuchenie-posudomoechnoy-mashiny": [
     {
       src: "/works/master-na-chas/podklyuchenie-posudomoechnoy-mashiny/01-built-in-open.png",
@@ -1126,6 +1588,118 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
       alt: "Установка вытяжки — встраиваемая вытяжка Bosch в шкафу",
     },
   ],
+  "ustanovka-vozduhootvoda-gofra": [
+    {
+      src: "/works/master-na-chas/ustanovka-vozduhootvoda-gofra/01-heater-duct.png",
+      alt: "Установка воздухоотвода (гофра) — гибкий воздуховод к вентканалу",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vozduhootvoda-gofra/02-ceiling-manifold.png",
+      alt: "Установка воздухоотвода (гофра) — распределительный короб с гофрами",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vozduhootvoda-gofra/03-frame-routing.png",
+      alt: "Установка воздухоотвода (гофра) — разводка гофр в каркасе",
+    },
+  ],
+  "ustanovka-vozduhootvoda-korob": [
+    {
+      src: "/works/master-na-chas/ustanovka-vozduhootvoda-korob/01-metal-ceiling-duct.png",
+      alt: "Установка воздухоотвода (короб) — металлический короб на подвесах",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vozduhootvoda-korob/02-cabinet-plastic-duct.png",
+      alt: "Установка воздухоотвода (короб) — пластиковый короб над шкафами",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vozduhootvoda-korob/03-hood-wall-duct.png",
+      alt: "Установка воздухоотвода (короб) — короб от вытяжки к вентканалу",
+    },
+  ],
+  "ustanovka-vstroennogo-holodilnika": [
+    {
+      src: "/works/master-na-chas/ustanovka-vstroennogo-holodilnika/01-side-by-side.png",
+      alt: "Установка встроенного холодильника — встраиваемый холодильник Side-by-Side",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vstroennogo-holodilnika/02-bottom-freezer.png",
+      alt: "Установка встроенного холодильника — холодильник с нижней морозильной камерой",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-vstroennogo-holodilnika/03-grey-kitchen.png",
+      alt: "Установка встроенного холодильника — встраиваемый холодильник в серой кухне",
+    },
+  ],
+  "ustanovka-kanalnogo-ventilyatora": [
+    {
+      src: "/works/master-na-chas/ustanovka-kanalnogo-ventilyatora/01-inline-fan-clamp.png",
+      alt: "Установка канального вентилятора — монтаж вентилятора в воздуховод",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-kanalnogo-ventilyatora/02-ceiling-centrifugal.png",
+      alt: "Установка канального вентилятора — потолочный центробежный вентилятор",
+    },
+    {
+      src: "/works/master-na-chas/ustanovka-kanalnogo-ventilyatora/03-bkk-duct-fan.png",
+      alt: "Установка канального вентилятора — канальный вентилятор BKK 250",
+    },
+  ],
+  "demontazh-posudomoechnoy-mashiny": [
+    {
+      src: "/works/master-na-chas/demontazh-posudomoechnoy-mashiny/01-water-hose.png",
+      alt: "Демонтаж посудомоечной машины — отключение шланга подачи воды",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-posudomoechnoy-mashiny/02-drain-disconnect.png",
+      alt: "Демонтаж посудомоечной машины — отсоединение сливного шланга",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-posudomoechnoy-mashiny/03-built-in-open.png",
+      alt: "Демонтаж посудомоечной машины — встраиваемая посудомоечная машина",
+    },
+  ],
+  "demontazh-vytyazhki": [
+    {
+      src: "/works/master-na-chas/demontazh-vytyazhki/01-hansa-removal.png",
+      alt: "Демонтаж вытяжки — снятие купольной вытяжки Hansa",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-vytyazhki/02-bosch-built-in.png",
+      alt: "Демонтаж вытяжки — встраиваемая вытяжка Bosch в шкафу",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-vytyazhki/03-duct-types.png",
+      alt: "Демонтаж вытяжки — гибкий и плоский воздуховод",
+    },
+  ],
+  "demontazh-stiralnoy-mashiny": [
+    {
+      src: "/works/master-na-chas/demontazh-stiralnoy-mashiny/01-back-panel.png",
+      alt: "Демонтаж стиральной машины — задняя панель и шланги",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-stiralnoy-mashiny/02-connected-lg.png",
+      alt: "Демонтаж стиральной машины — стиральная машина LG перед снятием",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-stiralnoy-mashiny/03-master-work.png",
+      alt: "Демонтаж стиральной машины — мастер отключает коммуникации",
+    },
+  ],
+  "demontazh-boylera": [
+    {
+      src: "/works/master-na-chas/demontazh-boylera/01-electrolux-horizontal.png",
+      alt: "Демонтаж бойлера — горизонтальный бойлер Electrolux",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-boylera/02-slim-wall-heater.png",
+      alt: "Демонтаж бойлера — плоский настенный водонагреватель",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-boylera/03-installation-options.png",
+      alt: "Демонтаж бойлера — варианты установки бойлеров",
+    },
+  ],
   "ustanovka-vodonagrevatelya": [
     {
       src: "/works/master-na-chas/ustanovka-vodonagrevatelya/01-slim-wall-heater.png",
@@ -1142,16 +1716,16 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
   ],
   "sborka-tumby-pod-rakovinu": [
     {
-      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/01-frame-mount.png",
+      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/01-corner-cabinet.png",
+      alt: "Сборка тумбы под раковину — сборка каркаса угловой тумбы",
+    },
+    {
+      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/02-frame-mount.png",
       alt: "Сборка тумбы под раковину — крепление каркаса к стене",
     },
     {
-      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/02-cabinet-assembly.png",
-      alt: "Сборка тумбы под раковину — сборка тумбы с ящиками и дверцей",
-    },
-    {
-      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/03-corner-plumbing.png",
-      alt: "Сборка тумбы под раковину — угловая тумба с выводом коммуникаций",
+      src: "/works/master-na-chas/sborka-tumby-pod-rakovinu/03-vanity-assembled.png",
+      alt: "Сборка тумбы под раковину — готовая тумба с раковиной",
     },
   ],
   "ustanovka-polotentsesushitelya": [
@@ -1168,6 +1742,34 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
       alt: "Установка полотенцесушителя — М-образный полотенцесушитель на стояке",
     },
   ],
+  "perenos-polotentsesushitelya": [
+    {
+      src: "/works/master-na-chas/perenos-polotentsesushitelya/01-wrench-install.png",
+      alt: "Перенос полотенцесушителя — подключение к стояку ключом",
+    },
+    {
+      src: "/works/master-na-chas/perenos-polotentsesushitelya/02-ladder-valves.png",
+      alt: "Перенос полотенцесушителя — лестничный полотенцесушитель с кранами",
+    },
+    {
+      src: "/works/master-na-chas/perenos-polotentsesushitelya/03-serpentine-riser.png",
+      alt: "Перенос полотенцесушителя — М-образный полотенцесушитель на стояке",
+    },
+  ],
+  "demontazh-polotentsesushitelya": [
+    {
+      src: "/works/master-na-chas/demontazh-polotentsesushitelya/01-wrench-install.png",
+      alt: "Демонтаж полотенцесушителя — отключение от стояка ключом",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-polotentsesushitelya/02-ladder-valves.png",
+      alt: "Демонтаж полотенцесушителя — лестничный полотенцесушитель с кранами",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-polotentsesushitelya/03-serpentine-riser.png",
+      alt: "Демонтаж полотенцесушителя — М-образный полотенцесушитель на стояке",
+    },
+  ],
   "ustanovka-radiatora-otopleniya": [
     {
       src: "/works/master-na-chas/ustanovka-radiatora-otopleniya/01-diagonal-connect.png",
@@ -1180,6 +1782,20 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
     {
       src: "/works/master-na-chas/ustanovka-radiatora-otopleniya/03-under-window.png",
       alt: "Установка радиатора отопления — радиатор под окном с байпасом",
+    },
+  ],
+  "demontazh-radiatora-otopleniya": [
+    {
+      src: "/works/master-na-chas/demontazh-radiatora-otopleniya/01-diagonal-connect.png",
+      alt: "Демонтаж радиатора отопления — радиатор с диагональным подключением",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-radiatora-otopleniya/02-thermostatic-valve.png",
+      alt: "Демонтаж радиатора отопления — радиатор с термостатическим клапаном",
+    },
+    {
+      src: "/works/master-na-chas/demontazh-radiatora-otopleniya/03-under-window.png",
+      alt: "Демонтаж радиатора отопления — радиатор под окном с байпасом",
     },
   ],
   "sverlenie-otverstiy": [

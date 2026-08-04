@@ -1,15 +1,16 @@
 import type { ServicePopularProblemsConfig } from "@/lib/service-popular-problems";
 import {
   Bath,
+  BedDouble,
   BrickWall,
+  Building2,
+  DoorOpen,
   Home,
   KeyRound,
-  Layers,
   Paintbrush,
-  PanelTop,
   Sofa,
-  SquareStack,
-  Wallpaper,
+  SunMedium,
+  UtensilsCrossed,
 } from "lucide-react";
 
 export const REMONT_POPULAR_PROBLEMS: ServicePopularProblemsConfig = {
@@ -35,14 +36,19 @@ export const REMONT_POPULAR_PROBLEMS: ServicePopularProblemsConfig = {
   },
   problems: [
     {
-      title: "Нужен косметический ремонт",
+      title: "Косметический ремонт",
       description: "Обновим стены, потолки и полы без перепланировки — быстро и аккуратно.",
       icon: Paintbrush,
     },
     {
-      title: "Требуется капитальный ремонт",
+      title: "Капитальный ремонт",
       description: "Черновые и чистовые работы, подготовка поверхностей, отделка под ключ.",
       icon: BrickWall,
+    },
+    {
+      title: "Ремонт под ключ",
+      description: "Один подрядчик: от демонтажа до сдачи готовой квартиры.",
+      icon: KeyRound,
     },
     {
       title: "Ремонт ванной комнаты",
@@ -52,37 +58,42 @@ export const REMONT_POPULAR_PROBLEMS: ServicePopularProblemsConfig = {
     {
       title: "Ремонт кухни",
       description: "Стены, пол, потолок и зоны под технику — подготовка к установке кухни.",
+      icon: UtensilsCrossed,
+    },
+    {
+      title: "Ремонт комнаты",
+      description: "Комплексный ремонт одной комнаты: стены, полы, потолки.",
       icon: Home,
     },
     {
-      title: "Поклейка обоев",
-      description: "Подготовка стен и аккуратная поклейка без пузырей и перекосов.",
-      icon: Wallpaper,
-    },
-    {
-      title: "Укладка плитки",
-      description: "Ровная укладка на пол и стены с соблюдением швов и углов.",
-      icon: SquareStack,
-    },
-    {
-      title: "Натяжной потолок",
-      description: "Монтаж полотна, обход труб и закладные под освещение.",
-      icon: PanelTop,
-    },
-    {
-      title: "Выравнивание стен и потолков",
-      description: "Штукатурка, шпаклёвка и подготовка под покраску или обои.",
-      icon: Layers,
-    },
-    {
-      title: "Ремонт перед заселением",
-      description: "Приведём квартиру в порядок к переезду: отделка, мелкий ремонт, уборка зоны работ.",
-      icon: KeyRound,
-    },
-    {
-      title: "Обновление интерьера",
-      description: "Точечный ремонт комнат: акцентные стены, замена покрытий, освещение.",
+      title: "Ремонт гостиной",
+      description: "Отделка гостиной: стены, пол, потолок, зоны под ТВ и освещение.",
       icon: Sofa,
+    },
+    {
+      title: "Ремонт спальни",
+      description: "Спокойная отделка спальни: подготовка стен, полы и потолки.",
+      icon: BedDouble,
+    },
+    {
+      title: "Ремонт прихожей",
+      description: "Износостойкая отделка коридора и прихожей с аккуратным освещением.",
+      icon: DoorOpen,
+    },
+    {
+      title: "Ремонт балкона",
+      description: "Утепление и отделка балкона под хранение или зону отдыха.",
+      icon: SunMedium,
+    },
+    {
+      title: "Ремонт новостройки",
+      description: "Отделка с нуля в новой квартире: черновые работы и чистовая отделка.",
+      icon: Building2,
+    },
+    {
+      title: "Ремонт однокомнатной квартиры",
+      description: "Комплексный ремонт однушки: комнаты, кухня, санузел и прихожая.",
+      icon: Home,
     },
   ],
 };

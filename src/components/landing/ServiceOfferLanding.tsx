@@ -71,19 +71,50 @@ export function ServiceOfferLanding({ offer }: ServiceOfferLandingProps) {
         </div>
       </Section>
 
-      <Section>
-        <SectionHeader badge="Услуга" title="Что входит" subtitle={offer.aboutIntro} />
-        <ul className="mx-auto max-w-2xl space-y-3">
-          {offer.includedWorks.map((item) => (
-            <li
-              key={item}
-              className="flex items-start gap-3 rounded-xl border border-slate-200/80 bg-white px-4 py-3 text-slate-700 shadow-sm"
-            >
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-emerald-500" />
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
+      <Section className="!py-8 sm:!py-10">
+        <div className="mx-auto max-w-3xl">
+          <div className="overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm">
+            <div className="border-b border-slate-100 bg-gradient-to-r from-brand-50/80 to-white px-5 py-4 sm:px-6">
+              <div className="flex flex-wrap items-end justify-between gap-2">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand-600">
+                    Услуга
+                  </p>
+                  <h2 className="mt-1 font-display text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+                    Что входит
+                  </h2>
+                </div>
+                <p className="text-sm text-slate-500">
+                  {offer.includedWorks.length}{" "}
+                  {offer.includedWorks.length === 1
+                    ? "пункт"
+                    : offer.includedWorks.length < 5
+                      ? "пункта"
+                      : "пунктов"}
+                </p>
+              </div>
+              {offer.aboutIntro && (
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 line-clamp-3 sm:line-clamp-2">
+                  {offer.aboutIntro}
+                </p>
+              )}
+            </div>
+            <ul className="grid gap-px bg-slate-100 sm:grid-cols-2">
+              {offer.includedWorks.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 bg-white px-4 py-3 text-sm leading-snug text-slate-700 sm:px-5"
+                >
+                  <CheckCircle2
+                    className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500"
+                    aria-hidden="true"
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </Section>
 
       <WorkGallery label={galleryLabel} images={offer.galleryImages} />

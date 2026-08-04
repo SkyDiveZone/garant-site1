@@ -154,9 +154,20 @@ export const MASTER_NA_CHAS_OFFER_SLUGS = [
 export const REMONT_KVARTIR_OFFER_SLUGS = [
   "kosmeticheskiy-remont",
   "kapitalnyy-remont",
+  "remont-pod-klyuch",
   "remont-vannoy-komnaty",
   "remont-kuhni",
-  "remont-pod-klyuch",
+  "remont-komnaty",
+  "remont-gostinoy",
+  "remont-spalni",
+  "remont-prihozhey",
+  "remont-balkona",
+  "remont-novostroyki",
+  "remont-odnokomnatnoy-kvartiry",
+] as const;
+
+/** Old remont offer URLs → category hub */
+export const REMONT_KVARTIR_LEGACY_OFFER_REDIRECTS = [
   "shtroblenie-pod-provodku-kirpich",
   "shtroblenie-pod-provodku-beton",
   "shtroblenie-pod-truby",

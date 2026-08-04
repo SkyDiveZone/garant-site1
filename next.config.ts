@@ -1,6 +1,7 @@
 import {
   ELEKTRIK_LEGACY_REDIRECTS,
   ELEKTRIK_TO_MASTER_OFFER_REDIRECTS,
+  REMONT_KVARTIR_LEGACY_OFFER_REDIRECTS,
   SANTEHNIK_LEGACY_REDIRECTS,
   SANTEHNIK_TO_MASTER_OFFER_REDIRECTS,
 } from "./src/lib/service-catalog/slug-map";
@@ -101,6 +102,12 @@ const nextConfig: NextConfig = {
       })
     );
 
+    const remontLegacyOfferRedirects = REMONT_KVARTIR_LEGACY_OFFER_REDIRECTS.map((slug) => ({
+      source: `/remont-kvartir/${slug}`,
+      destination: "/remont-kvartir",
+      permanent: true,
+    }));
+
     return [
       { source: "/privacy", destination: "/privacy-policy", permanent: true },
       { source: "/terms", destination: "/user-agreement", permanent: true },
@@ -109,6 +116,7 @@ const nextConfig: NextConfig = {
       ...legacySantehnikRedirects,
       ...santehnikToMasterRedirects,
       ...elektrikToMasterRedirects,
+      ...remontLegacyOfferRedirects,
     ];
   },
   images: {
