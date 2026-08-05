@@ -1869,4 +1869,173 @@ export const MASTER_NA_CHAS_OFFER_GALLERIES: Partial<
 /** Галереи услуг ремонта квартир (опционально — иначе шаблонные фото категории) */
 export const REMONT_KVARTIR_OFFER_GALLERIES: Partial<
   Record<string, readonly ServiceOfferGalleryImage[]>
-> = {};
+> = {
+  "kosmeticheskiy-remont": [
+    {
+      src: "/works/remont-kvartir/kosmeticheskiy-remont/01-sage-room.png",
+      alt: "Косметический ремонт — комната после покраски и укладки ламината",
+    },
+    {
+      src: "/works/remont-kvartir/kosmeticheskiy-remont/02-living-sofa.png",
+      alt: "Косметический ремонт — гостиная с новой отделкой стен и пола",
+    },
+    {
+      src: "/works/remont-kvartir/kosmeticheskiy-remont/03-dark-floor-room.png",
+      alt: "Косметический ремонт — готовая комната с тёмным полом и светильниками",
+    },
+  ],
+  "kapitalnyy-remont": [
+    {
+      src: "/works/remont-kvartir/kapitalnyy-remont/01-demolition-frame.png",
+      alt: "Капитальный ремонт — демонтаж отделки и монтаж каркаса стен",
+    },
+    {
+      src: "/works/remont-kvartir/kapitalnyy-remont/02-plaster-ladder.png",
+      alt: "Капитальный ремонт — штукатурка и подготовка поверхностей",
+    },
+    {
+      src: "/works/remont-kvartir/kapitalnyy-remont/03-rough-in-bath.png",
+      alt: "Капитальный ремонт — черновые работы, плитка и санузел",
+    },
+  ],
+  "remont-pod-klyuch": [
+    {
+      src: "/works/remont-kvartir/remont-pod-klyuch/01-living-marble.png",
+      alt: "Ремонт под ключ — готовая гостиная с акцентной стеной",
+    },
+    {
+      src: "/works/remont-kvartir/remont-pod-klyuch/02-open-plan.png",
+      alt: "Ремонт под ключ — квартира с открытой планировкой",
+    },
+    {
+      src: "/works/remont-kvartir/remont-pod-klyuch/03-studio-bedroom.png",
+      alt: "Ремонт под ключ — готовая спальня с мебелью и отделкой",
+    },
+  ],
+  "remont-vannoy-komnaty": [
+    {
+      src: "/works/remont-kvartir/remont-vannoy-komnaty/01-beige-shower.png",
+      alt: "Ремонт ванной комнаты — душевая зона с плиткой и подсветкой",
+    },
+    {
+      src: "/works/remont-kvartir/remont-vannoy-komnaty/02-marble-vanity.png",
+      alt: "Ремонт ванной комнаты — ванная с мраморной плиткой и тумбой",
+    },
+    {
+      src: "/works/remont-kvartir/remont-vannoy-komnaty/03-wood-accent.png",
+      alt: "Ремонт ванной комнаты — санузел с деревянной акцентной стеной",
+    },
+  ],
+  "remont-kuhni": [
+    {
+      src: "/works/remont-kvartir/remont-kuhni/01-grey-hex.png",
+      alt: "Ремонт кухни — современная кухня с шестигранным фартуком",
+    },
+    {
+      src: "/works/remont-kvartir/remont-kuhni/02-green-marble.png",
+      alt: "Ремонт кухни — кухня с зелёными фасадами и мраморным фартуком",
+    },
+    {
+      src: "/works/remont-kvartir/remont-kuhni/03-dark-wood.png",
+      alt: "Ремонт кухни — тёмная кухня с деревянной столешницей",
+    },
+  ],
+  "remont-komnaty": [
+    {
+      src: "/works/remont-kvartir/remont-komnaty/01-studio-zones.png",
+      alt: "Ремонт комнаты — зонирование спальни и гостиной",
+    },
+    {
+      src: "/works/remont-kvartir/remont-komnaty/02-teen-room.png",
+      alt: "Ремонт комнаты — современная комната с рабочей зоной",
+    },
+    {
+      src: "/works/remont-kvartir/remont-komnaty/03-grey-workspace.png",
+      alt: "Ремонт комнаты — комната с акцентной стеной и рабочим столом",
+    },
+  ],
+  "remont-gostinoy": [
+    {
+      src: "/works/remont-kvartir/remont-gostinoy/01-concrete-media.png",
+      alt: "Ремонт гостиной — зона ТВ с бетонной отделкой стен",
+    },
+    {
+      src: "/works/remont-kvartir/remont-gostinoy/02-white-tv-wall.png",
+      alt: "Ремонт гостиной — гостиная с белой стенкой под телевизор",
+    },
+    {
+      src: "/works/remont-kvartir/remont-gostinoy/03-wood-panel.png",
+      alt: "Ремонт гостиной — гостиная с деревянной панелью и подсветкой",
+    },
+  ],
+  "remont-spalni": [
+    {
+      src: "/works/remont-kvartir/remont-spalni/01-beige-bedroom.png",
+      alt: "Ремонт спальни — светлая спальня с мягким изголовьем",
+    },
+    {
+      src: "/works/remont-kvartir/remont-spalni/02-fluted-wall.png",
+      alt: "Ремонт спальни — спальня с реечной акцентной стеной",
+    },
+    {
+      src: "/works/remont-kvartir/remont-spalni/03-mural-bedroom.png",
+      alt: "Ремонт спальни — спальня с панно и подсветкой изголовья",
+    },
+  ],
+  "remont-prihozhey": [
+    {
+      src: "/works/remont-kvartir/remont-prihozhey/01-hex-entry.png",
+      alt: "Ремонт прихожей — прихожая с шестигранной плиткой и шкафом",
+    },
+    {
+      src: "/works/remont-kvartir/remont-prihozhey/02-white-niche.png",
+      alt: "Ремонт прихожей — белая прихожая с нишей и зеркалом",
+    },
+    {
+      src: "/works/remont-kvartir/remont-prihozhey/03-grey-hallway.png",
+      alt: "Ремонт прихожей — серая прихожая с банкеткой и зеркалом",
+    },
+  ],
+  "remont-balkona": [
+    {
+      src: "/works/remont-kvartir/remont-balkona/01-brick-lounge.png",
+      alt: "Ремонт балкона — лоджия с зоной отдыха и кирпичной отделкой",
+    },
+    {
+      src: "/works/remont-kvartir/remont-balkona/02-cabinet-balcony.png",
+      alt: "Ремонт балкона — балкон со шкафом и отделкой стен",
+    },
+    {
+      src: "/works/remont-kvartir/remont-balkona/03-outdoor-deck.png",
+      alt: "Ремонт балкона — открытый балкон с настилом и зоной отдыха",
+    },
+  ],
+  "remont-novostroyki": [
+    {
+      src: "/works/remont-kvartir/remont-novostroyki/01-entry-hallway.png",
+      alt: "Ремонт новостройки — готовая прихожая в новой квартире",
+    },
+    {
+      src: "/works/remont-kvartir/remont-novostroyki/02-living-classic.png",
+      alt: "Ремонт новостройки — гостиная с чистовой отделкой",
+    },
+    {
+      src: "/works/remont-kvartir/remont-novostroyki/03-green-bath.png",
+      alt: "Ремонт новостройки — ванная комната после чистовой отделки",
+    },
+  ],
+  "remont-odnokomnatnoy-kvartiry": [
+    {
+      src: "/works/remont-kvartir/remont-odnokomnatnoy-kvartiry/01-wood-bath.png",
+      alt: "Ремонт однокомнатной квартиры — санузел с деревянной отделкой",
+    },
+    {
+      src: "/works/remont-kvartir/remont-odnokomnatnoy-kvartiry/02-living-storage.png",
+      alt: "Ремонт однокомнатной квартиры — гостиная со шкафами и зоной ТВ",
+    },
+    {
+      src: "/works/remont-kvartir/remont-odnokomnatnoy-kvartiry/03-marble-living.png",
+      alt: "Ремонт однокомнатной квартиры — гостиная с акцентной стеной",
+    },
+  ],
+};
