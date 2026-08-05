@@ -1,5 +1,6 @@
 import { ROUND_THE_CLOCK } from "@/lib/copy";
 import { DEFAULT_SERVICE_STEPS } from "@/lib/how-we-work";
+import { getIncludedWorks } from "@/lib/service-catalog/included-works";
 import type { PriceListGroup, PriceListItem } from "@/lib/service-prices";
 import type {
   ServiceOfferPage,
@@ -166,17 +167,6 @@ function defaultProblems(serviceName: string): ServiceOfferProblem[] {
   }));
 }
 
-function defaultIncluded(serviceName: string): string[] {
-  const short = shortServiceName(serviceName);
-  return [
-    "Выезд мастера в согласованное время",
-    `Выполнение работ: ${short}`,
-    "Проверка безопасности и работоспособности",
-    "Консультация по эксплуатации",
-    "Уборка рабочей зоны после завершения",
-  ];
-}
-
 function defaultHowItWorks(serviceName: string): string[] {
   return [
     `Осмотр объекта и оценка объёма работ по услуге «${shortServiceName(serviceName)}»`,
@@ -289,17 +279,6 @@ function defaultSantehnikProblems(serviceName: string): ServiceOfferProblem[] {
   }));
 }
 
-function defaultSantehnikIncluded(serviceName: string): string[] {
-  const short = shortServiceName(serviceName);
-  return [
-    "Выезд мастера в согласованное время",
-    `Выполнение работ: ${short}`,
-    "Проверка герметичности и работоспособности",
-    "Консультация по эксплуатации",
-    "Уборка рабочей зоны после завершения",
-  ];
-}
-
 function defaultSantehnikHowItWorks(serviceName: string): string[] {
   return [
     `Осмотр объекта и оценка объёма работ по услуге «${shortServiceName(serviceName)}»`,
@@ -360,7 +339,7 @@ export function buildSantehnikOfferFromPrice(
     priceUnit: item.unit,
     priceGroup: group.title,
     aboutIntro: `«Гарант Мастер» выполняет ${serviceName.toLowerCase()} в квартирах, частных домах и коммерческих помещениях Екатеринбурга. Мастер приедет с инструментом, оценит объём работ на месте и согласует стоимость до начала.`,
-    includedWorks: defaultSantehnikIncluded(serviceName),
+    includedWorks: getIncludedWorks("santehnik", slug, serviceName),
     howItWorks: defaultSantehnikHowItWorks(serviceName),
     whenNeeded: defaultSantehnikWhenNeeded(serviceName),
     whenToCall: defaultSantehnikWhenToCall(serviceName),
@@ -400,7 +379,7 @@ export function buildElektrikOfferFromPrice(
     priceUnit: item.unit,
     priceGroup: group.title,
     aboutIntro: `«Гарант Мастер» выполняет ${serviceName.toLowerCase()} в квартирах, частных домах и коммерческих помещениях Екатеринбурга. Мастер приедет с инструментом, оценит объём работ на месте и согласует стоимость до начала.`,
-    includedWorks: defaultIncluded(serviceName),
+    includedWorks: getIncludedWorks("elektrik", slug, serviceName),
     howItWorks: defaultHowItWorks(serviceName),
     whenNeeded: defaultWhenNeeded(serviceName),
     whenToCall: defaultWhenToCall(serviceName),
@@ -577,8 +556,13 @@ export function buildMasterNaChasOfferFromPrice(
     priceUnit: item.unit,
     priceGroup: group.title,
     aboutIntro: `«Гарант Мастер» выполняет ${serviceName.toLowerCase()} в квартирах, частных домах и коммерческих помещениях Екатеринбурга. Мастер на час приедет с инструментом, оценит объём работ на месте и согласует стоимость до начала.`,
-    includedWorks: defaultSantehnikIncluded(serviceName),
-    howItWorks: defaultSantehnikHowItWorks(serviceName),
+    includedWorks: getIncludedWorks("master-na-chas", slug, serviceName),
+    howItWorks: [
+      `Осмотр объекта и оценка объёма работ по услуге «${short}»`,
+      "Согласование стоимости до начала — без сюрпризов",
+      "Выполнение работ с аккуратным монтажом",
+      "Проверка результата и сдача работ",
+    ],
     whenNeeded: defaultMasterWhenNeeded(serviceName),
     whenToCall: defaultMasterWhenToCall(serviceName),
     popularProblems: defaultMasterProblems(serviceName),
@@ -755,9 +739,14 @@ export function buildRemontKvartirOfferFromPrice(
     priceFrom: item.priceFrom,
     priceUnit: item.unit,
     priceGroup: group.title,
-    aboutIntro: `«Гарант Мастер» выполняет ${serviceName.toLowerCase()} в квартирах Екатеринбурга. Мастер приедет на осмотр, оценит объём работ и согласует стоимость до начала.`,
-    includedWorks: defaultSantehnikIncluded(serviceName),
-    howItWorks: defaultSantehnikHowItWorks(serviceName),
+    aboutIntro: `«Гарант Мастер» выполняет ${serviceName.toLowerCase()} в квартирах Екатеринбурга. Выедем на замер, оценим объём отделочных работ и согласуем смету до начала.`,
+    includedWorks: getIncludedWorks("remont-kvartir", slug, serviceName),
+    howItWorks: [
+      `Замер объекта и оценка объёма по услуге «${short}»`,
+      "Согласование сметы и этапов до начала работ",
+      "Выполнение отделки с контролем качества на каждом этапе",
+      "Сдача работ и уборка зоны после завершения",
+    ],
     whenNeeded: defaultRemontWhenNeeded(serviceName),
     whenToCall: defaultRemontWhenToCall(serviceName),
     popularProblems: defaultRemontProblems(serviceName),
