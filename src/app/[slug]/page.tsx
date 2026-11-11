@@ -1,6 +1,8 @@
 import { ConversionServiceLanding } from "@/components/landing/ConversionServiceLanding";
+import { EkbCategoryPage } from "@/components/ekb2/EkbCategoryPage";
 import { ServiceLanding } from "@/components/landing/ServiceLanding";
 import { ServiceJsonLd } from "@/components/seo/ServiceJsonLd";
+import { isEkbCategoryKey } from "@/lib/ekb2/pages";
 import { createPageMetadata } from "@/lib/seo";
 import { getAllServiceSlugs, getServiceBySlug } from "@/lib/services";
 import { isConversionLandingSlug } from "@/lib/services/conversion-slugs";
@@ -33,6 +35,15 @@ export default async function ServicePage({ params }: PageProps) {
   const service = getServiceBySlug(slug);
 
   if (!service) notFound();
+
+  if (isEkbCategoryKey(slug)) {
+    return (
+      <>
+        <ServiceJsonLd service={service} />
+        <EkbCategoryPage category={slug} />
+      </>
+    );
+  }
 
   return (
     <>

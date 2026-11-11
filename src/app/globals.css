@@ -40,14 +40,7 @@ html {
 }
 
 body {
-  @apply bg-cream text-ink antialiased overflow-x-hidden;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-}
-
-@media (max-width: 639px) {
-  body {
-    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px));
-  }
+  @apply antialiased overflow-x-hidden;
 }
 
 ::selection {

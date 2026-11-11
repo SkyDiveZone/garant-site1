@@ -1,28 +1,19 @@
 import { Analytics } from "@/components/seo/Analytics";
 import { YandexMetrikaRouteHit } from "@/components/seo/YandexMetrikaRouteHit";
 import { CookieConsentBanner } from "@/components/legal/CookieConsentBanner";
-import { Footer } from "@/components/layout/Footer";
-import { FloatingCTA } from "@/components/layout/FloatingCTA";
-import { Header } from "@/components/layout/Header";
+import { EkbFooter } from "@/components/ekb2/EkbFooter";
+import { EkbHeader } from "@/components/ekb2/EkbHeader";
 import { JsonLd } from "@/components/seo/JsonLd";
-import { WelcomeLeadPopup } from "@/components/ui/WelcomeLeadPopup";
 import { HOME_METADATA } from "@/lib/seo";
-import { Inter, Manrope } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  subsets: ["latin", "cyrillic"],
-  variable: "--font-inter",
-  display: "swap",
-  preload: true,
-});
+import "@/styles/ekb2.css";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
   variable: "--font-manrope",
   display: "swap",
-  // Body font (Inter) stays preloaded; avoid competing early font downloads
-  preload: false,
+  preload: true,
 });
 
 export const metadata = HOME_METADATA;
@@ -33,20 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru" className={`${inter.variable} ${manrope.variable}`}>
-      <body className="font-sans">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-xl focus:bg-brand-600 focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-lg"
-        >
-          Перейти к содержимому
-        </a>
+    <html lang="ru" className={manrope.variable}>
+      <body style={{ fontFamily: "var(--font-manrope), Manrope, 'Segoe UI', sans-serif" }}>
         <JsonLd />
-        <Header />
-        <main id="main-content">{children}</main>
-        <Footer />
-        <FloatingCTA />
-        <WelcomeLeadPopup />
+        <EkbHeader />
+        {children}
+        <EkbFooter />
         <CookieConsentBanner />
         <Analytics />
         <YandexMetrikaRouteHit />
