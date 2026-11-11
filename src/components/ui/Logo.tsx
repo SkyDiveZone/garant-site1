@@ -1,6 +1,5 @@
 import { SITE } from "@/lib/data";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 import Link from "next/link";
 
 type LogoVariant = "header" | "footer" | "icon";
@@ -12,25 +11,24 @@ interface LogoProps {
 }
 
 const ALT = `${SITE.name} — ${SITE.logoTagline} в Екатеринбурге`;
-const LOGO_SRC = "/logo-mark.webp?v=ekb-4";
 
-function LogoMark({
-  className,
-  size = 180,
-}: {
-  className?: string;
-  size?: number;
-}) {
+/** Логотип с живого ЕКБ2 (ekat-garant196.ru): зелёный дом. */
+function LogoMark({ className }: { className?: string }) {
   return (
-    <Image
-      src={LOGO_SRC}
-      alt=""
-      width={size}
-      height={size}
-      priority
-      className={cn("shrink-0 rounded-[12px] object-contain", className)}
+    <svg
+      className={cn("shrink-0", className)}
+      viewBox="0 0 32 32"
       aria-hidden="true"
-    />
+      focusable="false"
+    >
+      <rect width="32" height="32" rx="8" fill="#134e3e" />
+      <path
+        fill="#f6f1e6"
+        fillRule="evenodd"
+        d="M16 6.8 25 14.4V24.4H7V14.4L16 6.8zm0 3.1L10.2 15v6.6h11.6V15L16 9.9z"
+      />
+      <rect x="14.15" y="17.2" width="3.7" height="4.4" rx=".4" fill="#d24a2c" />
+    </svg>
   );
 }
 
@@ -60,7 +58,7 @@ function BrandText({ light }: { light?: boolean }) {
 export function Logo({ variant = "header", className, linked = true }: LogoProps) {
   const headerBrand = (
     <div className={cn("flex items-center gap-2.5 sm:gap-3", className)}>
-      <LogoMark className="h-10 w-10 sm:h-11 sm:w-11" size={88} />
+      <LogoMark className="h-8 w-8 sm:h-9 sm:w-9" />
       <BrandText light />
       <span className="sr-only">{ALT}</span>
     </div>
@@ -68,13 +66,13 @@ export function Logo({ variant = "header", className, linked = true }: LogoProps
 
   const footerBrand = (
     <div className={cn("flex items-center gap-3", className)}>
-      <LogoMark className="h-14 w-14" size={112} />
+      <LogoMark className="h-11 w-11" />
       <BrandText light />
       <span className="sr-only">{ALT}</span>
     </div>
   );
 
-  const iconOnly = <LogoMark className="h-11 w-11" />;
+  const iconOnly = <LogoMark className="h-9 w-9" />;
 
   const content =
     variant === "header" ? headerBrand : variant === "footer" ? footerBrand : iconOnly;
