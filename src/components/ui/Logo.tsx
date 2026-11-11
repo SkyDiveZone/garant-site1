@@ -12,7 +12,7 @@ interface LogoProps {
 }
 
 const ALT = `${SITE.name} — ${SITE.logoTagline} в Екатеринбурге`;
-const LOGO_SRC = "/logo-mark.webp?v=ekb-3";
+const LOGO_SRC = "/logo-mark.webp?v=ekb-4";
 
 function LogoMark({
   className,
