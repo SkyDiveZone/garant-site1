@@ -1,10 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/Button";
-import { HEADER_PHONES } from "@/lib/data";
-import { trackPhoneClick } from "@/lib/yandex-metrika";
+import { HEADER_PHONES, SITE } from "@/lib/data";
+import { trackMaxClick, trackPhoneClick, trackTelegramClick } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
-import { Phone } from "lucide-react";
 
 interface HeaderContactsProps {
   onOpenForm: () => void;
@@ -12,28 +10,44 @@ interface HeaderContactsProps {
   light?: boolean;
 }
 
-export function HeaderContacts({ onOpenForm, className, light = false }: HeaderContactsProps) {
+export function HeaderContacts({ onOpenForm: _onOpenForm, className, light = false }: HeaderContactsProps) {
   const phone = HEADER_PHONES[0];
 
   return (
-    <div className={cn("flex min-w-0 items-center gap-3 xl:gap-4", className)}>
+    <div className={cn("hidden min-w-0 flex-col items-end lg:flex", className)}>
       <a
         href={`tel:${phone.raw}`}
         onClick={trackPhoneClick}
         className={cn(
-          "hidden min-w-0 flex-col items-end leading-tight lg:flex",
+          "whitespace-nowrap text-sm font-extrabold tracking-tight",
           light ? "text-white" : "text-ink"
         )}
       >
-        <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-bold tracking-tight">
-          <Phone className="h-3.5 w-3.5 shrink-0 text-brand-500" aria-hidden />
-          {phone.display}
-        </span>
-        <span className={cn("text-[11px]", light ? "text-white/60" : "text-muted")}>Круглосуточно</span>
+        {phone.display}
       </a>
-      <Button size="sm" className="whitespace-nowrap px-4" onClick={onOpenForm}>
-        Вызвать мастера
-      </Button>
+      <span className={cn("text-[12px] font-semibold", light ? "text-white/60" : "text-muted")}>
+        круглосуточно, без выходных
+      </span>
+      <div className="mt-1 flex items-center gap-2 text-[12px] font-semibold">
+        <a
+          href={SITE.telegram.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={trackTelegramClick}
+          className={cn(light ? "text-white/75 hover:text-white" : "text-muted hover:text-ink")}
+        >
+          Телеграм
+        </a>
+        <a
+          href={SITE.max.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={trackMaxClick}
+          className={cn(light ? "text-white/75 hover:text-white" : "text-muted hover:text-ink")}
+        >
+          Макс
+        </a>
+      </div>
     </div>
   );
 }

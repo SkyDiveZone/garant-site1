@@ -1,106 +1,88 @@
 "use client";
 
-import { JobReviewSnippet } from "@/components/sections/JobReviewSnippet";
-import { Button } from "@/components/ui/Button";
-import { LeadFormWithExtras } from "@/components/ui/LeadFormWithExtras";
-import { COPY } from "@/lib/copy";
-import { HERO, PHONES } from "@/lib/data";
-import { formatPriceFrom } from "@/lib/format-price";
-import { getStartPrice, START_PRICE_POINTS } from "@/lib/service-prices";
-import { trackPhoneClick } from "@/lib/yandex-metrika";
-import { MapPin, Phone, UserRound } from "lucide-react";
-import Image from "next/image";
+import { PHONES, SITE } from "@/lib/data";
+import { trackMaxClick, trackPhoneClick, trackTelegramClick } from "@/lib/yandex-metrika";
+import Link from "next/link";
 
-const HERO_START_PRICES = START_PRICE_POINTS.map((point) => getStartPrice(point.id)).filter(
-  (item): item is NonNullable<ReturnType<typeof getStartPrice>> => Boolean(item)
-);
+const FACTS = ["Выезд сегодня", "Круглосуточно", "Гарантия 4 года"] as const;
 
 export function Hero() {
   return (
-    <section className="cookie-clearance relative overflow-hidden bg-graphite text-white">
-      <div className="absolute inset-0">
-        <Image
-          src="/works/santehnik/02-plumber-work.png"
-          alt=""
-          fill
-          priority
-          className="object-cover object-center opacity-40"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/90 to-graphite/55" />
-        <div className="absolute inset-0 bg-gradient-to-t from-graphite via-transparent to-graphite/40" />
-      </div>
-
-      <div className="page-hero__inner relative z-10 grid gap-6 pt-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-8 lg:pt-24">
+    <section className="cookie-clearance bg-cream text-ink">
+      <div className="container-custom grid gap-8 pb-6 pt-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-start lg:gap-9 lg:pb-4 lg:pt-10">
         <div>
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-sm text-white/85">
-            <MapPin className="h-4 w-4 text-brand-500" aria-hidden />
-            {HERO.badge}
-          </div>
-
-          <h1 className="font-display text-3xl font-extrabold leading-[1.12] tracking-tight sm:text-4xl lg:text-5xl xl:text-[3.25rem]">
-            {HERO.title}
-            <br />
-            <span className="text-brand-500">{HERO.titleHighlight}</span>
+          <p className="mb-2.5 text-[13px] font-extrabold uppercase tracking-[0.08em] text-graphite">
+            Екатеринбург
+          </p>
+          <h1 className="font-display text-[2.5rem] font-extrabold leading-[0.92] tracking-[-0.045em] text-ink sm:text-5xl lg:text-[4.25rem]">
+            Сантехник на дом сегодня
           </h1>
-
-          <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
-            {HERO.subtitle}
+          <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted sm:text-xl">
+            Выберите, что случилось. Цену называем до того, как начать работу.
           </p>
 
           <ul className="mt-5 flex flex-wrap gap-2">
-            {HERO_START_PRICES.map((item) => (
+            {FACTS.map((fact) => (
               <li
-                key={item.label}
-                className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-sm text-white"
+                key={fact}
+                className="rounded-full bg-cream-dark px-3 py-2 text-sm font-bold text-ink"
               >
-                {item.label}{" "}
-                <span className="font-semibold text-brand-400">
-                  {formatPriceFrom(item.priceFrom)}
-                  {item.unit ? ` ${item.unit}` : ""}
-                </span>
+                {fact}
               </li>
             ))}
           </ul>
-          <p className="mt-3 max-w-xl text-sm text-white/70">{COPY.priceBeforeStart}</p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button
+          <div className="mt-6 flex flex-wrap items-center gap-2.5">
+            <a
               href={`tel:${PHONES[0].raw}`}
-              size="lg"
-              className="w-full sm:w-auto"
               onClick={trackPhoneClick}
+              className="inline-flex items-center justify-center rounded-xl bg-brand-500 px-4.5 py-3.5 text-sm font-extrabold tracking-tight text-white hover:bg-brand-600 sm:text-base"
             >
-              <Phone className="h-5 w-5" />
-              {HERO.primaryCta}
-            </Button>
-            <Button href="#lead-form" size="lg" variant="outlineLight" className="w-full sm:w-auto">
-              <UserRound className="h-5 w-5" />
-              {HERO.secondaryCta}
-            </Button>
+              Позвонить · {PHONES[0].display}
+            </a>
+            <a
+              href={SITE.telegram.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackTelegramClick}
+              className="px-2 py-2 text-sm font-semibold text-muted hover:text-ink"
+            >
+              Телеграм
+            </a>
+            <a
+              href={SITE.max.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackMaxClick}
+              className="px-2 py-2 text-sm font-semibold text-muted hover:text-ink"
+            >
+              Макс
+            </a>
+            <Link href="#pricing" className="px-2 py-2 text-sm font-semibold text-muted hover:text-ink">
+              Весь прайс
+            </Link>
           </div>
+        </div>
 
-          <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
-            {HERO.trustItems.map((item) => (
-              <li
-                key={item.label}
-                className="rounded-xl border border-white/10 bg-white/5 px-3.5 py-2.5"
-              >
-                <p className="text-sm font-semibold text-white">{item.label}</p>
-                <p className="mt-0.5 text-xs text-white/55">{item.sub}</p>
-              </li>
+        <aside className="rounded-[18px] border border-[#e3dcd0] bg-[#fffdf8] px-4 pb-4 pt-3 sm:px-5">
+          <h2 className="pt-2 text-[15px] font-bold text-muted">Что делаем чаще всего</h2>
+          <div className="mt-1 divide-y divide-[#e3dcd0]">
+            {[
+              ["Устранение засора", "от 890 ₽"],
+              ["Установка смесителя", "от 390 ₽"],
+              ["Установка унитаза", "от 990 ₽"],
+              ["Установка розетки", "от 110 ₽"],
+            ].map(([name, price]) => (
+              <div key={name} className="flex items-start justify-between gap-4 py-3.5 text-sm font-semibold">
+                <span>{name}</span>
+                <b className="whitespace-nowrap font-extrabold tracking-tight">{price}</b>
+              </div>
             ))}
-          </ul>
-          <div className="mt-4">
-            <JobReviewSnippet />
           </div>
-        </div>
-
-        <div className="lg:sticky lg:top-24">
-          <div className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-white p-1 text-ink shadow-2xl shadow-black/30">
-            <LeadFormWithExtras id="lead-form" subtitle={COPY.leadFormSubtitle} />
-          </div>
-        </div>
+          <p className="mt-2 text-[13px] text-muted">
+            Итог мастер называет до начала. Оплата после работы.
+          </p>
+        </aside>
       </div>
     </section>
   );

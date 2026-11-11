@@ -11,9 +11,11 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(false);
@@ -55,33 +57,42 @@ export function Header() {
     <>
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-[80] border-b border-white/10 bg-graphite text-white transition-shadow duration-300",
-          scrolled && "shadow-lg shadow-black/25"
+          "sticky top-0 z-[80] border-b border-[#e3dcd0] bg-[rgba(243,239,230,0.94)] text-ink backdrop-blur-md transition-shadow duration-300",
+          scrolled && "shadow-sm shadow-black/5"
         )}
       >
-        <div className="container-custom flex h-16 min-w-0 items-center justify-between gap-3 lg:h-[4.25rem] lg:gap-6">
+        <div className="container-custom flex h-[4.25rem] min-w-0 items-center justify-between gap-3 lg:gap-5">
           <Logo variant="header" className="min-w-0 shrink" />
 
-          <nav className="hidden items-center gap-7 lg:flex" aria-label="Основная навигация">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-white/75 transition-colors hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden flex-1 items-center gap-1 lg:flex" aria-label="Основная навигация">
+            {NAV_LINKS.map((link) => {
+              const current =
+                pathname === link.href ||
+                (link.href !== "/" && pathname.startsWith(link.href));
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={current ? "page" : undefined}
+                  className={cn(
+                    "rounded-full px-2.5 py-2 text-sm font-semibold transition-colors",
+                    current ? "bg-cream-dark text-ink" : "text-muted hover:text-ink"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex shrink-0 items-center gap-2">
-            <Button size="sm" className="whitespace-nowrap px-3 lg:hidden" onClick={openForm}>
-              Вызвать
+            <Button size="sm" className="whitespace-nowrap px-3 lg:hidden" href={`tel:${HEADER_PHONES[0].raw}`}>
+              Позвонить
             </Button>
-            <HeaderContacts onOpenForm={openForm} light className="hidden lg:flex" />
+            <HeaderContacts onOpenForm={openForm} className="hidden lg:flex" />
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/15 bg-white/5 text-white lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#e3dcd0] bg-white text-ink lg:hidden"
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
             >
@@ -96,7 +107,7 @@ export function Header() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="border-t border-white/10 bg-graphite-deep lg:hidden"
+              className="border-t border-[#e3dcd0] bg-cream lg:hidden"
             >
               <nav className="container-custom flex flex-col gap-1 py-4" aria-label="Мобильная навигация">
                 {NAV_LINKS.map((link) => (
@@ -104,23 +115,17 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="rounded-lg px-2 py-2.5 text-sm font-medium text-white/85 hover:bg-white/5"
+                    className="rounded-lg px-2 py-2.5 text-sm font-semibold text-ink hover:bg-cream-dark"
                   >
                     {link.label}
                   </Link>
                 ))}
-                <Button
-                  className="mt-2 w-full"
-                  onClick={() => {
-                    setMobileOpen(false);
-                    openForm();
-                  }}
-                >
-                  Вызвать мастера
+                <Button className="mt-2 w-full" href={`tel:${HEADER_PHONES[0].raw}`}>
+                  Позвонить · {HEADER_PHONES[0].display}
                 </Button>
-                <div className="mt-3 border-t border-white/10 pt-3">
-                  <p className="mb-2 text-xs text-white/50">{SITE.hours}</p>
-                  <ContactBlock theme="dark" size="xs" align="start" phones={HEADER_PHONES} />
+                <div className="mt-3 border-t border-[#e3dcd0] pt-3">
+                  <p className="mb-2 text-xs text-muted">{SITE.hours}</p>
+                  <ContactBlock theme="light" size="xs" align="start" phones={HEADER_PHONES} />
                 </div>
               </nav>
             </motion.div>

@@ -11,7 +11,7 @@ export function Footer() {
         <div className="grid min-w-0 gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
           <div className="min-w-0">
             <div className="mb-4">
-              <Logo variant="footer" />
+              <Logo variant="footer" light />
             </div>
             <p className="text-sm leading-relaxed">
               Сантехник, электрик, мастер на час и ремонт квартир в Екатеринбурге.

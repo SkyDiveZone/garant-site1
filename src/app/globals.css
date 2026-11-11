@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-50: #fff0e5;
-  --color-brand-100: #ffe0cc;
-  --color-brand-200: #ffc499;
-  --color-brand-300: #ffa366;
-  --color-brand-400: #ff8533;
-  --color-brand-500: #ff6a00;
-  --color-brand-600: #ff6a00;
-  --color-brand-700: #e55f00;
-  --color-brand-800: #cc5500;
-  --color-brand-900: #993f00;
+  /* Палитра живого ЕКБ2: ekat-garant196.ru */
+  --color-brand-50: #f3ebe7;
+  --color-brand-100: #f0d7cf;
+  --color-brand-200: #e4b3a6;
+  --color-brand-300: #d88b78;
+  --color-brand-400: #d24a2c;
+  --color-brand-500: #d24a2c;
+  --color-brand-600: #b43b22;
+  --color-brand-700: #9a321d;
+  --color-brand-800: #7a2717;
+  --color-brand-900: #5a1c10;
 
-  --color-accent-400: #ff8533;
-  --color-accent-500: #ff6a00;
+  --color-accent-400: #d24a2c;
+  --color-accent-500: #d24a2c;
 
-  --color-cream: #f7f5f0;
-  --color-cream-dark: #efebe3;
-  --color-graphite: #17191b;
-  --color-graphite-deep: #101214;
-  --color-ink: #1b1d20;
-  --color-muted: #6b7075;
+  --color-cream: #f3efe6;
+  --color-cream-dark: #efe8db;
+  --color-graphite: #134e3e;
+  --color-graphite-deep: #0d3b2f;
+  --color-ink: #1a1814;
+  --color-muted: #5f584e;
 
   --color-slate-850: #17191b;
   --color-slate-950: #101214;

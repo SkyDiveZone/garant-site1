@@ -8,6 +8,8 @@ interface LogoProps {
   variant?: LogoVariant;
   className?: string;
   linked?: boolean;
+  /** Светлый текст (для тёмного фона). По умолчанию тёмный — как на ЕКБ2. */
+  light?: boolean;
 }
 
 const ALT = `${SITE.name} — ${SITE.logoTagline} в Екатеринбурге`;
@@ -55,11 +57,16 @@ function BrandText({ light }: { light?: boolean }) {
   );
 }
 
-export function Logo({ variant = "header", className, linked = true }: LogoProps) {
+export function Logo({
+  variant = "header",
+  className,
+  linked = true,
+  light = false,
+}: LogoProps) {
   const headerBrand = (
     <div className={cn("flex items-center gap-2.5 sm:gap-3", className)}>
       <LogoMark className="h-8 w-8 sm:h-9 sm:w-9" />
-      <BrandText light />
+      <BrandText light={light} />
       <span className="sr-only">{ALT}</span>
     </div>
   );
@@ -67,7 +74,7 @@ export function Logo({ variant = "header", className, linked = true }: LogoProps
   const footerBrand = (
     <div className={cn("flex items-center gap-3", className)}>
       <LogoMark className="h-11 w-11" />
-      <BrandText light />
+      <BrandText light={light} />
       <span className="sr-only">{ALT}</span>
     </div>
   );
