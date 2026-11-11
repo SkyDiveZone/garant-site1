@@ -9,7 +9,7 @@ import { FileText, Phone } from "lucide-react";
 export function FloatingCTA() {
   return (
     <div
-      className="fixed bottom-0 inset-x-0 z-40 border-t border-slate-200 bg-white/95 px-4 py-2 shadow-[0_-4px_24px_rgba(15,76,129,0.12)] backdrop-blur-md sm:hidden"
+      className="fixed bottom-0 inset-x-0 z-[80] border-t border-black/10 bg-white px-3 py-2 shadow-[0_-8px_24px_rgba(16,18,20,0.12)] sm:hidden"
       style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
     >
       <div className="flex gap-2">

@@ -10,6 +10,7 @@ function YandexMetrikaRouteHitInner() {
   const isFirstHit = useRef(true);
 
   useEffect(() => {
+    if (!YANDEX_METRIKA_ID) return;
     if (typeof window.ym !== "function") return;
 
     const query = searchParams.toString();

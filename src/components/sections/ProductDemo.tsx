@@ -2,6 +2,7 @@
 
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { Section, SectionHeader } from "@/components/ui/Section";
+import { SITE } from "@/lib/data";
 import { motion } from "framer-motion";
 import {
   CheckCircle2,
@@ -42,7 +43,7 @@ export function ProductDemo() {
                   <div className="h-3 w-3 rounded-full bg-amber-400" />
                   <div className="h-3 w-3 rounded-full bg-emerald-400" />
                   <span className="ml-4 text-xs text-slate-500">
-                    garant-master-ekb.ru — панель заявок
+                    {new URL(SITE.url).host} — панель заявок
                   </span>
                 </div>
 

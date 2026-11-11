@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
 import { type ButtonHTMLAttributes, type MouseEvent, type ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost" | "outline";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "outline" | "outlineLight";
 type ButtonSize = "sm" | "md" | "lg";
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
   children: ReactNode;
@@ -22,10 +22,12 @@ const variants: Record<ButtonVariant, string> = {
   primary:
     "bg-brand-600 text-white shadow-lg shadow-brand-600/25 hover:bg-brand-700 hover:shadow-brand-600/40",
   secondary:
-    "bg-white text-slate-900 border border-slate-200 shadow-sm hover:bg-slate-50 hover:border-slate-300",
-  ghost: "bg-transparent text-slate-700 hover:bg-slate-100",
+    "bg-white text-ink border border-black/10 shadow-sm hover:bg-cream hover:border-black/15",
+  ghost: "bg-transparent text-ink hover:bg-black/[0.04]",
   outline:
-    "border-2 border-brand-600 text-brand-600 bg-transparent hover:bg-brand-50",
+    "border-2 border-brand-600 text-brand-700 bg-transparent hover:bg-brand-50",
+  outlineLight:
+    "border border-white/35 text-white bg-transparent hover:bg-white/10",
 };
 
 const sizes: Record<ButtonSize, string> = {

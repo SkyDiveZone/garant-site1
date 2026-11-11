@@ -1,7 +1,9 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
+import { ROUND_THE_CLOCK } from "@/lib/copy";
+import { SITE } from "@/lib/data";
+import { requestLeadForm } from "@/lib/lead-form-events";
 import { HeroTrustInfo } from "@/components/ui/HeroTrustInfo";
 import { MotionItem, MotionSection } from "@/components/ui/Motion";
 import { ContactBlock } from "@/components/ui/ContactBlock";
@@ -23,9 +25,17 @@ export function MidPageCTA() {
               </h2>
               <p className="mt-4 text-brand-100">{ROUND_THE_CLOCK.headline}</p>
               <p className="mt-2 text-sm text-brand-100/90">{ROUND_THE_CLOCK.urgent}</p>
-              <div className="mt-8 flex justify-center">
-                <Button size="lg" variant="secondary" href="#lead-form">
+              <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+                <Button size="lg" variant="secondary" href={`tel:${SITE.phoneRaw}`}>
                   <Phone className="h-4 w-4" />
+                  Позвонить
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={requestLeadForm}
+                  className="border-white/70 text-white hover:bg-white/10 hover:border-white"
+                >
                   Оставить заявку
                 </Button>
               </div>

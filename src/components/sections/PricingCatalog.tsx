@@ -29,7 +29,7 @@ export function PricingCatalog() {
   const orderHref = "#lead-form";
 
   return (
-    <Section id="pricing" className="bg-slate-50/80">
+    <Section id="pricing" className="bg-cream">
       <SectionHeader
         badge="Прозрачные цены"
         title="Прайс-лист услуг в Екатеринбурге"

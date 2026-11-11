@@ -34,6 +34,8 @@ export function Analytics() {
 
   return (
     <>
+      {YANDEX_METRIKA_ID > 0 && (
+      <>
       <Script id="yandex-metrika-loader" strategy="afterInteractive">
         {`
           (function(m,e,t,r,i,k,a){
@@ -77,12 +79,10 @@ export function Analytics() {
 
               if (typeof window.ym !== 'function') return;
 
-              window.ym(COUNTER_ID, 'init', INIT);
-              window.ym(
-                COUNTER_ID,
-                'hit',
-                window.location.pathname + window.location.search + window.location.hash
-              );
+              window.ym(COUNTER_ID, 'init', Object.assign({}, INIT, {
+                referrer: document.referrer,
+                url: location.href
+              }));
             }
 
             function start() {
@@ -110,6 +110,8 @@ export function Analytics() {
           />
         </div>
       </noscript>
+      </>
+      )}
 
       {GA_ID && (
         <>

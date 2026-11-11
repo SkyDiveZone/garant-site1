@@ -20,42 +20,41 @@ export function ServiceHero({ service }: ServiceHeroProps) {
 
   return (
     <>
-    <section className="page-hero">
-      <div className="gradient-mesh pointer-events-none absolute inset-0" />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_65%,white_100%)]" />
+    <section className="page-hero bg-graphite text-white">
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_70%,#F7F5F0_100%)]" />
 
       <div className="page-hero__inner relative z-10">
-        <nav aria-label="Хлебные крошки" className="mb-6 text-sm text-slate-500">
-          <Link href="/" className="hover:text-brand-600">
+        <nav aria-label="Хлебные крошки" className="mb-6 text-sm text-white/60">
+          <Link href="/" className="hover:text-white">
             Главная
           </Link>
           {service.parent && (
             <>
               <span className="mx-2">/</span>
-              <Link href={service.parent.href} className="hover:text-brand-600">
+              <Link href={service.parent.href} className="hover:text-white">
                 {service.parent.label}
               </Link>
             </>
           )}
           <span className="mx-2">/</span>
-          <span className="text-slate-700">{service.categoryLabel}</span>
+          <span className="text-white">{service.categoryLabel}</span>
         </nav>
 
         <LeadFormSplitLayout
           content={
             <>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-1.5 text-sm font-medium text-brand-700">
-                <Clock className="h-4 w-4" />
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-sm font-medium text-white/85">
+                <Clock className="h-4 w-4 text-brand-500" />
                 {ROUND_THE_CLOCK.badge}
               </div>
 
-              <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              <h1 className="font-display text-3xl font-bold leading-[1.15] tracking-tight text-white sm:text-4xl lg:text-5xl">
                 {service.h1}
               </h1>
 
-              <p className="mt-5 text-lg leading-relaxed text-slate-600">{service.heroSubtitle}</p>
+              <p className="mt-5 text-lg leading-relaxed text-white/70">{service.heroSubtitle}</p>
 
-              <p className="mt-4 text-base leading-relaxed text-slate-600">
+              <p className="mt-4 text-base leading-relaxed text-white/60">
                 {COPY.costAfterInspection} {COPY.costAfterInspectionLong}
               </p>
 

@@ -18,6 +18,7 @@ export const COPY = {
   costDependsOnScope: "Объём работ определяется после осмотра на объекте.",
   servicesSubtitle: "Согласуем условия после осмотра на месте.",
   leadFormSubtitle: "Перезвоним в течение 5 минут.",
+  priceBeforeStart: "Итог мастер называет до начала. Оплата после работы.",
   leadFormSuccessDetail: "Перезвоним в течение 5 минут.",
   callbackShort: "Перезвоним в течение 5 минут.",
   callbackWithSchedule: `Перезвоним в течение 5 минут. ${ROUND_THE_CLOCK.urgent}`,

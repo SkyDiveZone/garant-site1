@@ -54,7 +54,7 @@ export function Section({ children, id, className, dark }: SectionProps) {
       id={id}
       className={cn(
         "section-padding",
-        dark ? "bg-slate-950 text-white" : "",
+        dark ? "bg-graphite text-white" : "",
         className
       )}
     >

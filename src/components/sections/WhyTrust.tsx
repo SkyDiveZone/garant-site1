@@ -7,7 +7,7 @@ import { TRUST_REASONS } from "@/lib/data";
 
 export function WhyTrust() {
   return (
-    <Section>
+    <Section id="about" className="bg-cream">
       <MotionSection>
         <MotionItem>
           <SectionHeader
@@ -20,14 +20,14 @@ export function WhyTrust() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TRUST_REASONS.map((item) => (
             <MotionItem key={item.title}>
-              <div className="card-hover group h-full rounded-2xl border border-slate-200/80 bg-white p-6">
+              <div className="card-surface card-hover group h-full p-6">
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600 transition-colors group-hover:bg-brand-600 group-hover:text-white">
                   <DynamicIcon name={item.icon} className="h-6 w-6" />
                 </div>
-                <h3 className="font-display text-lg font-bold text-slate-900">
+                <h3 className="font-display text-lg font-bold text-ink">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                <p className="mt-2 text-sm leading-relaxed text-muted">
                   {item.description}
                 </p>
               </div>

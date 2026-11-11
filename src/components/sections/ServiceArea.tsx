@@ -8,13 +8,13 @@ import { MapPin } from "lucide-react";
 
 export function ServiceArea() {
   return (
-    <Section id="service-area" className="bg-slate-50/80">
+    <Section id="service-area" className="bg-cream">
       <MotionSection>
         <MotionItem>
           <SectionHeader
             badge="География"
-            title="Работаем по всему Екатеринбургу"
-            subtitle="Выезжаем во все районы города и пригород"
+            title="Работаем по районам Екатеринбурга"
+            subtitle="Выезжаем по городу и области — Центр, ВИЗ, Уралмаш, Академический, Ботаника и остальные районы"
           />
         </MotionItem>
         <MotionItem>
@@ -29,6 +29,9 @@ export function ServiceArea() {
               </div>
             ))}
           </div>
+          <p className="mt-5 text-center text-sm text-slate-500">
+            Выезжаем по Екатеринбургу и области: сантехник, электрик, мастер на час и ремонт квартир.
+          </p>
           <div className="mt-6 text-center">
             <Button href="#lead-form" size="lg">
               Вызвать мастера в мой район

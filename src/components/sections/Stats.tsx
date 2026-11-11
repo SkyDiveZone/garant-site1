@@ -8,7 +8,7 @@ import { STATS } from "@/lib/data";
 export function Stats() {
   return (
     <Section dark className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.15),transparent_70%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,106,0,0.14),transparent_70%)]" />
 
       <MotionSection className="relative">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

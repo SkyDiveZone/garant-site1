@@ -326,6 +326,47 @@ export function getFullPriceCatalog(): Record<PriceCatalogTabId, readonly PriceL
   };
 }
 
+/** Цены старта у кнопки вызова. Берутся из прайса, без отдельной цены вызова. */
+export const START_PRICE_POINTS = [
+  { id: "santehnik", category: "santehnik", name: "Устранение засора", label: "Засор" },
+  {
+    id: "elektrik",
+    category: "elektrik",
+    name: "Установка розетки (открытая проводка)",
+    label: "Розетка",
+  },
+  {
+    id: "master-na-chas",
+    category: "master-na-chas",
+    name: "Почасовая оплата мастера",
+    label: "Час мастера",
+  },
+] as const;
+
+export type StartPriceId = (typeof START_PRICE_POINTS)[number]["id"];
+
+export function getStartPrice(id: StartPriceId) {
+  const point = START_PRICE_POINTS.find((item) => item.id === id);
+  if (!point) return undefined;
+  const catalog = getFullPriceCatalog()[point.category];
+  for (const group of catalog) {
+    const item = group.items.find((entry) => entry.name === point.name);
+    if (item) {
+      return { label: point.label, priceFrom: item.priceFrom, unit: item.unit };
+    }
+  }
+  return undefined;
+}
+
+export function getNamedPrice(category: PriceCatalogTabId, name: string) {
+  const catalog = getFullPriceCatalog()[category];
+  for (const group of catalog) {
+    const item = group.items.find((entry) => entry.name === name);
+    if (item) return item;
+  }
+  return undefined;
+}
+
 const PRICE_LISTS: Record<PriceListSlug, readonly PriceListGroup[]> = {
   santehnik: SANTEHNIK_PRICES,
   elektrik: ELEKTRIK_PRICES,

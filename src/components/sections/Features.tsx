@@ -110,7 +110,7 @@ export function Features() {
           <div className="text-center">
             <SectionHeader
               title="Готовы вызвать мастера?"
-              subtitle="Перезвоним за 5 минут и согласуем выезд"
+              subtitle="Перезвоним за 5 минут. Приедем в течение часа."
             />
             <Button size="lg" href="#lead-form">
               Оставить заявку

@@ -9,6 +9,8 @@ import {
 } from "@/lib/lead-form";
 import { LegalConsentCheckbox } from "@/components/ui/LegalConsentCheckbox";
 import { getLeadFormLabelsFromPath } from "@/lib/lead-form-labels";
+import { formatRuPhone } from "@/lib/phone-mask";
+import { problemExampleForPath } from "@/lib/lead-problem-example";
 import { trackFormSubmit } from "@/lib/yandex-metrika";
 import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
@@ -22,14 +24,17 @@ export interface LeadFormProps {
   title?: string;
   subtitle?: string;
   submitLabel?: string;
+  problemPlaceholder?: string;
   id?: string;
   formFieldId?: string;
+  onSuccess?: () => void;
 }
 
 const inputClassName =
   "w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3.5 text-slate-900 placeholder:text-slate-400 transition-colors focus:border-brand-500 focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500/20";
 
 const textareaClassName = `${inputClassName} min-h-[112px] resize-y`;
+const compactTextareaClassName = `${inputClassName} min-h-[72px] resize-y py-3`;
 
 const labelClassName = "mb-1.5 block text-sm font-medium text-slate-700";
 
@@ -61,11 +66,15 @@ export function LeadForm({
   title = "Вызвать мастера",
   subtitle = COPY.leadFormSubtitle,
   submitLabel,
+  problemPlaceholder,
+  onSuccess,
   ...props
 }: LeadFormProps) {
   const pathname = usePathname();
   const resolvedSubmitLabel =
     submitLabel ?? getLeadFormLabelsFromPath(pathname).submitLabel;
+  const resolvedProblemPlaceholder =
+    problemPlaceholder ?? problemExampleForPath(pathname);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -135,6 +144,7 @@ export function LeadForm({
         setConsent,
         setConsentError,
       });
+      onSuccess?.();
       setTimeout(() => setStatus("idle"), 5000);
     } catch (err) {
       setStatus("error");
@@ -170,17 +180,18 @@ export function LeadForm({
       className={cn(
         "rounded-2xl border border-slate-200/80 bg-white p-5 shadow-xl shadow-slate-200/50 sm:p-6",
         isInline && "border-0 bg-transparent p-0 shadow-none",
+        isCompact && "border-0 bg-transparent p-0 shadow-none",
         className
       )}
     >
-      {!isInline && (
+      {!isInline && !isCompact && (
         <div className="mb-6">
           <h3 className="font-display text-xl font-bold text-slate-900 sm:text-2xl">{title}</h3>
           <p className="mt-2 text-sm text-slate-600">{subtitle}</p>
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className="space-y-4" noValidate>
+      <form onSubmit={handleSubmit} className={cn("space-y-4", isCompact && "space-y-3")} noValidate>
         <div className={cn(isInline && "space-y-4")}>
           <div className={cn("space-y-4", isInline && "sm:grid sm:grid-cols-2 sm:gap-4 sm:space-y-0")}>
             <div>
@@ -210,95 +221,101 @@ export function LeadForm({
                 autoComplete="tel"
                 inputMode="tel"
                 placeholder="+7 (___) ___-__-__"
+                maxLength={18}
                 value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                onChange={(e) => setPhone(formatRuPhone(e.target.value, phone))}
                 className={inputClassName}
               />
             </div>
           </div>
 
-          <div>
-            <label htmlFor={`address-${fieldId}`} className={labelClassName}>
-              Адрес выезда мастера
-              <span className="ml-1 font-normal text-slate-500">(рекомендуем указать)</span>
-            </label>
-            <input
-              id={`address-${fieldId}`}
-              type="text"
-              autoComplete="street-address"
-              placeholder="Введите адрес, куда необходимо вызвать мастера"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              className={inputClassName}
-            />
-          </div>
-
-          <div>
-            <label htmlFor={`problem-${fieldId}`} className={labelClassName}>
-              Опишите проблему
+          <details className="rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <summary className="cursor-pointer text-sm font-medium text-slate-700">
+              Уточнить адрес и время
               <span className="ml-1 font-normal text-slate-500">(необязательно)</span>
-            </label>
-            <textarea
-              id={`problem-${fieldId}`}
-              rows={4}
-              maxLength={2000}
-              placeholder="Например: течёт смеситель на кухне, нужна замена"
-              value={problem}
-              onChange={(e) => setProblem(e.target.value)}
-              className={textareaClassName}
-            />
-          </div>
-
-          <div>
-            <label htmlFor={`schedule-${fieldId}`} className={labelClassName}>
-              Когда удобно принять мастера?
-            </label>
-            <select
-              id={`schedule-${fieldId}`}
-              required
-              value={schedule}
-              onChange={(e) => setSchedule(e.target.value as LeadScheduleValue)}
-              className={inputClassName}
-            >
-              {LEAD_SCHEDULE_OPTIONS.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.label}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {showCustomDateTime && (
-            <div className="grid gap-4 sm:grid-cols-2">
+            </summary>
+            <div className="mt-4 space-y-4">
               <div>
-                <label htmlFor={`date-${fieldId}`} className={labelClassName}>
-                  Дата
+                <label htmlFor={`address-${fieldId}`} className={labelClassName}>
+                  Адрес выезда мастера
                 </label>
                 <input
-                  id={`date-${fieldId}`}
-                  type="date"
-                  min={todayStr}
-                  required
-                  value={customDate}
-                  onChange={(e) => setCustomDate(e.target.value)}
+                  id={`address-${fieldId}`}
+                  type="text"
+                  autoComplete="street-address"
+                  placeholder="Улица, дом, квартира"
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
                   className={inputClassName}
                 />
               </div>
+
               <div>
-                <label htmlFor={`time-${fieldId}`} className={labelClassName}>
-                  Время
+                <label htmlFor={`problem-${fieldId}`} className={labelClassName}>
+                  Опишите проблему
                 </label>
-                <input
-                  id={`time-${fieldId}`}
-                  type="time"
-                  required
-                  value={customTime}
-                  onChange={(e) => setCustomTime(e.target.value)}
-                  className={inputClassName}
+                <textarea
+                  id={`problem-${fieldId}`}
+                  rows={isCompact ? 2 : 4}
+                  maxLength={2000}
+                  placeholder={resolvedProblemPlaceholder}
+                  value={problem}
+                  onChange={(e) => setProblem(e.target.value)}
+                  className={isCompact ? compactTextareaClassName : textareaClassName}
                 />
               </div>
+
+              <div>
+                <label htmlFor={`schedule-${fieldId}`} className={labelClassName}>
+                  Когда удобно принять мастера?
+                </label>
+                <select
+                  id={`schedule-${fieldId}`}
+                  value={schedule}
+                  onChange={(e) => setSchedule(e.target.value as LeadScheduleValue)}
+                  className={inputClassName}
+                >
+                  {LEAD_SCHEDULE_OPTIONS.map((option) => (
+                    <option key={option.value} value={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {showCustomDateTime && (
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor={`date-${fieldId}`} className={labelClassName}>
+                      Дата
+                    </label>
+                    <input
+                      id={`date-${fieldId}`}
+                      type="date"
+                      min={todayStr}
+                      required
+                      value={customDate}
+                      onChange={(e) => setCustomDate(e.target.value)}
+                      className={inputClassName}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor={`time-${fieldId}`} className={labelClassName}>
+                      Время
+                    </label>
+                    <input
+                      id={`time-${fieldId}`}
+                      type="time"
+                      required
+                      value={customTime}
+                      onChange={(e) => setCustomTime(e.target.value)}
+                      className={inputClassName}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
-          )}
+          </details>
         </div>
 
         <div className="mb-2">

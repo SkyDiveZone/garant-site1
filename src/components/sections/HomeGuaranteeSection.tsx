@@ -7,7 +7,7 @@ import { Check, ShieldCheck } from "lucide-react";
 
 export function HomeGuaranteeSection() {
   return (
-    <Section id="guarantee" className="bg-slate-50/80">
+    <Section id="about" className="bg-slate-50/80">
       <MotionSection>
         <MotionItem>
           <div className="relative overflow-hidden rounded-3xl border border-brand-200/80 bg-gradient-to-br from-white via-brand-50/40 to-white px-6 py-8 shadow-sm sm:px-8 sm:py-10">

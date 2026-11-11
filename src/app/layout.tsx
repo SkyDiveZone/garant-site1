@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { FloatingCTA } from "@/components/layout/FloatingCTA";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { WelcomeLeadPopup } from "@/components/ui/WelcomeLeadPopup";
 import { HOME_METADATA } from "@/lib/seo";
 import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
@@ -45,6 +46,7 @@ export default function RootLayout({
         <main id="main-content">{children}</main>
         <Footer />
         <FloatingCTA />
+        <WelcomeLeadPopup />
         <CookieConsentBanner />
         <Analytics />
         <YandexMetrikaRouteHit />
