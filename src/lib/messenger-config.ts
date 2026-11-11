@@ -6,9 +6,9 @@ export const MESSENGER = {
     url: "https://t.me/garant_master_zayavki",
   },
   max: {
-    display: "8 (922) 938-57-88",
+    display: "8 (922) 109-03-25",
     label: "Max",
-    phoneRaw: "+79229385788",
+    phoneRaw: "+79221090325",
     url: "https://web.max.ru/456683052",
   },
 } as const;
