@@ -2,7 +2,7 @@ import { COPY, ROUND_THE_CLOCK } from "@/lib/copy";
 import { MESSENGER } from "@/lib/messenger-config";
 
 export const PHONES = [
-  { display: "8 (950) 202-32-28", raw: "+79502023228" },
+  { display: "8 (922) 938-57-88", raw: "+79229385788" },
 ] as const;
 
 export const HEADER_PHONES = PHONES;

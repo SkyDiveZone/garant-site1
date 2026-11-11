@@ -930,10 +930,10 @@ export const HOME_DESIGN_BODY = `
           </button>
           <div class="city-pop" id="city-pop">Выезжаем по всем районам Екатеринбурга — от Академического до Уралмаша.</div>
         </div>
-        <a class="header-phone" href="tel:+79502023228">
+        <a class="header-phone" href="tel:+79229385788">
           <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path fill="#2f6bff" d="M7.2 3.5h2.2l1.3 3.3-1.6 1.1a12.6 12.6 0 0 0 5.9 5.9l1.1-1.6 3.4 1.3v2.2c0 .8-.6 1.5-1.4 1.6A15.2 15.2 0 0 1 5.6 4.9c.1-.8.8-1.4 1.6-1.4z"/></svg>
           <span>
-            <strong>8 (950) 202-32-28</strong>
+            <strong>8 (922) 938-57-88</strong>
             <small>Круглосуточно</small>
           </span>
         </a>
@@ -988,7 +988,7 @@ export const HOME_DESIGN_BODY = `
                   Вызвать мастера
                   <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </button>
-                <a class="btn btn-ghost" href="tel:+79502023228">
+                <a class="btn btn-ghost" href="tel:+79229385788">
                   <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.2 3.5h2.2l1.3 3.3-1.6 1.1a12.6 12.6 0 0 0 5.9 5.9l1.1-1.6 3.4 1.3v2.2c0 .8-.6 1.5-1.4 1.6A15.2 15.2 0 0 1 5.6 4.9c.1-.8.8-1.4 1.6-1.4z"/></svg>
                   Позвонить
                 </a>
@@ -1479,7 +1479,7 @@ export const HOME_DESIGN_BODY = `
           <div>
             <h2 id="contacts-title">Контакты</h2>
             <p class="lead">Один номер на сантехника, электрика, мастера на час и ремонт квартир. Диспетчер отвечает круглосуточно.</p>
-            <a class="big-phone" href="tel:+79502023228">8 (950) 202-32-28</a>
+            <a class="big-phone" href="tel:+79229385788">8 (922) 938-57-88</a>
             <ul class="contact-list">
               <li>
                 <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="#2f6bff" d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>
@@ -1521,7 +1521,7 @@ export const HOME_DESIGN_BODY = `
             <strong>Заявку приняли</strong>
             <p>Перезвоним в течение 5 минут. Если срочно — позвоните, работаем круглосуточно.</p>
             <div class="form-actions">
-              <a class="btn btn-primary" href="tel:+79502023228">Позвонить</a>
+              <a class="btn btn-primary" href="tel:+79229385788">Позвонить</a>
               <button class="btn btn-ghost" type="button" id="contact-again">Новая заявка</button>
             </div>
           </div>
@@ -1533,7 +1533,7 @@ export const HOME_DESIGN_BODY = `
   <footer class="footer">
     <div class="wrap footer-inner">
       <span>Гарант Мастер · бытовые услуги в Екатеринбурге</span>
-      <a href="tel:+79502023228">8 (950) 202-32-28</a>
+      <a href="tel:+79229385788">8 (922) 938-57-88</a>
       <a href="mailto:STESER-OFFICIAL@yandex.ru">STESER-OFFICIAL@yandex.ru</a>
       <a href="/privacy-policy">Политика конфиденциальности</a>
       <a href="/user-agreement">Пользовательское соглашение</a>
@@ -1691,12 +1691,12 @@ export const HOME_DESIGN_BODY = `
         </div>
         <aside class="price-contacts" aria-label="Связаться сразу">
           <p>Или напишите сразу</p>
-          <a class="msg msg-phone" href="tel:+79502023228">
+          <a class="msg msg-phone" href="tel:+79229385788">
             <span>Телефон<small>Круглосуточно</small></span>
-            <span>8 (950) 202-32-28</span>
+            <span>8 (922) 938-57-88</span>
           </a>
           <a class="msg msg-max" href="https://web.max.ru/456683052" target="_blank" rel="noopener noreferrer">
-            <span>MAX<small>8 (950) 202-32-28</small></span>
+            <span>MAX<small>8 (922) 938-57-88</small></span>
             <span>Открыть</span>
           </a>
           <a class="msg msg-tg" href="https://t.me/garant_master_zayavki" target="_blank" rel="noopener noreferrer">
@@ -1747,14 +1747,14 @@ export const HOME_DESIGN_SCRIPT = `
         const payload = await response.json().catch(() => ({}));
         if (!response.ok) {
           error.hidden = false;
-          error.textContent = payload.error || "Заявка не отправлена. Позвоните 8 (950) 202-32-28.";
+          error.textContent = payload.error || "Заявка не отправлена. Позвоните 8 (922) 938-57-88.";
           return false;
         }
         trackFormSubmit();
         return true;
       } catch (err) {
         error.hidden = false;
-        error.textContent = "Нет связи с сервером. Позвоните 8 (950) 202-32-28.";
+        error.textContent = "Нет связи с сервером. Позвоните 8 (922) 938-57-88.";
         return false;
       } finally {
         button.disabled = false;
